@@ -60,14 +60,13 @@
 
 require_once __DIR__.'/mvc/helpers/inicompute_helper.php';
 
+
 // if (!preg_match("/^(127\.0\.|10\.0\.).+/i", getIpAddress())) {
-	$_SERVER['CI_ENV'] = 'development';
-	// }
-	
-	
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
-	// define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
-	
+    $_SERVER['CI_ENV'] = 'development';
+// }
+
+
+define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*
  *---------------------------------------------------------------
@@ -311,14 +310,10 @@ switch (ENVIRONMENT)
 	{
 		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
 		echo 'Your view folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
-		exit(3);
+		exit(3); // EXIT_CONFIG
 	}
 
-	
-
 	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
-	
-	
 
 /*
  * --------------------------------------------------------------------

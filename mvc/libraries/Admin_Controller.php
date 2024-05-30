@@ -40,7 +40,7 @@ class Admin_Controller extends MY_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->lang->load('topbar_menu', $this->session->userdata('lang'));
-        
+
         $module            = $this->uri->segment(1);
         $action            = $this->uri->segment(2);
         $siteInfo          = $this->site_m->get_site();
@@ -64,16 +64,16 @@ class Admin_Controller extends MY_Controller {
 
     private function _loginManager()
     {
-        
         $url            = '';
         $exception_uris = [
+            "HomeController/index",
             "signin/index",
             "signin/signout"
         ];
 
         if ( in_array(uri_string(), $exception_uris) == false ) {
             if ( $this->signin_m->loggedin() == false ) {
-                $url = base_url("signin/index");
+                $url = base_url("HomeController/index");
             }
         }
         return $url;

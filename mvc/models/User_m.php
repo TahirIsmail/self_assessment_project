@@ -81,7 +81,6 @@ class user_m extends MY_Model {
 
 	public function get_user_info($usertypeID, $userID)
     {
-		
         if ( $usertypeID == 1 ) {
             $table = "systemadmin";
         } elseif ( $usertypeID == 2 ) {

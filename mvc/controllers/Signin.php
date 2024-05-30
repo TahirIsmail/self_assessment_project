@@ -46,8 +46,7 @@ public $load;
 	}
 
 	public function index() {
-       
-       
+     
         if ( $this->data['siteinfos']->captcha_status == 0 ) {
             $this->load->library('recaptcha');
             $this->data['recaptcha'] = [
@@ -59,16 +58,12 @@ public $load;
         if ($this->signin_m->loggedin() != FALSE) {
             redirect(base_url('dashboard/index'));
         }
-       
-        
         $this->data['form_validation'] = 'No';
         if($_POST !== []) {
-          
             $this->_setCookie();
             $rules = $this->rules();
             $this->form_validation->set_rules($rules);
             if ($this->form_validation->run() == FALSE) {
-               
                 $this->data['form_validation'] = validation_errors();
                 $this->data["subview"]         = "signin/index";
             	$this->load->view('_layout_signin', $this->data);
@@ -83,7 +78,6 @@ public $load;
                 }
             }
         } else {
-            // echo 'else';exit;
             $this->data["subview"]         = "signin/index";
             $this->load->view('_layout_signin', $this->data);
             $this->session->sess_destroy();

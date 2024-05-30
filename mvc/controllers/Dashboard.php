@@ -43,7 +43,7 @@ public $data;
 
 	public function index() {
 
-		
+		// dd(phpinfo());
 		$this->data['headerassets'] = array(
 			'js' => array(
 				'assets/highcharts/highcharts.js',

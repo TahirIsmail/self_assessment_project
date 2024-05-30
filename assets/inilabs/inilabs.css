@@ -175,17 +175,20 @@ label {
 
 /* Login Start */
 .white-bg-login {
-    background: none repeat scroll 0 0 #F1F2F7;
+  background: url('../../uploads/images/bgn1.png') no-repeat center center fixed !important;
+        background-size: cover !important;
+    /* background: none repeat scroll 0 0 #F1F2F7; */
 }
 
 .form-box > .header {
-  margin-top: 120px;
+  /* margin-top: 120px; */
 }
 
 .form-box .body, .form-box .footer {
-  border-radius: 0px 0px 4px 4px;
+  
+  border-radius: 0px 0px 5px 5px;
   -moz-border-radius: 0px 0px 4px 4px;
-  -webkit-border-radius: 0px 0px 4px 4px;
+  -webkit-border-radius: 0px 0px 20px 20px;
 }
 
 .form-box .body > .form-group > input,
