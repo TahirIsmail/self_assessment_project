@@ -66,13 +66,14 @@ class Admin_Controller extends MY_Controller {
     {
         $url            = '';
         $exception_uris = [
+            "HomeController/index",
             "signin/index",
             "signin/signout"
         ];
 
         if ( in_array(uri_string(), $exception_uris) == false ) {
             if ( $this->signin_m->loggedin() == false ) {
-                $url = base_url("signin/index");
+                $url = base_url("HomeController/index");
             }
         }
         return $url;

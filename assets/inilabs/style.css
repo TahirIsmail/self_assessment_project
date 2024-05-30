@@ -27,7 +27,7 @@
 
 html,
 body {
-  overflow-x: hidden!important;
+  /* overflow-x: hidden!important; */
   font-family: 'OpenSans Regular';
   -webkit-font-smoothing: antialiased;
   min-height: 100%;
@@ -1928,31 +1928,31 @@ Component: timeline
 .btn.btn-primary.hover {
   color: #fff;
   background-color: #3487D3;
-  border-color: #3487D3;
+  /* border-color: #3487D3; */
 }
 .btn.btn-success {
   color: #fff;
-  background-color: #00acac;
-  border-color: #00acac;
+  /* background-color: #1A76D1; */
+  /* border-color: #00acac; */
 }
 .btn.btn-success:hover,
 .btn.btn-success:active,
 .btn.btn-success.hover {
   color: #fff;
   background-color: #09A3A3;
-  border-color: #09A3A3;
+  /* border-color: #09A3A3; */
 }
 .btn.btn-info {
   color: #fff;
   background-color: #49b6d6;
-  border-color: #49b6d6;
+  /* border-color: #49b6d6; */
 }
 .btn.btn-info:hover,
 .btn.btn-info:active,
 .btn.btn-info.hover {
   color: #fff;
   background-color: #4AABC8;
-  border-color: #4AABC8;
+  /* border-color: #4AABC8; */
 }
 .btn.btn-danger {
   color: #fff;
@@ -2451,8 +2451,9 @@ Component: timeline
   margin: 90px auto 0 auto;
 }
 .form-box .header {
-  -webkit-border-top-left-radius: 4px;
-  -webkit-border-top-right-radius: 4px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  -webkit-border-top-left-radius: 20px !important;
+  -webkit-border-top-right-radius: 20px !important;
   -webkit-border-bottom-right-radius: 0;
   -webkit-border-bottom-left-radius: 0;
   -moz-border-radius-topleft: 4px;
@@ -2463,9 +2464,9 @@ Component: timeline
   border-top-right-radius: 4px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
-  background: none repeat scroll 0 0 #1A2229;
-  box-shadow: inset 0px -3px 0px rgba(0, 0, 0, 0.2);
-  padding: 20px 10px;
+  background: none repeat scroll 0 0 #d91e32;
+  /* box-shadow: inset 0px -3px 0px rgba(0, 0, 0, 0.2); */
+  padding: 10px 55px 10px 55px;
   text-align: center;
   font-size: 26px;
   font-weight: 300;
@@ -2473,7 +2474,7 @@ Component: timeline
 }
 .form-box .body,
 .form-box .footer {
-  padding: 10px 20px;
+  padding: 1px 50px;
   background: #fff;
   color: #444;
 }

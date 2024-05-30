@@ -19,12 +19,7 @@
 
 <body class="white-bg-login">
     <div class="col-md-4 col-md-offset-4 marg" style="margin-top:30px;">
-        <?php
-            if(inicompute($siteinfos->photo)) {
-                echo "<center><img width='50' height='50' src=".base_url('uploads/images/'.$siteinfos->photo)." /></center>";
-            }
-        ?>
-        <center><h4><?php echo $siteinfos->sname; ?></h4></center>
+        
     </div>
 
     <?php $this->load->view($subview); ?>
