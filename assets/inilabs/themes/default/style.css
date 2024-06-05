@@ -76,13 +76,15 @@ body > .header {
 }
 /*left side - contains sidebar*/
 .left-side {
+  /* margin-left: 10px; */
+  /* margin-top: 10px; */
   position: absolute;
-  width: 220px;
+  width: 215px;
   top: 0;
 }
 @media screen and (min-width: 992px) {
   .left-side {
-    top: 50px;
+    /* top: 50px; */
   }
   /*Right side strech mode*/
   .right-side.strech {
@@ -125,7 +127,11 @@ body.fixed .wrapper {
 }
 /* Content */
 .content {
-  padding: 20px 15px;
+
+  padding-bottom: 25px;
+    padding-left: 25px;
+    padding-top: 25px;
+    padding-right: 30px;
   background: #f1f2f7;
   overflow: hidden;
 }
@@ -480,13 +486,20 @@ Gradient Background colors
 body > .header {
   position: relative;
   max-height: 100px;
+  left: 16%;
+  width: 82%;
   z-index: 1030;
-  box-shadow: 1px 0 3px rgba(0,0,0,.15);
+  padding: 5px;
+  /* box-shadow: 1px 0 3px rgba(0,0,0,.15); */
+  
+  /* box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25), 0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025); */
+  box-shadow: 0 .46875rem 2.1875rem rgba(4, 9, 20, .03), 0 .9375rem 1.40625rem rgba(4, 9, 20, .03), 0 .25rem .53125rem rgba(4, 9, 20, .05), 0 .125rem .1875rem rgba(4, 9, 20, .03);
 }
 body > .header .navbar {
+  margin-top: 10px;
   height: 50px;
   margin-bottom: 0;
-  margin-left: 220px;
+  /* margin-left: 220px; */
 }
 body > .header .navbar .sidebar-toggle {
   float: left;
@@ -704,7 +717,7 @@ body > .header .logo .icon {
 }
 .user-panel {
   padding: 10px;
-  background: none repeat scroll 0 0 #1A2229;
+  background-image: -webkit-linear-gradient(90deg, #5b2121, #ad5a5a) !important;
 }
 .user-panel:before,
 .user-panel:after {
@@ -2637,7 +2650,7 @@ Component: timeline
 }
 /* skin-blue logo */
 .skin-blue .logo {
-  background-color: #FFFFFF;
+  /* background-color: #FFFFFF; */
   color: #001122;
 }
 .skin-blue .logo > a {
@@ -2667,7 +2680,7 @@ Component: timeline
   border-top: 1px solid #23292F;
 }
 .skin-blue .sidebar > .sidebar-menu > li > a {
-  margin-right: 1px;
+  /* margin-right: 1px; */
 }
 .skin-blue .sidebar > .sidebar-menu > li > a:hover,
 .skin-blue .sidebar > .sidebar-menu > li.active > a {
@@ -2679,10 +2692,13 @@ Component: timeline
   background: #f9f9f9;
 }
 .skin-blue .left-side {
-  background: none repeat scroll 0 0 #2D353C;
-  -webkit-box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.1);
-  box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
+  background: none repeat scroll 0 0 #ffffff;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25), 0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  /* box-shadow: 0 .46875rem 2.1875rem rgba(4, 9, 20, .03), 0 .9375rem 1.40625rem rgba(4, 9, 20, .03), 0 .25rem .53125rem rgba(4, 9, 20, .05), 0 .125rem .1875rem rgba(4, 9, 20, .03); */
+  /* -webkit-box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.1); */
+  /* -moz-box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.1); */
+  /* box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.07); */
 }
 .skin-blue .sidebar a {
   color: #555555;
@@ -3605,8 +3621,8 @@ fieldset[disabled] .btn-vk.active {
 
 
 .main-footer {
-  background: #fff;
-  padding: 15px;
+  background: #efefef;
+  padding: 5px;
   color: #444;
   border-top: 1px solid #DDDDDD;
   position: fixed;
@@ -3614,6 +3630,95 @@ fieldset[disabled] .btn-vk.active {
   left: 0px;
   right: 0px;
   transition: transform .3s ease-in-out,margin .3s ease-in-out;
-  margin-left: 220px;
+  /* margin-left: 220px; */
   z-index: 820;
+}
+
+
+
+
+
+
+
+/* ***********CUSTOM NEW STYLING BY ANAS************* */
+
+.nav-item.nav-link.book-now {
+  background-color: red;
+  color: white; /* Ensure the text is readable against the red background */
+  padding: 10px 15px; /* Adjust padding to match other links if necessary */
+  border-radius: 5px; /* Optional: rounded corners */
+}
+
+/* Hover effect */
+.nav-item.nav-link.book-now:hover {
+  background-color: white;
+  color: red; /* Change text color to red to maintain contrast */
+  border: 1px solid red; /* Optional: add a red border for better visibility */
+}
+
+
+
+
+
+.switch {
+  font-size: 10px;
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+}
+
+/* Hide default HTML checkbox */
+.sidebar-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: #ffc9c9;
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2em;
+  width: 2em;
+  inset: 0;
+  background-color: white;
+  border-radius: 50px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.sidebar-toggle input:checked + .slider {
+  background: #0974f1 !important;
+}
+
+.sidebar-toggle input:focus + .slider {
+  box-shadow: 0 0 1px #0974f1!important;
+}
+
+.sidebar-toggle input:checked + .slider:before {
+  transform: translateX(1.6em)!important;
+}
+.logonew {
+  /* background-color: white; */
+  padding-left: 10px;
+  padding-top: 10px;
+  height: 50px;
+}
+.header {
+  margin-top: 10px;
+  border-radius: 10px !important;
+    background-color: white !important;
 }

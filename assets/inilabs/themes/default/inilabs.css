@@ -14,6 +14,7 @@
 
 /* User Image & Login Start */
 .user-logo {
+  -webkit-box-shadow: 0 5px 10px 0 rgba(43, 43, 43, .2);
   margin: 0px;
   padding: 0px;
   border-radius: 50%;
@@ -75,7 +76,7 @@
 
 /* Menu User Image Start */
 .color-green {
-  color: #00acac;
+  color: #ffffff;
 }
 
 /* Menu User Image End */
@@ -807,7 +808,7 @@ label {
 }
 
 .bg-maroon-light {
-  background-color: #C24984 !important;
+  background-color: #833737 !important;
   color: #fff !important;
 }
 
@@ -831,22 +832,22 @@ label {
 }
 
 .bg-purple-light {
-  background-color: #9575CD !important;
+  background-image: linear-gradient(195deg, #EC407A 0%, #D81B60 100%) !important;
   color: #fff !important;
 }
 
 .bg-pink-light {
-  background-color: #F06292 !important;
+  background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%) !important;
   color: #fff !important;
 }
 
 .bg-teal-light {
-  background-color: #4DB6AC !important;
+  background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%) !important;
   color: #fff !important;
 }
 
 .bg-orange-dark {
-  background-color: #FF8A65 !important;
+  background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%) !important;
   color: #fff !important;
 }
 
