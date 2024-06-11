@@ -50,6 +50,7 @@ class MY_Model extends CI_Model {
 		if($array != NULL) {
 			$this->db->select()->from($this->_table_name)->where($array);
 			$query = $this->db->get();
+			// echo $this->db->last_query();exit;
 			return $query->row();
 		} else {
 			$this->db->select()->from($this->_table_name)->order_by($this->_order_by);
@@ -59,6 +60,10 @@ class MY_Model extends CI_Model {
 	}
 
 	function insert($array) {
+		// echo '<pre>';
+		// print_r($array);
+		// echo '</pre>';
+		// exit;
 		$this->db->insert($this->_table_name, $array);
 		$id = $this->db->insert_id();
 		return $id;

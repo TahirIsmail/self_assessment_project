@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-sm-10">
                 <form class="form-horizontal" role="form" method="post">
-                    <?php
+                    <!-- <?php
                         if(form_error('classesID'))
                             echo "<div class='form-group has-error' >";
                         else
@@ -36,7 +36,7 @@
                         <span class="col-sm-4 control-label">
                             <?php echo form_error('classesID'); ?>
                         </span>
-                    </div>
+                    </div> -->
 
                     <?php
                         if(form_error('teacherID'))
@@ -178,7 +178,7 @@
                 </form>
                 <?php if ($siteinfos->note==1) { ?>
                     <div class="callout callout-danger">
-                        <p><b>Note:</b> Create a teacher & class before create a new subject.</p>
+                        <p><b>Note:</b> Create a teacher before create a new subject.</p>
                     </div>
                 <?php } ?>
             </div> <!-- col-sm-8 -->

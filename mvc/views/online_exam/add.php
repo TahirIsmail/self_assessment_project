@@ -74,7 +74,7 @@
                         </span>
                     </div>
 
-                    <?php
+                    <!-- <?php
                     if(form_error('classes'))
                         echo "<div class='form-group has-error' >";
                     else
@@ -97,9 +97,9 @@
                         <span class="col-sm-4 control-label">
                             <?php echo form_error('classes'); ?>
                         </span>
-                    </div>
+                    </div> -->
 
-                    <?php
+                    <!-- <?php
                     if(form_error('section'))
                         echo "<div class='form-group has-error' >";
                     else
@@ -122,9 +122,9 @@
                         <span class="col-sm-4 control-label">
                             <?php echo form_error('section'); ?>
                         </span>
-                    </div>
+                    </div> -->
 
-                    <?php
+                    <!-- <?php
                     if(form_error('studentGroup'))
                         echo "<div class='form-group has-error' >";
                     else
@@ -147,7 +147,7 @@
                         <span class="col-sm-4 control-label">
                             <?php echo form_error('studentGroup'); ?>
                         </span>
-                    </div>
+                    </div> -->
 
                     <?php
                     if(form_error('subject'))

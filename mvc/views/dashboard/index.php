@@ -1,3 +1,4 @@
+  
 <div class="row">
     <?php if(config_item('demo')) { ?>
         <div class="col-sm-12" id="resetDummyData">

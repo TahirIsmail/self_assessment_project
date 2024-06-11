@@ -144,6 +144,11 @@ public $data;
 
 		$this->data['events'] = $this->event_m->get_event();
 
+		// echo '<pre>';
+		// print_r($this->data);
+		// echo '</pre>';
+		// exit;
+
 
 		$this->data["subview"] = "dashboard/index";
 		$this->load->view('_layout_main', $this->data);

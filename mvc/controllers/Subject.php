@@ -66,7 +66,7 @@ public $load;
 				if(inicompute($checkstudent)) {
 					$classesID = $checkstudent->classesID;
 					$this->data['set'] = $id;
-					$this->data['subjects'] = $this->subject_m->get_join_subject($classesID);
+					$this->data['subjects'] = $this->subject_m->get_join_subjects();
 					$this->data["subview"] = "subject/index_parent";
 					$this->load->view('_layout_main', $this->data);
 				} else {
@@ -82,12 +82,18 @@ public $load;
 			if((int)$id !== 0) {
 				$this->data['set'] = $id;
 				$this->data['classes'] = $this->classes_m->get_classes();
-				$this->data['subjects'] = $this->subject_m->get_join_subject($id);
+				$this->data['subjects'] = $this->subject_m->get_join_subjects();
 				$this->data["subview"] = "subject/index";
 				$this->load->view('_layout_main', $this->data);
 			} else {
-				$this->data['classes'] = $this->classes_m->get_classes();
-				$this->data["subview"] = "subject/search";
+
+				$this->data['subjects'] = $this->subject_m->get_join_subjects();
+				// echo '<pre>';
+				// print_r($this->data['subjects']);
+				// echo '</pre>';
+				// exit;
+				// $this->data['classes'] = $this->classes_m->get_classes();
+				$this->data["subview"] = "subject/index";
 				$this->load->view('_layout_main', $this->data);
 			}
 		}
@@ -95,11 +101,11 @@ public $load;
 
 	protected function rules() {
 		return array(
-				array(
-					'field' => 'classesID', 
-					'label' => $this->lang->line("subject_class_name"), 
-					'rules' => 'trim|numeric|required|xss_clean|max_length[11]|callback_allclasses'
-				),
+				// array(
+				// 	'field' => 'classesID', 
+				// 	'label' => $this->lang->line("subject_class_name"), 
+				// 	'rules' => 'trim|numeric|required|xss_clean|max_length[11]|callback_allclasses'
+				// ),
 				array(
 					'field' => 'teacherID', 
 					'label' => $this->lang->line("subject_teacher_name"), 
@@ -148,7 +154,7 @@ public $load;
 				'assets/select2/select2.js'
 			)
 		);
-		$this->data['classes'] = $this->classes_m->get_classes();
+		// $this->data['classes'] = $this->classes_m->get_classes();
 		$this->data['teachers'] = $this->teacher_m->get_teacher();
 		if($_POST !== []) {
 			$rules = $this->rules();
@@ -159,7 +165,7 @@ public $load;
 			} else {
 				$teacher = $this->teacher_m->get_teacher($this->input->post("teacherID"));
 				$array = array(
-					"classesID" => $this->input->post("classesID"),
+					// "classesID" => $this->input->post("classesID"),
 					"teacherID" => $this->input->post("teacherID"),
 					"subject" => $this->input->post("subject"),
 					'type' => $this->input->post('type'),
@@ -169,7 +175,6 @@ public $load;
 					"subject_code" => $this->input->post("subject_code"),
 					"teacher_name" => $teacher->name,
 					"create_date" => date("Y-m-d h:i:s"),
-					"modify_date" => date("Y-m-d h:i:s"),
 					"create_userID" => $this->session->userdata('loginuserID'),
 					"create_username" => $this->session->userdata('username'),
 					"create_usertype" => $this->session->userdata('usertype')

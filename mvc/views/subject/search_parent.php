@@ -21,20 +21,7 @@
                             <?=$this->lang->line('add_title')?>
                         </a>
                     <?php } ?>
-                    <?php if($this->session->userdata('usertypeID') != 3) { ?>
-                        <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12 pull-right drop-marg">
-                            <?php
-                                $array = array("0" => $this->lang->line("subject_select_student"));
-                                        if($students) {
-                                            foreach ($students as $student) {
-                                                $array[$student->studentID] = $student->name;
-                                            }
-                                        }
-                                        echo form_dropdown("studentID", $array, set_value("studentID"), "id='studentID' class='form-control select2'");
-                            ?>
-
-                        </div>
-                    <?php } ?>
+                    
                 </h5>
 
                 <div id="hide-table">

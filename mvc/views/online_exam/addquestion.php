@@ -130,18 +130,18 @@
                                 <span><?=$this->lang->line('online_exam_instruction')?> : </span>
                                 <?=inicompute($instruction) ? $instruction->title : ''?>
                             </p>
-                            <p>
+                            <!-- <p>
                                 <span><?=$this->lang->line('online_exam_class')?> : </span>
                                 <?=inicompute($class) ? $class->classes : ''?>
-                            </p>
-                            <p>
+                            </p> -->
+                            <!-- <p>
                                 <span><?=$this->lang->line('online_exam_section')?> : </span>
                                 <?=inicompute($section) ? $section->section : ''?>
                             </p>
                             <p>
                                 <span><?=$this->lang->line('online_exam_studentGroup')?> : </span>
                                 <?=inicompute($studentGroup) ? $studentGroup->group : ''?>
-                            </p>
+                            </p> -->
                             <p>
                                 <span><?=$this->lang->line('online_exam_subject')?> : </span>
                                 <?=inicompute($subject) ? $subject->subject : ''?>
@@ -160,7 +160,7 @@
             <div class="box-body">
                 <div class="row">
                     <div class="col-sm-12" id="questionSummary">
-                        <?=isset($questionSummary) ? $questionSummary : ''?>
+                        <?= isset($questionSummary) ? $questionSummary : '' ?>
                     </div>
                 </div>
             </div>

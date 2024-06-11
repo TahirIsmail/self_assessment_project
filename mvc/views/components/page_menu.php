@@ -1,5 +1,12 @@
    <div class="wrapper row-offcanvas row-offcanvas-left">
+    
     <aside class="left-side sidebar-offcanvas">
+        <div class="logonew">
+            <a href="<?= base_url('dashboard/index'); ?>" class="logo1">
+                <!-- Add the class icon to your logo image or logo icon to add the margining -->
+                <img class="" src="../../../uploads/landing_img/SL-red-logo.png" alt="Image" style="width: 60%;">
+            </a>
+        </div>
         <section class="sidebar">
             <div class="user-panel">
                 <div class="pull-left image">

@@ -1,8 +1,8 @@
 <?php
 
 /* List Language  */
-$lang['panel_title'] = "Take exam";
-$lang['add_title'] = "Add a Take exam";
+$lang['panel_title'] = "Take Test";
+$lang['add_title'] = "Add a Take test";
 $lang['slno'] = "#";
 $lang['take_exam_name'] = "Name";
 $lang['take_exam_duration'] = "Duration";
@@ -24,8 +24,8 @@ $lang['take_exam_previous'] = "Previous";
 $lang['take_exam_finish'] = "Finish";
 $lang['take_exam_clear_answer'] = "Clear Answer";
 $lang['take_exam_mark_review'] = "Mark For Review & Next";
-$lang['take_exam_start_exam'] = "Start Exam";
-$lang['take_exam_exam_name'] = "Exam Name";
+$lang['take_exam_start_exam'] = "Start Test";
+$lang['take_exam_exam_name'] = "Test Name";
 $lang['take_exam_warning'] = "Warning";
 $lang['take_exam_page_refresh'] = "Do Not Press Back/refresh Button";
 $lang['action'] = "Action";
@@ -49,7 +49,7 @@ $lang['take_exam_payment_method'] = "Payment Method";
 $lang['take_exam_select_payment_method'] = "Select Payment Method";
 $lang['take_exam_view_payments'] = "View Payments";
 $lang['take_exam_payment_date'] = "Payment Date";
-$lang['take_exam_exam_status'] = "Exam Status";
+$lang['take_exam_exam_status'] = "Test Status";
 $lang['take_exam_complete'] = "Complete";
 $lang['take_exam_pending'] = "Pending";
 $lang['take_exam_payment'] = "Payment";
@@ -66,7 +66,7 @@ $lang['take_exam_phone'] = "Phone";
 
 $lang['take_exam_pass'] = "PASS";
 $lang['take_exam_fail'] = "FAIL";
-$lang['take_exam_status'] = "Exam Status";
+$lang['take_exam_status'] = "Test Status";
 $lang['take_exam_one_time'] = "One Time";
 $lang['take_exam_multiple_time'] = "Multiple Time";
 $lang['take_exam_taken'] = "Taken";
@@ -79,9 +79,9 @@ $lang['take_exam_attend'] = "Attend";
 $lang['take_exam_upcoming'] = "Upcoming";
 $lang['take_exam_todays'] = "Todays";
 $lang['take_exam_days'] = "Days";
-$lang['take_exam_exam_not_found'] = "Exam information not found";
+$lang['take_exam_exam_not_found'] = "Test information not found";
 $lang['take_exam_registerNO'] = "Register NO";
-$lang['take_exam_exam_info'] = "Exam Info";
+$lang['take_exam_exam_info'] = "Test Info";
 
 $lang['view'] = 'View';
 $lang['edit'] = 'Edit';
@@ -92,8 +92,8 @@ $lang["mail"] = "Send Pdf to Mail";
 
 /* Add Language */
 
-$lang['add_class'] = 'Add Take exam';
-$lang['update_class'] = 'Update Take exam';
+$lang['add_class'] = 'Add Take test';
+$lang['update_class'] = 'Update Take test';
 
 $lang['to'] = 'To';
 $lang['subject'] = 'Subject';
@@ -106,8 +106,8 @@ $lang['mail_success'] = 'Email send successfully!';
 $lang['mail_error'] = 'oops! Email not send!';
 
 
-$lang['take_exam_not_published']   = "The exam was not published";
-$lang['take_exam_not_allowed']     = 'The exam not allowed';
-$lang['take_exam_exam_expired']    = "Exam Expired";
-$lang['take_exam_exam_upcoming']   = "Exam Upcoming";
-$lang['take_exam_show_result_msg'] = "You Have Successfully Attend The Exam. Wait For The Result...";
+$lang['take_exam_not_published']   = "The test was not published";
+$lang['take_exam_not_allowed']     = 'The test not allowed';
+$lang['take_exam_exam_expired']    = "Test Expired";
+$lang['take_exam_exam_upcoming']   = "Test Upcoming";
+$lang['take_exam_show_result_msg'] = "You Have Successfully Attend The Test. Wait For The Result...";

@@ -21,19 +21,7 @@
                         </a>
                     <?php } ?>
 
-                    <?php if($this->session->userdata('usertypeID') != 3) { ?>
-                        <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12 pull-right drop-marg">
-                            <?php
-                                $array = array("0" => $this->lang->line("subject_select_class"));
-                                if(inicompute($classes)) {
-                                    foreach ($classes as $classa) {
-                                        $array[$classa->classesID] = $classa->classes;
-                                    }
-                                }
-                                echo form_dropdown("classesID", $array, set_value("classesID", $set), "id='classesID' class='form-control select2'");
-                            ?>
-                        </div>
-                    <?php } ?>
+                
                 </h5>
 
                 <div id="hide-table">

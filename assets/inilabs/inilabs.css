@@ -764,7 +764,7 @@ label {
 }
 
 .bg-orange-dark {
-    background-color: #FF8A65 !important;
+  background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%) !important;
     color: #fff !important;
 }
 
