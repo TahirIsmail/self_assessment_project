@@ -4,7 +4,7 @@
         <div class="logonew">
             <a href="<?= base_url('dashboard/index'); ?>" class="logo1">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
-                <img class="" src="../../../uploads/landing_img/SL-black-logo.png" alt="Image" style="width: 60%;">
+                <img class="" src="<?php echo base_url('uploads/landing_img/SL-black-logo.png');?>" alt="Image" style="width: 60%;">
             </a>
         </div>
         <section class="sidebar">

@@ -123,7 +123,7 @@
     <!--new navbar-->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
-            <a href="index.html" class="navbar-brand p-0">
+            <a href="#" class="navbar-brand p-0">
                 <img class="w-100" src="<?=base_url('uploads/landing_img/SL-white-logo.png'); ?>" alt="Image" style="    width: 200px !important;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -131,42 +131,42 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">Services</a>
-                    <a href="service.html" class="nav-item nav-link book-now">Book Now</a>
+                    <a href="#" class="nav-item nav-link active">Home</a>
+                    <a href="#" class="nav-item nav-link">Services</a>
+                    <a href="#" class="nav-item nav-link book-now">Book Now</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">All Courses</a>
                         <div class="dropdown-menu m-0">
-                            <a href="blog.html" class="dropdown-item">DOOR SUPERVISOR</a>
-                            <a href="detail.html" class="dropdown-item">CCTV</a>
-                            <a href="detail.html" class="dropdown-item">CVIT</a>
-                            <a href="detail.html" class="dropdown-item">VEHICAL IMMOBILSER</a>
-                            <a href="detail.html" class="dropdown-item">CLOSE PROTECTION</a>
-                            <a href="detail.html" class="dropdown-item">SECURITY</a>
+                            <a href="#" class="dropdown-item">DOOR SUPERVISOR</a>
+                            <a href="#" class="dropdown-item">CCTV</a>
+                            <a href="#" class="dropdown-item">CVIT</a>
+                            <a href="#" class="dropdown-item">VEHICAL IMMOBILSER</a>
+                            <a href="#" class="dropdown-item">CLOSE PROTECTION</a>
+                            <a href="#" class="dropdown-item">SECURITY</a>
                         </div>
 
                     </div>
 
-                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
-                    <a href="contact.html" class="nav-item nav-link">Blog</a>
+                    <a href="#" class="nav-item nav-link">Contact Us</a>
+                    <a href="#" class="nav-item nav-link">Blog</a>
                 </div>
                 <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
                 <a href="<?php echo base_url('signin/index') ?>" class="btn btn-primary py-2 px-4 ms-3">LOGIN</a>
-                <a href="contact.html" class="nav-item nav-link" >SIGN UP</a>
+                <a href="#" class="nav-item nav-link" >SIGN UP</a>
             </div>
         </nav>
 
         <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="../../../uploads/landing_img/sld2.png" alt="Image">
+                    <img class="w-100" src="<?php echo base_url('uploads/landing_img/sld2.png')?>" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
 
                             <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 50px;     margin-top: 110px;">Simply Trained</h1>
                             <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 60px;">Simply Licenced</h1>
                             <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 70px;">Simply Get a Job</h1>
-                            <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">More Details</a>
+                            <a href="#" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">More Details</a>
                             <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
                         </div>
 
@@ -394,7 +394,7 @@
                                                         </div>
                                                         <div class="so_top_icon">
 
-                                                            <img src="../../../uploads/images/team-1.jpg" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+                                                            <img src="<?php echo base_url('uploads/images/team-1.jpg')?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
 
                                                             </img>
                                                         </div>
@@ -437,7 +437,7 @@
                                                         </div>
                                                         <div class="so_top_icon">
 
-                                                            <img src="../../../uploads/images/team-2.jpg" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+                                                            <img src="<?php echo base_url('uploads/images/team-2.jpg');?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
 
                                                             </img>
                                                         </div>
@@ -481,7 +481,7 @@
                                                         </div>
                                                         <div class="so_top_icon">
 
-                                                            <img src="../../../uploads/images/team-3.jpg" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+                                                            <img src="<?php echo base_url('uploads/images/team-3.jpg');?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
 
                                                             </img>
                                                         </div>
@@ -524,7 +524,7 @@
                                                         </div>
                                                         <div class="so_top_icon">
 
-                                                            <img src="../../../uploads/images/team-4.jpg" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+                                                            <img src="<?php echo base_url('uploads/images/team-4.jpg');?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
 
                                                             </img>
                                                         </div>
@@ -568,7 +568,7 @@
                                                         </div>
                                                         <div class="so_top_icon">
 
-                                                            <img src="../../../uploads/images/testimonial-3.jpg" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+                                                            <img src="<?php echo base_url('uploads/images/testimonial-3.jpg');?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
 
                                                             </img>
                                                         </div>
@@ -612,7 +612,7 @@
                                                         </div>
                                                         <div class="so_top_icon">
 
-                                                            <img src="../../../uploads/images/testimonial-4.jpg" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+                                                            <img src="<?php echo base_url('uploads/images/testimonial-4.jpg');?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
 
                                                             </img>
                                                         </div>
@@ -1127,7 +1127,7 @@
 
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <a href="index.html" class="navbar-brand p-0">
+                    <a href="#" class="navbar-brand p-0">
                         <img class="w-100" src="<?=base_url('uploads/landing_img/SL-white-logo.png'); ?>" alt="Image" style="    width: 200px !important;">
                     </a>
                     <p>Sign up for our newsletter now.</p>
@@ -1149,9 +1149,7 @@
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                         &copy; <a class="border-bottom" href="#">SimplyLicenced</a>, All Right Reserved.
-
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a class="border-bottom" href="">XYZ</a>
+                        Designed By <a class="border-bottom" href="https://oxbridgedigital.com/">Oxbridge Digital</a>
                     </div>
 
                 </div>
