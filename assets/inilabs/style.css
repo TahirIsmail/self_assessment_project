@@ -3607,3 +3607,8 @@ fieldset[disabled] .btn-vk.active {
   margin-left: 220px;
   z-index: 820;
 }
+
+#toggleCheckbox:checked ~ #header {
+  left: 0 !important;
+  width: 100% !important;
+}

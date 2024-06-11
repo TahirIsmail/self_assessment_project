@@ -460,11 +460,12 @@ span {
 
 .card_boxi1::before {
   font-size: 15px;
-  content: "CCTV";
+  content: "DOOR SUPERVISOR";
   position: absolute;
   width: 100%;
   height: 35px;
-  background-image: linear-gradient(45deg, #3e0004 0%, #d20101 51%, #ff8c9c 100%);
+  background-color: #f69246;
+  
   transform: rotate(-90deg) translateY(140px) translateX(-42px);
   display: flex;
   align-items: center;
@@ -479,11 +480,11 @@ span {
 
 .card_boxi2::before {
   font-size: 15px;
-  content: "Close Protection";
+  content: "CLOSE PROTECTION";
   position: absolute;
   width: 100%;
   height: 35px;
-  background-image: linear-gradient(45deg, #400045 0%, #81008f 51%, #ee7fff 100%);
+  background-color: #ac4630;
   transform: rotate(-90deg) translateY(140px) translateX(-42px);
   display: flex;
   align-items: center;
@@ -498,11 +499,11 @@ span {
 
 .card_boxi3::before {
   font-size: 15px;
-  content: "Security";
+  content: "SECURITY";
   position: absolute;
   width: 100%;
   height: 35px;
-  background-image: linear-gradient(45deg, #01244b 0%, #236bca 51%, #007fff 100%);
+  background-color: #2953aa;
   transform: rotate(-90deg) translateY(140px) translateX(-42px);
   display: flex;
   align-items: center;
@@ -517,11 +518,11 @@ span {
 
 .card_boxi4::before {
   font-size: 15px;
-  content: "Door Supervisor";
+  content: "CVIT";
   position: absolute;
   width: 100%;
   height: 35px;
-  background-image: linear-gradient(45deg, #532700 0%, #ffb144 51%, #ff7b61 100%);
+  background-color: #5e56a3;
   transform: rotate(-90deg) translateY(140px) translateX(-42px);
   display: flex;
   align-items: center;
@@ -532,6 +533,43 @@ span {
   text-transform: uppercase;
   /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23); */
 }
+
+.card_boxi5::before {
+  font-size: 15px;
+  content: "VEHICAL IMMOBILSER";
+  position: absolute;
+  width: 100%;
+  height: 35px;
+  background-color: #987e28;
+  transform: rotate(-90deg) translateY(140px) translateX(-42px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23); */
+}
+
+.card_boxi6::before {
+  font-size: 15px;
+  content: "CCTV";
+  position: absolute;
+  width: 100%;
+  height: 35px;
+  background-color: #a2095a;
+  transform: rotate(-90deg) translateY(140px) translateX(-42px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23); */
+}
+
 .card-row {
   display: flex !important;
 }
@@ -614,7 +652,20 @@ span {
   height: 100%;
   background: url("../../../uploads/images/sia-logo.png") no-repeat center center;
   background-size: cover;
-  opacity: 0.1; /* Adjust opacity as needed */
+  opacity: 0.2; /* Adjust opacity as needed */
+  z-index: 1;
+}
+
+.solu_title::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90%;
+  height: 100%;
+  background: url("../../../uploads/images/sample1.png") no-repeat center center;
+  background-size: cover;
+  opacity: 0.2; /* Adjust opacity as needed */
   z-index: 1;
 }
 
@@ -630,6 +681,7 @@ span {
   text-align: left !important;
 }
 .solution_cards_box .solution_card:hover {
+  box-shadow: 0 13px 27px -5px rgb(255 52 52 / 53%), 0 8px 16px -8px rgb(255 0 0 / 47%), 0 -6px 16px -6px rgb(255 0 0);
   background: linear-gradient(to right, #48b9e1, #009fd6);
   color: #fff;
   transform: scale(1.05);
@@ -796,7 +848,7 @@ span {
 .cont1 {
   /* position: absolute; */
   height: 250px;
-  width: 715px;
+  width: 430px;
   top: 60px;
   left: calc(50% - 300px);
   display: flex;
@@ -805,7 +857,7 @@ span {
 .card-new {
   display: flex;
   height: 280px;
-  width: 250px;
+  width: 210px;
   /* background-color: #3495c7; */
   border-radius: 10px;
   /* box-shadow: 1rem 0 2rem #00000075; */
@@ -816,22 +868,28 @@ span {
 }
 
 .card-new {
-  margin-left: -80px;
+  margin-left: -140px;
 }
 
 .card-new:nth-child(1) {
+  z-index: 6; /* Adjust the value according to the number of cards */
+}
+.card-new:nth-child(2) {
+  z-index: 5; /* Adjust the value according to the number of cards */
+}
+.card-new:nth-child(3) {
   z-index: 4; /* Adjust the value according to the number of cards */
 }
 
-.card-new:nth-child(2) {
+.card-new:nth-child(4) {
   z-index: 3;
 }
 
-.card-new:nth-child(3) {
+.card-new:nth-child(5) {
   z-index: 2;
 }
 
-.card-new:nth-child(4) {
+.card-new:nth-child(6) {
   z-index: 1;
 }
 
@@ -839,6 +897,7 @@ span {
 
 
 .card-new:hover {
+  
   transform: translateY(-10px);
   transition: 0.4s ease-out;
   

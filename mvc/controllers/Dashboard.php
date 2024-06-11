@@ -106,6 +106,9 @@ public $data;
 		$this->data['dashboardWidget']['notice']			= inicompute($notice);
 		$this->data['dashboardWidget']['studentgroup']      = inicompute($studentgroup);
 		$this->data['dashboardWidget']['allmenu'] 			= $allmenu;
+		// echo '<pre>';
+		// print_r($allmenu);
+		// echo '</pre>';exit;
 		$this->data['dashboardWidget']['allmenulang'] 		= $allmenulang;
 
 		$currentDate = strtotime(date('Y-m-d H:i:s'));
