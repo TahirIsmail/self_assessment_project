@@ -2698,8 +2698,9 @@ margin-top: 5px !important;
   margin-left: 15px !important;
     margin-right: 15px !important;
     border-radius: 5px !important;
-  color: #f6f6f6;
-  background-image: linear-gradient(to right, #141e30, #243b55);
+  color: #ffffff;
+  /* background-image: linear-gradient(to right, #141e30, #243b55); */
+  background: linear-gradient(to right, #ed213a, #93291e);
 }
 .skin-blue .sidebar > .sidebar-menu > li > .treeview-menu {
   margin: 0 0px;
