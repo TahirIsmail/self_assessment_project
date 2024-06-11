@@ -18,7 +18,6 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 .DS_Store
 /.idea/
-/uploads
 /mvc/config/database.php
 
 ## Sublime Text cache files
