@@ -88,7 +88,12 @@
 }
 
 .sidebar .sidebar-menu .treeview-menu>li>a:hover {
-  background-color: #232a2f;
+  -webkit-transition: 0.3s ease-out;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-left: 20px !important;
+  margin-right: 20px;
+  background-color: #5a3939;
   color: #EEEEEE;
 }
 
@@ -808,7 +813,8 @@ label {
 }
 
 .bg-maroon-light {
-  background-color: #833737 !important;
+  background: linear-gradient(to right, #ed213a, #93291e) !important;
+  background-color: #833737 ;
   color: #fff !important;
 }
 
@@ -1105,3 +1111,5 @@ label {
 }
 
 /* INILabs Code Colose Here */
+
+

@@ -176,8 +176,8 @@
                 </div>
             </div><!-- row -->
         <?php endif ?>
-    </div><!-- Body -->
-</div><!-- /.box -->
+    </div>
+</div>
 
 <script type="text/javascript">
     $('.select2').select2();

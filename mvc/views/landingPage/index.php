@@ -132,33 +132,39 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">All Courses</a>
+                    <a href="about.html" class="nav-item nav-link">Services</a>
                     <a href="service.html" class="nav-item nav-link book-now">Book Now</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">All Courses</a>
                         <div class="dropdown-menu m-0">
-                            <a href="blog.html" class="dropdown-item">Service 1</a>
-                            <a href="detail.html" class="dropdown-item">Service 2</a>
+                            <a href="blog.html" class="dropdown-item">DOOR SUPERVISOR</a>
+                            <a href="detail.html" class="dropdown-item">CCTV</a>
+                            <a href="detail.html" class="dropdown-item">CVIT</a>
+                            <a href="detail.html" class="dropdown-item">VEHICAL IMMOBILSER</a>
+                            <a href="detail.html" class="dropdown-item">CLOSE PROTECTION</a>
+                            <a href="detail.html" class="dropdown-item">SECURITY</a>
                         </div>
+
                     </div>
+
                     <a href="contact.html" class="nav-item nav-link">Contact Us</a>
                     <a href="contact.html" class="nav-item nav-link">Blog</a>
                 </div>
                 <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
                 <a href="<?php echo base_url('signin/index') ?>" class="btn btn-primary py-2 px-4 ms-3">LOGIN</a>
-                <a href="contact.html" class="nav-item nav-link" style="text-decoration: underline;">SIGN UP</a>
+                <a href="contact.html" class="nav-item nav-link" >SIGN UP</a>
             </div>
         </nav>
 
         <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="<?= base_url('uploads/landing_img/sld1.png') ?>" alt="Image">
+                    <img class="w-100" src="../../../uploads/landing_img/sld2.png" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
 
                             <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 50px;     margin-top: 110px;">Simply Trained</h1>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 60px;">Simply Licensed</h1>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 60px;">Simply Licenced</h1>
                             <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 70px;">Simply Get a Job</h1>
                             <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">More Details</a>
                             <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
@@ -374,7 +380,7 @@
 
                                                     <div class="card_boxi1"></div>
 
-                                                    <div class="solu_title">
+                                                    <div class="solu_title ">
                                                         <div class="name">LICENSE</div>
                                                     </div>
 
@@ -519,6 +525,94 @@
                                                         <div class="so_top_icon">
 
                                                             <img src="../../../uploads/images/team-4.jpg" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+
+                                                            </img>
+                                                        </div>
+                                                    </div>
+                                                    <div class="xp">
+                                                        <div class="designation">EXPIRES</div>
+                                                        <div class="designation1">27 JAN 20XX</div>
+                                                        <div class="designation">MRS JULIE</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-new">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="our_solution_category">
+                                            <div class="solution_cards_box">
+                                                <div class="solution_card">
+                                                    <div class="hover_color_bubble"></div>
+
+                                                    <div class="ph">1111 1234 7869 3245</div>
+
+                                                    <div class="card_boxi5"></div>
+
+                                                    <div class="solu_title">
+                                                        <div class="name">LICENSE</div>
+                                                    </div>
+
+
+                                                    <div class="simitry">
+
+                                                        <div class="solu_description">
+                                                            <p>
+                                                                Security Industry Authority
+                                                            </p>
+
+                                                        </div>
+                                                        <div class="so_top_icon">
+
+                                                            <img src="../../../uploads/images/testimonial-3.jpg" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+
+                                                            </img>
+                                                        </div>
+                                                    </div>
+                                                    <div class="xp">
+                                                        <div class="designation">EXPIRES</div>
+                                                        <div class="designation1">27 JAN 20XX</div>
+                                                        <div class="designation">MRS JULIE</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-new">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="our_solution_category">
+                                            <div class="solution_cards_box">
+                                                <div class="solution_card">
+                                                    <div class="hover_color_bubble"></div>
+
+                                                    <div class="ph">1111 1234 7869 3245</div>
+
+                                                    <div class="card_boxi6"></div>
+
+                                                    <div class="solu_title">
+                                                        <div class="name">LICENSE</div>
+                                                    </div>
+
+
+                                                    <div class="simitry">
+
+                                                        <div class="solu_description">
+                                                            <p>
+                                                                Security Industry Authority
+                                                            </p>
+
+                                                        </div>
+                                                        <div class="so_top_icon">
+
+                                                            <img src="../../../uploads/images/testimonial-4.jpg" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
 
                                                             </img>
                                                         </div>
@@ -682,7 +776,7 @@
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                     <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-                    <h1 class="mb-4">Welcome to SimplyLicense</h1>
+                    <h1 class="mb-4">Welcome to SimplyLicenced</h1>
                     <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
                     <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
                     <div class="row gy-2 gx-4 mb-4">
@@ -1054,7 +1148,7 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">SimplyLicensed</a>, All Right Reserved.
+                        &copy; <a class="border-bottom" href="#">SimplyLicenced</a>, All Right Reserved.
 
                         <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
                         Designed By <a class="border-bottom" href="">XYZ</a>

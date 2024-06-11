@@ -80,6 +80,7 @@ h5,
 .h5,
 h6,
 .h6 {
+  font-family: "Quicksand", sans-serif !important;
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-family: "Nunito", sans-serif;
@@ -3411,8 +3412,8 @@ fieldset:disabled .btn {
 }
 .dropdown-item:hover,
 .dropdown-item:focus {
-  color: #1e2125;
-  background-color: #e9ecef;
+  color: #ffffff;
+    background-color: #af1414;
 }
 .dropdown-item.active,
 .dropdown-item:active {

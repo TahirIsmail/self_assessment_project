@@ -71,7 +71,7 @@ body > .header {
 }
 /*right side - contins main content*/
 .right-side {
-  background-color: #D9E0E7;
+  /* background-color: #D9E0E7; */
   margin-left: 220px;
 }
 /*left side - contains sidebar*/
@@ -133,6 +133,7 @@ body.fixed .wrapper {
     padding-top: 25px;
     padding-right: 30px;
   background: #f1f2f7;
+  /* background: #D9E0E7; */
   overflow: hidden;
 }
 /* Utility */
@@ -149,7 +150,8 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: 'OpenSans Regular';
+  font-family: "Quicksand", sans-serif !important;
+  /* font-family: 'OpenSans Regular'; */
 }
 /* Page Header */
 .page-header {
@@ -486,8 +488,8 @@ Gradient Background colors
 body > .header {
   position: relative;
   max-height: 100px;
-  left: 16%;
-  width: 82%;
+  left: 15%;
+  width: 83%;
   z-index: 1030;
   padding: 5px;
   /* box-shadow: 1px 0 3px rgba(0,0,0,.15); */
@@ -682,7 +684,9 @@ body > .header .logo .icon {
   padding: 0;
 }
 .sidebar .sidebar-menu > li > a {
-  font-size: 14px;
+  font-family: 'OpenSans Regular';
+    font-size: 15px;
+    color: #000000;
   color: #A4B1C2;
   padding: 10px 5px 10px 15px;
   display: block;
@@ -690,6 +694,7 @@ body > .header .logo .icon {
 .sidebar .sidebar-menu > li > a > .fa,
 .sidebar .sidebar-menu > li > a > .glyphicon,
 .sidebar .sidebar-menu > li > a > .ion {
+  color: #9d9d9d;
   font-size: 14px;
   width: 25px;
 }
@@ -700,14 +705,15 @@ body > .header .logo .icon {
   margin: 0;
 }
 .sidebar .sidebar-menu .treeview-menu > li {
-  background-color: #1A2229;
+  /* background-color: #1A2229; */
   margin: 0;
 }
 .sidebar .sidebar-menu .treeview-menu > li > a {
+  background-color: whitesmoke;
   display: block;
   margin: 0px 0px;
   font-size: 14px;
-  padding:  10px 5px 10px 42px;
+  padding:  10px 5px 10px 30px;
 }
 .sidebar .sidebar-menu .treeview-menu > li > a > .fa,
 .sidebar .sidebar-menu .treeview-menu > li > a > .glyphicon,
@@ -717,7 +723,8 @@ body > .header .logo .icon {
 }
 .user-panel {
   padding: 10px;
-  background-image: -webkit-linear-gradient(90deg, #5b2121, #ad5a5a) !important;
+  background-image: -webkit-linear-gradient(90deg, #5b2121, #ad5a5a) ;
+  background: linear-gradient(to right, #ed213a, #93291e) !important;
 }
 .user-panel:before,
 .user-panel:after {
@@ -1335,6 +1342,7 @@ body > .header .logo .icon {
   padding: 10px;
 }
 .small-box > .small-box-footer {
+  box-shadow: 0 .46875rem 2.1875rem rgba(4, 9, 20, .03), 0 .9375rem 1.40625rem rgba(4, 9, 20, .03), 0 .25rem .53125rem rgba(4, 9, 20, .05), 0 .125rem .1875rem rgba(4, 9, 20, .03);
   position: relative;
   text-align: center;
   padding: 3px 0;
@@ -1367,6 +1375,7 @@ body > .header .logo .icon {
   color: #c6cad6;
 }
 .small-box p {
+  font-family: "Quicksand", sans-serif !important;
   font-size: 15px;
   color: #c6cad6;
 }
@@ -1386,7 +1395,7 @@ body > .header .logo .icon {
   bottom: 0px;
   right: 0px;
   z-index: 0;
-  font-size: 60px;
+  font-size: 40px !important;
   padding: 9.5px 25px 8px 25px;
   color: rgba(0, 0, 0, 0.15);
   border-top-right-radius: 4px;
@@ -2684,15 +2693,21 @@ Component: timeline
 }
 .skin-blue .sidebar > .sidebar-menu > li > a:hover,
 .skin-blue .sidebar > .sidebar-menu > li.active > a {
+  -webkit-transition: 0.3s ease-out;
+margin-top: 5px !important;
+  margin-left: 15px !important;
+    margin-right: 15px !important;
+    border-radius: 5px !important;
   color: #f6f6f6;
-  background: #232A2F;
+  background-image: linear-gradient(to right, #141e30, #243b55);
 }
 .skin-blue .sidebar > .sidebar-menu > li > .treeview-menu {
   margin: 0 0px;
   background: #f9f9f9;
 }
 .skin-blue .left-side {
-  border-radius: 10px;
+  margin-top: 10px;
+  border-radius: 0px 10px 10px 0px;
   background: none repeat scroll 0 0 #ffffff;
   box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25), 0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
   /* box-shadow: 0 .46875rem 2.1875rem rgba(4, 9, 20, .03), 0 .9375rem 1.40625rem rgba(4, 9, 20, .03), 0 .25rem .53125rem rgba(4, 9, 20, .05), 0 .125rem .1875rem rgba(4, 9, 20, .03); */
@@ -3642,19 +3657,7 @@ fieldset[disabled] .btn-vk.active {
 
 /* ***********CUSTOM NEW STYLING BY ANAS************* */
 
-.nav-item.nav-link.book-now {
-  background-color: red;
-  color: white; /* Ensure the text is readable against the red background */
-  padding: 10px 15px; /* Adjust padding to match other links if necessary */
-  border-radius: 5px; /* Optional: rounded corners */
-}
 
-/* Hover effect */
-.nav-item.nav-link.book-now:hover {
-  background-color: white;
-  color: red; /* Change text color to red to maintain contrast */
-  border: 1px solid red; /* Optional: add a red border for better visibility */
-}
 
 
 
