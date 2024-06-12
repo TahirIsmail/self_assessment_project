@@ -1149,7 +1149,7 @@
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                         &copy; <a class="border-bottom" href="#">SimplyLicenced</a>, All Right Reserved.
-                        Designed By <a class="border-bottom" href="https://oxbridgedigital.com/">Oxbridge Digital</a>
+                        Developed By <a class="border-bottom" target="__blank" href="https://oxbridgedigital.com/">Oxbridge Digital</a>
                     </div>
 
                 </div>
