@@ -4,16 +4,27 @@
     }
 </style>
 <div class="col-sm-12 do-not-refresh">
-    <div class="callout callout-danger">
+    <!-- <div class="callout callout-danger">
         <h4><?= $this->lang->line('take_exam_warning') ?></h4>
         <p><?= $this->lang->line('take_exam_page_refresh') ?></p>
-    </div>
+    </div> -->
 </div>
 
 <div class="row">
-    <div class="col-sm-7 fu-example section">
+    <div class="col-sm-12 fu-example section">
         <div class="box outheBoxShadow wizard" data-initialize="wizard" id="questionWizard">
-            <div class="box-header bg-white">
+            <div class="box-header bg-white" style="padding-right: 10px; padding-bottom: 8px;">
+                <div class="box outheBoxShadow">
+
+                    <div id="timerdiv" class="timer" style="float: right; font-size: 20px !important; color: white; background-color: #853c3c; border-radius: 5px; margin-top: 15px !important;  padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px;     box-shadow: 3px 3px 6px #7474747d;">
+
+                    </div>
+                    <h2 class="box-title fontColor" style="float: right; font-size: 19px !important; color: #131395; padding-top: 22px; font-weight: 600;
+">Time</h2>
+                    <!-- <div class="box-body">
+                                
+                            </div> -->
+                </div>
                 <div class="checkbox hints">
                     <label>
                     </label>
@@ -49,27 +60,25 @@
                                     $questionAnswers = pluck($questionAnswers, 'optionID');
                                 }
                                 $optionCount = $question->totalOption; ?>
-                                <div class="clearfix step-pane sample-pane <?= $key == 0 ? 'active' : '' ?>"
-                                    data-questionID="<?= $question->questionBankID ?>" data-step="<?= $key + 1 ?>">
-                                    <div class="question-body">
-                                        <label class="lb-title"><?= $this->lang->line('take_exam_question') ?>
-                                            <?= $key + 1 ?>             <?= $this->lang->line('take_exam_of') ?>
+                                <div class="clearfix step-pane sample-pane <?= $key == 0 ? 'active' : '' ?>" data-questionID="<?= $question->questionBankID ?>" data-step="<?= $key + 1 ?>">
+                                    <div class="question-body" style="padding: 10px !important;">
+                                        <label class="lb-title" style="color: #991111 !important;   font-weight: 600;"><?= $this->lang->line('take_exam_question') ?>
+                                            <?= $key + 1 ?> <?= $this->lang->line('take_exam_of') ?>
                                             <?= $countOnlineExamQuestions ?>
                                         </label>
-                                        <label class="lb-content"> <?= $question->question ?></label>
-                                        <label class="lb-mark">
+                                        <label class="lb-content" style="color: #2b2b88;"> <?= $question->question ?></label>
+                                        <label class="lb-mark" style=" border-radius: 5px; padding-right: 10px; ">
                                             <?= $question->mark != "" ? $question->mark . ' ' . $this->lang->line('take_exam_mark') : '' ?>
                                         </label>
                                         <?php if ($question->upload != '') { ?>
                                             <div>
-                                                <img style="width:240px;height:140px;object-fit: cover; padding-top: 10px; padding-bottom: 25px;"
-                                                    src="<?= base_url('uploads/images/' . $question->upload) ?>" alt="">
+                                                <img style="width:240px;height:140px;object-fit: cover; padding-top: 10px; padding-bottom: 25px;" src="<?= base_url('uploads/images/' . $question->upload) ?>" alt="">
                                             </div>
                                         <?php } ?>
                                         <?php
                                         if ($question->explanation) {
-                                            ?>
-                                           <div class="panel panel-info">
+                                        ?>
+                                            <div class="panel panel-info">
                                                 <div class="panel-heading">
                                                     <h3 class="panel-title">Explanation</h3>
                                                 </div>
@@ -85,20 +94,18 @@
 
                                     <div class="question-answer" id="step<?= $key + 1 ?>">
                                         <table class="table">
-                                            <tr>
-                                                <?php
+                                        <?php
                                                 $tdCount = 0;
                                                 $oc = 1;
                                                 foreach ($questionOptions as $option) {
                                                     if ($optionCount >= $oc) {
                                                         $oc++; ?>
+                                            <tr>
+                                               
                                                         <td>
-                                                            <input id="option<?= $option->optionID ?>" value="<?= $option->optionID ?>"
-                                                                name="answer[<?= $question->typeNumber ?>][<?= $question->questionBankID ?>][]"
-                                                                type="<?= $question->typeNumber == 1 ? 'radio' : 'checkbox' ?>">
+                                                            <input id="option<?= $option->optionID ?>" value="<?= $option->optionID ?>" name="answer[<?= $question->typeNumber ?>][<?= $question->questionBankID ?>][]" type="<?= $question->typeNumber == 1 ? 'radio' : 'checkbox' ?>">
                                                             <label for="option<?= $option->optionID ?>">
-                                                                <span
-                                                                    class="fa-stack <?= $question->typeNumber == 1 ? 'radio-button' : 'checkbox-button' ?>">
+                                                                <span class="fa-stack <?= $question->typeNumber == 1 ? 'radio-button' : 'checkbox-button' ?>">
                                                                     <i class="active fa fa-check">
                                                                     </i>
                                                                 </span>
@@ -106,13 +113,14 @@
                                                                 <?php
                                                                 if (!is_null($option->img) && $option->img != "") { ?>
                                                                     <div style="background-color: white; box-shadow: 2px 2px 2px 2px; margin-top: 10px; padding: 10px; text-align: center; border-radius: 5px;">
-                                                                        <img style="width: 100px; height: 80px; object-fit: cover; "
-                                                                            src="<?= base_url('uploads/images/' . $option->img) ?>" alt="Image" />
+                                                                        <img style="width: 100px; height: 80px; object-fit: cover; " src="<?= base_url('uploads/images/' . $option->img) ?>" alt="Image" />
                                                                     </div>
                                                                 <?php } ?>
                                                             </label>
                                                         </td>
-                                                        <?php
+                                                   
+                                            <tr>
+                                            <?php
                                                     }
                                                     $tdCount++;
                                                     if ($tdCount == 2) {
@@ -123,30 +131,26 @@
 
                                                 if ($question->typeNumber == 3) {
                                                     foreach ($questionAnswers as $answerKey => $answer) {
-                                                        ?>
-                                                    <tr>
-                                                        <td>
-                                                            <input type="button" value="<?= $answerKey + 1 ?>"> <input class="fillInTheBlank"
-                                                                id="answer<?= $answer->answerID ?>"
-                                                                name="answer[<?= $question->typeNumber ?>][<?= $question->questionBankID ?>][<?= $answer->answerID ?>]"
-                                                                value="" type="text">
-                                                        </td>
-                                                    </tr>
-                                                    <?php
+                                                    ?>
+                                                <td>
+                                                    <input type="button" value="<?= $answerKey + 1 ?>"> <input class="fillInTheBlank" id="answer<?= $answer->answerID ?>" name="answer[<?= $question->typeNumber ?>][<?= $question->questionBankID ?>][<?= $answer->answerID ?>]" value="" type="text">
+                                                </td>
+                                            </tr>
+                                    <?php
                                                     }
                                                 } ?>
-                                            </tr>
+                                    </tr>
                                         </table>
                                     </div>
                                 </div>
-                                <?php
+                    <?php
                             }
                         }
                     } else {
                         echo "<p class='text-center'>" . $this->lang->line('take_exam_no_question') . "</p>";
                     } ?>
                     <div class="question-answer-button">
-                        <button class="btn oe-btn-answered btn-prev" type="button" name="" id="prevbutton" disabled>
+                        <button class="btn oe-btn-answered btn-prev" style="background-color: #4a4a4a !important;" type="button" name="" id="prevbutton" disabled>
                             <i class="fa fa-angle-left"></i> <?= $this->lang->line('take_exam_previous') ?>
                         </button>
 
@@ -154,17 +158,15 @@
                             <?= $this->lang->line('take_exam_mark_review') ?>
                         </button>
 
-                        <button class="btn oe-btn-answered btn-next" type="button" name="" id="nextbutton"
-                            data-last="<?= $this->lang->line('take_exam_finish') ?> ">
+                        <button class="btn oe-btn-answered btn-next" type="button" name="" id="nextbutton" data-last="<?= $this->lang->line('take_exam_finish') ?> ">
                             <?= $this->lang->line('take_exam_next') ?> <i class="fa fa-angle-right"></i>
                         </button>
-
+                        <!-- 
                         <button class="btn oe-btn-notvisited" type="button" name="" id="clearbutton">
                             <?= $this->lang->line('take_exam_clear_answer') ?>
-                        </button>
+                        </button> -->
 
-                        <button class="btn oe-btn-notanswered" type="button" name="" id="finishedbutton"
-                            onclick="finished()">
+                        <button class="btn oe-btn-notanswered" type="button" name="" id="finishedbutton" onclick="finished()">
                             <?= $this->lang->line('take_exam_finish') ?>
                         </button>
 
@@ -174,7 +176,7 @@
         </div>
     </div>
 
-    <div class="col-sm-5">
+    <!-- <div class="col-sm-5">
         <div class="row">
             <div class="col-sm-12 counterDiv">
                 <div class="box outheBoxShadow">
@@ -222,14 +224,14 @@
                                 <ul class="examQuesBox questionColor">
                                     <?php
                                     foreach ($onlineExamQuestions as $key => $onlineExamQuestion) {
-                                        ?>
+                                    ?>
                                         <li><a class="notvisited" id="question<?= $key + 1 ?>" href="javascript:void(0);"
                                                 onclick="jumpQuestion(<?= $key + 1 ?>)">
                                                 <?= $key + 1 ?>
                                             </a></li>
                                         <?php
                                     }
-                                    ?>
+                                        ?>
                                 </ul>
                             </nav>
 
@@ -254,20 +256,20 @@
             </div>
 
         </div>
-    </div>
+    </div> -->
 </div>
 
 <script type="text/javascript">
-    $('#reviewbutton').on('click', function () {
+    $('#reviewbutton').on('click', function() {
         marked = 1;
         $('#questionWizard').wizard('next');
     });
 
-    $('#clearbutton').on('click', function () {
+    $('#clearbutton').on('click', function() {
         clearAnswer();
     });
 
-    $('#questionWizard').on('actionclicked.fu.wizard', function (evt, data) {
+    $('#questionWizard').on('actionclicked.fu.wizard', function(evt, data) {
 
         totalQuestions = parseInt(totalQuestions);
         var steps = 0;
@@ -311,7 +313,7 @@
     function changeColor(stepID) {
         list = $('#answerForm #step' + stepID + ' input ');
         var have = 0;
-        var result = $.each(list, function () {
+        var result = $.each(list, function() {
             elementType = $(this).attr('type');
             if (elementType == 'radio' || elementType == 'checkbox') {
                 if ($(this).prop('checked')) {
@@ -372,12 +374,18 @@
 
     function clearAnswer() {
         list = $('#answerForm #step' + NowStep + ' input ');
-        $.each(list, function () {
+        $.each(list, function() {
             elementType = $(this).attr('type');
             switch (elementType) {
-                case 'radio': $(this).prop('checked', false); break;
-                case 'checkbox': $(this).attr('checked', false); break;
-                case 'text': $(this).val(''); break;
+                case 'radio':
+                    $(this).prop('checked', false);
+                    break;
+                case 'checkbox':
+                    $(this).attr('checked', false);
+                    break;
+                case 'text':
+                    $(this).val('');
+                    break;
             }
         });
         if ($('#question' + NowStep).attr('class') == 'marked') {
@@ -391,7 +399,7 @@
     }
 
     function counter() {
-        setInterval(function () {
+        setInterval(function() {
             durationUpdate();
             $('#timerdiv').html(((hours < 10) ? '0' + hours : hours) + ':' + ((minutes < 10) ? '0' + minutes : minutes) + ':' + ((seconds < 10) ? '0' + seconds : seconds));
             duration = (hours * 60) + minutes;
@@ -457,7 +465,7 @@
 
     function Disable(event) {
         if (event.button == 2) {
-            window.oncontextmenu = function () {
+            window.oncontextmenu = function() {
                 return false;
             }
         }

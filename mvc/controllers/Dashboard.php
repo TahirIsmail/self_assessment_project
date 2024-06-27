@@ -106,6 +106,9 @@ public $data;
 		$this->data['dashboardWidget']['notice']			= inicompute($notice);
 		$this->data['dashboardWidget']['studentgroup']      = inicompute($studentgroup);
 		$this->data['dashboardWidget']['allmenu'] 			= $allmenu;
+		// echo '<pre>';
+		// print_r($allmenu);
+		// echo '</pre>';exit;
 		$this->data['dashboardWidget']['allmenulang'] 		= $allmenulang;
 
 		$currentDate = strtotime(date('Y-m-d H:i:s'));
@@ -143,6 +146,11 @@ public $data;
 		$this->data['notices'] = $this->notice_m->get_order_by_notice(array('schoolyearID' => $schoolyearID));
 
 		$this->data['events'] = $this->event_m->get_event();
+
+		// echo '<pre>';
+		// print_r($this->data);
+		// echo '</pre>';
+		// exit;
 
 
 		$this->data["subview"] = "dashboard/index";

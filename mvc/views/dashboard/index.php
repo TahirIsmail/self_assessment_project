@@ -1,4 +1,6 @@
+  
 <div class="row">
+   
     <?php if(config_item('demo')) { ?>
         <div class="col-sm-12" id="resetDummyData">
             <div class="callout callout-danger">
@@ -38,10 +40,10 @@
 
     <?php
         $arrayColor = array(
-            'bg-orange-dark',
-            'bg-teal-light',
-            'bg-pink-light',
-            'bg-purple-light'
+            '#FFFFFF',
+            'linear-gradient(to right, #ed213a, #93291e)',
+            '#FFFFFF',
+            'linear-gradient(to right, #ed213a, #93291e)'
         );
 
         function allModuleArray($usertypeID = '1',$dashboardWidget) {
@@ -146,7 +148,7 @@
     ?>
     <div class="col-lg-3 col-xs-6">
         <div class="small-box ">
-            <a class="small-box-footer <?=$generateBoxValue['color']?>" href="<?=base_url($generateBoxValue['link'])?>">
+            <a class="small-box-footer " style="background: <?=$generateBoxValue['color']?> ;" href="<?=base_url($generateBoxValue['link'])?>">
                 <div class="icon <?=$generateBoxValue['color']?>" style="padding: 9.5px 18px 8px 18px;">
                     <i class="fa <?=$generateBoxValue['icon']?>"></i>
                 </div>

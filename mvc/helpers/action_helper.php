@@ -14,7 +14,6 @@ function escapeString($val)
             $val = mysqli_real_escape_string($db, $val);
         }
     }
-
     return $val;
 }
 
@@ -607,6 +606,7 @@ function display_menu($nodes, &$menu)
     $subUrl = ['/add', '/edit', '/view', '/index'];
 
     $CI = &get_instance();
+
 
     foreach ($nodes as $key => $node) {
 

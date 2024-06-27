@@ -38,6 +38,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -132,29 +134,27 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
-                    <a href="service.html" class="nav-item nav-link">Services</a>
+                    <a href="about.html" class="nav-item nav-link">Services</a>
+                    <a href="service.html" class="nav-item nav-link book-now">Book Now</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Blog</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">All Courses</a>
                         <div class="dropdown-menu m-0">
-                            <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                            <a href="detail.html" class="dropdown-item">Blog Detail</a>
+                            <a href="blog.html" class="dropdown-item">DOOR SUPERVISOR</a>
+                            <a href="detail.html" class="dropdown-item">CCTV</a>
+                            <a href="detail.html" class="dropdown-item">CVIT</a>
+                            <a href="detail.html" class="dropdown-item">VEHICAL IMMOBILSER</a>
+                            <a href="detail.html" class="dropdown-item">CLOSE PROTECTION</a>
+                            <a href="detail.html" class="dropdown-item">SECURITY</a>
                         </div>
+
                     </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Courses</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="price.html" class="dropdown-item">Pricing Plan</a>
-                            <a href="feature.html" class="dropdown-item">Our features</a>
-                            <a href="team.html" class="dropdown-item">Team Members</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="quote.html" class="dropdown-item">Free Quote</a>
-                        </div>
-                    </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+
+                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                    <a href="contact.html" class="nav-item nav-link">Blog</a>
                 </div>
                 <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
-                <a href="<?php echo base_url('signin/index') ?>" class="btn btn-primary py-2 px-4 ms-3">Login</a>
+                <a href="<?php echo base_url('signin/index') ?>" class="btn btn-primary py-2 px-4 ms-3">LOGIN</a>
+                <a href="contact.html" class="nav-item nav-link" >SIGN UP</a>
             </div>
         </nav>
 
@@ -164,9 +164,11 @@
                     <img class="w-100" src="<?=base_url('uploads/landing_img/carousel-a.jpg'); ?>" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
-                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">SimplyLicense provides</h5>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Creative & Innovative Learning Solution</h1>
-                            <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Buy Now</a>
+
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 70px;     margin-top: 110px; text-align: left;">Simply Trained</h1>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 70px; text-align: left;">Simply Licenced</h1>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 70px;">Simply Get a Job</h1>
+                            <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">More Details</a>
                             <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
                         </div>
                     </div>
@@ -186,13 +188,26 @@
             <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+            </button> -->
+            <!-- <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
-            </button>
+            </button> -->
         </div>
     </div>
+
+
+
+
+
+    <!--//////// CARD SLIDER ////////// -->
+
+
+
+
+
+
+
 
 
 
@@ -238,6 +253,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     <!-- Service End -->
 
@@ -253,7 +269,7 @@
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                     <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-                    <h1 class="mb-4">Welcome to SimplyLicense</h1>
+                    <h1 class="mb-4">Welcome to SimplyLicenced</h1>
                     <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
                     <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
                     <div class="row gy-2 gx-4 mb-4">
@@ -578,46 +594,30 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Quick Link</h4>
-                    <a class="btn btn-link" href="">About Us</a>
+                    <a class="btn btn-link" href="">Home</a>
+                    <a class="btn btn-link" href="">All Courses</a>
+                    <a class="btn btn-link" href="">Book Now</a>
+                    <a class="btn btn-link" href="">Services</a>
+                    <a class="btn btn-link" href="">Our Policies</a>
                     <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">FAQs & Help</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+
+                    <a class="btn btn-link" href="">Terms & Conditions</a>
+                    <a class="btn btn-link" href="">Admission Policy</a>
+                    <a class="btn btn-link" href="">Refund Policy</a>
+                    <a class="btn btn-link" href="">Quality Assurance</a>
+                    <a class="btn btn-link" href="">Complaint Policy</a>
+                    <a class="btn btn-link" href="">Health & Safety Policy</a>
+                    <a class="btn btn-link" href="">Appeal Policy</a>
+                    <a class="btn btn-link" href="">Malpractice & Maladministration Policy</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Contact</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, ABC, UK</p>
                     <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3"></h4>
-                    <!-- <div class="row g-2 pt-2">
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
-                        </div>
-                    </div> -->
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>simplylicensed@example.com</p>
+
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <a href="index.html" class="navbar-brand p-0">
@@ -627,6 +627,12 @@
                     <div class="position-relative mx-auto" style="max-width: 400px;">
                         <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
                         <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                    </div>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
@@ -638,14 +644,7 @@
                         &copy; <a class="border-bottom" href="#">SimplyLicense</a>, All Right Reserved.
                         Designed By <a class="border-bottom" target="__blank" href="https://oxbridgedigital.com/"> Oxbridge Digital</a>
                     </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <div class="footer-menu">
-                            <a href="">Home</a>
-                            <a href="">Cookies</a>
-                            <a href="">Help</a>
-                            <a href="">FQAs</a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>

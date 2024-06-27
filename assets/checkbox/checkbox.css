@@ -63,7 +63,7 @@ input[type="radio"], input[type="checkbox"] {
     display: none;
 }
 input[type="radio"] + label, input[type="checkbox"] + label { line-height: 39px; cursor: pointer; position: relative;}
-input[type="radio"] + label span.fa-stack, input[type="checkbox"] + label span.fa-stack { float: left; margin: 0 20px 0 0}
+input[type="radio"] + label span.fa-stack, input[type="checkbox"] + label span.fa-stack { float: left; margin: 10px 20px 0 0}
 
 
 input[type="radio"] + label .radio-button{width: 39px; height: 39px; border: 2px solid #e1e8f8; border-radius: 100%;}
@@ -72,9 +72,14 @@ input[type="radio"] + label .active{width: 35px; height: 35px; line-height: 35px
 input[type="radio"] + label:hover .active{display: block; color: #efefef;}
 input[type="radio"]:checked + label .active{display: block; color: #fff; background: #44a1ef;}
 
-input[type="checkbox"] + label .checkbox-button{width: 39px; height: 39px; border: 2px solid #e1e8f8; border-radius: 3px;}
+input[type="checkbox"] + label .checkbox-button{width: 20px; height: 20px; border: 1px solid #934141; border-radius: 3px;}
 input[type="checkbox"] + label .active{display: none;}
-input[type="checkbox"] + label .active{width: 35px; height: 35px; line-height: 35px; font-size: 14px; border-radius: 2px;text-align: center;}
+input[type="checkbox"] + label .active{width: 19px;
+    height: 18px;
+    line-height: 18px;
+    font-size: 11px;
+    border-radius: 2px;
+    text-align: center;}
 input[type="checkbox"] + label:hover .active{display: block; color: #efefef;}
 input[type="checkbox"]:checked + label .active{display: block; color: #fff; background: #44a1ef;}
 
