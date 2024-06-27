@@ -165,8 +165,8 @@
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
 
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 50px;     margin-top: 110px;">Simply Trained</h1>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 60px;">Simply Licenced</h1>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 70px;     margin-top: 110px; text-align: left;">Simply Trained</h1>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 70px; text-align: left;">Simply Licenced</h1>
                             <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 70px;">Simply Get a Job</h1>
                             <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">More Details</a>
                             <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>

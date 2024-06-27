@@ -40,9 +40,9 @@
 
     <?php
         $arrayColor = array(
-            'linear-gradient(to right, #141e30, #243b55)',
+            '#FFFFFF',
             'linear-gradient(to right, #ed213a, #93291e)',
-            'linear-gradient(to right, #141e30, #243b55)',
+            '#FFFFFF',
             'linear-gradient(to right, #ed213a, #93291e)'
         );
 
