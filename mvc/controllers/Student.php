@@ -67,20 +67,68 @@ public $load;
 				'label' => $this->lang->line("student_sex"),
 				'rules' => 'trim|required|max_length[10]|xss_clean'
 			),
-			array(
-				'field' => 'bloodgroup',
-				'label' => $this->lang->line("student_bloodgroup"),
-				'rules' => 'trim|max_length[5]|xss_clean'
-			),
-			array(
-				'field' => 'religion',
-				'label' => $this->lang->line("student_religion"),
-				'rules' => 'trim|max_length[25]|xss_clean'
-			),
+			// array(
+			// 	'field' => 'bloodgroup',
+			// 	'label' => $this->lang->line("student_bloodgroup"),
+			// 	'rules' => 'trim|max_length[5]|xss_clean'
+			// ),
+			// array(
+			// 	'field' => 'religion',
+			// 	'label' => $this->lang->line("student_religion"),
+			// 	'rules' => 'trim|max_length[25]|xss_clean'
+			// ),
+			// array(
+			// 	'field' => 'classesID',
+			// 	'label' => $this->lang->line("student_classes"),
+			// 	'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_unique_classesID'
+			// ),
+			// array(
+			// 	'field' => 'sectionID',
+			// 	'label' => $this->lang->line("student_section"),
+			// 	'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_unique_sectionID|callback_unique_capacity'
+			// ),
+			// array(
+			// 	'field' => 'registerNO',
+			// 	'label' => $this->lang->line("student_registerNO"),
+			// 	'rules' => 'trim|required|max_length[40]|callback_unique_registerNO|xss_clean'
+			// ),
+			// array(
+			// 	'field' => 'roll',
+			// 	'label' => $this->lang->line("student_roll"),
+			// 	'rules' => 'trim|required|max_length[11]|numeric|callback_unique_roll|xss_clean'
+			// ),
+			// array(
+			// 	'field' => 'guargianID',
+			// 	'label' => $this->lang->line("student_guargian"),
+			// 	'rules' => 'trim|required|max_length[11]|xss_clean|numeric'
+			// ),
+			// array(
+            //     'field' => 'studentGroupID',
+            //     'label' => $this->lang->line("student_studentgroup"),
+            //     'rules' => 'trim|max_length[11]|xss_clean|numeric'
+            // ),
+
+            // array(
+            //     'field' => 'optionalSubjectID',
+            //     'label' => $this->lang->line("student_optionalsubject"),
+            //     'rules' => 'trim|max_length[11]|xss_clean|numeric'
+            // ),
+
+            // array(
+            //     'field' => 'extraCurricularActivities',
+            //     'label' => $this->lang->line("student_extracurricularactivities"),
+            //     'rules' => 'trim|max_length[128]|xss_clean'
+            // ),
+
+            // array(
+            //     'field' => 'remarks',
+            //     'label' => $this->lang->line("student_remarks"),
+            //     'rules' => 'trim|max_length[128]|xss_clean'
+            // ),
 			array(
 				'field' => 'email',
 				'label' => $this->lang->line("student_email"),
-				'rules' => 'trim|max_length[40]|valid_email|xss_clean|callback_unique_email'
+				'rules' => 'trim|required|max_length[40]|valid_email|xss_clean|callback_unique_email'
 			),
 			array(
 				'field' => 'phone',
@@ -103,59 +151,10 @@ public $load;
 				'rules' => 'trim|max_length[128]|xss_clean'
 			),
 			array(
-				'field' => 'classesID',
-				'label' => $this->lang->line("student_classes"),
-				'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_unique_classesID'
-			),
-			array(
-				'field' => 'sectionID',
-				'label' => $this->lang->line("student_section"),
-				'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_unique_sectionID|callback_unique_capacity'
-			),
-			array(
-				'field' => 'registerNO',
-				'label' => $this->lang->line("student_registerNO"),
-				'rules' => 'trim|required|max_length[40]|callback_unique_registerNO|xss_clean'
-			),
-			array(
-				'field' => 'roll',
-				'label' => $this->lang->line("student_roll"),
-				'rules' => 'trim|required|max_length[11]|numeric|callback_unique_roll|xss_clean'
-			),
-			array(
-				'field' => 'guargianID',
-				'label' => $this->lang->line("student_guargian"),
-				'rules' => 'trim|required|max_length[11]|xss_clean|numeric'
-			),
-			array(
 				'field' => 'photo',
 				'label' => $this->lang->line("student_photo"),
 				'rules' => 'trim|max_length[200]|xss_clean|callback_photoupload'
-			),
-
-            array(
-                'field' => 'studentGroupID',
-                'label' => $this->lang->line("student_studentgroup"),
-                'rules' => 'trim|max_length[11]|xss_clean|numeric'
-            ),
-
-            array(
-                'field' => 'optionalSubjectID',
-                'label' => $this->lang->line("student_optionalsubject"),
-                'rules' => 'trim|max_length[11]|xss_clean|numeric'
-            ),
-
-            array(
-                'field' => 'extraCurricularActivities',
-                'label' => $this->lang->line("student_extracurricularactivities"),
-                'rules' => 'trim|max_length[128]|xss_clean'
-            ),
-
-            array(
-                'field' => 'remarks',
-                'label' => $this->lang->line("student_remarks"),
-                'rules' => 'trim|max_length[128]|xss_clean'
-            ),
+			),            
 
 			array(
 				'field' => 'username',
@@ -259,6 +258,8 @@ public $load;
 		$loginuserID  = $this->session->userdata("loginuserID");
 		$schoolyearID = $this->session->userdata('defaultschoolyearID');
 
+		// echo $usertypeID;exit;
+
 		if($usertypeID == 3) {
 			if(permissionChecker('student_view')) {
 				$singleStudent = $this->student_m->get_single_student(array("studentID" => $loginuserID, 'schoolyearID' => $schoolyearID));
@@ -316,7 +317,11 @@ public $load;
 			);
 
 			$classesID = htmlentities((string) escapeString($this->uri->segment(3)));
-			$this->data['students'] = $this->student_m->get_order_by_student(array('classesID' => $classesID, 'schoolyearID' => $schoolyearID));
+			$this->data['students'] = $this->student_m->get_order_by_student();
+			// echo '<pre>';
+			// print_r($this->data['students']);
+			// echo '</pre>';
+			// exit;
 			if(inicompute($this->data['students'])) {
 				$sections = $this->section_m->get_order_by_section(array("classesID" => $classesID));
 				if(inicompute($sections)) {
@@ -376,42 +381,41 @@ public $load;
 				$this->load->view('_layout_main', $this->data);
 			} else {
 
-				$sectionID = $this->input->post("sectionID");
-				if($sectionID == 0) {
-					$this->data['sectionID'] = 0;
-				} else {
-					$this->data['sections'] = $this->section_m->get_order_by_section(array('classesID' => $classesID));
-					$this->data['sectionID'] = $this->input->post("sectionID");
-				}
+				// $sectionID = $this->input->post("sectionID");
+				// if($sectionID == 0) {
+				// 	$this->data['sectionID'] = 0;
+				// } else {
+				// 	$this->data['sections'] = $this->section_m->get_order_by_section(array('classesID' => $classesID));
+				// 	$this->data['sectionID'] = $this->input->post("sectionID");
+				// }
 
-				$this->data['optionalSubjectID'] = $this->input->post('optionalSubjectID') ? $this->input->post('optionalSubjectID') : 0;
+				// $this->data['optionalSubjectID'] = $this->input->post('optionalSubjectID') ? $this->input->post('optionalSubjectID') : 0;
 
 				$array = array();
 				$array["name"] = $this->input->post("name");
 				$array["sex"] = $this->input->post("sex");
-				$array["religion"] = $this->input->post("religion");
 				$array["email"] = $this->input->post("email");
 				$array["phone"] = $this->input->post("phone");
 				$array["address"] = $this->input->post("address");
-				$array["classesID"] = $this->input->post("classesID");
-				$array["sectionID"] = $this->input->post("sectionID");
-				$array["roll"] = $this->input->post("roll");
-				$array["bloodgroup"] = $this->input->post("bloodgroup");
+
+				// $array["religion"] = $this->input->post("religion");
+				// $array["classesID"] = $this->input->post("classesID");
+				// $array["sectionID"] = $this->input->post("sectionID");
+				// $array["roll"] = $this->input->post("roll");
+				// $array["bloodgroup"] = $this->input->post("bloodgroup");
+				// $array["registerNO"] = $this->input->post("registerNO");
+				// $array['parentID'] = $this->input->post('guargianID');
+				
 				$array["state"] = $this->input->post("state");
 				$array["country"] = $this->input->post("country");
-				$array["registerNO"] = $this->input->post("registerNO");
 				$array["username"] = $this->input->post("username");
 				$array['password'] = $this->student_m->hash($this->input->post("password"));
 				$array['usertypeID'] = 3;
-				$array['parentID'] = $this->input->post('guargianID');
-				$array['library'] = 0;
-				$array['hostel'] = 0;
-				$array['transport'] = 0;
 				$array['create_date'] = date("Y-m-d");
 				$array['createschoolyearID'] = $this->data['siteinfos']->school_year;
 				$array['schoolyearID'] = $this->data['siteinfos']->school_year;
 				$array["create_date"] = date("Y-m-d h:i:s");
-				$array["modify_date"] = date("Y-m-d h:i:s");
+				// $array["modify_date"] = date("Y-m-d h:i:s");
 				$array["create_userID"] = $this->session->userdata('loginuserID');
 				$array["create_username"] = $this->session->userdata('username');
 				$array["create_usertype"] = $this->session->userdata('usertype');
@@ -422,42 +426,47 @@ public $load;
 				}
 				$array['photo'] = $this->upload_data['file']['file_name'];
 				
-				
+
+
+				// echo '<pre>';
+				// print_r($array);
+				// echo '</pre>';
+				// exit;
 
 				$this->student_m->insert_student($array);
 				$studentID = $this->db->insert_id();
 
-				$section = $this->section_m->get_section($this->input->post("sectionID"));
-				$classes = $this->classes_m ->get_classes($this->input->post("classesID"));
+				// $section = $this->section_m->get_section($this->input->post("sectionID"));
+				// $classes = $this->classes_m ->get_classes($this->input->post("classesID"));
 
-				$setClasses = inicompute($classes) ? $classes->classes : NULL;
+				// $setClasses = inicompute($classes) ? $classes->classes : NULL;
 
-				$setSection = inicompute($section) ? $section->section : NULL;
+				// $setSection = inicompute($section) ? $section->section : NULL;
 
-				$arrayStudentRelation = array(
-					'srstudentID' => $studentID,
-					'srname' => $this->input->post("name"),
-					'srclassesID' => $this->input->post("classesID"),
-					'srclasses' => $setClasses,
-					'srroll' => $this->input->post("roll"),
-					'srregisterNO' => $this->input->post("registerNO"),
-					'srsectionID' => $this->input->post("sectionID"),
-					'srsection' => $setSection,
-					'srstudentgroupID' => $this->input->post('studentGroupID'),
-					'sroptionalsubjectID' => $this->input->post('optionalSubjectID'),
-					'srschoolyearID' => $this->data['siteinfos']->school_year
-				);
+				// $arrayStudentRelation = array(
+				// 	'srstudentID' => $studentID,
+				// 	'srname' => $this->input->post("name"),
+				// 	'srclassesID' => $this->input->post("classesID"),
+				// 	'srclasses' => $setClasses,
+				// 	'srroll' => $this->input->post("roll"),
+				// 	'srregisterNO' => $this->input->post("registerNO"),
+				// 	'srsectionID' => $this->input->post("sectionID"),
+				// 	'srsection' => $setSection,
+				// 	'srstudentgroupID' => $this->input->post('studentGroupID'),
+				// 	'sroptionalsubjectID' => $this->input->post('optionalSubjectID'),
+				// 	'srschoolyearID' => $this->data['siteinfos']->school_year
+				// );
 
-                $studentExtendArray = array(
-                    'studentID' => $studentID,
-                    'studentgroupID' => $this->input->post('studentGroupID'),
-                    'optionalsubjectID' => $this->input->post('optionalSubjectID'),
-                    'extracurricularactivities' => $this->input->post('extraCurricularActivities'),
-                    'remarks' => $this->input->post('remarks')
-                );
+                // $studentExtendArray = array(
+                //     'studentID' => $studentID,
+                //     'studentgroupID' => $this->input->post('studentGroupID'),
+                //     'optionalsubjectID' => $this->input->post('optionalSubjectID'),
+                //     'extracurricularactivities' => $this->input->post('extraCurricularActivities'),
+                //     'remarks' => $this->input->post('remarks')
+                // );
 
-                $this->studentextend_m->insert_studentextend($studentExtendArray);
-				$this->studentrelation_m->insert_studentrelation($arrayStudentRelation);
+                // $this->studentextend_m->insert_studentextend($studentExtendArray);
+				// $this->studentrelation_m->insert_studentrelation($arrayStudentRelation);
 				$this->usercreatemail($this->input->post('email'), $this->input->post('username'), $this->input->post('password'));
 				$this->session->set_flashdata('success', $this->lang->line('menu_success'));
 				redirect(base_url("student/index"));
@@ -483,8 +492,17 @@ public $load;
 		$usertype = $this->session->userdata("usertype");
 		$schoolyearID = $this->session->userdata('defaultschoolyearID');
 		$studentID = htmlentities((string) escapeString($this->uri->segment(3)));
-		$url = htmlentities((string) escapeString($this->uri->segment(4)));
-		if((int)$studentID && (int)$url) {
+		// $url = htmlentities((string) escapeString($this->uri->segment(4)));
+
+		// echo $usertype;
+		// echo '<br>';
+		// echo $schoolyearID;
+		// echo '<br>';
+		// echo $studentID;
+		// echo '<br>';
+		// echo $url;
+		// exit;
+		if((int)$studentID) {
 			$this->data['classes'] = $this->classes_m->get_classes();
 			$this->data['student'] = $this->student_m->get_single_student(array('studentID' => $studentID, 'schoolyearID' => $schoolyearID));
 
@@ -501,7 +519,7 @@ public $load;
                 $this->data['optionalSubjectID'] = $this->input->post('optionalSubjectID') ? $this->input->post('optionalSubjectID') : 0;
 			}
 
-			$this->data['set'] = $url;
+			// $this->data['set'] = $url;
 			if($this->data['student']) {
 				if($_POST !== []) {
 					$rules = $this->rules();
@@ -582,7 +600,7 @@ public $load;
                         $this->studentextend_m->update_studentextend_by_studentID($studentExtendArray, $studentID);
 						$this->student_m->update_student($array, $studentID);
 						$this->session->set_flashdata('success', $this->lang->line('menu_success'));
-						redirect(base_url("student/index/$url"));
+						redirect(base_url("student/index/"));
 					}
 				} else {
 					$this->data["subview"] = "student/edit";
@@ -602,17 +620,24 @@ public $load;
 	
 		$classesID = htmlentities((string) escapeString($this->uri->segment(4)));
 		$studentID = htmlentities((string) escapeString($this->uri->segment(3)));
+
+
+		// echo $classesID;
+		// echo '<br>';
+		// echo $studentID;
+		// exit;
 		
 		$usertypeID   = $this->session->userdata('usertypeID');
 		$schoolyearID = $this->session->userdata('defaultschoolyearID');
 		$username     = $this->session->userdata("username");
 		
+		// echo $usertypeID;exit;
 		$this->data['classesID'] = $classesID;
 		$this->data['studentID'] = $studentID;
 		
 		if($usertypeID == 3) {
 			if(permissionChecker('student_view')) {
-				if((int)$studentID && (int)$classesID) {
+				if((int)$studentID) {
 					$originalStudent = $this->student_m->get_single_student(array("username" => $username));
 					if(inicompute($originalStudent)) {
 						$student = $this->student_m->get_single_student(array('studentID' => $studentID, 'schoolyearID' => $schoolyearID));
@@ -647,7 +672,7 @@ public $load;
 		} elseif($usertypeID == 4) {
 			$parents = $this->parents_m->get_single_parents(array('username' => $username));
 			if(inicompute($parents)) {
-				if((int)$studentID && (int)$classesID) {
+				if((int)$studentID) {
 					$checkstudent = $this->student_m->get_single_student(array('studentID' => $studentID, 'schoolyearID' => $schoolyearID));
 					if(inicompute($checkstudent)) {
 						if($checkstudent->parentID == $parents->parentsID) {
@@ -669,7 +694,12 @@ public $load;
 				$this->load->view('_layout_main', $this->data);
 			}
 		} else {
+			// echo $schoolyearID;exit;
 			$student = $this->student_m->get_single_student(array('studentID' => $studentID, 'schoolyearID' => $schoolyearID));
+			// echo "<pre>";
+			// print_r($student);
+			// echo '</pre>';
+			// exit;
 			if(inicompute($student)) {
 				$this->getView($studentID, $classesID);
 			} else {
@@ -681,9 +711,10 @@ public $load;
 
 	private function getView($studentID, $classesID) {
 		$schoolyearID = $this->session->userdata('defaultschoolyearID');
-		if((int)$studentID && (int)$classesID) {
-			$studentInfo = $this->student_m->get_single_student(array('studentID' => $studentID, 'classesID' => $classesID, 'schoolyearID' => $schoolyearID));
+		if((int)$studentID) {
+			$studentInfo = $this->student_m->get_single_student(array('studentID' => $studentID, 'schoolyearID' => $schoolyearID));
 
+			
 			$this->basicInfo($studentInfo);
 			$this->parentInfo($studentInfo);
 			$this->examInfo($studentInfo);
@@ -978,9 +1009,10 @@ public $load;
 
 	public function student_list() {
 		$classID = $this->input->post('id');
+		
 		if((int)$classID !== 0) {
 			$string = base_url("student/index/$classID");
-			echo $string;
+			
 		} else {
 			redirect(base_url("student/index"));
 		}

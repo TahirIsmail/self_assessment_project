@@ -29,17 +29,12 @@
                         <p class="text-muted text-center"><?=inicompute($usertype->usertype) ? $usertype->usertype :''?></p>
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item" style="background-color: #FFF">
-                                <b><?=$this->lang->line('student_registerNO')?></b> <a class="pull-right"><?=$profile->registerNO?></a>
+                                <b><?=$this->lang->line('student_name')?></b> <a class="pull-right"><?=$profile->name?></a>
                             </li>
                             <li class="list-group-item" style="background-color: #FFF">
-                                <b><?=$this->lang->line('student_roll')?></b> <a class="pull-right"><?=$profile->roll?></a>
+                                <b><?=$this->lang->line('student_phone')?></b> <a class="pull-right"><?=$profile->phone?></a>
                             </li>
-                            <li class="list-group-item" style="background-color: #FFF">
-                                <b><?=$this->lang->line('student_classes')?></b> <a class="pull-right"><?=inicompute($class) ? $class->classes : ''?></a>
-                            </li>
-                            <li class="list-group-item" style="background-color: #FFF">
-                                <b><?=$this->lang->line('student_section')?></b> <a class="pull-right"><?=inicompute($section) ? $section->section : ''?></a>
-                            </li>
+                           
                         </ul>
                     </div>
                 </div>
@@ -59,12 +54,12 @@
                         <div class="active tab-pane" id="profile">
                             <div class="panel-body profile-view-dis">
                                 <div class="row">
-                                    <div class="profile-view-tab">
+                                    <!-- <div class="profile-view-tab">
                                         <p><span><?=$this->lang->line("student_studentgroup")?> </span>: <?=inicompute($group) ? $group->group : '' ?></p>
-                                    </div>
-                                    <div class="profile-view-tab">
+                                    </div> -->
+                                    <!-- <div class="profile-view-tab">
                                         <p><span><?=$this->lang->line("student_optionalsubject")?> </span>: <?=inicompute($optionalsubject) ? $optionalsubject->subject : ''?></p>
-                                    </div>
+                                    </div> -->
                                     <div class="profile-view-tab">
                                         <p><span><?=$this->lang->line("student_dob")?> </span>: 
                                         <?php if($profile->dob) { echo date("d M Y", strtotime($profile->dob)); } ?></p>
@@ -73,12 +68,12 @@
                                         <p><span><?=$this->lang->line("student_sex")?> </span>: 
                                         <?=$profile->sex?></p>
                                     </div>
-                                    <div class="profile-view-tab">
+                                    <!-- <div class="profile-view-tab">
                                         <p><span><?=$this->lang->line("student_bloodgroup")?> </span>: <?php if(isset($allbloodgroup[$profile->bloodgroup])) { echo $profile->bloodgroup; } ?></p>
-                                    </div>
-                                    <div class="profile-view-tab">
+                                    </div> -->
+                                    <!-- <div class="profile-view-tab">
                                         <p><span><?=$this->lang->line("student_religion")?> </span>: <?=$profile->religion?></p>
-                                    </div>
+                                    </div> -->
                                     <div class="profile-view-tab">
                                         <p><span><?=$this->lang->line("student_email")?> </span>: <?=$profile->email?></p>
                                     </div>
@@ -92,15 +87,15 @@
                                         <p><span><?=$this->lang->line("student_country")?> </span>: 
                                         <?php if(isset($allcountry[$profile->country])) { echo $allcountry[$profile->country]; } ?></p>
                                     </div>
-                                    <div class="profile-view-tab">
+                                    <!-- <div class="profile-view-tab">
                                         <p><span><?=$this->lang->line("student_remarks")?> </span>: <?=$profile->remarks?></p>
-                                    </div>
+                                    </div> -->
                                     <div class="profile-view-tab">
                                         <p><span><?=$this->lang->line("student_username")?> </span>: <?=$profile->username?></p>
                                     </div>
-                                    <div class="profile-view-tab">
+                                    <!-- <div class="profile-view-tab">
                                         <p><span><?=$this->lang->line("student_extracurricularactivities")?> </span>: <?=$profile->extracurricularactivities?></p>
-                                    </div>
+                                    </div> -->
                                     <div class="profile-view-tab">
                                         <p><span><?=$this->lang->line("student_address")?> </span>: <?=$profile->address?></p>
                                     </div>

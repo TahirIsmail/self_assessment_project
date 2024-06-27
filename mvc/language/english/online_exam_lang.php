@@ -1,13 +1,13 @@
 <?php
 
 /* List Language  */
-$lang['panel_title']                    = "Online Exam";
-$lang['add_title']                      = "Add a Online Exam";
+$lang['panel_title']                    = "Mock Test";
+$lang['add_title']                      = "Add a Mock Test";
 $lang['slno']                           = "#";
-$lang['online_exam_name']               = "Exam Title";
+$lang['online_exam_name']               = "Test Title";
 $lang['online_exam_description']        = "Description";
 $lang['online_exam_usertype']           = "User Role";
-$lang['online_exam_type']               = "Exam Type";
+$lang['online_exam_type']               = "Test Type";
 $lang['online_exam_instruction']        = "Instruction";
 $lang['online_exam_class']              = "Class";
 $lang['online_exam_section']            = "Section";
@@ -19,8 +19,8 @@ $lang['online_exam_startdatetime']      = "Start Date";
 $lang['online_exam_enddatetime']        = "End Date";
 $lang['online_exam_negativeMark']       = "Negative Mark";
 $lang['online_exam_random']             = "Random";
-$lang['online_exam_showResultAfterExam']  = "Show Result After Exam";
-$lang['online_exam_showMarkAfterExam']  = "Show Answer After Exam";
+$lang['online_exam_showResultAfterExam']  = "Show Result After Test";
+$lang['online_exam_showMarkAfterExam']  = "Show Answer After Test";
 $lang['online_exam_markType']           = "Mark Type";
 $lang['online_exam_percentage']         = "Percentage";
 $lang['online_exam_fixed']              = "Fixed";
@@ -47,10 +47,10 @@ $lang['online_exam_question_summary']                 = "Question Summary";
 $lang['online_exam_question_bank']                    = "Question Bank";
 $lang['online_exam_question_mark']                    = "Mark";
 $lang['online_exam_associate_question']               = "Associated Question";
-$lang['online_exam_question_level']                   = "Difficulty Level";
+$lang['online_exam_question_level']                   = "Question Level";
 $lang['online_exam_question_group']                   = "Question Group";
 $lang['online_exam_no_question']                      = "Don't have any question yet";
-$lang['online_exam_exam_status']                      = "Exam Status";
+$lang['online_exam_exam_status']                      = "Test Status";
 $lang['online_exam_random_question']                  = "Random Question";
 $lang['online_exam_one_time']                         = "One Time";
 $lang['online_exam_multiple_time']                    = "Multiple Time";
@@ -59,7 +59,7 @@ $lang['online_exam_no']                               = "No";
 $lang['online_exam_yes']                              = "Yes";
 $lang['online_exam_minutes']                          = "Minutes";
 $lang['online_exam_payment_status']                   = "Payment Status";
-$lang['online_exam_show_answer_scripting_after_exam'] = "Show Answer After Exam";
+$lang['online_exam_show_answer_scripting_after_exam'] = "Show Answer After Test";
 
 $lang['online_exam_select'] = "Please Select";
 
@@ -73,8 +73,8 @@ $lang["mail"]        = "Send Pdf to Mail";
 
 /* Add Language */
 
-$lang['add_class']    = 'Add Online Exam';
-$lang['update_class'] = 'Update Online Exam';
+$lang['add_class']    = 'Add Online Test';
+$lang['update_class'] = 'Update Online Test';
 
 $lang['to']           = 'To';
 $lang['subject']      = 'Subject';

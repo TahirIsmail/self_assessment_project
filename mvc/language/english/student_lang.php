@@ -93,7 +93,7 @@ $lang['student_all_students'] = 'All Students';
 
 $lang['student_profile'] = 'Profile';
 $lang['student_parents'] = 'Parents';
-$lang['student_exam'] = "Exam";
+$lang['student_exam'] = "Mock Text";
 $lang['student_document'] = 'Document';
 $lang['student_add_document'] = 'Add Document';
 $lang['student_title'] = 'Title';

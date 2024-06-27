@@ -76,15 +76,13 @@ define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'developm
  * Different environments will require different levels of error reporting.
  * By default development will show errors but testing and live will hide them.
  */
+// echo ENVIRONMENT;exit;
 switch (ENVIRONMENT)
 {
-	case 'development':
-		
-		
+	case 'development':	
 		error_reporting(0);
 		ini_set('display_errors', 0);
 	break;
-
 	case 'testing':
 	case 'production':
 		ini_set('display_errors', 0);

@@ -21,7 +21,7 @@
                             <?=$this->lang->line('add_title')?>
                         </a>
                     <?php } ?>
-                    <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12 pull-right drop-marg">
+                    <!-- <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12 pull-right drop-marg">
                         <?php
                             $array = array("0" => $this->lang->line("student_select_class"));
                             if(inicompute($classes)) {
@@ -32,17 +32,17 @@
                             echo form_dropdown("classesID", $array, set_value("classesID", $set), "id='classesID' class='form-control select2'");
                         ?>
 
-                    </div>
+                    </div> -->
                 </h5>
 
                 <?php if(inicompute($students) > 0 ) { ?>
                     <div class="nav-tabs-custom">
-                        <ul class="nav nav-tabs">
+                        <!-- <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#all" aria-expanded="true"><?=$this->lang->line("student_all_students")?></a></li>
                             <?php foreach ($sections as $key => $section) {
                                 echo '<li class=""><a data-toggle="tab" href="#tab'.$section->classesID.$section->sectionID .'" aria-expanded="false">'. $this->lang->line("student_section")." ".$section->section. " ( ". $section->category." )".'</a></li>';
                             } ?>
-                        </ul>
+                        </ul> -->
 
 
 
@@ -55,7 +55,7 @@
                                                 <th class="col-sm-1"><?=$this->lang->line('slno')?></th>
                                                 <th class="col-sm-2"><?=$this->lang->line('student_photo')?></th>
                                                 <th class="col-sm-2"><?=$this->lang->line('student_name')?></th>
-                                                <th class="col-sm-2"><?=$this->lang->line('student_roll')?></th>
+                                                <!-- <th class="col-sm-2"><?=$this->lang->line('student_roll')?></th> -->
                                                 <th class="col-sm-2"><?=$this->lang->line('student_email')?></th>
                                                 <?php if(permissionChecker('student_edit')) { ?>
                                                 <th class="col-sm-1"><?=$this->lang->line('student_status')?></th>
@@ -78,9 +78,9 @@
                                                     <td data-title="<?=$this->lang->line('student_name')?>">
                                                         <?php echo $student->name; ?>
                                                     </td>
-                                                    <td data-title="<?=$this->lang->line('student_roll')?>">
+                                                    <!-- <td data-title="<?=$this->lang->line('student_roll')?>">
                                                         <?php echo $student->roll; ?>
-                                                    </td>
+                                                    </td> -->
                                                     <td data-title="<?=$this->lang->line('student_email')?>">
                                                         <?php echo $student->email; ?>
                                                     </td>
@@ -239,6 +239,7 @@
 
     $('#classesID').change(function() {
         var classesID = $(this).val();
+    
         if(classesID == 0) {
             $('#hide-table').hide();
             $('.nav-tabs-custom').hide();
@@ -249,6 +250,7 @@
                 data: "id=" + classesID,
                 dataType: "html",
                 success: function(data) {
+                    // alert(data);
                     window.location.href = data;
                 }
             });

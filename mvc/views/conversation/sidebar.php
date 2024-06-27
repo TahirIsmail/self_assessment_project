@@ -11,6 +11,6 @@
         <li><a href="<?=base_url('conversation/sent')?>"><i class="fa fa-envelope-o"></i> <?=$this->lang->line('sent')?> <span class="label label-info pull-right" id="sent"></span></a></li>
         <li><a href="<?=base_url('conversation/trash')?>"><i class="fa fa-trash-o"></i> <?=$this->lang->line('trash')?></a></li>
     </ul>
-</div><!-- /.box-body -->
-</div><!-- /. box -->
-</div><!-- /.col -->
+</div>
+</div>
+</div>

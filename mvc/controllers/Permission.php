@@ -47,6 +47,10 @@ public $load;
 				$this->data['set'] = $id;
 				$this->data['usertypes'] = $this->usertype_m->get_usertype();
 				$this->data['permissions'] = $this->permission_m->get_modules_with_permission($id);
+				// echo '<pre>';
+				// print_r($this->data['permissions']);
+				// echo '</pre>';
+				// exit;
 				if(empty($this->data['permissions'])) {
 					$this->data['permissions'] = NULL;
 				}

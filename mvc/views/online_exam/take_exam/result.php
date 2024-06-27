@@ -15,18 +15,18 @@
                             <?= profileviewimage($student->photo) ?>
                             <h3 class="profile-username text-center"><?= $student->name ?></h3>
                             <ul class="list-group list-group-unbordered">
-                                <li class="list-group-item" style="background-color: #FFF">
+                                <!-- <li class="list-group-item" style="background-color: #FFF">
                                     <b><?= $this->lang->line('take_exam_registerNO') ?></b> <a class="pull-right"><?= $student->registerNO ?></a>
-                                </li>
-                                <li class="list-group-item" style="background-color: #FFF">
+                                </li> -->
+                                <!-- <li class="list-group-item" style="background-color: #FFF">
                                     <b><?= $this->lang->line('take_exam_roll') ?></b> <a class="pull-right"><?= $student->roll ?></a>
-                                </li>
-                                <li class="list-group-item" style="background-color: #FFF">
+                                </li> -->
+                                <!-- <li class="list-group-item" style="background-color: #FFF">
                                     <b><?= $this->lang->line('take_exam_class') ?></b> <a class="pull-right"><?= inicompute($class) ? $class->classes : '' ?></a>
-                                </li>
-                                <li class="list-group-item" style="background-color: #FFF">
+                                </li> -->
+                                <!-- <li class="list-group-item" style="background-color: #FFF">
                                     <b><?= $this->lang->line('take_exam_section') ?></b> <a class="pull-right"><?= inicompute($section) ? $section->section : '' ?></a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>

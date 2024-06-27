@@ -22,6 +22,14 @@ class Subject_m extends MY_Model {
 		return $query->result();
 	}
 
+	public function get_join_subjects() 
+	{
+		$this->db->select('*');
+		$this->db->from('subject');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	public function general_get_subject($array=NULL, $signal=FALSE) 
 	{
 		$query = parent::get($array, $signal);

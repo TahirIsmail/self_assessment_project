@@ -27,7 +27,7 @@
                         </span>
                     </div>
 
-                    <div class="form-group <?=form_error('guargianID') ? 'has-error' : ''?>">
+                    <!-- <div class="form-group <?=form_error('guargianID') ? 'has-error' : ''?>">
                         <label for="guargianID" class="col-sm-2 control-label">
                             <?=$this->lang->line("student_guargian")?>
                         </label>
@@ -47,7 +47,7 @@
                         <span class="col-sm-4 control-label">
                             <?php echo form_error('guargianID'); ?>
                         </span>
-                    </div>
+                    </div> -->
 
                     <div class="form-group <?=form_error('dob') ? 'has-error' : ''?>">
                         <label for="dob" class="col-sm-2 control-label">
@@ -76,7 +76,7 @@
                         </span>
                     </div>
 
-                    <div class="form-group <?=form_error('bloodgroup') ? 'has-error' : ''?>">
+                    <!-- <div class="form-group <?=form_error('bloodgroup') ? 'has-error' : ''?>">
                         <label for="bloodgroup" class="col-sm-2 control-label">
                             <?=$this->lang->line("student_bloodgroup")?>
                         </label>
@@ -99,9 +99,9 @@
                         <span class="col-sm-4 control-label">
                             <?php echo form_error('bloodgroup'); ?>
                         </span>
-                    </div>
+                    </div> -->
 
-                    <div class="form-group <?=form_error('religion') ? 'has-error' : ''?>">
+                    <!-- <div class="form-group <?=form_error('religion') ? 'has-error' : ''?>">
                         <label for="religion" class="col-sm-2 control-label">
                             <?=$this->lang->line("student_religion")?>
                         </label>
@@ -111,7 +111,7 @@
                         <span class="col-sm-4 control-label">
                             <?php echo form_error('religion'); ?>
                         </span>
-                    </div>
+                    </div> -->
 
                     <div class="form-group <?=form_error('email') ? 'has-error' : ''?>">
                         <label for="email" class="col-sm-2 control-label">
@@ -181,7 +181,7 @@
                         </span>
                     </div>
 
-                    <div class="form-group <?=form_error('classesID') ? 'has-error' : ''?>">
+                    <!-- <div class="form-group <?=form_error('classesID') ? 'has-error' : ''?>">
                         <label for="classesID" class="col-sm-2 control-label">
                             <?=$this->lang->line("student_classes")?> <span class="text-red"> *</span>
                         </label>
@@ -280,7 +280,7 @@
                         <span class="col-sm-4 control-label">
                             <?php echo form_error('roll'); ?>
                         </span>
-                    </div>
+                    </div> -->
 
                     <div class="form-group <?=form_error('photo') ? 'has-error' : ''?>">
                         <label for="photo" class="col-sm-2 control-label">
@@ -309,7 +309,7 @@
                         </span>
                     </div>
 
-                    <div class="form-group <?=form_error('extraCurricularActivities') ? ' has-error' : ''  ?>">
+                    <!-- <div class="form-group <?=form_error('extraCurricularActivities') ? ' has-error' : ''  ?>">
                         <label for="extraCurricularActivities" class="col-sm-2 control-label">
                             <?=$this->lang->line("student_extracurricularactivities")?>
                         </label>
@@ -331,7 +331,7 @@
                         <span class="col-sm-4 control-label">
                             <?php echo form_error('remarks'); ?>
                         </span>
-                    </div>
+                    </div> -->
 
                     <div class="form-group <?=form_error('username') ? 'has-error' : ''?>">
                         <label for="username" class="col-sm-2 control-label">

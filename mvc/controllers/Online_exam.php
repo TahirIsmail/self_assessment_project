@@ -88,21 +88,21 @@ class Online_exam extends Admin_Controller
                 'label' => $this->lang->line("online_exam_description"),
                 'rules' => 'trim|xss_clean'
             ),
-            array(
-                'field' => 'classes',
-                'label' => $this->lang->line("online_exam_class"),
-                'rules' => 'trim|xss_clean|required|numeric'
-            ),
-            array(
-                'field' => 'section',
-                'label' => $this->lang->line("online_exam_section"),
-                'rules' => 'trim|xss_clean|required|numeric'
-            ),
-            array(
-                'field' => 'studentGroup',
-                'label' => $this->lang->line("online_exam_studentGroup"),
-                'rules' => 'trim|xss_clean|required|numeric'
-            ),
+            // array(
+            //     'field' => 'classes',
+            //     'label' => $this->lang->line("online_exam_class"),
+            //     'rules' => 'trim|xss_clean|required|numeric'
+            // ),
+            // array(
+            //     'field' => 'section',
+            //     'label' => $this->lang->line("online_exam_section"),
+            //     'rules' => 'trim|xss_clean|required|numeric'
+            // ),
+            // array(
+            //     'field' => 'studentGroup',
+            //     'label' => $this->lang->line("online_exam_studentGroup"),
+            //     'rules' => 'trim|xss_clean|required|numeric'
+            // ),
             array(
                 'field' => 'subject',
                 'label' => $this->lang->line("online_exam_subject"),
@@ -284,11 +284,11 @@ class Online_exam extends Admin_Controller
         $this->data['groups'] = $this->studentgroup_m->get_order_by_studentgroup();
         $this->data['userTypeID'] = 3;
         $this->data['sections'] = array();
-        $this->data['subjects'] = array();
+        $this->data['subjects'] = $this->subject_m->get_join_subjects();
 
         if ($_POST !== []) {
-            $this->data['sections'] = $this->section_m->get_order_by_section(array('classesID' => $this->input->post('classes')));
-            $this->data['subjects'] = $this->subject_m->get_order_by_subject(array('classesID' => $this->input->post('classes')));
+            // $this->data['sections'] = $this->section_m->get_order_by_section(array('classesID' => $this->input->post('classes')));
+            // $this->data['subjects'] = $this->subject_m->get_order_by_subject(array('classesID' => $this->input->post('classes')));
             $this->data['posttype'] = $this->input->post('type');
             $rules = $this->rules($this->data['posttype'], $this->input->post('ispaid'));
             $this->form_validation->set_rules($rules);
@@ -302,9 +302,9 @@ class Online_exam extends Admin_Controller
                     'name'         => 'name',
                     'description'  => 'description',
                     'usertype'     => 'userTypeID',
-                    'classes'      => 'classID',
-                    'section'      => 'sectionID',
-                    'studentGroup' => 'studentGroupID',
+                    // 'classes'      => 'classID',
+                    // 'section'      => 'sectionID',
+                    // 'studentGroup' => 'studentGroupID',
                     'subject'      => 'subjectID',
                     'instruction'  => 'instructionID',
                     'duration'     => 'duration',
