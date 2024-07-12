@@ -1,5 +1,4 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
 class Student extends Admin_Controller {
 public $load;
  public $session;
@@ -57,16 +56,12 @@ public $load;
 				'label' => $this->lang->line("student_name"),
 				'rules' => 'trim|required|xss_clean|max_length[60]'
 			),
-			array(
-				'field' => 'dob',
-				'label' => $this->lang->line("student_dob"),
-				'rules' => 'trim|max_length[10]|xss_clean|callback_date_valid'
-			),
-			array(
-				'field' => 'sex',
-				'label' => $this->lang->line("student_sex"),
-				'rules' => 'trim|required|max_length[10]|xss_clean'
-			),
+			//array(
+			// 'field' => 'L_name',
+			//	'label' => $this->lang->line("student_name"),
+			//	'rules' => 'trim|max_length[10]|xss_clean|callback_date_valid'
+			//),
+			
 			// array(
 			// 	'field' => 'bloodgroup',
 			// 	'label' => $this->lang->line("student_bloodgroup"),
@@ -120,11 +115,11 @@ public $load;
             //     'rules' => 'trim|max_length[128]|xss_clean'
             // ),
 
-            // array(
-            //     'field' => 'remarks',
-            //     'label' => $this->lang->line("student_remarks"),
-            //     'rules' => 'trim|max_length[128]|xss_clean'
-            // ),
+            array(
+            'field' => 'remarks',
+             'label' => $this->lang->line("student_remarks"),
+             'rules' => 'trim|max_length[128]|xss_clean'
+             ),
 			array(
 				'field' => 'email',
 				'label' => $this->lang->line("student_email"),
@@ -140,32 +135,15 @@ public $load;
 				'label' => $this->lang->line("student_address"),
 				'rules' => 'trim|max_length[200]|xss_clean'
 			),
-			array(
-				'field' => 'state',
-				'label' => $this->lang->line("student_state"),
-				'rules' => 'trim|max_length[128]|xss_clean'
-			),
-			array(
-				'field' => 'country',
-				'label' => $this->lang->line("student_country"),
-				'rules' => 'trim|max_length[128]|xss_clean'
-			),
+			
 			array(
 				'field' => 'photo',
 				'label' => $this->lang->line("student_photo"),
 				'rules' => 'trim|max_length[200]|xss_clean|callback_photoupload'
 			),            
 
-			array(
-				'field' => 'username',
-				'label' => $this->lang->line("student_username"),
-				'rules' => 'trim|required|min_length[4]|max_length[40]|xss_clean|callback_lol_username'
-			),
-			array(
-				'field' => 'password',
-				'label' => $this->lang->line("student_password"),
-				'rules' => 'trim|required|min_length[4]|max_length[40]|xss_clean'
-			)
+			
+			
 		);
 	}
 
@@ -530,22 +508,22 @@ public $load;
 						$this->load->view('_layout_main', $this->data);
 					} else {
 						$array = array();
-						$array["name"] = $this->input->post("name");
-						$array["sex"] = $this->input->post("sex");
-						$array["religion"] = $this->input->post("religion");
+						$array["F_name"] = $this->input->post("F_name");
+						$array["L_name"] = $this->input->post("L_name");
 						$array["email"] = $this->input->post("email");
-						$array["phone"] = $this->input->post("phone");
 						$array["address"] = $this->input->post("address");
-						$array["classesID"] = $this->input->post("classesID");
-						$array["sectionID"] = $this->input->post("sectionID");
-						$array["roll"] = $this->input->post("roll");
-						$array["bloodgroup"] = $this->input->post("bloodgroup");
-						$array["state"] = $this->input->post("state");
-						$array["country"] = $this->input->post("country");
-						$array["registerNO"] = $this->input->post("registerNO");
-						$array["parentID"] = $this->input->post("guargianID");
-						$array["username"] = $this->input->post("username");
-						$array["modify_date"] = date("Y-m-d h:i:s");
+						$array["phone"] = $this->input->post("phone");
+						$array["remark"] = $this->input->post("remark");
+						//$array["classesID"] = $this->input->post("classesID");
+						//$array["sectionID"] = $this->input->post("sectionID");
+						//$array["roll"] = $this->input->post("roll");
+						//$array["bloodgroup"] = $this->input->post("bloodgroup");
+						//$array["state"] = $this->input->post("state");
+						//$array["country"] = $this->input->post("country");
+						//$array["registerNO"] = $this->input->post("registerNO");
+						//$array["parentID"] = $this->input->post("guargianID");
+						//$array["username"] = $this->input->post("username");
+						//$array["modify_date"] = date("Y-m-d h:i:s");
 						$array['photo'] = $this->upload_data['file']['file_name'];
 
 						$array["dob"] = $this->input->post('dob') ? date("Y-m-d", strtotime((string) $this->input->post("dob"))) : NULL;

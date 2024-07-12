@@ -1,322 +1,258 @@
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><i class="fa icon-student"></i> <?=$this->lang->line('panel_title')?></h3>
-        <ol class="breadcrumb">
-            <li><a href="<?=base_url("dashboard/index")?>"><i class="fa fa-laptop"></i> <?=$this->lang->line('menu_dashboard')?></a></li>
-            <li class="active"><?=$this->lang->line('menu_student')?></li>
-        </ol>
-    </div><!-- /.box-header -->
-    <!-- form start -->
-    <div class="box-body">
-        <div class="row">
-            <div class="col-sm-12">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+        }
 
-                <h5 class="page-header">
-                    <?php
-                        $usertype = $this->session->userdata("usertype");
-                        if(permissionChecker('student_add')) {
-                    ?>
-                        <a href="<?php echo base_url('student/add') ?>">
-                            <i class="fa fa-plus"></i>
-                            <?=$this->lang->line('add_title')?>
-                        </a>
-                    <?php } ?>
-                    <!-- <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12 pull-right drop-marg">
-                        <?php
-                            $array = array("0" => $this->lang->line("student_select_class"));
-                            if(inicompute($classes)) {
-                                foreach ($classes as $classa) {
-                                    $array[$classa->classesID] = $classa->classes;
-                                }
-                            }
-                            echo form_dropdown("classesID", $array, set_value("classesID", $set), "id='classesID' class='form-control select2'");
-                        ?>
+        .box {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
 
-                    </div> -->
-                </h5>
+        .box:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
 
-                <?php if(inicompute($students) > 0 ) { ?>
+        .box-header {
+            background-image: linear-gradient(#ce2029, #800000) !important;
+            color: #fff !important;
+            padding: 15px !important;
+            border-top-left-radius: 5px !important;
+            border-top-right-radius: 5px !important;
+            transition: background-color 0.3s ease !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-start !important; /* Align items to the left */
+        }
+
+        .box-title {
+            font-size: 20px !important;
+            font-weight: bold !important;
+            margin-right: auto !important; /* Add space between title and buttons */
+        }
+
+        .breadcrumb {
+            background-color: transparent !important;
+            margin-bottom: 0 !important;
+            padding: 0 !important;
+            list-style: none !important;
+            display: flex !important;
+            align-items: center !important;
+            flex-wrap: wrap !important;
+            padding: 8px 0 !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .breadcrumb li {
+            display: inline !important;
+            font-size: 14px !important;
+        }
+
+        .breadcrumb li a {
+            color: #fff !important;
+            text-decoration: none !important;
+            padding: 0 5px !important;
+        }
+
+        .breadcrumb li::after {
+            content: "/" !important;
+            color: #fff !important;
+            padding: 0 5px !important;
+        }
+
+        .breadcrumb li:last-child::after {
+            content: "" !important;
+        }
+
+        .breadcrumb li.active {
+            color: #ffeb3b !important;
+        }
+
+        .page-header {
+            border-bottom: 1px solid #ddd !important;
+            padding-bottom: 10px !important;
+            margin-bottom: 20px !important;
+        }
+
+        .page-header a {
+            background-image: linear-gradient(#ce2029, #800000) !important;
+            color: #fff !important;
+            padding: 10px 20px !important;
+            border-radius: 5px !important;
+            text-decoration: none !important;
+            transition: background-color 0.3s ease !important;
+        }
+
+        .page-header a:hover {
+            background-color: #ce2029 !important;
+        }
+
+        .table {
+            width: 100% !important;
+            margin-bottom: 20px !important;
+            border-collapse: collapse !important;
+            transition: all 0.3s ease-in-out !important;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        .table th, .table td {
+            padding: 15px !important;
+            border: 1px solid #ddd !important;
+        }
+
+        .table th {
+            background-image: linear-gradient(#ce2029, #800000) !important;
+            color: #fff !important;
+        }
+
+        .table td {
+            background-color: #fff !important;
+            color: #333 !important;
+        }
+
+        .btn {
+            padding: 6px 12px !important;
+            border: none !important;
+            border-radius: 4px !important;
+            cursor: pointer !important;
+        }
+
+        .btn-primary {
+            background-color: #ce2029 !important;
+            color: white !important;
+        }
+
+        .btn-danger {
+            background-color: #ce2029 !important;
+            color: white !important;
+        }
+
+        .btn-primary:hover {
+            background-color: #800000 !important;
+        }
+
+        .btn-danger:hover {
+            background-color: #800000 !important;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title"><i class="fa icon-student"></i> Student</h3>
+            <ol class="breadcrumb">
+                <li><a href="<?=base_url("dashboard/index")?>"><i class="fa fa-laptop"></i> Dashboard</a></li>
+                <li class="active">Student</li>
+            </ol>
+        </div><!-- /.box-header -->
+
+        <div class="box-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h5 class="page-header">
+                        <?php if(permissionChecker('student_add')) { ?>
+                            <a href="<?php echo base_url('student/add') ?>">
+                                <i class="fa fa-plus"></i> Add a student
+                            </a>
+                        <?php } ?>
+                    </h5>
                     <div class="nav-tabs-custom">
-                        <!-- <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#all" aria-expanded="true"><?=$this->lang->line("student_all_students")?></a></li>
-                            <?php foreach ($sections as $key => $section) {
-                                echo '<li class=""><a data-toggle="tab" href="#tab'.$section->classesID.$section->sectionID .'" aria-expanded="false">'. $this->lang->line("student_section")." ".$section->section. " ( ". $section->category." )".'</a></li>';
-                            } ?>
-                        </ul> -->
-
-
-
                         <div class="tab-content">
                             <div id="all" class="tab-pane active">
                                 <div id="hide-table">
                                     <table id="example1" class="table table-striped table-bordered table-hover dataTable no-footer">
                                         <thead>
                                             <tr>
-                                                <th class="col-sm-1"><?=$this->lang->line('slno')?></th>
-                                                <th class="col-sm-2"><?=$this->lang->line('student_photo')?></th>
-                                                <th class="col-sm-2"><?=$this->lang->line('student_name')?></th>
-                                                <!-- <th class="col-sm-2"><?=$this->lang->line('student_roll')?></th> -->
-                                                <th class="col-sm-2"><?=$this->lang->line('student_email')?></th>
-                                                <?php if(permissionChecker('student_edit')) { ?>
-                                                <th class="col-sm-1"><?=$this->lang->line('student_status')?></th>
-                                                <?php } ?>
-                                                <?php if(permissionChecker('student_edit') || permissionChecker('student_delete') || permissionChecker('student_view')) { ?>
-                                                <th class="col-sm-2"><?=$this->lang->line('action')?></th>
-                                                <?php } ?>
+                                                <th><?=$this->lang->line('slno')?></th>
+                                                <th><?=$this->lang->line('student_name')?></th>
+                                                <th><?=$this->lang->line('phone')?></th> 
+                                                <th><?=$this->lang->line('student_email')?></th>
+                                                <th><?=$this->lang->line('student_address')?></th>
+                                                <th><?=$this->lang->line('student_remarks')?></th>
+                                                <th><?=$this->lang->line('action')?></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php if(inicompute($students)) {$i = 1; foreach($students as $student) { ?>
                                                 <tr>
-                                                    <td data-title="<?=$this->lang->line('slno')?>">
-                                                        <?php echo $i; ?>
+                                                    <td><?=$i?></td>
+                                                    <td><?=$student->name?></td>
+                                                    <td><?=$student->phone?></td>
+                                                    <td><?=$student->email?></td>
+                                                    <td><?=$student->address?></td>
+                                                    <td><?=$student->remarks?></td>
+                                                    <td>
+                                                        <?php if(permissionChecker('student_edit')) { ?>
+                                                            <a href="<?=base_url('student/edit/'.$student->studentID)?>" class="btn btn-primary">Edit</a>
+                                                        <?php } ?>
+                                                        <?php if(permissionChecker('student_delete')) { ?>
+                                                            <a href="<?=base_url('student/delete/'.$student->studentID)?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this student?')">Delete</a>
+                                                        <?php } ?>
                                                     </td>
-
-                                                    <td data-title="<?=$this->lang->line('student_photo')?>">
-                                                        <?=profileimage($student->photo)?>
-                                                    </td>
-                                                    <td data-title="<?=$this->lang->line('student_name')?>">
-                                                        <?php echo $student->name; ?>
-                                                    </td>
-                                                    <!-- <td data-title="<?=$this->lang->line('student_roll')?>">
-                                                        <?php echo $student->roll; ?>
-                                                    </td> -->
-                                                    <td data-title="<?=$this->lang->line('student_email')?>">
-                                                        <?php echo $student->email; ?>
-                                                    </td>
-                                                    <?php if(permissionChecker('student_edit')) { ?>
-                                                    <td data-title="<?=$this->lang->line('student_status')?>">
-                                                        <div class="onoffswitch-small" id="<?=$student->studentID?>">
-                                                            <input type="checkbox" id="myonoffswitch<?=$student->studentID?>" class="onoffswitch-small-checkbox" name="paypal_demo" <?php if($student->active === '1') echo "checked='checked'"; ?>>
-                                                            <label for="myonoffswitch<?=$student->studentID?>" class="onoffswitch-small-label">
-                                                                <span class="onoffswitch-small-inner"></span>
-                                                                <span class="onoffswitch-small-switch"></span>
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                    <?php } ?>
-                                                    <?php if(permissionChecker('student_edit') || permissionChecker('student_delete') || permissionChecker('student_view')) { ?>
-                                                    <td data-title="<?=$this->lang->line('action')?>">
-                                                        <?php
-                                                            echo btn_view('student/view/'.$student->studentID."/".$set, $this->lang->line('view'));
-                                                            echo btn_edit('student/edit/'.$student->studentID."/".$set, $this->lang->line('edit'));
-                                                            echo btn_delete('student/delete/'.$student->studentID."/".$set, $this->lang->line('delete'));
-                                                        ?>
-                                                    </td>
-                                                    <?php } ?>
-                                               </tr>
+                                                </tr>
                                             <?php $i++; }} ?>
                                         </tbody>
                                     </table>
                                 </div>
-
                             </div>
-
-                            <?php foreach ($sections as $key => $section) { ?>
-                                    <div id="tab<?=$section->classesID.$section->sectionID?>" class="tab-pane">
-                                        <div id="hide-table">
-                                            <table class="table table-striped table-bordered table-hover dataTable no-footer">
-                                                <thead>
+                            <?php foreach ($sections as $section) { ?>
+                                <div id="tab<?=$section->classesID.$section->sectionID?>" class="tab-pane">
+                                    <div id="hide-table">
+                                        <table id="example1" class="table table-striped table-bordered table-hover dataTable no-footer">
+                                            <thead>
+                                                <tr>
+                                                    <th><?=$this->lang->line('slno')?></th>
+                                                    <th><?=$this->lang->line('student_name')?></th>
+                                                    <th><?=$this->lang->line('student_phone')?></th>
+                                                    <th><?=$this->lang->line('student_email')?></th>
+                                                    <th><?=$this->lang->line('student_address')?></th>
+                                                    <th><?=$this->lang->line('student_remarks')?></th>
+                                                    <th><?=$this->lang->line('action')?></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php if(inicompute($allsection[$section->section])) {$i = 1; foreach($allsection[$section->section] as $student) { ?>
                                                     <tr>
-                                                        <th class="col-sm-2"><?=$this->lang->line('slno')?></th>
-                                                        <th class="col-sm-2"><?=$this->lang->line('student_photo')?></th>
-                                                        <th class="col-sm-2"><?=$this->lang->line('student_name')?></th>
-                                                        <th class="col-sm-2"><?=$this->lang->line('student_roll')?></th>
-                                                        <th class="col-sm-2"><?=$this->lang->line('student_email')?></th>
-                                                        <?php if(permissionChecker('student_edit') || permissionChecker('student_delete') || permissionChecker('student_view')) { ?>
-                                                        <th class="col-sm-2"><?=$this->lang->line('action')?></th>
-                                                        <?php } ?>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php if(inicompute($allsection[$section->sectionID])) { $i = 1; foreach($allsection[$section->sectionID] as $student) { if($section->sectionID === $student->sectionID) { ?>
-                                                        <tr>
-                                                            <td data-title="<?=$this->lang->line('slno')?>">
-                                                                <?php echo $i; ?>
-                                                            </td>
-
-                                                            <td data-title="<?=$this->lang->line('student_photo')?>">
-                                                                <?=profileimage($student->photo)?>
-                                                            </td>
-                                                            <td data-title="<?=$this->lang->line('student_name')?>">
-                                                                <?php echo $student->name; ?>
-                                                            </td>
-                                                            <td data-title="<?=$this->lang->line('student_roll')?>">
-                                                                <?php echo $student->roll; ?>
-                                                            </td>
-                                                            <td data-title="<?=$this->lang->line('student_email')?>">
-                                                                <?php echo $student->email; ?>
-                                                            </td>
-                                                            <?php if(permissionChecker('student_edit') || permissionChecker('student_delete') || permissionChecker('student_view')) { ?>
-                                                            <td data-title="<?=$this->lang->line('action')?>">
-                                                                <?php
-                                                                    echo btn_view('student/view/'.$student->studentID."/".$set, $this->lang->line('view'));
-                                                                    echo btn_edit('student/edit/'.$student->studentID."/".$set, $this->lang->line('edit'));
-                                                                    echo btn_delete('student/delete/'.$student->studentID."/".$set, $this->lang->line('delete'));
-                                                                ?>
-                                                            </td>
+                                                        <td><?=$i?></td>
+                                                        <td><?=$student->name?></td>
+                                                        <td><?=$student->phone?></td>
+                                                        <td><?=$student->email?></td>
+                                                        <td><?=$student->address?></td>
+                                                        <td><?=$student->remarks?></td>
+                                                        <td>
+                                                            <?php if(permissionChecker('student_edit')) { ?>
+                                                                <a href="<?=base_url('student/edit/'.$student->studentID)?>" class="btn btn-primary">Edit</a>
                                                             <?php } ?>
-                                                       </tr>
-                                                    <?php $i++; }}} ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                                            <?php if(permissionChecker('student_delete')) { ?>
+                                                                <a href="<?=base_url('student/delete/'.$student->studentID)?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this student?')">Delete</a>
+                                                            <?php } ?>
+                                                        </td>
+                                                    </tr>
+                                                <?php $i++; }} ?>
+                                            </tbody>
+                                        </table>
                                     </div>
+                                </div>
                             <?php } ?>
                         </div>
-                    </div> <!-- nav-tabs-custom -->
-                <?php } else { ?>
-                    <div class="nav-tabs-custom">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#all" aria-expanded="true"><?=$this->lang->line("student_all_students")?></a></li>
-                        </ul>
+                    </div>
+                </div>
+            </div><!-- row -->
+        </div><!-- /.box-body -->
+    </div><!-- /.box -->
 
-
-                        <div class="tab-content">
-                            <div id="all" class="tab-pane active">
-                                <div id="hide-table">
-                                    <table id="example1" class="table table-striped table-bordered table-hover dataTable no-footer">
-                                        <thead>
-                                            <tr>
-                                                <th class="col-sm-2"><?=$this->lang->line('slno')?></th>
-                                                <th class="col-sm-2"><?=$this->lang->line('student_photo')?></th>
-                                                <th class="col-sm-2"><?=$this->lang->line('student_name')?></th>
-                                                <th class="col-sm-2"><?=$this->lang->line('student_roll')?></th>
-                                                <th class="col-sm-2"><?=$this->lang->line('student_email')?></th>
-                                                <?php if(permissionChecker('student_edit') || permissionChecker('student_delete') || permissionChecker('student_view')) { ?>
-                                                <th class="col-sm-2"><?=$this->lang->line('action')?></th>
-                                                <?php } ?>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php if(inicompute($students)) {$i = 1; foreach($students as $student) { ?>
-                                                <tr>
-                                                    <td data-title="<?=$this->lang->line('slno')?>">
-                                                        <?php echo $i; ?>
-                                                    </td>
-
-                                                    <td data-title="<?=$this->lang->line('student_photo')?>">
-                                                        <?=profileimage($student->photo)?>
-                                                    </td>
-                                                    <td data-title="<?=$this->lang->line('student_name')?>">
-                                                        <?php echo $student->name; ?>
-                                                    </td>
-                                                    <td data-title="<?=$this->lang->line('student_roll')?>">
-                                                        <?php echo $student->roll; ?>
-                                                    </td>
-                                                    <td data-title="<?=$this->lang->line('student_email')?>">
-                                                        <?php echo $student->email; ?>
-                                                    </td>
-                                                    <?php if(permissionChecker('student_edit') || permissionChecker('student_delete') || permissionChecker('student_view')) { ?>
-                                                    <td data-title="<?=$this->lang->line('action')?>">
-                                                        <?php
-
-                                                            echo btn_view('student/view/'.$student->studentID."/".$set, $this->lang->line('view'));
-                                                            echo btn_edit('student/edit/'.$student->studentID."/".$set, $this->lang->line('edit'));
-                                                            echo btn_delete('student/delete/'.$student->studentID."/".$set, $this->lang->line('delete'));
-                                                        ?>
-                                                    </td>
-                                                    <?php } ?>
-                                               </tr>
-                                            <?php $i++; }} ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div> <!-- nav-tabs-custom -->
-                <?php } ?>
-
-            </div> <!-- col-sm-12 -->
-
-        </div><!-- row -->
-    </div><!-- Body -->
-</div><!-- /.box -->
-
-<script type="text/javascript">
-    $(".select2").select2();
-
-    $('#classesID').change(function() {
-        var classesID = $(this).val();
-    
-        if(classesID == 0) {
-            $('#hide-table').hide();
-            $('.nav-tabs-custom').hide();
-        } else {
-            $.ajax({
-                type: 'POST',
-                url: "<?=base_url('student/student_list')?>",
-                data: "id=" + classesID,
-                dataType: "html",
-                success: function(data) {
-                    // alert(data);
-                    window.location.href = data;
-                }
-            });
-        }
-    });
-
-
-    var status = '';
-    var id = 0;
-    $('.onoffswitch-small-checkbox').click(function() {
-        if($(this).prop('checked')) {
-            status = 'chacked';
-            id = $(this).parent().attr("id");
-        } else {
-            status = 'unchacked';
-            id = $(this).parent().attr("id");
-        }
-
-        if((status != '' || status != null) && (id !='')) {
-            $.ajax({
-                type: 'POST',
-                url: "<?=base_url('student/active')?>",
-                data: "id=" + id + "&status=" + status,
-                dataType: "html",
-                success: function(data) {
-                    if(data == 'Success') {
-                        toastr["success"]("Success")
-                        toastr.options = {
-                            "closeButton": true,
-                            "debug": false,
-                            "newestOnTop": false,
-                            "progressBar": false,
-                            "positionClass": "toast-top-right",
-                            "preventDuplicates": false,
-                            "onclick": null,
-                            "showDuration": "500",
-                            "hideDuration": "500",
-                            "timeOut": "5000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                        }
-                    } else {
-                        toastr["error"]("Error")
-                        toastr.options = {
-                            "closeButton": true,
-                            "debug": false,
-                            "newestOnTop": false,
-                            "progressBar": false,
-                            "positionClass": "toast-top-right",
-                            "preventDuplicates": false,
-                            "onclick": null,
-                            "showDuration": "500",
-                            "hideDuration": "500",
-                            "timeOut": "5000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                        }
-                    }
-                }
-            });
-        }
-    });
-</script>
+</body>
+</html>
