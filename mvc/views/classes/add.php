@@ -56,10 +56,10 @@
                         else
                             echo "<div class='form-group' >";
                     ?>
-                        <label for="teacherID" class="col-sm-2 control-label">
+                        <!-- <label for="teacherID" class="col-sm-2 control-label">
                             <?=$this->lang->line("teacher_name")?> <span class="text-red">*</span>
-                        </label>
-                        <div class="col-sm-6">
+                        </label> -->
+                        <!-- <div class="col-sm-6">
 
                             <?php
                                 $array = array();
@@ -70,10 +70,10 @@
                                 }
                                 echo form_dropdown("teacherID", $array, set_value("teacherID"), "id='teacherID' class='form-control select2'");
                             ?>
-                        </div>
-                        <span class="col-sm-4 control-label">
+                        </div> -->
+                        <!-- <span class="col-sm-4 control-label">
                             <?php echo form_error('teacherID'); ?>
-                        </span>
+                        </span> -->
                     </div>
 
                     <?php
@@ -101,9 +101,9 @@
 
                 </form>
                 <?php if ($siteinfos->note==1) { ?>
-                    <div class="callout callout-danger">
+                    <!-- <div class="callout callout-danger">
                         <p><b>Note:</b> Create a teacher before create a new class.</p>
-                    </div>
+                    </div> -->
                 <?php } ?>
 
             </div>
