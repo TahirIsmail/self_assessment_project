@@ -34,29 +34,29 @@
                     </div>
 
                     <?php
-                        if(form_error('category'))
-                            echo "<div class='form-group has-error' >";
-                        else
-                            echo "<div class='form-group' >";
+                        // if(form_error('category'))
+                        //     echo "<div class='form-group has-error' >";
+                        // else
+                        //     echo "<div class='form-group' >";
                     ?>
-                        <label for="category" class="col-sm-2 control-label">
+                        <!-- <label for="category" class="col-sm-2 control-label">
                             <?=$this->lang->line("section_category")?> <span class="text-red">*</span>
-                        </label>
-                        <div class="col-sm-6">
+                        </label> -->
+                        <!-- <div class="col-sm-6">
                             <input type="text" class="form-control" id="category" name="category" value="<?=set_value('category')?>" >
-                        </div>
-                        <span class="col-sm-4 control-label">
+                        </div> -->
+                        <!-- <span class="col-sm-4 control-label">
                             <?php echo form_error('category'); ?>
-                        </span>
-                    </div>
+                        </span> -->
+                    <!-- </div> -->
 
                     <?php
-                        if(form_error('capacity'))
-                            echo "<div class='form-group has-error' >";
-                        else
-                            echo "<div class='form-group' >";
+                        // if(form_error('capacity'))
+                        //     echo "<div class='form-group has-error' >";
+                        // else
+                        //     echo "<div class='form-group' >";
                     ?>
-                        <label for="capacity" class="col-sm-2 control-label">
+                        <!-- <label for="capacity" class="col-sm-2 control-label">
                             <?=$this->lang->line("section_capacity")?> <span class="text-red">*</span>
                         </label>
                         <div class="col-sm-6">
@@ -65,7 +65,7 @@
                         <span class="col-sm-4 control-label">
                             <?php echo form_error('capacity'); ?>
                         </span>
-                    </div>
+                    </div> -->
 
                     <?php
                         if(form_error('classesID'))
@@ -101,12 +101,12 @@
                     </div>
 
                     <?php
-                        if(form_error('teacherID'))
-                            echo "<div class='form-group has-error' >";
-                        else
-                            echo "<div class='form-group' >";
+                        // if(form_error('teacherID'))
+                        //     echo "<div class='form-group has-error' >";
+                        // else
+                        //     echo "<div class='form-group' >";
                     ?>
-                        <label for="teacherID" class="col-sm-2 control-label">
+                        <!-- <label for="teacherID" class="col-sm-2 control-label">
                             <?=$this->lang->line("section_teacher_name")?> <span class="text-red">*</span>
                         </label>
                         <div class="col-sm-6">
@@ -124,7 +124,7 @@
                         <span class="col-sm-4 control-label">
                             <?php echo form_error('teacherID'); ?>
                         </span>
-                    </div>
+                    </div> -->
 
                     <?php
                         if(form_error('note'))
@@ -151,9 +151,9 @@
 
                 </form>
                 <?php if ($siteinfos->note==1) { ?>
-                    <div class="callout callout-danger">
+                    <!-- <div class="callout callout-danger">
                         <p><b>Note:</b> Create a class and teacher before create a new section</p>
-                    </div>
+                    </div> -->
                 <?php } ?>
 
             </div>

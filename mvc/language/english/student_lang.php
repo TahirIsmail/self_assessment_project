@@ -89,8 +89,6 @@ $lang['student_select_section'] = 'Select Section';
 $lang['student_all_students'] = 'All Students';
 
 
-
-
 $lang['student_profile'] = 'Profile';
 $lang['student_parents'] = 'Parents';
 $lang['student_exam'] = "Mock Text";
@@ -106,7 +104,6 @@ $lang['student_file_required'] = 'The file field is required.';
 $lang['student_hotline'] = 'Hotline';
 
 //Mail
-
 $lang['student_to'] = 'To';
 $lang['student_subject'] = 'Subject';
 $lang['student_message'] = 'Message';

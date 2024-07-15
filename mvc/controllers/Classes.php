@@ -46,11 +46,11 @@ public $load;
 				'label' => $this->lang->line("classes_numeric"),
 				'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_unique_classes_numeric|callback_valid_number'
 			), 
-			array(
-				'field' => 'teacherID', 
-				'label' => $this->lang->line("teacher_name"),
-				'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_allteacher'
-			),
+			// array(
+			// 	'field' => 'teacherID', 
+			// 	'label' => $this->lang->line("teacher_name"),
+			// 	'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_allteacher'
+			// ),
 			array(
 				'field' => 'note', 
 				'label' => $this->lang->line("classes_note"), 

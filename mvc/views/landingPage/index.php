@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Simply License</title>
+    <title>eLEARNING - eLearning HTML Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -120,53 +120,55 @@
     </div> -->
     <!-- Carousel End -->
 
+
+
     <!--new navbar-->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
-            <a href="#" class="navbar-brand p-0">
-                <img class="w-100" src="<?=base_url('uploads/landing_img/SL-white-logo.png'); ?>" alt="Image" style="    width: 200px !important;">
+            <a href="index.html" class="navbar-brand p-0">
+                <img class="w-100" src="<?=base_url ('uploads/landing_img/SL-white-logo.png')?>" alt="Image" style="    width: 200px !important;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="#" class="nav-item nav-link active">Home</a>
-                    <a href="#" class="nav-item nav-link">Services</a>
-                    <a href="#" class="nav-item nav-link book-now">Book Now</a>
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="about.html" class="nav-item nav-link">Services</a>
+                    <a href="service.html" class="nav-item nav-link book-now">Book Now</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">All Courses</a>
                         <div class="dropdown-menu m-0">
-                            <a href="#" class="dropdown-item">DOOR SUPERVISOR</a>
-                            <a href="#" class="dropdown-item">CCTV</a>
-                            <a href="#" class="dropdown-item">CVIT</a>
-                            <a href="#" class="dropdown-item">VEHICAL IMMOBILSER</a>
-                            <a href="#" class="dropdown-item">CLOSE PROTECTION</a>
-                            <a href="#" class="dropdown-item">SECURITY</a>
+                            <a href="blog.html" class="dropdown-item">DOOR SUPERVISOR</a>
+                            <a href="detail.html" class="dropdown-item">CCTV</a>
+                            <a href="detail.html" class="dropdown-item">CVIT</a>
+                            <a href="detail.html" class="dropdown-item">VEHICAL IMMOBILSER</a>
+                            <a href="detail.html" class="dropdown-item">CLOSE PROTECTION</a>
+                            <a href="detail.html" class="dropdown-item">SECURITY</a>
                         </div>
 
                     </div>
 
-                    <a href="#" class="nav-item nav-link">Contact Us</a>
-                    <a href="#" class="nav-item nav-link">Blog</a>
+                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                    <a href="contact.html" class="nav-item nav-link">Blog</a>
                 </div>
                 <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
                 <a href="<?php echo base_url('signin/index') ?>" class="btn btn-primary py-2 px-4 ms-3">LOGIN</a>
-                <a href="#" class="nav-item nav-link" >SIGN UP</a>
+                <a href="contact.html" class="nav-item nav-link" >SIGN UP</a>
             </div>
         </nav>
 
         <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="<?php echo base_url('uploads/landing_img/sld2.png')?>" alt="Image">
+                    <img class="w-100" src="<?=base_url('uploads/landing_img/sld2.png') ?>" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
 
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 70px;     margin-top: 110px; text-align: left;">Simply Trained</h1>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 70px; text-align: left;">Simply Licenced</h1>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 50px;     margin-top: 110px;">Simply Trained</h1>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 60px;">Simply Licenced</h1>
                             <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-size: 70px;">Simply Get a Job</h1>
-                            <a href="#" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">More Details</a>
+                            <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">More Details</a>
                             <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
                         </div>
 
@@ -394,7 +396,7 @@
                                                         </div>
                                                         <div class="so_top_icon">
 
-                                                            <img src="<?php echo base_url('uploads/images/team-1.jpg')?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+                                                            <img src="<?=base_url ('uploads/images/team-1.jpg')?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
 
                                                             </img>
                                                         </div>
@@ -437,7 +439,7 @@
                                                         </div>
                                                         <div class="so_top_icon">
 
-                                                            <img src="<?php echo base_url('uploads/images/team-2.jpg');?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+                                                            <img src="<?=base_url ('uploads/images/team-2.jpg')?>"  width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
 
                                                             </img>
                                                         </div>
@@ -481,7 +483,7 @@
                                                         </div>
                                                         <div class="so_top_icon">
 
-                                                            <img src="<?php echo base_url('uploads/images/team-3.jpg');?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+                                                            <img src="<?=base_url ('uploads/images/team-3.jpg')?>"  width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
 
                                                             </img>
                                                         </div>
@@ -524,7 +526,7 @@
                                                         </div>
                                                         <div class="so_top_icon">
 
-                                                            <img src="<?php echo base_url('uploads/images/team-4.jpg');?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+                                                            <img src="<?=base_url ('uploads/images/team-4.jpg')?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
 
                                                             </img>
                                                         </div>
@@ -568,7 +570,7 @@
                                                         </div>
                                                         <div class="so_top_icon">
 
-                                                            <img src="<?php echo base_url('uploads/images/testimonial-3.jpg');?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+                                                            <img src="<?=base_url ('uploads/images/testimonial-3.jpg')?>"  width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
 
                                                             </img>
                                                         </div>
@@ -612,7 +614,7 @@
                                                         </div>
                                                         <div class="so_top_icon">
 
-                                                            <img src="<?php echo base_url('uploads/images/testimonial-4.jpg');?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+                                                            <img src="<?=base_url ('uploads/images/testimonial-4.jpg') ?>width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
 
                                                             </img>
                                                         </div>
@@ -675,42 +677,42 @@
 
 
     <!-- Service Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5" style="margin-top: 40px;">
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
-                            <h5 class="mb-3">Online Courses</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                            <h5 class="mb-3">MOOC Exams</h5>
+                            <p>Our Exams are Current: Thorough <span style="font-weight: 700;">preparation</span> ensures your success & gain knowledge</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
-                            <i class="fa fa-3x fa-globe text-primary mb-4"></i>
-                            <h5 class="mb-3">Multiple Campuses</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                            <h5 class="mb-3">Book - Door Supervisor Course</h5>
+                            <p>Unlock rewarding career to gain industry knowledge & Certification</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
-                            <i class="fa fa-3x fa-home text-primary mb-4"></i>
-                            <h5 class="mb-3">Easy Learning</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                            <h5 class="mb-3">Book - Door Supervisor Top-up Course</h5>
+                            <p>Enhance your skills with top-up course. Stay up skilled & complaint</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
-                            <i class="fa fa-3x fa-book-open text-primary mb-4"></i>
-                            <h5 class="mb-3">Low</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                            <h5 class="mb-3">Book - Level 3 AET</h5>
+                            <p>Transform your passion for teaching with AET course. Gain Skills & Certification</p>
                         </div>
                     </div>
                 </div>
@@ -718,6 +720,50 @@
         </div>
 
     </div>
+    <div class="container-xxl " style="margin-bottom: 40px;">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                            <h5 class="mb-3">Book - CCTV Course</h5>
+                            <p>Boost your career with cctv training to learn how to operate surveillance systems & gain Certification</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                            <h5 class="mb-3">Book - Health & Safety Course</h5>
+                            <p>Ensure workplace safety, learn essential practices, stay complaint & safeguard your team</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                            <h5 class="mb-3">Book - Field Marshal Course</h5>
+                            <p>Elevate your career in security field, learn skills and gain certification</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                            <h5 class="mb-3">E-Book Hub</h5>
+                            <p>Expand your knowledge with ebooks. Discover your topics, instantly accessible and affordable</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     <!-- Service End -->
 
 
@@ -726,8 +772,8 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
-                    <div class="position-relative h-100">
-                        <img class="img-fluid position-absolute w-100 h-100" src="<?=base_url('uploads/landing_img/about.jpg'); ?>" alt="" style="object-fit: cover;">
+                    <div class="position-relative h-100">                      
+                        <img class="img-fluid position-absolute w-100 h-100" src="<?=base_url ('uploads/landing_img/about.jpg')?>" alt="" style="object-fit: cover;">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -774,7 +820,8 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item bg-light">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="<?=base_url('uploads/landing_img/course-1.jpg'); ?>" alt="">
+                        
+                            <img class="img-fluid" src="<?=base_url ('uploads/landing_img/course-1.jpg')?>" alt="">
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                                 <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
                                 <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Buy Now</a>
@@ -802,7 +849,8 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="course-item bg-light">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="<?=base_url('uploads/landing_img/course-2.jpg'); ?>" alt="">
+                            
+                            <img class="img-fluid" src="<?=base_url('uploads/landing_img/course-2.jpg')?>" alt="">
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                                 <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
                                 <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Buy Now</a>
@@ -830,7 +878,7 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="course-item bg-light">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="<?=base_url('uploads/landing_img/course-3.jpg'); ?>" alt="">
+                            <img class="img-fluid" src="<?=base_url('uploads/landing_img/course-3.jpg')?>" alt="">
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                                 <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
                                 <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Buy Now</a>
@@ -874,7 +922,7 @@
                     <div class="row g-3">
                         <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
                             <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="<?=base_url('uploads/landing_img/cat-1.jpg'); ?>" alt="">
+                                <img class="img-fluid" src="<?=base_url('uploads/landing_img/cat-1.jpg')?>" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
                                     <h5 class="m-0">Web Design</h5>
                                     <small class="text-primary">49 Courses</small>
@@ -883,7 +931,7 @@
                         </div>
                         <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
                             <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="<?=base_url('uploads/landing_img/cat-2.jpg'); ?>" alt="">
+                                <img class="img-fluid" src="<?=base_url('uploads/landing_img/cat-2.jpg')?>" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
                                     <h5 class="m-0">Graphic Design</h5>
                                     <small class="text-primary">49 Courses</small>
@@ -892,7 +940,7 @@
                         </div>
                         <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
                             <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="<?=base_url('uploads/landing_img/cat-3.jpg'); ?>" alt="">
+                                <img class="img-fluid" src="<?=base_url('uploads/landing_img/cat-3.jpg')?>" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
                                     <h5 class="m-0">Video Editing</h5>
                                     <small class="text-primary">49 Courses</small>
@@ -903,7 +951,7 @@
                 </div>
                 <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
                     <a class="position-relative d-block h-100 overflow-hidden" href="">
-                        <img class="img-fluid position-absolute w-100 h-100" src="<?=base_url('uploads/landing_img/cat-4.jpg'); ?>" alt="" style="object-fit: cover;">
+                        <img class="img-fluid position-absolute w-100 h-100" src="<?=base_url('uploads/landing_img/cat-4.jpg')?>" alt="" style="object-fit: cover;">
                         <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin:  1px;">
                             <h5 class="m-0">Online Marketing</h5>
                             <small class="text-primary">49 Courses</small>
@@ -930,7 +978,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item bg-light">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="<?=base_url('uploads/landing_img/team-1.jpg'); ?>" alt="">
+                            <img class="img-fluid" src="<?=base_url('uploads/landing_img/team-1.jpg')?>" alt="">
                         </div>
                         <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
                             <div class="bg-light d-flex justify-content-center pt-2 px-1">
@@ -948,7 +996,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="team-item bg-light">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="<?=base_url('uploads/landing_img/team-2.jpg'); ?>" alt="">
+                            <img class="img-fluid" src="<?=base_url('uploads/landing_img/team-2.jpg')?>" alt="">
                         </div>
                         <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
                             <div class="bg-light d-flex justify-content-center pt-2 px-1">
@@ -966,7 +1014,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="team-item bg-light">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="<?=base_url('uploads/landing_img/team-3.jpg'); ?>" alt="">
+                            <img class="img-fluid" src="<?=base_url('uploads/landing_img/team-3.jpg')?>" alt="">
                         </div>
                         <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
                             <div class="bg-light d-flex justify-content-center pt-2 px-1">
@@ -984,7 +1032,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="team-item bg-light">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="<?=base_url('uploads/landing_img/team-4.jpg'); ?>" alt="">
+                            <img class="img-fluid" src="<?=base_url('uploads/landing_img/team-4.jpg')?>" alt="">
                         </div>
                         <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
                             <div class="bg-light d-flex justify-content-center pt-2 px-1">
@@ -1083,8 +1131,8 @@
 
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <a href="#" class="navbar-brand p-0">
-                        <img class="w-100" src="<?=base_url('uploads/landing_img/SL-white-logo.png'); ?>" alt="Image" style="    width: 200px !important;">
+                    <a href="index.html" class="navbar-brand p-0">
+                        <img class="w-100" src="<?=base_url('uploads/landing_img/SL-white-logo.png')?>" alt="Image" style="    width: 200px !important;">
                     </a>
                     <p>Sign up for our newsletter now.</p>
                     <div class="position-relative mx-auto" style="max-width: 400px;">
@@ -1105,7 +1153,9 @@
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                         &copy; <a class="border-bottom" href="#">SimplyLicenced</a>, All Right Reserved.
-                        Developed By <a class="border-bottom" target="__blank" href="https://oxbridgedigital.com/">Oxbridge Digital</a>
+
+                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        Developed By <a class="border-bottom" href="https://oxbridgedigital.com/">OXBRIDGE DIGITAL</a>
                     </div>
 
                 </div>

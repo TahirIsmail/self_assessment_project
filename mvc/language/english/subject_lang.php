@@ -1,15 +1,15 @@
 <?php
 
 /* List Language  */
-$lang['panel_title'] = "Subject";
-$lang['add_title'] = "Add a subject";
+$lang['panel_title'] = "Units";
+$lang['add_title'] = "Add a Unit";
 $lang['slno'] = "#";
 $lang['subject_class_name'] = "Class Name";
 $lang['subject_teacher_name'] = "Teacher Name";
 $lang['subject_student'] = "Student";
-$lang['subject_name'] = "Subject Name";
-$lang['subject_author'] = "Subject Author";
-$lang['subject_code'] = "Subject Code";
+$lang['subject_name'] = "Unit Name";
+$lang['subject_author'] = "Unit Author";
+$lang['subject_code'] = "Unit Code";
 $lang['subject_teacher'] = "Teacher";
 $lang['subject_classes'] = "Class";
 $lang['subject_type'] = "Type";
@@ -33,5 +33,5 @@ $lang['delete'] = 'Delete';
 
 /* Add Language */
 
-$lang['add_subject'] = 'Add Subject';
-$lang['update_subject'] = 'Update Subject';
+$lang['add_subject'] = 'Add Unit';
+$lang['update_subject'] = 'Update Unit';

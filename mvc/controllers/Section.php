@@ -40,26 +40,26 @@ public $load;
 				'label' => $this->lang->line("section_name"),
 				'rules' => 'trim|required|xss_clean|max_length[60]|callback_unique_section'
 			),
-			array(
-				'field' => 'category',
-				'label' => $this->lang->line("section_category"),
-				'rules' => 'trim|required|max_length[128]|xss_clean'
-			),
-			array(
-				'field' => 'capacity',
-				'label' => $this->lang->line("section_capacity"),
-				'rules' => 'trim|required|max_length[11]|xss_clean|numeric|callback_valid_number'
-			),
+			// array(
+			// 	'field' => 'category',
+			// 	'label' => $this->lang->line("section_category"),
+			// 	'rules' => 'trim|required|max_length[128]|xss_clean'
+			// ),
+			// array(
+			// 	'field' => 'capacity',
+			// 	'label' => $this->lang->line("section_capacity"),
+			// 	'rules' => 'trim|required|max_length[11]|xss_clean|numeric|callback_valid_number'
+			// ),
 			array(
 				'field' => 'classesID',
 				'label' => $this->lang->line("section_classes"),
 				'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_allclasses'
 			),
-			array(
-				'field' => 'teacherID',
-				'label' => $this->lang->line("section_teacher_name"),
-				'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_allteacher'
-			),
+			// array(
+			// 	'field' => 'teacherID',
+			// 	'label' => $this->lang->line("section_teacher_name"),
+			// 	'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_allteacher'
+			// ),
 			array(
 				'field' => 'note',
 				'label' => $this->lang->line("section_note"),
