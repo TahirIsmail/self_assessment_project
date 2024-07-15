@@ -1932,27 +1932,27 @@ Component: timeline
 }
 .btn.btn-success {
   color: #fff;
-  background-color: #00acac;
-  border-color: #00acac;
+  background-color: #ac0000;
+  border-color: #e40202;
 }
 .btn.btn-success:hover,
 .btn.btn-success:active,
 .btn.btn-success.hover {
   color: #fff;
-  background-color: #09A3A3;
-  border-color: #09A3A3;
+  background-color: #fa0808;
+  border-color: #e70404;
 }
 .btn.btn-info {
   color: #fff;
-  background-color: #49b6d6;
-  border-color: #49b6d6;
+  background-color: #f01818;
+  border-color: #fc0a0a;
 }
 .btn.btn-info:hover,
 .btn.btn-info:active,
 .btn.btn-info.hover {
   color: #fff;
-  background-color: #4AABC8;
-  border-color: #4AABC8;
+  background-color: #a40a0a;
+  border-color: #d81515;
 }
 .btn.btn-danger {
   color: #fff;

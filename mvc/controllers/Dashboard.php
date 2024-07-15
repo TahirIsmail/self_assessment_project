@@ -1,4 +1,5 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends Admin_Controller {
     public $data;
@@ -32,14 +33,7 @@ class Dashboard extends Admin_Controller {
                 'assets/highcharts-more.js',
                 'assets/highcharts/data.js',
                 'assets/highcharts/drilldown.js',
-                'assets/highcharts/exporting.js',
-                'assets/fullcalendar/lib/jquery-ui.min.js',
-                'assets/fullcalendar/lib/moment.min.js',
-                'assets/fullcalendar/fullcalendar.min.js'
-            ),
-            'css' => array(
-                'assets/fullcalendar/lib/cupertino/jquery-ui.min.css',
-                'assets/fullcalendar/fullcalendar.css'
+                'assets/highcharts/exporting.js'
             )
         );
 
@@ -61,11 +55,7 @@ class Dashboard extends Admin_Controller {
         $allmenu = pluck($mainmenu, 'icon', 'link');
         $allmenulang = pluck($mainmenu, 'menuName', 'link');
 
-        if ((config_item('demo') === FALSE) && ($this->data['siteinfos']->auto_update_notification == 1) && ($this->session->userdata('usertypeID') == 1) && ($this->session->userdata('loginuserID') == 1)) {
-            $this->data['versionChecking'] = $this->session->userdata('updatestatus') === null ? $this->checkUpdate() : 'none';
-        } else {
-            $this->data['versionChecking'] = 'none';
-        }
+        $this->data['versionChecking'] = 'none';
 
         if ($this->session->userdata('usertypeID') == 3) {
             $getLoginStudent = $this->student_m->get_single_student(array('username' => $this->session->userdata('username')));
@@ -126,39 +116,45 @@ class Dashboard extends Admin_Controller {
         $this->data["subview"] = "dashboard/index";
         $this->load->view('_layout_main', $this->data);
     }
-
-    private function checkUpdate() {
-        $version = 'none';
-        if ($this->session->userdata('usertypeID') == 1 && $this->session->userdata('loginuserID') == 1 && inicompute($postDatas = $this->postData())) {
-            $versionChecking = $this->versionChecking($postDatas);
-            if ($versionChecking && isset($versionChecking->status) && $versionChecking->status) {
-                $version = $versionChecking->version;
-            }
+// GET STUDENT
+    public function get_students() {
+        $this->load->model('student_m');
+        $students = $this->student_m->get_order_by_student();
+        $response = array();
+        foreach ($students as $student) {
+            $response[] = array(
+                'name' => $student->name,
+                'roll' => $student->studentID
+            );
         }
-        return $version;
+        echo json_encode($response);
+    }
+// GET TEACHER 
+    public function get_teachers() {
+        $this->load->model('teacher_m');
+        $teachers = $this->teacher_m->get_order_by_teacher();
+        $response = array();
+        foreach ($teachers as $teacher) {
+            $response[] = array(
+                'name' => $teacher->name,
+                'subject' => $teacher->teacherID
+            );
+        }
+        echo json_encode($response);
     }
 
-    private function postData() {
+// GET SUBJECT 
+    public function get_subjects() {
+        $this->load->model('subject_m');
+        $subjects = $this->subject_m->get_order_by_subject();
         
-        return array('key' => 'value');
-    }
-
-    private function versionChecking($postDatas) {
-      
-        return (object)array('status' => true, 'version' => '1.0.1');
-    }
-
-    public function update() {
-        if ($this->session->userdata('usertypeID') == 1 && $this->session->userdata('loginuserID') == 1){
-            $this->session->set_userdata('updatestatus', true);
-            redirect(base_url('update/autoupdate'));
+        $response = array();
+        foreach ($subjects as $subject) {
+           
+            $response[] = array(
+                'name' => $subject->subject
+            );
         }
-    }
-
-    public function remind() {
-        if ($this->session->userdata('usertypeID') == 1 && $this->session->userdata('loginuserID') == 1){
-            $this->session->set_userdata('updatestatus', false);
-            redirect(base_url('dashboard/index'));
-        }
+        echo json_encode($response);
     }
 }

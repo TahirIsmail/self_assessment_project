@@ -1932,15 +1932,15 @@ Component: timeline
 }
 .btn.btn-success {
   color: #fff;
-  background-color: #00acac;
-  border-color: #00acac;
+  background-color: #c60202;
+  border-color: #ac0022;
 }
 .btn.btn-success:hover,
 .btn.btn-success:active,
 .btn.btn-success.hover {
   color: #fff;
-  background-color: #09A3A3;
-  border-color: #09A3A3;
+  background-color: #470404;
+  border-color: #770320;
 }
 .btn.btn-info {
   color: #fff;

@@ -24,173 +24,128 @@
         }
 
         .box-header {
-            background-image: linear-gradient(#ce2029,#800000) !important;
-            color: #fff;
-            padding: 15px;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .box-header:hover {
-            background-color: #ce2029;
+            background-image: linear-gradient(#ce2029, #800000) !important;
+            color: #fff !important;
+            padding: 15px !important;
+            border-top-left-radius: 5px !important;
+            border-top-right-radius: 5px !important;
+            transition: background-color 0.3s ease !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-start !important; /* Align items to the left */
         }
 
         .box-title {
-            font-size: 20px;
-            font-weight: bold;
+            font-size: 20px !important;
+            font-weight: bold !important;
+            margin-right: auto !important; /* Add space between title and buttons */
         }
 
         .breadcrumb {
-            background-color: transparent;
-            margin-bottom: 0;
-            padding: 10px 0;
+            background-color: transparent !important;
+            margin-bottom: 0 !important;
+            padding: 0 !important;
+            list-style: none !important;
+            display: flex !important;
+            align-items: center !important;
+            flex-wrap: wrap !important;
+            padding: 8px 0 !important;
+            margin-bottom: 1rem !important;
         }
 
-        .breadcrumb a {
-            color: #fff;
+        .breadcrumb li {
+            display: inline !important;
+            font-size: 14px !important;
         }
 
-        .breadcrumb .active {
-            color: #ffeb3b;
+        .breadcrumb li a {
+            color: #fff !important;
+            text-decoration: none !important;
+            padding: 0 5px !important;
+        }
+
+        .breadcrumb li::after {
+            content: "/" !important;
+            color: #fff !important;
+            padding: 0 5px !important;
+        }
+
+        .breadcrumb li:last-child::after {
+            content: "" !important;
+        }
+
+        .breadcrumb li.active {
+            color: #ffeb3b !important;
         }
 
         .page-header {
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd !important;
+            padding-bottom: 10px !important;
+            margin-bottom: 20px !important;
         }
 
         .page-header a {
-            background-color: #800000;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
+            background-image: linear-gradient(#ce2029, #800000) !important;
+            color: #fff !important;
+            padding: 10px 20px !important;
+            border-radius: 5px !important;
+            text-decoration: none !important;
+            transition: background-color 0.3s ease !important;
         }
 
         .page-header a:hover {
-            background-color: #ce2029;
+            background-color: #ce2029 !important;
         }
 
         .table {
-            width: 100%;
-            margin-bottom: 20px;
-            border-collapse: collapse;
-            transition: all 0.3s ease-in-out;
+            width: 100% !important;
+            margin-bottom: 20px !important;
+            border-collapse: collapse !important;
+            transition: all 0.3s ease-in-out !important;
         }
 
         .table-hover tbody tr:hover {
-            background-color: #f5f5f5;
+            background-color: #f5f5f5 !important;
         }
 
         .table th, .table td {
-            padding: 15px;
-            border: 1px solid #ddd;
+            padding: 15px !important;
+            border: 1px solid #ddd !important;
         }
 
         .table th {
-            background-color: #800000;
-            color: #fff;
+            background-image: linear-gradient(#ce2029, #800000) !important;
+            color: #fff !important;
         }
 
         .table td {
-            background-color: #fff;
-            color: #333;
+            background-color: #fff !important;
+            color: #333 !important;
         }
 
-        .onoffswitch-small {
-            position: relative;
-            width: 50px;
-            -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+        .btn {
+            padding: 6px 12px !important;
+            border: none !important;
+            border-radius: 4px !important;
+            cursor: pointer !important;
         }
 
-        .onoffswitch-small-checkbox {
-            display: none;
+        .btn-primary {
+            background-color: #ce2029 !important;
+            color: white !important;
         }
 
-        .onoffswitch-small-label {
-            display: block;
-            overflow: hidden;
-            cursor: pointer;
-            border: 2px solid #999999;
-            border-radius: 20px;
+        .btn-danger {
+            background-color: #ce2029 !important;
+            color: white !important;
         }
 
-        .onoffswitch-small-inner {
-            display: block;
-            width: 200%;
-            margin-left: -100%;
-            transition: margin 0.3s ease-in-out;
+        .btn-primary:hover {
+            background-color: #800000 !important;
         }
 
-        .onoffswitch-small-inner:before, .onoffswitch-small-inner:after {
-            display: block;
-            float: left;
-            width: 50%;
-            height: 20px;
-            padding: 0;
-            line-height: 20px;
-            font-size: 12px;
-            color: white;
-            box-sizing: border-box;
-        }
-
-        .onoffswitch-small-inner:before {
-            content: "ON";
-            padding-left: 10px;
-            background-color: #4caf50;
-            color: #FFFFFF;
-        }
-
-        .onoffswitch-small-inner:after {
-            content: "OFF";
-            padding-right: 10px;
-            background-color: #f44336;
-            color: #FFFFFF;
-            text-align: right;
-        }
-
-        .onoffswitch-small-switch {
-            display: block;
-            width: 18px;
-            margin: 1px;
-            background: #FFFFFF;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 28px;
-            border: 2px solid #999999;
-            border-radius: 20px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .onoffswitch-small-checkbox:checked + .onoffswitch-small-label .onoffswitch-small-inner {
-            margin-left: 0;
-        }
-
-        .onoffswitch-small-checkbox:checked + .onoffswitch-small-label .onoffswitch-small-switch {
-            right: 0px;
-        }
-
-        /* Select2 Styles */
-        .select2-container .select2-selection {
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            height: 38px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .select2-container .select2-selection__arrow {
-            height: 36px;
-            top: 1px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .select2-container .select2-selection__rendered {
-            line-height: 36px;
-            transition: all 0.3s ease-in-out;
+        .btn-danger:hover {
+            background-color: #800000 !important;
         }
     </style>
 </head>

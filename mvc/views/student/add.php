@@ -5,131 +5,134 @@
     <title>Add Student</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-        }
-        .box {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.1) !important;
-            margin: 50px auto;
-            padding: 20px;
-            width: 90%;
-            max-width: 800px;
-        }
-        .box-header {
-            background-image: linear-gradient(#ce2029,#800000) !important;
-            border-radius: 8px 8px 0 0;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        .box-header h3 {
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+    }
+    .box {
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.1) !important;
+        margin: 50px auto;
+        padding: 20px;
+        width: 90%;
+        max-width: 800px;
+    }
+    .box-header {
+        background-image: linear-gradient(#ce2029,#800000) !important;
+        border-radius: 8px 8px 0 0;
+        color: white;
+        padding: 20px;
+        text-align: center;
+       
+    }
+    .box-header h3 {
             margin: 0;
-            font-size: 24px;
+            font-size: 24px !important;
         }
-        .breadcrumb {
-            background-color: transparent;
-            margin-bottom: 0;
-            padding: 0;
-        }
-        .breadcrumb li {
-            display: inline;
-            font-size: 14px;
-        }
-        .breadcrumb li a {
-            color: #d9534f; /* Red color */
-            text-decoration: none;
-        }
-        .breadcrumb li a:hover {
-            text-decoration: underline;
-        }
-        .form-horizontal .form-group {
-            margin-bottom: 15px;
-        }
-        .form-horizontal .control-label {
-            text-align: left;
-            font-weight: bold;
-            color: #d9534f; /* Red color */
-        }
-        .form-horizontal .form-control {
-            width: 90%;
-            padding: 10px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            transition: border-color 0.3s !important;
-        }
-        .form-horizontal .form-control:focus {
-            border-color: #d9534f !important; /* Red color */
-        }
-        .btn-success {
-            background-color: #d9534f !important; /* Red color */
-            border-color: #d9534f !important; /* Red color */
-            color: white !important;
-            transition: background-color 0.3s, border-color 0.3s !important;
-        }
-        .btn-success:hover {
-            background-color: #c9302c !important ; /* Dark red color */
-            border-color: #ac2925 !important ; /* Darker red color */
-        }
-        .input-group .btn {
-            margin-left: 5px !important;
-            transition: background-color 0.3s, border-color 0.3s !important;
-        }
-        .input-group .btn-default {
-            background-color: #d9534f !important; /* Red color */
-            border-color: #d9534f !important; /* Red color */
-            color: white !important;
-        }
-        .input-group .btn-default:hover {
-            background-color: #c9302c !important ; /* Dark red color */
-            border-color: #ac2925 !important; /* Darker red color */
-        }
-        .image-preview {
-            border: 1px solid #ddd !important;
-            border-radius: 4px !important;
-            padding: 5px !important;
-        }
-        .image-preview-input-title {
-            color: #fff !important;
-            background-color: #d9534f !important; /* Red color */
-            border-color: #d9534f !important; /* Red color */
-            padding: 6px 12px !important;
-            cursor: pointer !important;
-        }
-        .image-preview-input input[type=file] {
-            position: absolute !important;
-            top: 0 !important;
-            right: 0 !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            font-size: 20px !important;
-            cursor: pointer !important;
-            opacity: 0 !important;
-            filter: alpha(opacity=0) !important;
-        }
-        .popover-title {
-            background-color: #d9534f !important; /* Red color */
-            color: white !important;
-            border-radius: 4px 4px 0 0 !important;
-            padding: 8px 14px !important;
-            font-weight: bold !important;
-        }
-        .popover-content {
-            padding: 14px !important;
-        }
-        .has-error .form-control {
-            border-color: #d9534f !important; /* Red color */
-        }
-        .has-error .control-label {
-            color: #d9534f !important; /* Red color */
-        }
-        .text-red {
-            color: #d9534f !important; /* Red color */
-        }
-    </style>
+
+    .breadcrumb {
+        background-color: transparent;
+        margin-bottom: 0;
+        padding: 0;
+    }
+    .breadcrumb li {
+        display: inline;
+        font-size: 14px;
+    }
+    .breadcrumb li a {
+        color: #d9534f; /* Red color */
+        text-decoration: none;
+    }
+    .breadcrumb li a:hover {
+        text-decoration: underline;
+    }
+    .form-horizontal .form-group {
+        margin-bottom: 15px;
+    }
+    .form-horizontal .control-label {
+        text-align: left;
+        font-weight: bold;
+        color: #d9534f; /* Red color */
+    }
+    .form-horizontal .form-control {
+        width: 90%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        transition: border-color 0.3s !important;
+    }
+    .form-horizontal .form-control:focus {
+        border-color: #d9534f !important; /* Red color */
+    }
+    .btn-success, .btn-default {
+        background-color: #d9534f !important; /* Red color */
+        border-color: #d9534f !important; /* Red color */
+        color: white !important;
+        transition: background-color 0.3s, border-color 0.3s !important;
+    }
+    .btn-success:hover, .btn-default:hover {
+        background-color: #c9302c !important; /* Dark red color */
+        border-color: #ac2925 !important; /* Darker red color */
+    }
+    .input-group .btn {
+        margin-left: 5px !important;
+        transition: background-color 0.3s, border-color 0.3s !important;
+    }
+    .input-group .btn-default {
+        background-color: #d9534f !important; /* Red color */
+        border-color: #d9534f !important; /* Red color */
+        color: white !important;
+    }
+    .input-group .btn-default:hover {
+        background-color: #c9302c !important; /* Dark red color */
+        border-color: #ac2925 !important; /* Darker red color */
+    }
+    .image-preview {
+        border: 1px solid #ddd !important;
+        border-radius: 4px !important;
+        padding: 5px !important;
+    }
+    .image-preview-input-title {
+        color: #fff !important;
+        background-color: #d9534f !important; /* Red color */
+        border-color: #d9534f !important; /* Red color */
+        padding: 6px 12px !important;
+        cursor: pointer !important;
+    }
+    .image-preview-input input[type=file] {
+        position: absolute !important;
+        top: 0 !important;
+        right: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 20px !important;
+        cursor: pointer !important;
+        opacity: 0 !important;
+        filter: alpha(opacity=0) !important;
+    }
+    .popover-title {
+        background-color: #d9534f !important; /* Red color */
+        color: white !important;
+        border-radius: 4px 4px 0 0 !important;
+        padding: 8px 14px !important;
+        font-weight: bold !important;
+    }
+    .popover-content {
+        padding: 14px !important;
+    }
+    .has-error .form-control {
+        border-color: #d9534f !important; /* Red color */
+    }
+    .has-error .control-label {
+        color: #d9534f !important; /* Red color */
+    }
+    .text-red {
+        color: #d9534f !important; /* Red color */
+    }
+</style>
+
 </head>
 <body>
 <div class="box">

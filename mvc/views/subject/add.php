@@ -6,94 +6,95 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            background-color: #f5f5f5 !important;
         }
         .box {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.1);
-            margin: 50px auto;
-            padding: 20px;
-            width: 90%;
-            max-width: 800px;
+            background-color: #ffffff !important;
+            border-radius: 8px !important;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.1) !important;
+            margin: 50px auto !important;
+            padding: 20px !important;
+            width: 90% !important;
+            max-width: 800px !important;
         }
         .box-header {
             background-image: linear-gradient(#ce2029,#800000) !important;
-            border-radius: 8px 8px 0 0;
-            color: white;
-            padding: 20px;
-            text-align: center;
+            border-radius: 8px 8px 0 0 !important;
+            color: white !important;
+            padding: 20px !important;
+            text-align: center !important;
         }
         .box-header h3 {
-            margin: 0;
-            font-size: 24px;
+            margin: 0 !important;
+            font-size: 24px !important;
         }
         .breadcrumb {
-            background-color: transparent;
-            margin-bottom: 0;
-            padding: 0;
+            background-color: transparent !important;
+            margin-bottom: 0 !important;
+            padding: 0 !important;
         }
         .breadcrumb li {
-            display: inline;
-            font-size: 14px;
+            display: inline !important;
+            font-size: 14px !important;
         }
         .breadcrumb li a {
-            color: #d9534f; /* Red color */
-            text-decoration: none;
+            color: #d9534f !important; /* Red color */
+            text-decoration: none !important;
         }
         .breadcrumb li a:hover {
-            text-decoration: underline;
+            text-decoration: underline !important;
         }
         .form-horizontal .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 15px !important;
         }
         .form-horizontal .control-label {
-            text-align: left;
-            font-weight: bold;
-            color: #d9534f; /* Red color */
+            text-align: left !important;
+            font-weight: bold !important;
+            color: #d9534f !important; /* Red color */
         }
         .form-horizontal .form-control {
-            width: 80%;
-            padding: 10px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            transition: border-color 0.3s;
+            width: 80% !important;
+            padding: 10px !important;
+            box-sizing: border-box !important;
+            border: 1px solid #ccc !important;
+            border-radius: 4px !important;
+            transition: border-color 0.3s, box-shadow 0.3s !important;
         }
         .form-horizontal .form-control:focus {
-            border-color: #d9534f; /* Red color */
+            border-color: #d9534f !important; /* Red color */
+            box-shadow: 0 0 5px rgba(217, 83, 79, 0.5) !important; /* Red color */
         }
         .btn-success {
             background-color: #d9534f !important; /* Red color */
-            border-color: #d9534f; /* Red color */
-            color: white;
-            transition: background-color 0.3s, border-color 0.3s;
+            border-color: #d9534f !important; /* Red color */
+            color: white !important;
+            transition: background-color 0.3s, border-color 0.3s !important;
         }
         .btn-success:hover {
             background-color: #c9302c !important; /* Dark red color */
             border-color: #ac2925 !important; /* Darker red color */
         }
         .input-group .btn {
-            margin-left: 5px;
-            transition: background-color 0.3s, border-color 0.3s;
+            margin-left: 5px !important;
+            transition: background-color 0.3s, border-color 0.3s !important;
         }
         .input-group .btn-default {
-            background-color: #d9534f; /* Red color */
-            border-color: #d9534f; /* Red color */
-            color: white;
+            background-color: #d9534f !important; /* Red color */
+            border-color: #d9534f !important; /* Red color */
+            color: white !important;
         }
         .input-group .btn-default:hover {
-            background-color: #c9302c; /* Dark red color */
-            border-color: #ac2925; /* Darker red color */
+            background-color: #c9302c !important; /* Dark red color */
+            border-color: #ac2925 !important; /* Darker red color */
         }
         .has-error .form-control {
-            border-color: #d9534f; /* Red color */
+            border-color: #d9534f !important; /* Red color */
         }
         .has-error .control-label {
-            color: #d9534f; /* Red color */
+            color: #d9534f !important; /* Red color */
         }
         .text-red {
-            color: #d9534f; /* Red color */
+            color: #d9534f !important; /* Red color */
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -27,7 +27,7 @@
         }
         .box-header h3 {
             margin: 0;
-            font-size: 24px;
+            font-size: 24px !important;
         }
         .breadcrumb {
             background-color: transparent;

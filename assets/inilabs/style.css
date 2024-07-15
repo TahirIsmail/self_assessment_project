@@ -1939,12 +1939,12 @@ Component: timeline
 .btn.btn-success:active,
 .btn.btn-success.hover {
   color: #fff;
-  background-color: #09A3A3;
+  background-color: #ac0404;
   /* border-color: #09A3A3; */
 }
 .btn.btn-info {
   color: #fff;
-  background-color: #49b6d6;
+  background-color: #c40104;
   /* border-color: #49b6d6; */
 }
 .btn.btn-info:hover,

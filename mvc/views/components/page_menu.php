@@ -34,6 +34,7 @@
             if(inicompute($dbMenus)) {
                 $menuDesign = '';
                 display_menu($dbMenus, $menuDesign);
+                
                 echo $menuDesign;
             }
             ?>

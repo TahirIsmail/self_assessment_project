@@ -1184,17 +1184,7 @@ body > .header .logo .icon {
    All form elements including input, select, textarea etc.
 -----------------------------------------------------------------
 */
-.form-control {
-  border-radius: 3px;
-  -moz- border-radius: 3px;
-  -webkit- border-radius: 3px;
-  box-shadow: none;
-  border: 1px solid #E2E7EB;
-  color: #555;
-  font-size: 12px;
-  line-height: 1.42857;
-  width: 100%;
-}
+
 .form-control:focus {
   border-color: #b6c2c9 !important;
   box-shadow: none;
@@ -1954,8 +1944,8 @@ Component: timeline
 }
 .btn.btn-success {
   color: #fff;
-  background-color: rgb(209, 193, 255) !important;
-  border-color: #00acac;
+  background-color: rgb(222, 10, 10);
+  border-color: #800505;
 }
 .btn.btn-success:hover,
 .btn.btn-success:active,
@@ -2479,7 +2469,7 @@ Component: timeline
   border: 5px solid rgb(255, 255, 255);
   box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
   margin: 20px;
-  overflow-x: ;
+ 
   width: 360px;
   margin: 90px auto 0 auto;
 }
@@ -2944,7 +2934,6 @@ margin-top: 5px !important;
 .icheckbox_minimal,
 .iradio_minimal {
   display: inline-block;
-  *display: inline;
   vertical-align: middle;
   margin: 0;
   padding: 0;

@@ -603,11 +603,14 @@ function btn_upload($uri, $name)
 
 function display_menu($nodes, &$menu)
 {
+
+    
     $subUrl = ['/add', '/edit', '/view', '/index'];
 
     $CI = &get_instance();
 
 
+    
     foreach ($nodes as $key => $node) {
 
         $leftIcon = '<i class="fa fa-angle-left pull-right"></i>';
@@ -618,6 +621,7 @@ function display_menu($nodes, &$menu)
         }
 
         if (permissionChecker($node['link']) || ($node['link'] == '#' && $f)) {
+           
             if ($f && inicompute($node['child']) == 1) {
                 $f = 0;
                 $node = current($node['child']);
@@ -647,6 +651,10 @@ function display_menu($nodes, &$menu)
                 $menu .= "</ul>";
             }
             $menu .= "</li>";
+
+
+
+           
         }
     }
 }

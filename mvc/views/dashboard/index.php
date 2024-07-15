@@ -5,6 +5,7 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="<?= base_url('assets/css/dashboard.css') ?>">
     <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         /* General Styling */
         body, html {
@@ -100,7 +101,7 @@
 
         /* Small Box */
         .small-box {
-            background-color: #ff6c60;
+            background-image: linear-gradient(#ce2029,#800000) !important;
             color: #fff;
             border-radius: 4px;
             padding: 15px;
@@ -173,147 +174,63 @@
         </div>
 
         <div class="row">
-            <?php if ((config_item('demo') === FALSE) && ($siteinfos->auto_update_notification == 1) && ($versionChecking != 'none')) { ?>
-                <?php if ($this->session->userdata('updatestatus') === null) { ?>
-                    <div class="col-sm-12" id="updatenotify">
-                        <div class="callout callout-success">
-                            <h4>Dear Admin</h4>
-                            <p>iTest - Complete Online Examination System has released a new update.</p>
-                            <p>Do you want to update it now <?= config_item('ini_version') ?> to <?= $versionChecking ?> ?</p>
-                            <a href="<?= base_url('dashboard/remind') ?>" class="btn btn-danger">Remind me</a>
-                            <a href="<?= base_url('dashboard/update') ?>" class="btn btn-success">Update</a>
-                        </div>
-                    </div>
-                <?php } ?> 
-            <?php } ?>
-
-            <?php
-                $arrayColor = array(
-                    'bg-teal',
-                    'bg-dark-blue',
-                    'bg-yellow',
-                    'bg-orange'
-                );
-
-                function allModuleArray($usertypeID = '1', $dashboardWidget) {
-                    if (!is_array($dashboardWidget)) {
-                        throw new InvalidArgumentException('$dashboardWidget must be an array');
-                    }
-
-                    $userAllModuleArray = array(
-                        $usertypeID => array(
-                            'student' => (int)$dashboardWidget['students'],
-                            'classes' => (int)$dashboardWidget['classes'],
-                            'parents' => (int)$dashboardWidget['parents'],
-                            'subject' => (int)$dashboardWidget['subjects'],
-                            'event' => (int)$dashboardWidget['events'],
-                            'online_exam' => (int)$dashboardWidget['onlineexam'],
-                            'question_level' => (int)$dashboardWidget['questionlevel'],
-                            'question_bank' => (int)$dashboardWidget['questionbank'],
-                            'notice' => (int)$dashboardWidget['notice'],
-                            'studentgroup' => (int)$dashboardWidget['studentgroup']
-                        )
-                    );
-
-                    return $userAllModuleArray;
-                }
-
-                $userArray = array(
-                    '1' => array(
-                        'student' => $dashboardWidget['students'],
-                        'parents' => $dashboardWidget['parents'],
-                        'online_exam' => $dashboardWidget['onlineexam'],
-                        'notice' => $dashboardWidget['notice']
-                    ), '2' => array(
-                        'student' => $dashboardWidget['students'],
-                        'classes' => $dashboardWidget['classes'],
-                        'subject' => $dashboardWidget['subjects'],
-                    ), '3' => array(
-                        'subjects' => $dashboardWidget['subjects'],
-                    ), '4' => array(
-                        'event' => $dashboardWidget['events'],
-                    )
-                );
-
-                $generateBoxArray = [];
-                $counter = 1;
-                $getActiveUserID = $this->session->userdata('usertypeID');
-
-                $getAllSessionDatas = $this->session->userdata('master_permission_set');
-                foreach ($getAllSessionDatas as $getAllSessionDataKey => $getAllSessionData) {
-                    if ($getAllSessionData == 'yes') {
-                        if (isset($userArray[$getActiveUserID][$getAllSessionDataKey])) {
-                            if ($counter > 4) {
-                                break;
-                            }
-
-                            $generateBoxArray[$getAllSessionDataKey] = array(
-                                'icon' => $dashboardWidget['allmenu'][$getAllSessionDataKey],
-                                'color' => $arrayColor[$counter - 1],
-                                'link' => $getAllSessionDataKey,
-                                'count' => $counter,
-                                'menu' => $dashboardWidget['allmenulang'][$getAllSessionDataKey],
-                            );
-                            $counter++;
-                        }
-                    }
-                }
-
-                if ($counter <= 4) {
-                    $userArray = allModuleArray($getActiveUserID, (array)$dashboardWidget);
-                    foreach ($getAllSessionDatas as $getAllSessionDataKey => $getAllSessionData) {
-                        if ($getAllSessionData == 'yes') {
-                            if (isset($userArray[$getActiveUserID][$getAllSessionDataKey])) {
-                                if ($counter > 4) {
-                                    break;
-                                }
-
-                                if (!isset($generateBoxArray[$getAllSessionDataKey])) {
-                                    $generateBoxArray[$getAllSessionDataKey] = array(
-                                        'icon' => $dashboardWidget['allmenu'][$getAllSessionDataKey],
-                                        'color' => $arrayColor[$counter - 1],
-                                        'link' => $getAllSessionDataKey,
-                                        'count' => $counter,
-                                        'menu' => $dashboardWidget['allmenulang'][$getAllSessionDataKey]
-                                    );
-                                    $counter++;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                if (inicompute($generateBoxArray)) {
-                    foreach ($generateBoxArray as $generateBoxArrayKey => $generateBoxValue) {
-            ?>
+            <!-- Students Button -->
             <div class="col-lg-3 col-xs-6">
-                <div class="small-box <?= $generateBoxValue['color'] ?>">
-                    <a class="small-box-footer" href="<?= base_url($generateBoxValue['link']) ?>">
-                        <div class="icon <?= $generateBoxValue['color'] ?>" style="padding: 9.5px 18px 8px 18px;">
-                            <i class="fa <?= $generateBoxValue['icon'] ?>"></i>
+                <div class="small-box" id="students-button">
+                    <a class="small-box-footer">
+                        <div class="icon" style="padding: 9.5px 18px 8px 18px;">
+                            <i class="fa fa-users"></i>
                         </div>
                         <div class="inner">
-                            <h3>
-                                <?= $generateBoxValue['count'] ?>
-                            </h3>
-                            <p>
-                                <?= $this->lang->line('menu_' . $generateBoxValue['menu']) ?>
-                            </p>
+                            <h3 id="student-count">0</h3>
+                            <p>Students</p>
                         </div>
                     </a>
                 </div>
             </div>
-            <?php
-                    }
-                }
-            ?>
+
+            <!-- Teachers Button -->
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box" id="teachers-button">
+                    <a class="small-box-footer">
+                        <div class="icon" style="padding: 9.5px 18px 8px 18px;">
+                            <i class="fa fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="inner">
+                            <h3 id="teacher-count">0</h3>
+                            <p>Teachers</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Subjects Button -->
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box" id="subjects-button">
+                    <a class="small-box-footer">
+                        <div class="icon" style="padding: 9.5px 18px 8px 18px;">
+                            <i class="fa fa-book"></i>
+                        </div>
+                        <div class="inner">
+                            <h3 id="subject-count">0</h3>
+                            <p>Subjects</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <div class="row">
             <div class="col-sm-12">
                 <div class="box">
-                    <div class="box-body" style="padding: 0px;">
-                        <div id="visitor"></div>
+                    <div class="box-body" id="student-records" style="display: none;">
+                        <!-- Student records will be displayed here -->
+                    </div>
+                    <div class="box-body" id="teacher-records" style="display: none;">
+                        <!-- Teacher records will be displayed here -->
+                    </div>
+                    <div class="box-body" id="subject-records" style="display: none;">
+                        <!-- Subject records will be displayed here -->
                     </div>
                 </div>
             </div>
@@ -355,6 +272,77 @@
     </div>
 
     <script>
+        $(document).ready(function() {
+            // Students Button Click
+            $('#students-button').click(function() {
+                $.ajax({
+                    url: '<?= base_url('dashboard/get_students') ?>',
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        console.log('Students:', response); // Debugging line
+                        let studentCount = response.length;
+                        $('#student-count').text(studentCount);
+                        let records = '';
+                        response.forEach(student => {
+                            records += `<p>${student.name} - ${student.roll}</p>`;
+                        });
+                        $('#student-records').html(records).toggle();
+                    },
+                    error: function(error) {
+                        console.log('Error fetching student data:', error);
+                    }
+                });
+            });
+
+            // Teachers Button Click
+            $('#teachers-button').click(function() {
+                alert('0');
+                $.ajax({
+                    url: '<?= base_url('dashboard/get_teachers') ?>',
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        console.log('Teachers:', response); // Debugging line
+                        let teacherCount = response.length;
+                        $('#teacher-count').text(teacherCount);
+                        let records = '';
+                        response.forEach(teacher => {
+                            records += `<p>${teacher.name} - ${teacher.subject}</p>`;
+                        });
+                        $('#teacher-records').html(records).toggle();
+                    },
+                    error: function(error) {
+                        console.log('Error fetching teacher data:', error);
+                    }
+                });
+            });
+
+            // Subjects Button Click
+            $('#subjects-button').click(function() {
+                alert('0');
+                $.ajax({
+                    url: '<?= base_url('dashboard/get_subjects') ?>',
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        console.log('Subjects:', response); // Debugging line
+                        alert(response);
+                        let subjectCount = response.length;
+                        $('#subject-count').text(subjectCount);
+                        let records = '';
+                        response.forEach(subject => {
+                            records += `<p>${subject.name}</p>`;
+                        });
+                        $('#subject-records').html(records).toggle();
+                    },
+                    error: function(error) {
+                        console.log('Error fetching subject data:', error);
+                    }
+                });
+            });
+        });
+
         // Students Chart
         Highcharts.chart('students-chart', {
             chart: {
@@ -453,20 +441,6 @@
                 data: [85, 90, 78, 88],
                 color: '#ff0000' // Red color
             }]
-        });
-    </script>
-
-    <script type="text/javascript"> 
-        $(document).ready(function() {
-            var count = 7;
-            var countdown = setInterval(function() {
-                $("p.countdown").html(count + " seconds remaining!");
-                if (count == 0) {
-                    clearInterval(countdown);
-                    $('#resetDummyData').hide();
-                }
-                count--;
-            }, 1000);
         });
     </script>
 </body>
