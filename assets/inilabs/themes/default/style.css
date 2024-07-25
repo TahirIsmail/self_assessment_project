@@ -3726,3 +3726,6 @@ fieldset[disabled] .btn-vk.active {
   border-radius: 10px !important;
     background-color: white !important;
 }
+.bootstrap-tagsinput{
+  width: 100% !important;
+}

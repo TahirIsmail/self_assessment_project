@@ -57,16 +57,16 @@ public $load;
 				'label' => $this->lang->line("student_name"),
 				'rules' => 'trim|required|xss_clean|max_length[60]'
 			),
-			array(
-				'field' => 'dob',
-				'label' => $this->lang->line("student_dob"),
-				'rules' => 'trim|max_length[10]|xss_clean|callback_date_valid'
-			),
-			array(
-				'field' => 'sex',
-				'label' => $this->lang->line("student_sex"),
-				'rules' => 'trim|required|max_length[10]|xss_clean'
-			),
+			// array(
+			// 	'field' => 'dob',
+			// 	'label' => $this->lang->line("student_dob"),
+			// 	'rules' => 'trim|max_length[10]|xss_clean|callback_date_valid'
+			// ),
+			// array(
+			// 	'field' => 'sex',
+			// 	'label' => $this->lang->line("student_sex"),
+			// 	'rules' => 'trim|required|max_length[10]|xss_clean'
+			// ),
 			// array(
 			// 	'field' => 'bloodgroup',
 			// 	'label' => $this->lang->line("student_bloodgroup"),
@@ -140,21 +140,21 @@ public $load;
 				'label' => $this->lang->line("student_address"),
 				'rules' => 'trim|max_length[200]|xss_clean'
 			),
-			array(
-				'field' => 'state',
-				'label' => $this->lang->line("student_state"),
-				'rules' => 'trim|max_length[128]|xss_clean'
-			),
-			array(
-				'field' => 'country',
-				'label' => $this->lang->line("student_country"),
-				'rules' => 'trim|max_length[128]|xss_clean'
-			),
-			array(
-				'field' => 'photo',
-				'label' => $this->lang->line("student_photo"),
-				'rules' => 'trim|max_length[200]|xss_clean|callback_photoupload'
-			),            
+			// array(
+			// 	'field' => 'state',
+			// 	'label' => $this->lang->line("student_state"),
+			// 	'rules' => 'trim|max_length[128]|xss_clean'
+			// ),
+			// array(
+			// 	'field' => 'country',
+			// 	'label' => $this->lang->line("student_country"),
+			// 	'rules' => 'trim|max_length[128]|xss_clean'
+			// ),
+			// array(
+			// 	'field' => 'photo',
+			// 	'label' => $this->lang->line("student_photo"),
+			// 	'rules' => 'trim|max_length[200]|xss_clean|callback_photoupload'
+			// ),            
 
 			array(
 				'field' => 'username',
@@ -375,6 +375,8 @@ public $load;
 
 		if($_POST !== []) {
 			$rules = $this->rules();
+			// dd($rules);
+
 			$this->form_validation->set_rules($rules);
 			if ($this->form_validation->run() == FALSE) {
 				$this->data["subview"] = "student/add";

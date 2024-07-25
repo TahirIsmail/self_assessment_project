@@ -53,7 +53,7 @@
                                         <thead>
                                             <tr>
                                                 <th class="col-sm-1"><?=$this->lang->line('slno')?></th>
-                                                <th class="col-sm-2"><?=$this->lang->line('student_photo')?></th>
+                                                <!-- <th class="col-sm-2"><?=$this->lang->line('student_photo')?></th> -->
                                                 <th class="col-sm-2"><?=$this->lang->line('student_name')?></th>
                                                 <!-- <th class="col-sm-2"><?=$this->lang->line('student_roll')?></th> -->
                                                 <th class="col-sm-2"><?=$this->lang->line('student_email')?></th>
@@ -72,9 +72,9 @@
                                                         <?php echo $i; ?>
                                                     </td>
 
-                                                    <td data-title="<?=$this->lang->line('student_photo')?>">
+                                                    <!-- <td data-title="<?=$this->lang->line('student_photo')?>">
                                                         <?=profileimage($student->photo)?>
-                                                    </td>
+                                                    </td> -->
                                                     <td data-title="<?=$this->lang->line('student_name')?>">
                                                         <?php echo $student->name; ?>
                                                     </td>

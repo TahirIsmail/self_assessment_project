@@ -46,7 +46,7 @@
             'linear-gradient(to right, #ed213a, #93291e)'
         );
 
-        function allModuleArray($usertypeID = '1',$dashboardWidget) {
+        function allModuleArray($usertypeID = '1', $dashboardWidget) {
             if (!is_array($dashboardWidget)) {
                 throw new InvalidArgumentException('$dashboardWidget must be an array');
             }

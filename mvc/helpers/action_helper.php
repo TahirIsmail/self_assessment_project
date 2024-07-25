@@ -603,6 +603,8 @@ function btn_upload($uri, $name)
 
 function display_menu($nodes, &$menu)
 {
+
+    // dd($nodes);
     $subUrl = ['/add', '/edit', '/view', '/index'];
 
     $CI = &get_instance();

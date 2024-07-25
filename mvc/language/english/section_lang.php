@@ -25,3 +25,17 @@ $lang['delete'] = 'Delete';
 
 $lang['add_section'] = 'Add Course';
 $lang['update_section'] = 'Update Course';
+
+$lang['subject_name'] = 'Unit Name';
+$lang['subject_names'] = 'Unit Names';
+
+$lang['online_exam_validDays']          = "Valid Days";
+$lang['online_exam_cost']               = "Cost";
+$lang['online_exam_judge']              = "Judge";
+$lang['online_exam_auto']               = "Auto";
+$lang['online_exam_manually']           = "Manually";
+$lang['online_exam_ispaid']             = "Is Paid";
+$lang['online_exam_free']               = "Free";
+$lang['online_exam_paid']               = "Paid";
+$lang['online_exam_unpaid']             = "Unpaid";
+$lang['online_exam_payment_status']                   = "Payment Status";

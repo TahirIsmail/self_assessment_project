@@ -57,6 +57,7 @@ class Online_exam extends Admin_Controller
         $usertypeID  = $this->session->userdata('usertypeID');
         $loginuserID = $this->session->userdata('loginuserID');
 
+        
         $this->data['userSubjectPluck'] = [];
         if ($usertypeID == '3') {
             $this->data['student'] = $this->student_m->get_single_student(array('studentID' => $loginuserID));
@@ -69,6 +70,7 @@ class Online_exam extends Admin_Controller
             }
         }
 
+       
         $this->data['usertypeID']   = $usertypeID;
         $this->data['online_exams'] = $this->online_exam_m->get_order_by_online_exam();
         $this->data["subview"] = "online_exam/index";
@@ -311,10 +313,7 @@ class Online_exam extends Admin_Controller
                     'type'         => 'examTypeNumber',
                     'markType'     => 'markType',
                     'percentage'   => 'percentage',
-                    'ispaid'       => 'paid',
-                    'validDays'    => 'validDays',
-                    'cost'         => 'cost',
-                    'judge'        => 'judge'
+                   
                 ];
                 if ($inputs['type'] == 4) {
                     $databasePair['startdate'] = 'startDateTime';
@@ -335,9 +334,7 @@ class Online_exam extends Admin_Controller
                     }
                 }
 
-                if ($this->input->post('ispaid') == 0) {
-                    $array['cost'] = 0;
-                }
+              
 
                 $array['examStatus']          = $this->input->post('examStatus');
                 $array['published']           = $this->input->post('published');
@@ -604,9 +601,9 @@ class Online_exam extends Admin_Controller
 
     public function getSubject()
     {
-        $classID = $this->input->post('classID');
-        if ((int)$classID !== 0) {
-            $allSubject = $this->subject_m->get_order_by_subject(array('classesID' => $classID));
+        $sectionID = $this->input->post('sectionID');
+        if ((int)$sectionID !== 0) {
+            $allSubject = $this->subject_m->get_order_by_subject(array('course_id' => $sectionID));
 
             echo "<option value=''>", $this->lang->line("online_exam_select"), "</option>";
 

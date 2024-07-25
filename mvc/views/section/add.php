@@ -33,39 +33,18 @@
                         </span>
                     </div>
 
-                    <?php
-                        // if(form_error('category'))
-                        //     echo "<div class='form-group has-error' >";
-                        // else
-                        //     echo "<div class='form-group' >";
-                    ?>
-                        <!-- <label for="category" class="col-sm-2 control-label">
-                            <?=$this->lang->line("section_category")?> <span class="text-red">*</span>
-                        </label> -->
-                        <!-- <div class="col-sm-6">
-                            <input type="text" class="form-control" id="category" name="category" value="<?=set_value('category')?>" >
-                        </div> -->
-                        <!-- <span class="col-sm-4 control-label">
-                            <?php echo form_error('category'); ?>
-                        </span> -->
-                    <!-- </div> -->
-
-                    <?php
-                        // if(form_error('capacity'))
-                        //     echo "<div class='form-group has-error' >";
-                        // else
-                        //     echo "<div class='form-group' >";
-                    ?>
-                        <!-- <label for="capacity" class="col-sm-2 control-label">
-                            <?=$this->lang->line("section_capacity")?> <span class="text-red">*</span>
+                    <div class="form-group">
+                    <label for="note" class="col-sm-2 control-label">
+                        <?=$this->lang->line("subject_name")?> <span class="text-red">*</span>
                         </label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="capacity" name="capacity" value="<?=set_value('capacity')?>" >
+                        <input type="text" id="tags" name="subject_name" data-role="tagsinput" placeholder="Enter Units Name" value="<?=set_value('subject_name')?>">
                         </div>
                         <span class="col-sm-4 control-label">
-                            <?php echo form_error('capacity'); ?>
+                            <?php echo form_error('subject_name'); ?>
                         </span>
-                    </div> -->
+                    </div>
+
 
                     <?php
                         if(form_error('classesID'))
@@ -100,6 +79,144 @@
                         </span>
                     </div>
 
+
+                    <?php
+                        if(form_error('note'))
+                            echo "<div class='form-group has-error' >";
+                        else
+                            echo "<div class='form-group' >";
+                    ?>
+                        <label for="note" class="col-sm-2 control-label">
+                            <?=$this->lang->line("section_note")?>
+                        </label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" style="resize:none;" id="note" name="note"><?=set_value('note')?></textarea>
+                        </div>
+                        <span class="col-sm-4 control-label">
+                            <?php echo form_error('note'); ?>
+                        </span>
+                    </div>
+
+
+                    <div class="form-group <?=form_error('ispaid') ? 'has-error' : '' ?>" id="ispaidDiv" >
+                        <label for="ispaid" class="col-sm-2 control-label">
+                            <?=$this->lang->line("online_exam_payment_status")?> <span class="text-red">*</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <?php
+                                $array = [
+                                    5 => $this->lang->line("online_exam_select"),
+                                    0 => $this->lang->line("online_exam_free"),
+                                    1 => $this->lang->line("online_exam_paid")
+                                ];
+                                echo form_dropdown("ispaid", $array, set_value("ispaid"), "id='ispaid' class='form-control select2'");
+                            ?>
+                        </div>
+                        <span class="col-sm-4 control-label">
+                            <?php echo form_error('ispaid'); ?>
+                        </span>
+                    </div>
+
+                    <?php
+                        if(form_error('validDays'))
+                            echo "<div class='form-group has-error' id='validDaysDiv'>";
+                        else
+                            echo "<div class='form-group' id='validDaysDiv'>";
+                    ?>
+                        <label for="validDays" class="col-sm-2 control-label">
+                            <?=$this->lang->line("online_exam_validDays")?>
+                        </label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="validDays" name="validDays" value="<?=set_value('validDays')?>" >
+                        </div>
+                        <span class="col-sm-4 control-label">
+                            <?php echo form_error('validDays'); ?>
+                        </span>
+                    </div>
+
+                    <?php
+                    if(form_error('cost'))
+                        echo "<div class='form-group has-error' id='costDiv'>";
+                    else
+                        echo "<div class='form-group' id='costDiv'>";
+                    ?>
+                        <label for="cost" class="col-sm-2 control-label">
+                            <?=$this->lang->line("online_exam_cost")?> <span class="text-red">*</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="cost" name="cost" value="<?=set_value('cost')?>" >
+                        </div>
+                        <span class="col-sm-4 control-label">
+                            <?php echo form_error('cost'); ?>
+                        </span>
+                    </div>
+
+                    <?php
+                    if(form_error('judge'))
+                        echo "<div class='form-group has-error' style='display: none;'>";
+                    else
+                        echo "<div class='form-group' style='display: none;'>";
+                    ?>
+                        <label for="judge" class="col-sm-2 control-label">
+                            <?=$this->lang->line("online_exam_judge")?>
+                        </label>
+                        <div class="col-sm-4">
+                            <?php
+                            $array = [
+                                0 => $this->lang->line("online_exam_auto"),
+                                1 => $this->lang->line("online_exam_manually")
+                            ];
+                            echo form_dropdown("judge", $array, set_value("judge"), "id='judge' class='form-control select2'");
+                            ?>
+                        </div>
+                        <span class="col-sm-4 control-label">
+                            <?php echo form_error('judge'); ?>
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-8">
+                            <input type="submit" class="btn btn-success" value="<?=$this->lang->line("add_section")?>" >
+                        </div>
+                    </div>
+
+
+                    <?php
+                        // if(form_error('category'))
+                        //     echo "<div class='form-group has-error' >";
+                        // else
+                        //     echo "<div class='form-group' >";
+                    ?>
+                        <!-- <label for="category" class="col-sm-2 control-label">
+                            <?=$this->lang->line("section_category")?> <span class="text-red">*</span>
+                        </label> -->
+                        <!-- <div class="col-sm-6">
+                            <input type="text" class="form-control" id="category" name="category" value="<?=set_value('category')?>" >
+                        </div> -->
+                        <!-- <span class="col-sm-4 control-label">
+                            <?php echo form_error('category'); ?>
+                        </span> -->
+                    <!-- </div> -->
+
+                    <?php
+                        // if(form_error('capacity'))
+                        //     echo "<div class='form-group has-error' >";
+                        // else
+                        //     echo "<div class='form-group' >";
+                    ?>
+                        <!-- <label for="capacity" class="col-sm-2 control-label">
+                            <?=$this->lang->line("section_capacity")?> <span class="text-red">*</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="capacity" name="capacity" value="<?=set_value('capacity')?>" >
+                        </div>
+                        <span class="col-sm-4 control-label">
+                            <?php echo form_error('capacity'); ?>
+                        </span>
+                    </div> -->
+
+                   
+
                     <?php
                         // if(form_error('teacherID'))
                         //     echo "<div class='form-group has-error' >";
@@ -126,29 +243,8 @@
                         </span>
                     </div> -->
 
-                    <?php
-                        if(form_error('note'))
-                            echo "<div class='form-group has-error' >";
-                        else
-                            echo "<div class='form-group' >";
-                    ?>
-                        <label for="note" class="col-sm-2 control-label">
-                            <?=$this->lang->line("section_note")?>
-                        </label>
-                        <div class="col-sm-6">
-                            <textarea class="form-control" style="resize:none;" id="note" name="note"><?=set_value('note')?></textarea>
-                        </div>
-                        <span class="col-sm-4 control-label">
-                            <?php echo form_error('note'); ?>
-                        </span>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-8">
-                            <input type="submit" class="btn btn-success" value="<?=$this->lang->line("add_section")?>" >
-                        </div>
-                    </div>
-
+                    
+                   
                 </form>
                 <?php if ($siteinfos->note==1) { ?>
                     <!-- <div class="callout callout-danger">
@@ -163,4 +259,26 @@
 
 <script>
 $( ".select2" ).select2( { placeholder: "", maximumSelectionSize: 6 } );
+
+$(function() {
+        $('#validDaysDiv').hide();
+        $('#costDiv').hide();
+    })
+
+    
+    $('#ispaid').change(function(event) {
+        if($(this).val() == 1) {
+            $('#costDiv').show();
+        } else {
+            $('#costDiv').hide();
+        }
+    });
+
+    $(document).ready(function() {
+        if($('#ispaid').val() == 1) {
+            $('#costDiv').show();
+        } else {
+            $('#costDiv').hide();
+        }
+    });
 </script>

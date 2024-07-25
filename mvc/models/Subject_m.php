@@ -38,6 +38,7 @@ class Subject_m extends MY_Model {
 
 	public function general_get_order_by_subject($array=NULL) 
 	{
+		
 		$query = parent::get_order_by($array);
 		return $query;
 	}
@@ -70,9 +71,9 @@ class Subject_m extends MY_Model {
 		return $query;
 	}
 
-	public function insert_subject($array) 
+	public function insert_subject($units) 
 	{
-		$error = parent::insert($array);
+		$error = parent::insertUnits($units);
 		return TRUE;
 	}
 

@@ -2,7 +2,7 @@
 
 class MY_Model extends CI_Model {
 
-	protected $_table_name = '';
+	// protected $_table_name = '';
 	protected $_primary_key = '';
 	protected $_primary_filter = 'intval';
 	protected $_order_by = '';
@@ -35,14 +35,25 @@ class MY_Model extends CI_Model {
 	}
 
 	function get_order_by($array=NULL) {
+		
+
+		
 		if($array != NULL) {
-			$this->db->from($this->_table_name)->where($array)->order_by($this->_order_by);
-			$query = $this->db->get();
+
+
+			$this->db->from($this->_table_name)->where($array)->order_by($this->_order_by);			
+			$query = $this->db->get();		
 			return $query->result();
+
+
 		} else {
-			$this->db->from($this->_table_name)->order_by($this->_order_by);
+
+
+			$this->db->from($this->_table_name)->order_by($this->_order_by);			
 			$query = $this->db->get();
 			return $query->result();
+
+
 		}
 	}
 
@@ -62,11 +73,28 @@ class MY_Model extends CI_Model {
 	function insert($array) {
 		// echo '<pre>';
 		// print_r($array);
+		// echo $this->_table_name;
 		// echo '</pre>';
 		// exit;
 		$this->db->insert($this->_table_name, $array);
 		$id = $this->db->insert_id();
 		return $id;
+	}
+
+
+	function insertUnits($array) {
+		// echo '<pre>';
+		// print_r($array);
+		// echo '</pre>';
+		// exit;
+		$this->db->insert_batch($this->_table_name, $array);
+        
+        // Check for successful insertion
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
 	}
 
 	function update($data, $id = NULL) {

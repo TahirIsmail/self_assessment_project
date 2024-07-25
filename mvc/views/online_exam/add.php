@@ -74,7 +74,7 @@
                         </span>
                     </div>
 
-                    <!-- <?php
+                    <?php
                     if(form_error('classes'))
                         echo "<div class='form-group has-error' >";
                     else
@@ -97,9 +97,9 @@
                         <span class="col-sm-4 control-label">
                             <?php echo form_error('classes'); ?>
                         </span>
-                    </div> -->
+                    </div>
 
-                    <!-- <?php
+                    <?php
                     if(form_error('section'))
                         echo "<div class='form-group has-error' >";
                     else
@@ -122,7 +122,7 @@
                         <span class="col-sm-4 control-label">
                             <?php echo form_error('section'); ?>
                         </span>
-                    </div> -->
+                    </div>
 
                     <!-- <?php
                     if(form_error('studentGroup'))
@@ -681,10 +681,23 @@
                     }
                 });
 
+              
+            }
+        }
+    });
+
+
+    $("#section").change(function() {
+        var id = $(this).val();
+        if(parseInt(id)) {
+            if(id === '0') {
+                $('#sectionID').val(0);
+            } else {                
+
                 $.ajax({
                     type: 'POST',
                     url: "<?=base_url('online_exam/getSubject')?>",
-                    data: {"classID" : id},
+                    data: {"sectionID" : id},
                     dataType: "html",
                     success: function(data) {
                         $('#subject').html(data);
@@ -693,6 +706,11 @@
             }
         }
     });
+
+
+
+
+
 
     $('#ispaid').change(function(event) {
         if($(this).val() == 1) {

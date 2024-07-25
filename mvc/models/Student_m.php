@@ -26,7 +26,7 @@ class student_m extends MY_Model {
 
 	public function get_student($array=NULL, $signal=FALSE) 
 	{
-	    // $this->db->join('studentextend', 'studentextend.studentID = student.studentID', 'LEFT');
+	    $this->db->join('studentextend', 'studentextend.studentID = student.studentID', 'LEFT');
 		$query = parent::get($array, $signal);
 		return $query;
 	}
@@ -34,7 +34,7 @@ class student_m extends MY_Model {
 	public function get_single_student($array) 
 	{
 		$array = $this->makeArrayWithTableName($array);
-        // $this->db->join('studentextend', 'studentextend.studentID = student.studentID', 'LEFT');
+        $this->db->join('studentextend', 'studentextend.studentID = student.studentID', 'LEFT');
 		$query = parent::get_single($array);
 		return $query;
 	}
@@ -42,7 +42,7 @@ class student_m extends MY_Model {
 	public function get_order_by_student($array=[]) 
 	{
 		$array = $this->makeArrayWithTableName($array);
-		// $this->db->join('studentextend', 'studentextend.studentID = student.studentID', 'LEFT');
+		$this->db->join('studentextend', 'studentextend.studentID = student.studentID', 'LEFT');
 		$query = parent::get_order_by($array);
 		return $query;
 	}
@@ -50,7 +50,7 @@ class student_m extends MY_Model {
 	public function general_get_student($array=NULL, $signal=FALSE) 
 	{
 		$array = $this->makeArrayWithTableName($array);
-		// $this->db->join('studentextend', 'studentextend.studentID = student.studentID', 'LEFT');
+		$this->db->join('studentextend', 'studentextend.studentID = student.studentID', 'LEFT');
 		$query = parent::get($array, $signal);
 		return $query;
 	}
@@ -58,7 +58,7 @@ class student_m extends MY_Model {
 	public function general_get_order_by_student($array=NULL) 
 	{
 		$array = $this->makeArrayWithTableName($array);
-		// $this->db->join('studentextend', 'studentextend.studentID = student.studentID', 'LEFT');
+		$this->db->join('studentextend', 'studentextend.studentID = student.studentID', 'LEFT');
 		$query = parent::get_order_by($array);
 		return $query;
 	}
@@ -66,7 +66,7 @@ class student_m extends MY_Model {
 	public function general_get_single_student($array) 
 	{
 		$array = $this->makeArrayWithTableName($array);
-		// $this->db->join('studentextend', 'studentextend.studentID = student.studentID', 'LEFT');
+		$this->db->join('studentextend', 'studentextend.studentID = student.studentID', 'LEFT');
 		$query = parent::get_single($array);
 		return $query;
 	}

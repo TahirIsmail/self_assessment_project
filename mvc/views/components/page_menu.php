@@ -12,7 +12,6 @@
                 <div class="pull-left image">
                     <img style="display:block" src="<?=imagelink($this->session->userdata('photo'))?>" class="img-circle" alt="" />
                 </div>
-
                 <div class="pull-left info">
                     <?php
                     $name = $this->session->userdata("name");
@@ -32,7 +31,7 @@
         <ul class="sidebar-menu">
             <?php
             if(inicompute($dbMenus)) {
-                $menuDesign = '';
+                $menuDesign = '';               
                 display_menu($dbMenus, $menuDesign);
                 echo $menuDesign;
             }

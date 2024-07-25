@@ -1,16 +1,17 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Section extends Admin_Controller {
-public $load;
- public $session;
- public $lang;
- public $data;
- public $uri;
- public $form_validation;
- public $input;
- public $section_m;
- public $studentrelation_m;
- /*
+class Section extends Admin_Controller
+{
+	public $load;
+	public $session;
+	public $lang;
+	public $data;
+	public $uri;
+	public $form_validation;
+	public $input;
+	public $section_m;
+	public $studentrelation_m;
+	/*
 | -----------------------------------------------------
 | PRODUCT NAME: 	INILABS SCHOOL MANAGEMENT SYSTEM
 | -----------------------------------------------------
@@ -23,23 +24,32 @@ public $load;
 | WEBSITE:			http://inilabs.net
 | -----------------------------------------------------
 */
-	function __construct() {
+	function __construct()
+	{
 		parent::__construct();
 		$this->load->model("section_m");
 		$this->load->model('classes_m');
 		$this->load->model('studentrelation_m');
 		$this->load->model('teacher_m');
+		$this->load->model('subject_m');
 		$language = $this->session->userdata('lang');
 		$this->lang->load('section', $language);
 	}
 
-	protected function rules() {
+	protected function rules($ispaid = 0)
+	{
 		return array(
 			array(
 				'field' => 'section',
 				'label' => $this->lang->line("section_name"),
 				'rules' => 'trim|required|xss_clean|max_length[60]|callback_unique_section'
 			),
+			array(
+				'field' => 'subject_name',
+				'label' => $this->lang->line("subject_name"),
+				'rules' => 'trim|required|xss_clean'
+			),
+
 			// array(
 			// 	'field' => 'category',
 			// 	'label' => $this->lang->line("section_category"),
@@ -66,9 +76,17 @@ public $load;
 				'rules' => 'trim|max_length[200]|xss_clean'
 			)
 		);
+		if ($ispaid == 1) {
+			$rules[] = array(
+				'field' => 'cost',
+				'label' => $this->lang->line("online_exam_cost"),
+				'rules' => 'trim|xss_clean|required|numeric|callback_unique_cost'
+			);
+		}
 	}
 
-	public function index() {
+	public function index()
+	{
 
 		$this->data['headerassets'] = array(
 			'css' => array(
@@ -81,21 +99,24 @@ public $load;
 		);
 		$id = htmlentities((string) escapeString($this->uri->segment(3)));
 
-		if((int)$id !== 0) {
-
+		if ((int)$id !== 0) {
 			$this->data['set'] = $id;
 			$this->data['classes'] = $this->classes_m->get_classes();
-			$this->data['sections'] = $this->section_m->get_join_section($id);
+			// $this->data['sections'] = $this->section_m->get_join_section($id);
+			$this->data['sections'] = $this->section_m->get_join_section_units($id);
 			$this->data["subview"] = "section/index";
+			// dd($this->data['sections']);
 			$this->load->view('_layout_main', $this->data);
 		} else {
+
 			$this->data['classes'] = $this->classes_m->get_classes();
 			$this->data["subview"] = "section/search";
 			$this->load->view('_layout_main', $this->data);
 		}
 	}
 
-	public function add() {
+	public function add()
+	{
 		$this->data['headerassets'] = array(
 			'css' => array(
 				'assets/select2/css/select2.css',
@@ -107,9 +128,11 @@ public $load;
 		);
 		$this->data['classes'] = $this->classes_m->get_classes();
 		$this->data['teachers'] = $this->teacher_m->get_teacher();
-		if($_POST !== []) {
-			$rules = $this->rules();
+
+		if ($_POST !== []) {
+			$rules = $this->rules($this->input->post('ispaid'));
 			$this->form_validation->set_rules($rules);
+
 			if ($this->form_validation->run() == FALSE) {
 				$this->data["subview"] = "section/add";
 				$this->load->view('_layout_main', $this->data);
@@ -117,20 +140,61 @@ public $load;
 				$array = array(
 					"section" => $this->input->post("section"),
 					"category" => $this->input->post("category"),
-					"capacity" => $this->input->post("capacity"),
 					"classesID" => $this->input->post("classesID"),
-					"teacherID" => $this->input->post("teacherID"),
 					"note" => $this->input->post("note"),
 					"create_date" => date("Y-m-d h:i:s"),
 					"modify_date" => date("Y-m-d h:i:s"),
 					"create_userID" => $this->session->userdata('loginuserID'),
 					"create_username" => $this->session->userdata('username'),
-					"create_usertype" => $this->session->userdata('usertype')
+					"create_usertype" => $this->session->userdata('usertype'),
+					'paid' => $this->input->post('ispaid'),
+					'validDays' => $this->input->post('validDays') != null ? $this->input->post('validDays') : '0',
+					'cost' => $this->input->post('cost'),
+					'judge' => $this->input->post('judge')
 				);
 
-				$this->section_m->insert_section($array);
-				$this->session->set_flashdata('success', $this->lang->line('menu_success'));
-				redirect(base_url("section/index/".$this->input->post('classesID')));
+				if ($this->input->post('ispaid') == 0) {
+					$array['cost'] = 0;
+				}
+
+				$subjectNamesString = $this->input->post('subject_name');
+				$subjectNamesArray = explode(',', $subjectNamesString);
+				$units = [];
+
+				// Begin transaction
+				$this->db->trans_begin();
+
+				$course_id = $this->section_m->insert_section_return_record($array);
+
+				if ($course_id) {
+					foreach ($subjectNamesArray as $unit) {
+						$units[] = array(
+							'subject' => $unit,
+							'course_id' => $course_id,
+							"create_date" => date("Y-m-d h:i:s"),
+							"create_userID" => $this->session->userdata('loginuserID'),
+							"create_username" => $this->session->userdata('username'),
+							"create_usertype" => $this->session->userdata('usertype')
+						);
+					}
+					$u = $this->subject_m->insert_subject($units);
+
+					// Check if the insert_subject was successful
+					if ($this->db->trans_status() === FALSE) {
+						// Rollback transaction
+						$this->db->trans_rollback();
+						$this->session->set_flashdata('error', $this->lang->line('menu_failure'));
+					} else {
+						// Commit transaction
+						$this->db->trans_commit();
+						$this->session->set_flashdata('success', $this->lang->line('menu_success'));
+						redirect(base_url("section/index/" . $this->input->post('classesID')));
+					}
+				} else {
+					// Rollback transaction if course insertion fails
+					$this->db->trans_rollback();
+					$this->session->set_flashdata('error', $this->lang->line('menu_failure'));
+				}
 			}
 		} else {
 			$this->data["subview"] = "section/add";
@@ -138,7 +202,9 @@ public $load;
 		}
 	}
 
-	public function edit() {
+
+	public function edit()
+	{
 		$this->data['headerassets'] = array(
 			'css' => array(
 				'assets/select2/css/select2.css',
@@ -151,13 +217,13 @@ public $load;
 
 		$id = htmlentities((string) escapeString($this->uri->segment(3)));
 		$url = htmlentities((string) escapeString($this->uri->segment(4)));
-		if((int)$id && (int)$url) {
+		if ((int)$id && (int)$url) {
 			$this->data['teachers'] = $this->teacher_m->get_teacher();
 			$this->data['classes'] = $this->classes_m->get_classes();
 			$this->data['section'] = $this->section_m->get_section($id);
-			if($this->data['section']) {
+			if ($this->data['section']) {
 				$this->data['set'] = $url;
-				if($_POST !== []) {
+				if ($_POST !== []) {
 					$rules = $this->rules();
 					$this->form_validation->set_rules($rules);
 					if ($this->form_validation->run() == FALSE) {
@@ -194,10 +260,11 @@ public $load;
 		}
 	}
 
-	public function delete() {
+	public function delete()
+	{
 		$id = htmlentities((string) escapeString($this->uri->segment(3)));
 		$url = htmlentities((string) escapeString($this->uri->segment(4)));
-		if((int)$id && (int)$url) {
+		if ((int)$id && (int)$url) {
 			$this->section_m->delete_section($id);
 			$this->session->set_flashdata('success', $this->lang->line('menu_success'));
 			redirect(base_url("section/index/$url"));
@@ -206,8 +273,9 @@ public $load;
 		}
 	}
 
-	function valid_number() {
-		if($this->input->post('capacity') < 0) {
+	function valid_number()
+	{
+		if ($this->input->post('capacity') < 0) {
 			$this->form_validation->set_message("valid_number", "%s is invalid number.");
 			return FALSE;
 		}
@@ -215,25 +283,28 @@ public $load;
 	}
 
 
-	function allclasses() {
-		if($this->input->post('classesID') == 0) {
+	function allclasses()
+	{
+		if ($this->input->post('classesID') == 0) {
 			$this->form_validation->set_message("allclasses", "The %s field is required.");
-	     	return FALSE;
+			return FALSE;
 		}
 		return TRUE;
 	}
 
-	function allteacher() {
-		if($this->input->post('teacherID') == 0) {
+	function allteacher()
+	{
+		if ($this->input->post('teacherID') == 0) {
 			$this->form_validation->set_message("allteacher", "The %s field is required.");
-	     	return FALSE;
+			return FALSE;
 		}
 		return TRUE;
 	}
 
-	public function section_list() {
+	public function section_list()
+	{
 		$classID = $this->input->post('id');
-		if((int)$classID !== 0) {
+		if ((int)$classID !== 0) {
 			$string = base_url("section/index/$classID");
 			echo $string;
 		} else {
@@ -241,11 +312,12 @@ public $load;
 		}
 	}
 
-	public function unique_section() {
+	public function unique_section()
+	{
 		$id = htmlentities((string) escapeString($this->uri->segment(3)));
-		if((int)$id !== 0) {
+		if ((int)$id !== 0) {
 			$section = $this->section_m->get_order_by_section(array("classesID" => $this->input->post("classesID"), "section" => $this->input->post('section'), "sectionID !=" => $id));
-			if(inicompute($section)) {
+			if (inicompute($section)) {
 				$this->form_validation->set_message("unique_section", "%s already exists.");
 				return FALSE;
 			}
@@ -253,7 +325,7 @@ public $load;
 		} else {
 			$section = $this->section_m->get_order_by_section(array("classesID" => $this->input->post("classesID"), "section" => $this->input->post('section')));
 
-			if(inicompute($section)) {
+			if (inicompute($section)) {
 				$this->form_validation->set_message("unique_section", "%s already exists.");
 				return FALSE;
 			}

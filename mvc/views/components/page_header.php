@@ -68,6 +68,12 @@
             $(".se-pre-con").fadeOut("slow");;
           });
         </script>
+
+
+<!-- Bootstrap Tags Input CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet">
+  <!-- Bootstrap Tags Input JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
     </head>
     <body class="skin-blue fuelux">
         <div class="se-pre-con"></div>
