@@ -304,8 +304,8 @@ class Online_exam extends Admin_Controller
                     'name'         => 'name',
                     'description'  => 'description',
                     'usertype'     => 'userTypeID',
-                    // 'classes'      => 'classID',
-                    // 'section'      => 'sectionID',
+                    'classes'      => 'classID',
+                    'section'      => 'sectionID',
                     // 'studentGroup' => 'studentGroupID',
                     'subject'      => 'subjectID',
                     'instruction'  => 'instructionID',
@@ -332,9 +332,7 @@ class Online_exam extends Admin_Controller
                             $array[$database] = $inputs[$key];
                         }
                     }
-                }
-
-              
+                }              
 
                 $array['examStatus']          = $this->input->post('examStatus');
                 $array['published']           = $this->input->post('published');

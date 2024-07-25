@@ -36,7 +36,6 @@
                                 <th class="col-lg-1"><?=$this->lang->line('slno')?></th>
                                 <th class="col-lg-2"><?=$this->lang->line('classes_name')?></th>
                                 <th class="col-lg-2"><?=$this->lang->line('classes_numeric')?></th>
-                                <th class="col-lg-3"><?=$this->lang->line('teacher_name')?></th>
                                 <th class="col-lg-2"><?=$this->lang->line('classes_note')?></th>
                                  <?php if(permissionChecker('classes_edit') || permissionChecker('classes_delete')) { ?>
                                 <th class="col-lg-2"><?=$this->lang->line('action')?></th>
@@ -55,9 +54,7 @@
                                     <td data-title="<?=$this->lang->line('classes_numeric')?>">
                                         <?php echo $class->classes_numeric; ?>
                                     </td>
-                                    <td data-title="<?=$this->lang->line('teacher_name')?>">
-                                        <?php echo $class->name; ?>
-                                    </td>
+                                    
                                     <td data-title="<?=$this->lang->line('classes_note')?>">
                                         <?php echo $class->note; ?>
                                     </td>

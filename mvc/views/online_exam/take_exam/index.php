@@ -27,7 +27,7 @@
                         <tbody>
                         <?php if(inicompute($onlineExams)) { $i = 0; foreach($onlineExams as $onlineExam) {
                             if($usertypeID == '3') {
-                                if((($student->classesID == $onlineExam->classID) || ($onlineExam->classID == '0')) && (($student->sectionID == $onlineExam->sectionID) || ($onlineExam->sectionID == '0')) && (($student->studentgroupID == $onlineExam->studentGroupID) || ($onlineExam->studentGroupID == '0')) && (($onlineExam->subjectID == '0') || (in_array($onlineExam->subjectID, $userSubjectPluck)))) { $i++;
+                                if((($student->classesID == $onlineExam->classID) || ($onlineExam->classID == '0')) && (($student->sectionID == $onlineExam->sectionID) || ($onlineExam->sectionID == '0')) && (($onlineExam->subjectID == '0') || (in_array($onlineExam->subjectID, $userSubjectPluck)))) { $i++;
 
                                     $currentdate = 0;
                                     if($onlineExam->examTypeNumber == '4') {

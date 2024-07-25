@@ -124,6 +124,8 @@ class Take_exam extends Admin_Controller
             'published'  => 1
         ]);
 
+       
+
         $this->data['validationErrors']       = [];
         $this->data['validationOnlineExamID'] = 0;
         if ($_POST !== []) {
@@ -150,6 +152,8 @@ class Take_exam extends Admin_Controller
                 redirect(base_url('take_exam/index'));
             }
         } else {
+
+            
             $this->data["subview"] = "online_exam/take_exam/index";
             $this->load->view('_layout_main', $this->data);
         }
