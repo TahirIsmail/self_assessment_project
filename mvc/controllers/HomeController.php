@@ -28,7 +28,7 @@ public $load;
 | -----------------------------------------------------
 */
 	function __construct() {
-		parent::__construct();
+		// parent::__construct();
         // $this->load->model("signin_m");
         // $this->load->model("user_m");
         // $this->load->model("usertype_m");
@@ -55,7 +55,14 @@ public $load;
             $this->session->sess_destroy();
 	}
 
-	
+	public function signup(){
+        
+        $this->data["subview"]         = "signup/index";
+        $this->load->view('landingPage/index', $this->data);
+        $this->session->sess_destroy();
+        
+    }
+
 }
 
 

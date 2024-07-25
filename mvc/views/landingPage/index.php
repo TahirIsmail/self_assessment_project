@@ -152,9 +152,9 @@
                     <a href="contact.html" class="nav-item nav-link">Contact Us</a>
                     <a href="contact.html" class="nav-item nav-link">Blog</a>
                 </div>
-                <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
+                <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
                 <a href="<?php echo base_url('signin/index') ?>" class="btn btn-primary py-2 px-4 ms-3">LOGIN</a>
-                <a href="contact.html" class="nav-item nav-link" >SIGN UP</a>
+                <a href="<?= base_url('signup') ?>" class="nav-item nav-link" >SIGN UP</a>
             </div>
         </nav>
 
