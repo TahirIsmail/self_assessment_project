@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="../../../uploads/landing_img/favicon.png" rel="icon">
+    <link href="<?php echo base_url('uploads/landing_img/favicon.png') ?>" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -126,7 +126,7 @@
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
             <a href="index.html" class="navbar-brand p-0">
-                <img class="w-100" src="../../../uploads/landing_img/SL-white-logo.png" alt="Image" style="    width: 200px !important;">
+                <img class="w-100" src="<?php echo base_url('uploads/landing_img/SL-white-logo.png') ?>" alt="Image" style="    width: 200px !important;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
@@ -161,7 +161,7 @@
         <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="../../../uploads/landing_img/sld2.png" alt="Image">
+                    <img class="w-100" src="<?php echo base_url('uploads/landing_img/sld2.png') ?>" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
 
@@ -396,7 +396,7 @@
                                                         </div>
                                                         <div class="so_top_icon">
 
-                                                            <img src="../../../uploads/images/team-1.jpg" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+                                                            <img src="<?php echo base_url('uploads/images/team-1.jpg') ?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
 
                                                             </img>
                                                         </div>
@@ -439,7 +439,7 @@
                                                         </div>
                                                         <div class="so_top_icon">
 
-                                                            <img src="../../../uploads/images/team-2.jpg" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+                                                            <img src="<?php echo base_url('uploads/images/team-2.jpg') ?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
 
                                                             </img>
                                                         </div>
@@ -483,7 +483,7 @@
                                                         </div>
                                                         <div class="so_top_icon">
 
-                                                            <img src="../../../uploads/images/team-3.jpg" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+                                                            <img src="<?php echo base_url('uploads/images/team-3.jpg') ?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
 
                                                             </img>
                                                         </div>
@@ -526,7 +526,7 @@
                                                         </div>
                                                         <div class="so_top_icon">
 
-                                                            <img src="../../../uploads/images/team-4.jpg" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+                                                            <img src="<?php echo base_url('uploads/images/team-4.jpg') ?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
 
                                                             </img>
                                                         </div>
@@ -570,7 +570,7 @@
                                                         </div>
                                                         <div class="so_top_icon">
 
-                                                            <img src="../../../uploads/images/testimonial-3.jpg" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+                                                            <img src="<?php echo base_url('uploads/images/testimonial-3.jpg') ?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
 
                                                             </img>
                                                         </div>
@@ -614,7 +614,7 @@
                                                         </div>
                                                         <div class="so_top_icon">
 
-                                                            <img src="../../../uploads/images/testimonial-4.jpg" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+                                                            <img src="<?php echo base_url('uploads/images/testimonial-4.jpg') ?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
 
                                                             </img>
                                                         </div>
@@ -773,7 +773,7 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                     <div class="position-relative h-100">
-                        <img class="img-fluid position-absolute w-100 h-100" src="../../../uploads/landing_img/about.jpg" alt="" style="object-fit: cover;">
+                        <img class="img-fluid position-absolute w-100 h-100" src="<?php echo base_url('uploads/landing_img/about.jpg') ?>" alt="" style="object-fit: cover;">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -820,7 +820,7 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item bg-light">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="../../../uploads/landing_img/course-1.jpg" alt="">
+                            <img class="img-fluid" src="<?php echo base_url('uploads/landing_img/course-1.jpg') ?>" alt="">
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                                 <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
                                 <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Buy Now</a>
@@ -848,7 +848,7 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="course-item bg-light">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="../../../uploads/landing_img/course-2.jpg" alt="">
+                            <img class="img-fluid" src="<?php echo base_url('uploads/landing_img/course-2.jpg') ?>" alt="">
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                                 <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
                                 <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Buy Now</a>
@@ -876,7 +876,7 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="course-item bg-light">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="../../../uploads/landing_img/course-3.jpg" alt="">
+                            <img class="img-fluid" src="<?php echo base_url('uploads/landing_img/course-3.jpg') ?>" alt="">
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                                 <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
                                 <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Buy Now</a>
@@ -920,7 +920,7 @@
                     <div class="row g-3">
                         <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
                             <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="../../../uploads/landing_img/cat-1.jpg" alt="">
+                                <img class="img-fluid" src="<?php echo base_url('uploads/landing_img/cat-1.jpg') ?>" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
                                     <h5 class="m-0">Web Design</h5>
                                     <small class="text-primary">49 Courses</small>
@@ -929,7 +929,7 @@
                         </div>
                         <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
                             <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="../../../uploads/landing_img/cat-2.jpg" alt="">
+                                <img class="img-fluid" src="<?php echo base_url('uploads/landing_img/cat-2.jpg') ?>" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
                                     <h5 class="m-0">Graphic Design</h5>
                                     <small class="text-primary">49 Courses</small>
@@ -938,7 +938,7 @@
                         </div>
                         <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
                             <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="../../../uploads/landing_img/cat-3.jpg" alt="">
+                                <img class="img-fluid" src="<?php echo base_url('uploads/landing_img/cat-3.jpg') ?>" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
                                     <h5 class="m-0">Video Editing</h5>
                                     <small class="text-primary">49 Courses</small>
@@ -949,7 +949,7 @@
                 </div>
                 <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
                     <a class="position-relative d-block h-100 overflow-hidden" href="">
-                        <img class="img-fluid position-absolute w-100 h-100" src="../../../uploads/landing_img/cat-4.jpg" alt="" style="object-fit: cover;">
+                        <img class="img-fluid position-absolute w-100 h-100" src="<?php echo base_url('uploads/landing_img/cat-4.jpg') ?>" alt="" style="object-fit: cover;">
                         <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin:  1px;">
                             <h5 class="m-0">Online Marketing</h5>
                             <small class="text-primary">49 Courses</small>
@@ -976,7 +976,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item bg-light">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="../../../uploads/landing_img/team-1.jpg" alt="">
+                            <img class="img-fluid" src="<?php echo base_url('uploads/landing_img/team-1.jpg') ?>" alt="">
                         </div>
                         <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
                             <div class="bg-light d-flex justify-content-center pt-2 px-1">
@@ -994,7 +994,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="team-item bg-light">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="../../../uploads/landing_img/team-2.jpg" alt="">
+                            <img class="img-fluid" src="<?php echo base_url('uploads/landing_img/team-2.jpg') ?>" alt="">
                         </div>
                         <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
                             <div class="bg-light d-flex justify-content-center pt-2 px-1">
@@ -1012,7 +1012,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="team-item bg-light">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="../../../uploads/landing_img/team-3.jpg" alt="">
+                            <img class="img-fluid" src="<?php echo base_url('uploads/landing_img/team-3.jpg') ?>" alt="">
                         </div>
                         <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
                             <div class="bg-light d-flex justify-content-center pt-2 px-1">
@@ -1030,7 +1030,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="team-item bg-light">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="../../../uploads/landing_img/team-4.jpg" alt="">
+                            <img class="img-fluid" src="<?php echo base_url('uploads/landing_img/team-4.jpg') ?>" alt="">
                         </div>
                         <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
                             <div class="bg-light d-flex justify-content-center pt-2 px-1">
@@ -1130,7 +1130,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <a href="index.html" class="navbar-brand p-0">
-                        <img class="w-100" src="../../../uploads/landing_img/SL-white-logo.png" alt="Image" style="    width: 200px !important;">
+                        <img class="w-100" src="<?php echo base_url('uploads/landing_img/SL-white-logo.png') ?>" alt="Image" style="    width: 200px !important;">
                     </a>
                     <p>Sign up for our newsletter now.</p>
                     <div class="position-relative mx-auto" style="max-width: 400px;">
