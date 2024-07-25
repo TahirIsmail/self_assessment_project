@@ -37,12 +37,14 @@ class MY_Model extends CI_Model {
 	function get_order_by($array=NULL) {
 		
 
+
 		
 		if($array != NULL) {
 
 
 			$this->db->from($this->_table_name)->where($array)->order_by($this->_order_by);			
-			$query = $this->db->get();		
+			$query = $this->db->get();	
+			
 			return $query->result();
 
 
@@ -58,6 +60,9 @@ class MY_Model extends CI_Model {
 	}
 
 	function get_single($array=NULL) {
+
+		echo $this->_table_name;
+		
 		if($array != NULL) {
 			$this->db->select()->from($this->_table_name)->where($array);
 			$query = $this->db->get();

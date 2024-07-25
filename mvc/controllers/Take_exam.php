@@ -91,20 +91,40 @@ class Take_exam extends Admin_Controller
         if ($usertypeID == '3') {
             $this->data['student'] = $this->student_m->get_single_student(['studentID' => $loginuserID]);
             if (inicompute($this->data['student'])) {
+            //     echo '<pre>';
+            //    print_r($this->data['student']);
+            //    echo '</pre>';
                 $this->data['userSubjectPluck'] = pluck($this->subject_m->get_order_by_subject([
                     'classesID' => $this->data['student']->classesID,
                     'type'      => 1
                 ]), 'subjectID', 'subjectID');
+                // echo 'userSubjectPluck';
+                // echo $this->db->last_query();
                 $optionalSubject                = $this->subject_m->get_single_subject([
                     'type'      => 0,
                     'subjectID' => $this->data['student']->optionalsubjectID
                 ]);
-                if (inicompute($optionalSubject)) {
+                // echo '<pre>';
+                // print_r($optionalSubject);
+                // echo '</pre>';
+
+                // echo 'userSubjectPluck';
+
+               
+
+                if (inicompute($optionalSubject))
+                { 
+                    // echo $optionalSubject->subjectID;
                     $this->data['userSubjectPluck'][$optionalSubject->subjectID] = $optionalSubject->subjectID;
+
+
                 }
             }
-        }
 
+        }
+       
+
+        
         $this->data['payment_settings'] = $this->payment_gateway_m->get_order_by_payment_gateway(['status' => 1]);
         $this->data['payment_options']  = pluck($this->payment_gateway_option_m->get_payment_gateway_option(), 'payment_value', 'payment_option');
 
@@ -125,7 +145,7 @@ class Take_exam extends Admin_Controller
         ]);
 
        
-
+       
         $this->data['validationErrors']       = [];
         $this->data['validationOnlineExamID'] = 0;
         if ($_POST !== []) {
@@ -153,7 +173,12 @@ class Take_exam extends Admin_Controller
             }
         } else {
 
+
+
             
+            // echo '<pre>';
+            // print_r($this->data['userSubjectPluck']);
+            // echo '</pre>';exit;
             $this->data["subview"] = "online_exam/take_exam/index";
             $this->load->view('_layout_main', $this->data);
         }
@@ -235,15 +260,18 @@ class Take_exam extends Admin_Controller
                             }
                         }
                     }
+                  
 
                     if ($examGivenStatus) {
                         if ((int)$DDonlineExam->subjectID && (int)$DDonlineExam->classID) {
                             $examGivenStatus  = FALSE;
+                            
                             $userSubjectPluck = pluck($this->subject_m->get_order_by_subject(['type' => 1]), 'subjectID', 'subjectID');
                             $optionalSubject  = $this->subject_m->get_single_subject([
                                 'type'      => 0,
                                 'subjectID' => $this->data['student']->optionalsubjectID
                             ]);
+                           
                             if (inicompute($optionalSubject)) {
                                 $userSubjectPluck[$optionalSubject->subjectID] = $optionalSubject->subjectID;
                             }
