@@ -159,7 +159,7 @@
                                                             }
                                                         }
                                                     } else {
-                                                        $paidStatus = 1;
+                                                        $paidStatus = 1; 
                                                     }
                                                     ?>
 
