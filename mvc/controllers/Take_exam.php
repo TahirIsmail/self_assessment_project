@@ -512,6 +512,7 @@ class Take_exam extends Admin_Controller
                     $this->data["subview"]           = "online_exam/take_exam/result";
                     return $this->load->view('_layout_main', $this->data);
                 }
+                
                 if ($examGivenStatus) {
                     $this->data["subview"] = "online_exam/take_exam/question";
                     return $this->load->view('_layout_main', $this->data);
