@@ -150,13 +150,13 @@
                         echo "<p class='text-center'>" . $this->lang->line('take_exam_no_question') . "</p>";
                     } ?>
                     <div class="question-answer-button">
-                        <button class="btn oe-btn-answered btn-prev" style="background-color: #4a4a4a !important;" type="button" name="" id="prevbutton" disabled>
+                        <!-- <button class="btn oe-btn-answered btn-prev" style="background-color: #4a4a4a !important;" type="button" name="" id="prevbutton" disabled>
                             <i class="fa fa-angle-left"></i> <?= $this->lang->line('take_exam_previous') ?>
-                        </button>
+                        </button> -->
 
-                        <button class="btn oe-btn-notvisited" type="button" name="" id="reviewbutton">
+                        <!-- <button class="btn oe-btn-notvisited" type="button" name="" id="reviewbutton">
                             <?= $this->lang->line('take_exam_mark_review') ?>
-                        </button>
+                        </button> -->
 
                         <button class="btn oe-btn-answered btn-next" type="button" name="" id="nextbutton" data-last="<?= $this->lang->line('take_exam_finish') ?> ">
                             <?= $this->lang->line('take_exam_next') ?> <i class="fa fa-angle-right"></i>
@@ -166,9 +166,9 @@
                             <?= $this->lang->line('take_exam_clear_answer') ?>
                         </button> -->
 
-                        <button class="btn oe-btn-notanswered" type="button" name="" id="finishedbutton" onclick="finished()">
+                        <!-- <button class="btn oe-btn-notanswered" type="button" name="" id="finishedbutton" onclick="finished()">
                             <?= $this->lang->line('take_exam_finish') ?>
-                        </button>
+                        </button> -->
 
                     </div>
                 </div>

@@ -1,3 +1,36 @@
+<style>
+    .modal-content {
+        background: #F8F9FA;
+        color: black;
+        font-family: 'Helvetica', sans-serif;
+        border-radius: 15px;
+    }
+    .modal-header, .modal-body, .modal-footer {
+        padding: 20px;
+    }
+    .modal-header {
+        background-color: #DDEEFF;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+    .modal-title {
+        color: #333333;
+    }
+    .btn-custom {
+        background-color: #4CAF50;
+        color: white;
+    }
+    .btn-close {
+        background-color: #f44336;
+        border: none;
+        border-radius: 50%;
+        padding: 0 12px;
+        color: white;
+    }
+    .modal-footer {
+        border-top: 1px solid #DDDDDD;
+    }
+</style>
 <div class="box">
     <div class="box-header">
         <h3 class="box-title"><i class="fa fa-user-secret"></i> <?= $this->lang->line('panel_title') ?></h3>
@@ -14,12 +47,11 @@
                     <table id="example1" class="table table-striped table-bordered table-hover dataTable no-footer">
                         <thead>
                             <tr>
-                                <th class="col-sm-1"><?= $this->lang->line('slno') ?></th>
+                                
                                 <th class="col-sm-3"><?= $this->lang->line('take_exam_name') ?></th>
-                                <th class="col-sm-2"><?= $this->lang->line('take_exam_status') ?></th>
+       
                                 <th class="col-sm-1"><?= $this->lang->line('take_exam_duration') ?></th>
-                                <th class="col-sm-1"><?= $this->lang->line('take_exam_payment') ?></th>
-                                <th class="col-sm-2"><?= $this->lang->line('take_exam_cost') ?></th>
+                         
                                 <th class="col-sm-2"><?= $this->lang->line('action') ?></th>
                             </tr>
                         </thead>
@@ -101,9 +133,7 @@
                                             // dd($onlineExam);
                             ?>
                                             <tr>
-                                                <td data-title="<?= $this->lang->line('slno') ?>">
-                                                    <?php echo $i; ?>
-                                                </td>
+                                                
                                                 <td data-title="<?= $this->lang->line('take_exam_name') ?>">
                                                     <?php if (strlen($onlineExam->name) > 50) {
                                                         echo strip_tags(substr($onlineExam->name, 0, 50) . "...");
@@ -115,24 +145,11 @@
                                                     echo $examLabel;
                                                     ?>
                                                 </td>
-                                                <td data-title="<?= $this->lang->line('take_exam_status') ?>">
-                                                    <?php
-                                                    if ($onlineExam->examStatus == 1) {
-                                                        echo $this->lang->line('take_exam_one_time');
-                                                    } elseif ($onlineExam->examStatus == 2) {
-                                                        echo $this->lang->line('take_exam_multiple_time');
-                                                    }
-                                                    ?>
-                                                </td>
+                                               
                                                 <td data-title="<?= $this->lang->line('take_exam_duration') ?>">
                                                     <?php echo $onlineExam->duration; ?>
                                                 </td>
-                                                <td data-title="<?= $this->lang->line('take_exam_payment') ?>">
-                                                    <?= ($onlineExam->paid == 1) ? $this->lang->line('take_exam_paid') : $this->lang->line('take_exam_free'); ?>
-                                                </td>
-                                                <td data-title="<?= $this->lang->line('take_exam_cost') ?>">
-                                                    <?= ($onlineExam->paid == 1) ? number_format($onlineExam->cost, '2') : number_format($onlineExam->cost, '2'); ?> <?= $siteinfos->currency_code ?>
-                                                </td>
+                                             
                                                 <td data-title="<?= $this->lang->line('action') ?>">
                                                     <?php
                                                     $paidStatus = 0;
@@ -168,7 +185,7 @@
                                                         <i class="fa fa-columns"></i>
                                                     </button>
 
-                                                    <!-- <button class="btn btn-success btn-xs mrg" onclick="newPopup('<?= base_url('take_exam/instruction/' . $onlineExam->onlineExamID) ?>', '<?= $paidStatus ?>', '<?= $onlineExam->onlineExamID ?>')" rel="tooltip" data-toggle="tooltip" data-placement="top" data-original-title="<?= $this->lang->line('panel_title') ?>"><i class="fa fa-columns">Start Mock Exam</button> -->
+                                                   
 
                                                     <?php
                                                     if ($onlineExam->paid && ($onlineExam->examStatus == 2) && !($paymentExpireStatus)) {
@@ -184,23 +201,25 @@
                                                 </td>
                                             </tr>
 
+                                       
+
+
+
                                             <div class="modal fade" id="imageModal<?php $onlineExam->onlineExamID ?>" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg" role="document">
+                                                <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="imageModalLabel">Unit 1: Working in the Private Security Industry</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
+                                                            <h5 class="modal-title" id="modalLabel">Unit 1: Working in the Private Security Industry</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <p>Questions: 20<br>Time: 20 minutes</p>
-                                                            <p><strong>Please note</strong></p>
-                                                            <p>This mock exam is designed for you to check your understanding and knowledge. Your score of this mock exam will not count towards your actual exam score taken on the course.</p>
+                                                            <p>Please note:</p>
+                                                            <p>This mock exam is designed for you to check your understanding and knowledge. Your score from this mock exam will not count towards your actual exam score taken on the course.</p>
                                                             <p>Please note that the questions in this mock exam might not appear in the actual test.</p>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button class="btn btn-success btn-xs mrg" onclick="newPopup('<?= base_url('take_exam/instruction/' . $onlineExam->onlineExamID) ?>', '<?= $paidStatus ?>', '<?= $onlineExam->onlineExamID ?>')" rel="tooltip" data-toggle="tooltip" data-placement="top" data-original-title="<?= $this->lang->line('panel_title') ?>"><i class="fa fa-columns">Start Mock Exam</button>
+                                                            <button class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft" onclick="newPopup('<?= base_url('take_exam/instruction/' . $onlineExam->onlineExamID) ?>', '<?= $paidStatus ?>', '<?= $onlineExam->onlineExamID ?>')" rel="tooltip" data-toggle="tooltip" data-placement="top" data-original-title="<?= $this->lang->line('panel_title') ?>"><i class="fa fa-columns"></i> Start Mock Exam</button>
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                         </div>
                                                     </div>
