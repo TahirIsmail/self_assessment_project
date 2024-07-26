@@ -159,17 +159,17 @@
                                                             }
                                                         }
                                                     } else {
-                                                        $paidStatus = 1; 
+                                                        $paidStatus = 1;
                                                     }
                                                     ?>
 
 
-                                                    <button type="button" class="btn btn-success btn-xs mrg" data-toggle="modal" data-target="#imageModal<?php $onlineExam->onlineExamID?>">
+                                                    <button type="button" class="btn btn-success btn-xs mrg" data-toggle="modal" data-target="#imageModal<?php $onlineExam->onlineExamID ?>">
                                                         <i class="fa fa-columns"></i>
                                                     </button>
 
                                                     <!-- <button class="btn btn-success btn-xs mrg" onclick="newPopup('<?= base_url('take_exam/instruction/' . $onlineExam->onlineExamID) ?>', '<?= $paidStatus ?>', '<?= $onlineExam->onlineExamID ?>')" rel="tooltip" data-toggle="tooltip" data-placement="top" data-original-title="<?= $this->lang->line('panel_title') ?>"><i class="fa fa-columns">Start Mock Exam</button> -->
-                                                    
+
                                                     <?php
                                                     if ($onlineExam->paid && ($onlineExam->examStatus == 2) && !($paymentExpireStatus)) {
                                                         echo '<a href="#addpayment" id="' . $onlineExam->onlineExamID . '" class="btn btn-primary btn-xs mrg getpaymentinfobtn" rel="tooltip" data-toggle="modal"><i class="fa fa-credit-card" data-toggle="tooltip" data-placement="top" data-original-title="' . $this->lang->line('take_exam_add_payment') . '"></i></a>';
@@ -184,29 +184,30 @@
                                                 </td>
                                             </tr>
 
-                                            <div class="modal fade" id="imageModal<?php $onlineExam->onlineExamID?>" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="imageModalLabel">Unit 1: Working in the Private Security Industry</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Questions: 20<br>Time: 20 minutes</p>
-                <p><strong>Please note</strong></p>
-                <p>This mock exam is designed for you to check your understanding and knowledge. Your score of this mock exam will not count towards your actual exam score taken on the course.</p>
-                <p>Please note that the questions in this mock exam might not appear in the actual test.</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-success btn-xs mrg" onclick="newPopup('<?= base_url('take_exam/instruction/' . $onlineExam->onlineExamID) ?>', '<?= $paidStatus ?>', '<?= $onlineExam->onlineExamID ?>')" rel="tooltip" data-toggle="tooltip" data-placement="top" data-original-title="<?= $this->lang->line('panel_title') ?>"><i class="fa fa-columns">Start Mock Exam</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-                            <?php }
+                                            <div class="modal fade" id="imageModal<?php $onlineExam->onlineExamID ?>" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="imageModalLabel">Unit 1: Working in the Private Security Industry</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Questions: 20<br>Time: 20 minutes</p>
+                                                            <p><strong>Please note</strong></p>
+                                                            <p>This mock exam is designed for you to check your understanding and knowledge. Your score of this mock exam will not count towards your actual exam score taken on the course.</p>
+                                                            <p>Please note that the questions in this mock exam might not appear in the actual test.</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button class="btn btn-success btn-xs mrg" onclick="newPopup('<?= base_url('take_exam/instruction/' . $onlineExam->onlineExamID) ?>', '<?= $paidStatus ?>', '<?= $onlineExam->onlineExamID ?>')" rel="tooltip" data-toggle="tooltip" data-placement="top" data-original-title="<?= $this->lang->line('panel_title') ?>"><i class="fa fa-columns">Start Mock Exam</button>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            <?php
+                                        }
                                     }
                                 }
                             } ?>
@@ -218,7 +219,7 @@
     </div>
 </div>
 <!-- Modal -->
- 
+
 <form class="form-horizontal" role="form" method="post" id="paymentAddDataForm" enctype="multipart/form-data" action="<?= base_url('take_exam/index') ?>">
     <div class="modal fade" id="addpayment">
         <div class="modal-dialog">
