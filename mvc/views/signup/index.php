@@ -40,21 +40,24 @@
     }
 
     .form-box {
+
         /* margin: 0 !important; */
         position: relative;
+        width: 45%;
     }
 
 
     @media (min-width: 200px) and (max-width: 766px) {
         .form-box {
             margin-top: 40% !important;
+            width: 360px !important;
         }
     }
 </style>
 
 <div class="icon-container">
 
-    <a href="<?= base_url('HomeController/index')?>" class="navbar-brand p-0">
+    <a href="<?= base_url('HomeController/index') ?>" class="navbar-brand p-0">
 
 
         <img src="http://self_assessment_project.test/uploads/images/SL-red-logo.png" alt="Logo">
@@ -63,15 +66,13 @@
 
 <div class="form-box" id="login-box">
 
-    <div class="header">SIGN IN</div>
+    <div class="header">SIGN UP</div>
 
     <form method="post">
-
         <div class="body white-bg">
             <div class="lottie">
                 <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-
-                <dotlottie-player src="https://lottie.host/dc68b1cd-78bc-494e-a600-bb11559bf774/mQEbngnS8C.json" background="transparent" speed="1" style="width: 265px; height: 180px;" loop autoplay></dotlottie-player>
+                <dotlottie-player src="https://lottie.host/dc68b1cd-78bc-494e-a600-bb11559bf774/mQEbngnS8C.json" background="transparent" speed="1" style="height: 180px;" loop autoplay></dotlottie-player>
             </div>
             <?php
             if ($form_validation == "No") {
@@ -93,12 +94,37 @@
                 </div>";
             }
             ?>
-            <div class="form-group">
-                <input class="form-control" placeholder="Username" name="username" type="text" autofocus value="<?= set_value('username') ?>">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input class="form-control" placeholder="First Name" name="first_name" type="text" value="<?= set_value('first_name') ?>">
+                </div>
+                <div class="form-group col-md-6">
+                    <input class="form-control" placeholder="Last Name" name="last_name" type="text" value="<?= set_value('last_name') ?>">
+                </div>
             </div>
-            <div class="form-group">
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                <input class="form-control" placeholder="Address" name="address" type="text" value="<?= set_value('address') ?>">
+                </div>
+                <div class="form-group col-md-6">
+                <input class="form-control" placeholder="Phone Number" name="phone" type="text" value="<?= set_value('phone') ?>">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
                 <input class="form-control" placeholder="Password" name="password" type="password">
+                </div>
+                <div class="form-group col-md-6">
+                <input class="form-control" placeholder="Confirm Password" name="confirm_password" type="password">
+                </div>
             </div>
+
+            
+         
+
+
 
             <div class="checkbox">
                 <label>
@@ -111,15 +137,13 @@
                     </label>
                 </span>
             </div>
-
             <?php if (isset($siteinfos->captcha_status) && $siteinfos->captcha_status == 0) { ?>
                 <div class="form-group">
                     <?php echo $recaptcha['widget'];
                     echo $recaptcha['script']; ?>
                 </div>
             <?php } ?>
-
-            <input type="submit" class="btn btn-lg btn-success btn-block" value="Sign in" />
+            <input type="submit" class="btn btn-lg btn-success btn-block" value="Sign up" />
         </div>
     </form>
 </div>

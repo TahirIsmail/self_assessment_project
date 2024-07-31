@@ -48,9 +48,7 @@ public $load;
 	public function index() {
      
      
-
-     
-            $this->data["subview"]         = "signin/index";
+            $this->data["subview"]  = "signin/index";
             $this->load->view('landingPage/index', $this->data);
             $this->session->sess_destroy();
 	}

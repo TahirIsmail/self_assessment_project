@@ -26,6 +26,8 @@ class Admin_Controller extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
+    
+        $this->load->model("signup_m");
         $this->load->model("signin_m");
         $this->load->model("permission_m");
         $this->load->model("site_m");
@@ -68,7 +70,8 @@ class Admin_Controller extends MY_Controller {
         $exception_uris = [
             "HomeController/index",
             "signin/index",
-            "signin/signout"
+            "signin/signout",
+            "signup/page","signup/index"
         ];
 
         if ( in_array(uri_string(), $exception_uris) == false ) {
