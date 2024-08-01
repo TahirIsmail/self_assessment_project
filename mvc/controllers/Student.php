@@ -318,10 +318,8 @@ public $load;
 
 			$classesID = htmlentities((string) escapeString($this->uri->segment(3)));
 			$this->data['students'] = $this->student_m->get_order_by_student();
-			// echo '<pre>';
-			// print_r($this->data['students']);
-			// echo '</pre>';
-			// exit;
+
+
 			if(inicompute($this->data['students'])) {
 				$sections = $this->section_m->get_order_by_section(array("classesID" => $classesID));
 				if(inicompute($sections)) {
@@ -333,6 +331,7 @@ public $load;
 			} else {
 				$this->data['students'] = [];
 			}
+			
 			$this->data['set'] = $classesID;
 			$this->data['classes'] = $this->classes_m->get_classes();
 

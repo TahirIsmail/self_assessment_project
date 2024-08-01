@@ -38,7 +38,11 @@
         </div> -->
     </div>
 
-    <?php $this->load->view($subview); ?>
+
+
+    <?php
+        $this->load->view($subview);
+    ?>
 
     <?php if (config_item('demo')) { ?>
 
@@ -55,12 +59,12 @@
         </div>
         <div class="col-md-6 col-md-offset-3 marg">
             <center>
-                <div class="btn-group" role="group" aria-label="...">
+                <!-- <div class="btn-group" role="group" aria-label="...">
                     <button class="btn btn-sm btn-primary" id="admin">Admin</button>
                     <button class="btn btn-sm btn-info" id="teacher">Teacher</button>
                     <button class="btn btn-sm btn-warning" id="student">Student</button>
                     <button class="btn btn-sm btn-success" id="parent">Parent</button>
-                </div>
+                </div> -->
             </center>
         </div>
 

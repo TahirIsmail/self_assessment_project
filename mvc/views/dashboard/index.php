@@ -186,7 +186,7 @@
           <div class="small-box ">
               <a class="small-box-footer " style="background: <?= $generateBoxValue['color'] ?> ;"href="<?= base_url("take_exam/index") ?>">
                   <div class="icon <?= $generateBoxValue['color'] ?>" style="padding: 9.5px 18px 8px 18px;">
-                  <img  src="http://self_assessment_project.test\/uploads/landing_img/46288331.png" alt="" style="height:50px">
+                  <img  src="<?= base_url('uploads/landing_img/46288331.png') ?>" alt="" style="height:50px">
                   </div>
                   <div class="inner ">
                       <h3 style="color: white !important;">
@@ -203,7 +203,7 @@
           <div class="small-box ">
               <a class="small-box-footer " style="background: <?= $generateBoxValue['color'] ?> ;"href="#">
                   <div class="icon <?= $generateBoxValue['color'] ?>" style="padding: 9.5px 18px 8px 18px;">
-                  <img  src="http://self_assessment_project.test\/uploads/landing_img/46288331.png" alt="" style="height:50px">
+                  <img  src="<?= base_url('uploads/landing_img/46288331.png') ?>" alt="" style="height:50px">
                   </div>
                   <div class="inner ">
                       <h3 style="color: white !important;">
@@ -219,7 +219,7 @@
           <div class="small-box ">
               <a class="small-box-footer " style="background: <?= $generateBoxValue['color'] ?> ;"href="#">
                   <div class="icon <?= $generateBoxValue['color'] ?>" style="padding: 9.5px 18px 8px 18px;">
-                  <img  src="http://self_assessment_project.test\/uploads/landing_img/46288331.png" alt="" style="height:50px">
+                  <img  src="<?= base_url('uploads/landing_img/46288331.png') ?>" alt="" style="height:50px">
                   </div>
                   <div class="inner ">
                       <h3 style="color: white !important;">
@@ -238,7 +238,7 @@
           <div class="small-box ">
               <a class="small-box-footer " style="background: <?= $generateBoxValue['color'] ?> ;"href="#">
                   <div class="icon <?= $generateBoxValue['color'] ?>" style="padding: 9.5px 18px 8px 18px;">
-                  <img  src="http://self_assessment_project.test\/uploads/landing_img/46288331.png" alt="" style="height:50px">
+                  <img  src="<?= base_url('uploads/landing_img/46288331.png') ?>" alt="" style="height:50px">
                   </div>
                   <div class="inner ">
                       <h3 style="color: white !important;">
@@ -255,7 +255,7 @@
           <div class="small-box ">
               <a class="small-box-footer " style="background: <?= $generateBoxValue['color'] ?> ;"href="#">
                   <div class="icon <?= $generateBoxValue['color'] ?>" style="padding: 9.5px 18px 8px 18px;">
-                  <img  src="http://self_assessment_project.test\/uploads/landing_img/46288331.png" alt="" style="height:50px">
+                  <img  src="<?= base_url('uploads/landing_img/46288331.png') ?>" alt="" style="height:50px">
                   </div>
                   <div class="inner ">
                       <h3 style="color: white !important;">
@@ -271,7 +271,7 @@
           <div class="small-box ">
               <a class="small-box-footer " style="background: <?= $generateBoxValue['color'] ?> ;"href="#">
                   <div class="icon <?= $generateBoxValue['color'] ?>" style="padding: 9.5px 18px 8px 18px;">
-                  <img  src="http://self_assessment_project.test\/uploads/landing_img/46288331.png" alt="" style="height:50px">
+                  <img  src="<?= base_url('uploads/landing_img/46288331.png') ?>" alt="" style="height:50px">
                   </div>
                   <div class="inner ">
                       <h3 style="color: white !important;">

@@ -1,33 +1,35 @@
 <style>
-.white-bg {
-    /* box-shadow: 0px 14px 24px rgba(62, 57, 107, 0.2); */
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-}
+    .white-bg {
+        /* box-shadow: 0px 14px 24px rgba(62, 57, 107, 0.2); */
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    }
 
-.header {
-    font-weight: 600 !important;
-    font-family: sans-serif;
-}
-.btn.btn-success {
-  color: #fff;
-  border: none !important;
-  background-color: #000000cc  !important;
-  margin-bottom: 15px !important;
-  /* box-shadow: 0 5px 9px 0px rgb(0 0 0 / 40%); */
-  box-shadow: 0 0 1px #ccc;
-    -webkit-transition-duration: 0.5s;
-    -webkit-transform-origin: 50% 50%;
-    -webkit-transition-timing-function: ease-out;
-    /* -webkit-box-shadow: 0px -50px 0 0 lightseagreen inset , 0px 50px 0 lightseagreen inset; */
-  /* border-color: #00acac; */
-}
-.btn.btn-success:hover {
-    /* box-shadow: none !important; */
-    color: #fff;
-  background-color: #823535 !important;
-  -webkit-box-shadow: 0px 0px 0 0px lightseagreen inset , 0px 0px 0 0px lightseagreen inset; 
-  /* border-color: #09A3A3; */
-}
+    .header {
+        font-weight: 600 !important;
+        font-family: sans-serif;
+    }
+
+    .btn.btn-success {
+        color: #fff;
+        border: none !important;
+        background-color: #000000cc !important;
+        margin-bottom: 15px !important;
+        /* box-shadow: 0 5px 9px 0px rgb(0 0 0 / 40%); */
+        box-shadow: 0 0 1px #ccc;
+        -webkit-transition-duration: 0.5s;
+        -webkit-transform-origin: 50% 50%;
+        -webkit-transition-timing-function: ease-out;
+        /* -webkit-box-shadow: 0px -50px 0 0 lightseagreen inset , 0px 50px 0 lightseagreen inset; */
+        /* border-color: #00acac; */
+    }
+
+    .btn.btn-success:hover {
+        /* box-shadow: none !important; */
+        color: #fff;
+        background-color: #823535 !important;
+        -webkit-box-shadow: 0px 0px 0 0px lightseagreen inset, 0px 0px 0 0px lightseagreen inset;
+        /* border-color: #09A3A3; */
+    }
 </style>
 
 
@@ -40,15 +42,15 @@
     </div>
 
     <form method="post">
-        
+    
         <!-- style="margin-top:40px;" -->
 
         <div class="body white-bg">
-        <div class="lottie">
-        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+            <div class="lottie">
+                <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 
-<dotlottie-player src="https://lottie.host/dc68b1cd-78bc-494e-a600-bb11559bf774/mQEbngnS8C.json" background="transparent" speed="1" style="width: 265px; height: 210px;" loop autoplay></dotlottie-player>
-        </div>
+                <dotlottie-player src="https://lottie.host/dc68b1cd-78bc-494e-a600-bb11559bf774/mQEbngnS8C.json" background="transparent" speed="1" style="width: 265px; height: 210px;" loop autoplay></dotlottie-player>
+            </div>
             <?php
             if ($form_validation == "No") {
             } else {

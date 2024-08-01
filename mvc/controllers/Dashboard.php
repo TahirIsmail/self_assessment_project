@@ -36,13 +36,13 @@ public $data;
 		$this->load->model('online_exam_m');
 		$this->load->model('studentgroup_m');
 		$this->load->model('loginlog_m');
-
+		
 		$language = $this->session->userdata('lang');
 		$this->lang->load('dashboard', $language);
 	}
-
+	
 	public function index() {
-
+		
 		// dd(phpinfo());
 		$this->data['headerassets'] = array(
 			'js' => array(
@@ -53,10 +53,12 @@ public $data;
 				'assets/highcharts/exporting.js'
 			)
 		);
-
+		
 
 		$schoolyearID = $this->session->userdata('defaultschoolyearID');
 
+		
+		
 		$students 		= $this->student_m->get_order_by_student(array('schoolyearID' => $schoolyearID));
 		$classes		= pluck($this->classes_m->get_classes(), 'obj', 'classesID');
 		$teachers		= $this->teacher_m->get_teacher();
@@ -67,32 +69,37 @@ public $data;
 		$questionbank 	= $this->question_bank_m->get_question_bank();
 		$onlineexam 	= $this->online_exam_m->get_online_exam();
 		$notice 		= $this->notice_m->get_notice();
-		$studentgroup	= $this->studentgroup_m->get_studentgroup();
-
+		$studentgroup	= $this->studentgroup_m->get_studentgroup();		
 		$mainmenu     = $this->menu_m->get_order_by_menu();
 		$allmenu 	  = pluck($mainmenu, 'icon', 'link');
 		$allmenulang  = pluck($mainmenu, 'menuName', 'link');
-
+		
 		if((config_item('demo') === FALSE) && ($this->data['siteinfos']->auto_update_notification == 1) && ($this->session->userdata('usertypeID') == 1) && ($this->session->userdata('loginuserID') == 1)) {
 			$this->data['versionChecking'] = $this->session->userdata('updatestatus') === null ? $this->checkUpdate() : 'none';
 		} else {
 			$this->data['versionChecking'] = 'none';
 		}
-
-
+		
+		
 		if($this->session->userdata('usertypeID') == 3) {
+			
 			$getLoginStudent = $this->student_m->get_single_student(array('username' => $this->session->userdata('username')));
+
 			if(inicompute($getLoginStudent)) {
-				$subjects	= $this->subject_m->get_order_by_subject(array('classesID' => $getLoginStudent->classesID));
+				// dd($getLoginStudent->studentID);
+				$student_enrollment = $this->student_m->get_enrollment_record(array('studentID' => $getLoginStudent->studentID));
+				// dd($student_enrollment->section_id);
+				$subjects	= $this->subject_m->get_order_by_subject(array('classesID' => $student_enrollment->section_id));
+				
 			} else {
 				$subjects = array();
 			}
 		} else {
 			$subjects	= $this->subject_m->get_subject();
 		}
-
+		
 		$deshboardTopWidgetUserTypeOrder = $this->session->userdata('master_permission_set');
-
+		
 		$this->data['dashboardWidget']['students'] 			= inicompute($students);
 		$this->data['dashboardWidget']['classes']  			= inicompute($classes);
 		$this->data['dashboardWidget']['teachers'] 			= inicompute($teachers);
@@ -106,14 +113,14 @@ public $data;
 		$this->data['dashboardWidget']['notice']			= inicompute($notice);
 		$this->data['dashboardWidget']['studentgroup']      = inicompute($studentgroup);
 		$this->data['dashboardWidget']['allmenu'] 			= $allmenu;
-		// echo '<pre>';
-		// print_r($allmenu);
-		// echo '</pre>';exit;
 		$this->data['dashboardWidget']['allmenulang'] 		= $allmenulang;
-
+		// echo '<pre>';
+		// print_r($this->data['dashboardWidget']);
+		// echo '</pre>';exit;
+		
 		$currentDate = strtotime(date('Y-m-d H:i:s'));
 		$previousSevenDate = strtotime(date('Y-m-d 00:00:00', strtotime('-7 days')));
-
+		
 		$visitors = $this->loginlog_m->get_order_by_loginlog(array('login <= ' => $currentDate, 'login >= ' => $previousSevenDate));
 		$showChartVisitor = array();
 		foreach ($visitors as $visitor) {
@@ -123,14 +130,14 @@ public $data;
 			}
 			$showChartVisitor[$date]++;
 		}
-
+		
 		$this->data['showChartVisitor'] = $showChartVisitor;
-
-
+		
+		
 		$userTypeID = $this->session->userdata('usertypeID');
 		$userName = $this->session->userdata('username');
 		$this->data['usertype'] = $this->session->userdata('usertype');
-
+		
 		if($userTypeID == 1) {
 			$this->data['user'] = $this->systemadmin_m->get_single_systemadmin(array('username'  => $userName));
 		} elseif($userTypeID == 2) {
@@ -142,15 +149,11 @@ public $data;
 		} else {
 			$this->data['user'] = $this->user_m->get_single_user(array('username'  => $userName));
 		}
+		
 
 		$this->data['notices'] = $this->notice_m->get_order_by_notice(array('schoolyearID' => $schoolyearID));
 
 		$this->data['events'] = $this->event_m->get_event();
-
-		// echo '<pre>';
-		// print_r($this->data);
-		// echo '</pre>';
-		// exit;
 
 
 		$this->data["subview"] = "dashboard/index";

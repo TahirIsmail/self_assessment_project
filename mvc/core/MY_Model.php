@@ -61,12 +61,12 @@ class MY_Model extends CI_Model {
 
 	function get_single($array=NULL) {
 
-		echo $this->_table_name;
+		
 		
 		if($array != NULL) {
 			$this->db->select()->from($this->_table_name)->where($array);
 			$query = $this->db->get();
-			// echo $this->db->last_query();exit;
+			
 			return $query->row();
 		} else {
 			$this->db->select()->from($this->_table_name)->order_by($this->_order_by);

@@ -1,6 +1,6 @@
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            
+           
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
                 <a href="#" class="navbar-btn sidebar-toggle switch" data-toggle="offcanvas" type="checkbox">
