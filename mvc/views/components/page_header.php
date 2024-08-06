@@ -1,79 +1,96 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
 
-        <title><?=$this->lang->line('panel_title')?></title>
+<head>
+  <meta charset="UTF-8">
 
-        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+  <title><?= $this->lang->line('panel_title') ?></title>
 
-        <link rel="SHORTCUT ICON" href="<?=base_url("uploads/images/$siteinfos->photo")?>" />
+  <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
-        <link rel="stylesheet" href="<?=base_url('assets/pace/pace.css')?>">
+  <link rel="SHORTCUT ICON" href="<?= base_url("uploads/images/$siteinfos->photo") ?>" />
 
-        <script type="text/javascript" src="<?php echo base_url('assets/inilabs/jquery.min.js'); ?>"></script>
-        <!-- <script type="text/javascript" src="<?php echo base_url('assets/slimScroll/jquery.slimscroll.min.js'); ?>"></script> -->
+  <link rel="stylesheet" href="<?= base_url('assets/pace/pace.css') ?>">
 
-        <script type="text/javascript" src="<?php echo base_url('assets/toastr/toastr.min.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/inilabs/jquery.min.js'); ?>"></script>
+  <!-- <script type="text/javascript" src="<?php echo base_url('assets/slimScroll/jquery.slimscroll.min.js'); ?>"></script> -->
 
-
-        <link href="<?php echo base_url('assets/bootstrap/bootstrap.min.css'); ?>" rel="stylesheet">
-
-        <link href="<?php echo base_url('assets/fonts/font-awesome.css'); ?>" rel="stylesheet">
-
-        <link href="<?php echo base_url('assets/fonts/icomoon.css'); ?>" rel="stylesheet">
-
-        <link href="<?php echo base_url('assets/fonts/ini-icon.css'); ?>" rel="stylesheet">
-
-        <link href="<?php echo base_url('assets/datatables/dataTables.bootstrap.css'); ?>" rel="stylesheet">
-
-        <link id="headStyleCSSLink" href="<?php echo base_url($backendThemePath.'/style.css'); ?>" rel="stylesheet">
-
-        <link href="<?php echo base_url('assets/inilabs/hidetable.css'); ?>" rel="stylesheet">
-
-        <link id="headInilabsCSSLink" href="<?php echo base_url($backendThemePath.'/inilabs.css'); ?>" rel="stylesheet">
-
-        <link href="<?php echo base_url('assets/inilabs/responsive.css'); ?>" rel="stylesheet">
-
-        <link href="<?php echo base_url('assets/toastr/toastr.min.css'); ?>" rel="stylesheet">
-
-        <link href="<?php echo base_url('assets/inilabs/mailandmedia.css'); ?>" rel="stylesheet">
-
-        <link rel="stylesheet" href="<?php echo base_url('assets/datatables/buttons.dataTables.min.css'); ?>" >
-
-        <link rel="stylesheet" href="<?php echo base_url('assets/inilabs/combined.css'); ?>" >
-
-        <?php
-            if(isset($headerassets)) {
-                foreach ($headerassets as $assetstype => $headerasset) {
-                    if($assetstype == 'css') {
-                      if(inicompute($headerasset)) {
-                        foreach ($headerasset as $keycss => $css) {
-                          echo '<link rel="stylesheet" href="'.base_url($css).'">'."\n";
-                        }
-                      }
-                    } elseif($assetstype == 'js') {
-                      if(inicompute($headerasset)) {
-                        foreach ($headerasset as $keyjs => $js) {
-                          echo '<script type="text/javascript" src="'.base_url($js).'"></script>'."\n";
-                        }
-                      }
-                    }
-                }
-            }
-        ?>
-
-        <script type="text/javascript">
-          $(window).load(function() {
-            $(".se-pre-con").fadeOut("slow");;
-          });
-        </script>
+  <script type="text/javascript" src="<?php echo base_url('assets/toastr/toastr.min.js'); ?>"></script>
 
 
-<!-- Bootstrap Tags Input CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet">
+  <link href="<?php echo base_url('assets/bootstrap/bootstrap.min.css'); ?>" rel="stylesheet">
+
+  <link href="<?php echo base_url('assets/fonts/font-awesome.css'); ?>" rel="stylesheet">
+
+  <link href="<?php echo base_url('assets/fonts/icomoon.css'); ?>" rel="stylesheet">
+
+  <link href="<?php echo base_url('assets/fonts/ini-icon.css'); ?>" rel="stylesheet">
+
+  <link href="<?php echo base_url('assets/datatables/dataTables.bootstrap.css'); ?>" rel="stylesheet">
+
+  <link id="headStyleCSSLink" href="<?php echo base_url($backendThemePath . '/style.css'); ?>" rel="stylesheet">
+
+  <link href="<?php echo base_url('assets/inilabs/hidetable.css'); ?>" rel="stylesheet">
+
+  <link id="headInilabsCSSLink" href="<?php echo base_url($backendThemePath . '/inilabs.css'); ?>" rel="stylesheet">
+
+  <link href="<?php echo base_url('assets/inilabs/responsive.css'); ?>" rel="stylesheet">
+
+  <link href="<?php echo base_url('assets/toastr/toastr.min.css'); ?>" rel="stylesheet">
+
+  <link href="<?php echo base_url('assets/inilabs/mailandmedia.css'); ?>" rel="stylesheet">
+
+
+
+  <link rel="stylesheet" href="<?php echo base_url('assets/datatables/buttons.dataTables.min.css'); ?>">
+
+  <link rel="stylesheet" href="<?php echo base_url('assets/inilabs/combined.css'); ?>">
+  <link href="<?php echo base_url('assets/scss/base/_base.scss'); ?>" rel="stylesheet">
+
+
+
+  <link rel="stylesheet" href="<?php echo base_url('assets/dash_css/argon-dashboard.min.css'); ?>">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  
+  <script src="<?php echo base_url('assets/js/core/bootstrap.min.js'); ?>"></script>
+  <script src="<?php echo base_url('assets/js/plugins/chartjs.min.js'); ?>"></script>
+  <script src="<?php echo base_url('assets/js/plugins/perfect-scrollbar.min.js'); ?>"></script>
+  <script src="<?php echo base_url('assets/js/plugins/smooth-scrollbar.min.js'); ?>"></script>
+  <script src="<?php echo base_url('assets/js/core/popper.min.js'); ?>"></script>
+
+  <?php
+  if (isset($headerassets)) {
+    foreach ($headerassets as $assetstype => $headerasset) {
+      if ($assetstype == 'css') {
+        if (inicompute($headerasset)) {
+          foreach ($headerasset as $keycss => $css) {
+            echo '<link rel="stylesheet" href="' . base_url($css) . '">' . "\n";
+          }
+        }
+      } elseif ($assetstype == 'js') {
+        if (inicompute($headerasset)) {
+          foreach ($headerasset as $keyjs => $js) {
+            echo '<script type="text/javascript" src="' . base_url($js) . '"></script>' . "\n";
+          }
+        }
+      }
+    }
+  }
+  ?>
+
+  <script type="text/javascript">
+    $(window).load(function() {
+      $(".se-pre-con").fadeOut("slow");;
+    });
+  </script>
+
+
+  <!-- Bootstrap Tags Input CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet">
   <!-- Bootstrap Tags Input JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
-    </head>
-    <body class="skin-blue fuelux">
-        <div class="se-pre-con"></div>
+</head>
+
+<body class="skin-blue fuelux">
+  <div class="se-pre-con"></div>

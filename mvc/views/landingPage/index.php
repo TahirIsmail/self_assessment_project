@@ -125,7 +125,7 @@
     <!--new navbar-->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
-            <a href="index.html" class="navbar-brand p-0">
+            <a href="<?= base_url('HomeController/index')?>" class="navbar-brand p-0">
                 <img class="w-100" src="<?= base_url('uploads/landing_img/SL-white-logo.png') ?>" alt="Image" style="    width: 200px !important;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -138,8 +138,9 @@
                     <a href="service.html" class="nav-item nav-link book-now">Book Now</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">All Courses</a>
+                        
                         <div class="dropdown-menu m-0">
-                            <a href="blog.html" class="dropdown-item">DOOR SUPERVISOR</a>
+                            <a href="<?= base_url('course/index') ?>" class="dropdown-item">DOOR SUPERVISOR</a>
                             <a href="detail.html" class="dropdown-item">CCTV</a>
                             <a href="detail.html" class="dropdown-item">CVIT</a>
                             <a href="detail.html" class="dropdown-item">VEHICAL IMMOBILSER</a>
