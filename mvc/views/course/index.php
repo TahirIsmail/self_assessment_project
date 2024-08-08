@@ -182,8 +182,12 @@
             border-bottom: 2px solid #ddd;
         }
     }
+
+
+    
 </style>
 
+<?php $this->load->view("components/frontend/header.php"); ?>
 
 <div class="all-courses-container">
     <div class="courses-list">
@@ -597,3 +601,5 @@
         </table>
     </div>
 </div>
+
+<?php $this->load->view("components/frontend/footer.php"); ?>

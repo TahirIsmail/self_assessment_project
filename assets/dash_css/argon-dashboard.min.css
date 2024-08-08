@@ -16011,7 +16011,7 @@ fieldset:disabled .btn {
   padding: 1.5rem;
 }
 .card .card-body {
-  font-family: Open Sans, sans-serif;
+  font-family: "Quicksand", sans-serif !important;
   padding: 1.5rem !important;
 }
 .card.card-plain {
@@ -16778,7 +16778,7 @@ label {
 }
 .icon-sm i {
   top: 8px;
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
 }
 .icon-md {
   width: 48px;
@@ -18134,7 +18134,7 @@ p {
   font-weight: 400;
 }
 .text-sans-serif {
-  font-family: Open Sans, sans-serif !important;
+  font-family: "Quicksand", sans-serif  !important;
 }
 .text-monospace {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono,
@@ -19400,7 +19400,7 @@ pre[class*="language-"] {
   color: #000;
   background: none;
   text-shadow: 0 1px #fff;
-  font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
+  font-family: "Quicksand", sans-serif !important;
   font-size: 1em;
   text-align: left;
   white-space: pre;

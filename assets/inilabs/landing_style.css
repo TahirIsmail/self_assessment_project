@@ -571,43 +571,7 @@ span {
   /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23); */
 }
 
-.card-row {
-  display: flex !important;
-}
 
-.section_our_solution .row {
-  align-items: center;
-}
-
-.our_solution_category {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.our_solution_category .solution_cards_box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.solution_cards_box .solution_card {
-    cursor: pointer;
-  flex: 0 50%;
-  background: linear-gradient(to right, #48b9e1, #009fd6);
-  /* box-shadow: 0 2px 4px 0 rgba(136, 144, 195, 0.2),
-    0 5px 15px 0 rgba(37, 44, 97, 0.15); */
-    box-shadow: 1rem 0 1rem #00000066;
-  border-radius: 15px;
-  margin: 8px;
-  padding: 10px 15px;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  width: 340px;
-  min-height: 200px;
-  transition: 0.7s;
-}
 
 .xp {
   margin-top: -20px;
@@ -681,6 +645,50 @@ span {
 .solu_description {
   text-align: left !important;
 }
+
+
+
+
+
+
+
+.card-row {
+  display: flex !important;
+}
+
+.section_our_solution .row {
+  align-items: center;
+}
+
+.our_solution_category {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.our_solution_category .solution_cards_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.solution_cards_box .solution_card {
+    cursor: pointer;
+  flex: 0 50%;
+  background: linear-gradient(to right, #48b9e1, #009fd6);
+  /* box-shadow: 0 2px 4px 0 rgba(136, 144, 195, 0.2),
+    0 5px 15px 0 rgba(37, 44, 97, 0.15); */
+    box-shadow: 1rem 0 1rem #00000066;
+  border-radius: 15px;
+  margin: 8px;
+  padding: 10px 15px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  width: 340px;
+  min-height: 200px;
+  transition: 0.7s;
+}
 .solution_cards_box .solution_card:hover {
   box-shadow: 0 13px 27px -5px rgb(255 52 52 / 53%), 0 8px 16px -8px rgb(255 0 0 / 47%), 0 -6px 16px -6px rgb(255 0 0);
   background: linear-gradient(to right, #48b9e1, #009fd6);
@@ -740,20 +748,9 @@ span {
   text-align: left !important;
   color: rgb(255, 255, 255);
   font-size: 13px;
-  /* margin-bottom: 8px; */
+
 }
 
-/* .solution_card .solu_description button {
-    text-align: left;
-  cursor: pointer;
-  border: 0;
-  border-radius: 30px;
-  background: linear-gradient(to right, #ed213a, #93291e);
-  color: #fff;
-  font-weight: 500;
-  font-size: 12px;
-  padding: 5px 16px;
-} */
 
 .our_solution_content div {
   text-transform: capitalize;
