@@ -72,8 +72,11 @@ class Take_exam extends Admin_Controller
         $this->payment_gateway_array = pluck($this->payment_gateway_m->get_order_by_payment_gateway(['status' => 1]), 'status', 'slug');
     }
 
-    public function index()
+    public function index($slug = null)
     {
+
+
+
         $this->data['headerassets'] = [
             'css' => [
                 'assets/select2/css/select2.css',
@@ -87,65 +90,94 @@ class Take_exam extends Admin_Controller
         $usertypeID  = $this->session->userdata('usertypeID');
         $loginuserID = $this->session->userdata('loginuserID');
 
-        $this->data['userSubjectPluck'] = [];
-        if ($usertypeID == '3') {
-            $this->data['student'] = $this->student_m->get_single_student(['studentID' => $loginuserID]);
-            if (inicompute($this->data['student'])) {
-            //     echo '<pre>';
-            //    print_r($this->data['student']);
-            //    echo '</pre>';
-                $this->data['userSubjectPluck'] = pluck($this->subject_m->get_order_by_subject([
-                    'classesID' => $this->data['student']->classesID,
-                    'type'      => 1
-                ]), 'subjectID', 'subjectID');
-                // echo 'userSubjectPluck';
-                // echo $this->db->last_query();
-                $optionalSubject                = $this->subject_m->get_single_subject([
-                    'type'      => 0,
-                    'subjectID' => $this->data['student']->optionalsubjectID
-                ]);
-                // echo '<pre>';
-                // print_r($optionalSubject);
-                // echo '</pre>';
+        $course = [];
+        if ($slug) {
+            $course = $this->section_m->get_section_record(['slug' => $slug]);
+            if (!empty($course) && isset($course[0])) {
+                $this->db->from('student_enrollment_mock_test')
+                    ->select()
+                    ->join('student', 'student.studentID = student_enrollment_mock_test.studentID', 'left')
+                    ->join('studentextend', 'studentextend.studentID = student.studentID', 'LEFT')
+                    ->where([
+                        'student_enrollment_mock_test.studentID' => $loginuserID,
+                        'section_id' => $course[0]->sectionID,
+                        'is_expired' => 0
+                    ]);
+                $query = $this->db->get();
+                $enrolled_course = $query->result();
 
-                // echo 'userSubjectPluck';
-
-               
-
-                if (inicompute($optionalSubject))
-                { 
-                    // echo $optionalSubject->subjectID;
-                    $this->data['userSubjectPluck'][$optionalSubject->subjectID] = $optionalSubject->subjectID;
+                if (!empty($enrolled_course)) {
+                    // Process the enrolled course as needed
+                    // dd($enrolled_course);
+                    $this->data['userSubjectPluck'] = [];
+                    if ($usertypeID == '3') {
 
 
+                        // $this->data['student'] = $this->student_m->get_single_student(['studentID' => $loginuserID]);
+                        $this->data['student'] = $enrolled_course[0];
+
+
+
+                        // echo '<pre>';
+                        // print_r($this->data['student']);
+                        // echo '</pre>';
+                        // exit;
+
+                        if (inicompute($this->data['student'])) {
+                            $this->data['userSubjectPluck'] = pluck($this->subject_m->get_order_by_subject([
+                                'course_id' => $this->data['student']->section_id,
+                                'type'      => 1
+                            ]), 'subjectID', 'subjectID');
+                            // $optionalSubject                = $this->subject_m->get_single_subject([
+                            //     'type'      => 0,
+                            //     'subjectID' => $this->data['student']->optionalsubjectID
+                            // ]);
+                            // if (inicompute($optionalSubject)) {
+                            //     $this->data['userSubjectPluck'][$optionalSubject->subjectID] = $optionalSubject->subjectID;
+                            // }
+                        }
+
+                        // dd($this->data['userSubjectPluck']);
+                    }
                 }
+            } else {
+                // Handle the case when the course is not found
             }
-
+        } else {
+            // Handle the case when the slug is not provided
         }
-       
 
-        
+
+
+
+
+
+
+
         $this->data['payment_settings'] = $this->payment_gateway_m->get_order_by_payment_gateway(['status' => 1]);
         $this->data['payment_options']  = pluck($this->payment_gateway_option_m->get_payment_gateway_option(), 'payment_value', 'payment_option');
+
 
         $this->data['payments']         = pluck_multi_array($this->online_exam_payment_m->get_order_by_online_exam_payment([
             'usertypeID' => $this->session->userdata('usertypeID'),
             'userID'     => $this->session->userdata('loginuserID')
         ]), 'obj', 'online_examID');
+        
         $this->data['paindingpayments'] = pluck($this->online_exam_payment_m->get_order_by_online_exam_payment([
             'usertypeID' => $this->session->userdata('usertypeID'),
             'userID'     => $this->session->userdata('loginuserID'),
             'status'     => 0
         ]), 'obj', 'online_examID');
+       
         $this->data['examStatus']       = pluck($this->online_exam_user_status_m->get_order_by_online_exam_user_status(['userID' => $loginuserID]), 'obj', 'onlineExamID');
         $this->data['usertypeID']       = $usertypeID;
         $this->data['onlineExams']      = $this->online_exam_m->get_order_by_online_exam([
+            
             'usertypeID' => $usertypeID,
             'published'  => 1
         ]);
-
-       
-       
+        
+        // dd($this->data['onlineExams']);
         $this->data['validationErrors']       = [];
         $this->data['validationOnlineExamID'] = 0;
         if ($_POST !== []) {
@@ -175,10 +207,6 @@ class Take_exam extends Admin_Controller
 
 
 
-            
-            // echo '<pre>';
-            // print_r($this->data['userSubjectPluck']);
-            // echo '</pre>';exit;
             $this->data["subview"] = "online_exam/take_exam/index";
             $this->load->view('_layout_main', $this->data);
         }
@@ -260,18 +288,18 @@ class Take_exam extends Admin_Controller
                             }
                         }
                     }
-                  
+
 
                     if ($examGivenStatus) {
                         if ((int)$DDonlineExam->subjectID && (int)$DDonlineExam->classID) {
                             $examGivenStatus  = FALSE;
-                            
+
                             $userSubjectPluck = pluck($this->subject_m->get_order_by_subject(['type' => 1]), 'subjectID', 'subjectID');
                             $optionalSubject  = $this->subject_m->get_single_subject([
                                 'type'      => 0,
                                 'subjectID' => $this->data['student']->optionalsubjectID
                             ]);
-                           
+
                             if (inicompute($optionalSubject)) {
                                 $userSubjectPluck[$optionalSubject->subjectID] = $optionalSubject->subjectID;
                             }
@@ -307,7 +335,7 @@ class Take_exam extends Admin_Controller
                 $allOnlineExamQuestions = $onlineExamQuestions;
 
                 if ($this->data['onlineExam']->random == 1) {
-                    $this->db->from('online_exam_question')->where(['onlineExamID' => $onlineExamID])->order_by('', define('RANDOM',true));
+                    $this->db->from('online_exam_question')->where(['onlineExamID' => $onlineExamID])->order_by('', define('RANDOM', true));
                     $query = $this->db->get();
                     $onlineExamQuestions = $query->result();
                     $allOnlineExamQuestions = $onlineExamQuestions;
@@ -540,7 +568,7 @@ class Take_exam extends Admin_Controller
                     $this->data["subview"]           = "online_exam/take_exam/result";
                     return $this->load->view('_layout_main', $this->data);
                 }
-                
+
                 if ($examGivenStatus) {
                     $this->data["subview"] = "online_exam/take_exam/question";
                     return $this->load->view('_layout_main', $this->data);
@@ -606,15 +634,15 @@ class Take_exam extends Admin_Controller
 
             $examquestions = pluck($this->online_exam_question_m->get_order_by_online_exam_question(array('onlineExamID' => $onlineExamID)), 'questionID');
             $examquestionsuseranswer = $this->online_exam_user_answer_option_m->get_order_by_online_exam_user_answer_option($array);
-            if(inicompute($examquestionsuseranswer)){
-                foreach($examquestionsuseranswer as $userquestionans){
+            if (inicompute($examquestionsuseranswer)) {
+                foreach ($examquestionsuseranswer as $userquestionans) {
                     $useranswer[$userquestionans->optionID][$userquestionans->questionID] = $userquestionans;
                     $fillintheblankUserAns[$userquestionans->text][$userquestionans->questionID][$userquestionans->typeID] = $userquestionans;
                 }
             }
             $examquestionsanswer =  $this->question_answer_m->get_question_answerArray($examquestions, 'questionID');
-            if(inicompute($examquestionsanswer)){
-                foreach($examquestionsanswer as $ans){
+            if (inicompute($examquestionsanswer)) {
+                foreach ($examquestionsanswer as $ans) {
                     $examans[$ans->optionID][$ans->questionID] = $ans;
                     $fillintheExamAns[$ans->text][$ans->questionID][$ans->typeNumber] =  $ans;
                 }
@@ -627,7 +655,7 @@ class Take_exam extends Admin_Controller
             $this->data['fillintheblankUserAns']    = $fillintheblankUserAns;
             $this->data['fillintheExamAns']         = $fillintheExamAns;
             $this->data['question_answer_options']  = pluck_multi_array($this->question_answer_m->get_order_by_question_answer(), 'obj', 'questionID');
-            $this->data['onlineExamUserAnsOption']  = pluck_multi_array($this->online_exam_user_answer_option_m->get_order_by_online_exam_user_answer_option($array),'obj', 'questionID');
+            $this->data['onlineExamUserAnsOption']  = pluck_multi_array($this->online_exam_user_answer_option_m->get_order_by_online_exam_user_answer_option($array), 'obj', 'questionID');
             $this->data["subview"]                  = "online_exam/take_exam/examanswer";
             $this->load->view('_layout_main', $this->data);
         } else {
@@ -832,4 +860,3 @@ class Take_exam extends Admin_Controller
         }
     }
 }
-

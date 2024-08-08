@@ -101,6 +101,9 @@ public $data;
 		$deshboardTopWidgetUserTypeOrder = $this->session->userdata('master_permission_set');
 		
 		$this->data['dashboardWidget']['students'] 			= inicompute($students);
+
+
+
 		$this->data['dashboardWidget']['classes']  			= inicompute($classes);
 		$this->data['dashboardWidget']['teachers'] 			= inicompute($teachers);
 		$this->data['dashboardWidget']['parents'] 			= inicompute($parents);
@@ -114,6 +117,7 @@ public $data;
 		$this->data['dashboardWidget']['studentgroup']      = inicompute($studentgroup);
 		$this->data['dashboardWidget']['allmenu'] 			= $allmenu;
 		$this->data['dashboardWidget']['allmenulang'] 		= $allmenulang;
+		
 		// echo '<pre>';
 		// print_r($this->data['dashboardWidget']);
 		// echo '</pre>';exit;

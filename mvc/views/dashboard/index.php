@@ -45,7 +45,9 @@
             'linear-gradient(to right, #ed213a, #93291e)'
         );
 
-        function allModuleArray($usertypeID = '1', $dashboardWidget)
+
+
+        function allModuleArray($usertypeID = '1', $dashboardWidget = [])
         {
             if (!is_array($dashboardWidget)) {
                 throw new InvalidArgumentException('$dashboardWidget must be an array');
@@ -95,6 +97,8 @@
         $counter = 0;
         $getActiveUserID = $this->session->userdata('usertypeID');
 
+
+
         $getAllSessionDatas = $this->session->userdata('master_permission_set');
         foreach ($getAllSessionDatas as $getAllSessionDataKey => $getAllSessionData) {
             if ($getAllSessionData == 'yes') {
@@ -143,6 +147,7 @@
             }
         }
 
+
         if (inicompute($generateBoxArray)) {
             foreach ($generateBoxArray as $generateBoxArrayKey => $generateBoxValue) {
         ?>
@@ -184,16 +189,37 @@
   <div class="row">
       <div class="col-lg-4 col-xs-6">
           <div class="small-box ">
-              <a class="small-box-footer " style="background: <?= $generateBoxValue['color'] ?> ;"href="<?= base_url("take_exam/index") ?>">
+              <?php
+                    $slug = 'door-supervisor-training_B7ERVW';
+                ?>
+              <a class="small-box-footer " style="background: <?= $generateBoxValue['color'] ?> ;" href="<?= base_url("take_exam/index/" . urlencode($slug)) ?>">
                   <div class="icon <?= $generateBoxValue['color'] ?>" style="padding: 9.5px 18px 8px 18px;">
-                  <img  src="<?= base_url('uploads/landing_img/46288331.png') ?>" alt="" style="height:50px">
+                      <img src="<?= base_url('uploads/landing_img/46288331.png') ?>" alt="" style="height:50px">
                   </div>
                   <div class="inner ">
                       <h3 style="color: white !important;">
-                         4
+                          4
                       </h3 class="text-white">
                       <p style="color: white !important;">
-                        Door Supervisor Training
+                          Door Supervisor Training
+                      </p>
+                  </div>
+              </a>
+
+          </div>
+      </div>
+      <div class="col-lg-4 col-xs-6">
+          <div class="small-box ">
+              <a class="small-box-footer " style="background: <?= $generateBoxValue['color'] ?> ;" href="#">
+                  <div class="icon <?= $generateBoxValue['color'] ?>" style="padding: 9.5px 18px 8px 18px;">
+                      <img src="<?= base_url('uploads/landing_img/46288331.png') ?>" alt="" style="height:50px">
+                  </div>
+                  <div class="inner ">
+                      <h3 style="color: white !important;">
+                          0
+                      </h3 class="text-white">
+                      <p style="color: white !important;">
+                          CCTV Traning
                       </p>
                   </div>
               </a>
@@ -201,32 +227,16 @@
       </div>
       <div class="col-lg-4 col-xs-6">
           <div class="small-box ">
-              <a class="small-box-footer " style="background: <?= $generateBoxValue['color'] ?> ;"href="#">
+              <a class="small-box-footer " style="background: <?= $generateBoxValue['color'] ?> ;" href="#">
                   <div class="icon <?= $generateBoxValue['color'] ?>" style="padding: 9.5px 18px 8px 18px;">
-                  <img  src="<?= base_url('uploads/landing_img/46288331.png') ?>" alt="" style="height:50px">
+                      <img src="<?= base_url('uploads/landing_img/46288331.png') ?>" alt="" style="height:50px">
                   </div>
                   <div class="inner ">
                       <h3 style="color: white !important;">
-                         0
+                          0
                       </h3 class="text-white">
                       <p style="color: white !important;">
-                    CCTV Traning
-                      </p>
-                  </div>
-              </a>
-          </div>
-      </div><div class="col-lg-4 col-xs-6">
-          <div class="small-box ">
-              <a class="small-box-footer " style="background: <?= $generateBoxValue['color'] ?> ;"href="#">
-                  <div class="icon <?= $generateBoxValue['color'] ?>" style="padding: 9.5px 18px 8px 18px;">
-                  <img  src="<?= base_url('uploads/landing_img/46288331.png') ?>" alt="" style="height:50px">
-                  </div>
-                  <div class="inner ">
-                      <h3 style="color: white !important;">
-                         0
-                      </h3 class="text-white">
-                      <p style="color: white !important;">
-                        Security Guard Training
+                          Security Guard Training
                       </p>
                   </div>
               </a>
@@ -236,16 +246,16 @@
   <div class="row">
       <div class="col-lg-4 col-xs-6">
           <div class="small-box ">
-              <a class="small-box-footer " style="background: <?= $generateBoxValue['color'] ?> ;"href="#">
+              <a class="small-box-footer " style="background: <?= $generateBoxValue['color'] ?> ;" href="#">
                   <div class="icon <?= $generateBoxValue['color'] ?>" style="padding: 9.5px 18px 8px 18px;">
-                  <img  src="<?= base_url('uploads/landing_img/46288331.png') ?>" alt="" style="height:50px">
+                      <img src="<?= base_url('uploads/landing_img/46288331.png') ?>" alt="" style="height:50px">
                   </div>
                   <div class="inner ">
                       <h3 style="color: white !important;">
-                         0
+                          0
                       </h3 class="text-white">
                       <p style="color: white !important;">
-                       Close Protection
+                          Close Protection
                       </p>
                   </div>
               </a>
@@ -253,13 +263,13 @@
       </div>
       <div class="col-lg-4 col-xs-6">
           <div class="small-box ">
-              <a class="small-box-footer " style="background: <?= $generateBoxValue['color'] ?> ;"href="#">
+              <a class="small-box-footer " style="background: <?= $generateBoxValue['color'] ?> ;" href="#">
                   <div class="icon <?= $generateBoxValue['color'] ?>" style="padding: 9.5px 18px 8px 18px;">
-                  <img  src="<?= base_url('uploads/landing_img/46288331.png') ?>" alt="" style="height:50px">
+                      <img src="<?= base_url('uploads/landing_img/46288331.png') ?>" alt="" style="height:50px">
                   </div>
                   <div class="inner ">
                       <h3 style="color: white !important;">
-                         0
+                          0
                       </h3 class="text-white">
                       <p style="color: white !important;">
                           CVIT
@@ -267,15 +277,16 @@
                   </div>
               </a>
           </div>
-      </div><div class="col-lg-4 col-xs-6">
+      </div>
+      <div class="col-lg-4 col-xs-6">
           <div class="small-box ">
-              <a class="small-box-footer " style="background: <?= $generateBoxValue['color'] ?> ;"href="#">
+              <a class="small-box-footer " style="background: <?= $generateBoxValue['color'] ?> ;" href="#">
                   <div class="icon <?= $generateBoxValue['color'] ?>" style="padding: 9.5px 18px 8px 18px;">
-                  <img  src="<?= base_url('uploads/landing_img/46288331.png') ?>" alt="" style="height:50px">
+                      <img src="<?= base_url('uploads/landing_img/46288331.png') ?>" alt="" style="height:50px">
                   </div>
                   <div class="inner ">
                       <h3 style="color: white !important;">
-                         0
+                          0
                       </h3 class="text-white">
                       <p style="color: white !important;">
                           Vehcial Immobilser

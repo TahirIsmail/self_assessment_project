@@ -684,10 +684,9 @@ body > .header .logo .icon {
   padding: 0;
 }
 .sidebar .sidebar-menu > li > a {
-  font-family: 'OpenSans Regular';
+  font-family: '"Quicksand", sans-serif !important';
     font-size: 15px;
     color: #000000;
-  color: #A4B1C2;
   padding: 10px 5px 10px 15px;
   display: block;
 }
@@ -2694,10 +2693,12 @@ Component: timeline
 .skin-blue .sidebar > .sidebar-menu > li > a:hover,
 .skin-blue .sidebar > .sidebar-menu > li.active > a {
   -webkit-transition: 0.3s ease-out;
-margin-top: 5px !important;
+/* margin-top: 5px !important;
   margin-left: 15px !important;
     margin-right: 15px !important;
-    border-radius: 5px !important;
+    border-radius: 5px !important; */
+
+    
   color: #ffffff;
   /* background-image: linear-gradient(to right, #141e30, #243b55); */
   background: linear-gradient(to right, #ed213a, #93291e);

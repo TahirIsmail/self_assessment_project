@@ -63,8 +63,6 @@ class Subject_m extends MY_Model {
 
 	public function get_single_subject($array) 
 	{
-		
-
 		$query = parent::get_single($array);
 		return $query;
 	}
