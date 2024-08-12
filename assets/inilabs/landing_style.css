@@ -466,7 +466,7 @@ span {
   width: 100%;
   height: 35px;
   background-color: #f69246;
-  
+
   transform: rotate(-90deg) translateY(140px) translateX(-42px);
   display: flex;
   align-items: center;
@@ -477,7 +477,6 @@ span {
   text-transform: uppercase;
   /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23); */
 }
-
 
 .card_boxi2::before {
   font-size: 15px;
@@ -497,7 +496,6 @@ span {
   /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23); */
 }
 
-
 .card_boxi3::before {
   font-size: 15px;
   content: "SECURITY";
@@ -515,7 +513,6 @@ span {
   text-transform: uppercase;
   /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23); */
 }
-
 
 .card_boxi4::before {
   font-size: 15px;
@@ -571,8 +568,6 @@ span {
   /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23); */
 }
 
-
-
 .xp {
   margin-top: -20px;
 }
@@ -615,7 +610,8 @@ span {
   left: 0;
   width: 90%;
   height: 100%;
-  background: url("../../../uploads/images/sia-logo.png") no-repeat center center;
+  background: url("../../../uploads/images/sia-logo.png") no-repeat center
+    center;
   background-size: cover;
   opacity: 0.2; /* Adjust opacity as needed */
   z-index: 1;
@@ -646,12 +642,6 @@ span {
   text-align: left !important;
 }
 
-
-
-
-
-
-
 .card-row {
   display: flex !important;
 }
@@ -673,12 +663,12 @@ span {
 }
 
 .solution_cards_box .solution_card {
-    cursor: pointer;
+  cursor: pointer;
   flex: 0 50%;
   background: linear-gradient(to right, #48b9e1, #009fd6);
   /* box-shadow: 0 2px 4px 0 rgba(136, 144, 195, 0.2),
     0 5px 15px 0 rgba(37, 44, 97, 0.15); */
-    box-shadow: 1rem 0 1rem #00000066;
+  box-shadow: 1rem 0 1rem #00000066;
   border-radius: 15px;
   margin: 8px;
   padding: 10px 15px;
@@ -690,7 +680,8 @@ span {
   transition: 0.7s;
 }
 .solution_cards_box .solution_card:hover {
-  box-shadow: 0 13px 27px -5px rgb(255 52 52 / 53%), 0 8px 16px -8px rgb(255 0 0 / 47%), 0 -6px 16px -6px rgb(255 0 0);
+  box-shadow: 0 13px 27px -5px rgb(255 52 52 / 53%),
+    0 8px 16px -8px rgb(255 0 0 / 47%), 0 -6px 16px -6px rgb(255 0 0);
   background: linear-gradient(to right, #48b9e1, #009fd6);
   color: #fff;
   transform: scale(1.05);
@@ -748,9 +739,7 @@ span {
   text-align: left !important;
   color: rgb(255, 255, 255);
   font-size: 13px;
-
 }
-
 
 .our_solution_content div {
   text-transform: capitalize;
@@ -834,14 +823,7 @@ span {
   }
 }
 
-
-
-
-
-
-
 /*/////// CARD SLIDER STYLING////////// */
-
 
 .cont1 {
   /* position: absolute; */
@@ -859,7 +841,7 @@ span {
   /* background-color: #3495c7; */
   border-radius: 10px;
   /* box-shadow: 1rem 0 2rem #00000075; */
-/*   margin-left: -50px; */
+  /*   margin-left: -50px; */
   transition: 0.4s ease-out;
   position: relative;
   left: 0px;
@@ -891,14 +873,9 @@ span {
   z-index: 1;
 }
 
-
-
-
 .card-new:hover {
-  
   transform: translateY(-10px);
   transition: 0.4s ease-out;
-  
 }
 
 .card-new:hover ~ .card-new {
@@ -921,20 +898,268 @@ span {
   transition: 0.6s ease-out;
 }
 
-
 /* Additional styles for responsive cards */
 
-
-@media (min-width: 50px) and (max-width:1220px) {
+@media (min-width: 50px) and (max-width: 1220px) {
   .cont1 {
     display: none;
   }
-
 }
 
-@media (min-width: 50px) and (max-width:767px) {
+@media (min-width: 50px) and (max-width: 767px) {
   .carousel-item img {
     height: 50vh;
   }
-  
+}
+
+@media (min-width: 991px) and (max-width: 20000px) {
+  .cont1_mobile {
+    display: none !important;
+  }
+}
+.cont1_mobile {
+  height: 280px; /* Adjusted to fit the card height */
+  width: 100%;
+  overflow: hidden; /* Hide overflow to ensure cards don't spill outside */
+  position: relative;
+  display: flex;
+  justify-content: center; /* Center the container horizontally */
+  align-items: center; /* Center the container vertically */
+}
+
+.card-new_mobile {
+  position: absolute;
+
+  border-radius: 10px;
+  transition: transform 0.4s ease-out, z-index 0.4s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-new_mobile:nth-child(1) {
+  z-index: 6;
+  transform: translateX(-60px);
+}
+
+.card-new_mobile:nth-child(2) {
+  z-index: 5;
+  transform: translateX(-40px);
+}
+
+.card-new_mobile:nth-child(3) {
+  z-index: 4;
+  transform: translateX(-20px);
+}
+
+.card-new_mobile:nth-child(4) {
+  z-index: 3;
+  transform: translateX(0);
+}
+
+.card-new_mobile:nth-child(5) {
+  z-index: 2;
+  transform: translateX(20px);
+}
+
+.card-new_mobile:nth-child(6) {
+  z-index: 1;
+  transform: translateX(40px);
+}
+
+.card-new_mobile:hover {
+  transform: scale(1.1); /* Scale up on hover */
+  z-index: 10; /* Bring the hovered card to the front */
+}
+
+.card-new_mobile:hover ~ .card-new_mobile {
+  transform: translateX(20px); /* Adjust overlap on hover */
+}
+
+.solution_cards_box_mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.solution_card_mobile {
+  cursor: pointer;
+  background: linear-gradient(to right, #48b9e1, #009fd6);
+  box-shadow: 1rem 0 1rem #00000066;
+  border-radius: 15px;
+  margin: 8px;
+  padding: 10px 15px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  width: 250px;
+  min-height: 165px;
+  transition: 0.7s;
+}
+
+.solution_card_mobile:hover {
+  box-shadow: 0 13px 27px -5px rgb(255 52 52 / 53%),
+    0 8px 16px -8px rgb(255 0 0 / 47%), 0 -6px 16px -6px rgb(255 0 0);
+  background: linear-gradient(to right, #48b9e1, #009fd6);
+  color: #fff;
+  transform: scale(1.05);
+  z-index: 9;
+  margin-top: -3px;
+}
+
+.solution_card_mobile:hover .ph_mobile {
+  color: #fff !important;
+}
+
+.solution_card_mobile:hover .designation_mobile {
+  color: #fff !important;
+}
+
+.solution_card_mobile:hover::before {
+  background: rgb(85 108 214 / 10%);
+}
+
+.solution_card_mobile:hover .solu_title_mobile h3,
+.solution_card_mobile:hover .solu_description_mobile p {
+  color: #fff;
+}
+
+.solution_card_mobile::before {
+  content: "";
+  position: absolute;
+  background: rgb(85 137 214 / 33%);
+  width: 170px;
+  height: 400px;
+  z-index: -1;
+  transform: rotate(42deg);
+  right: -56px;
+  top: -23px;
+  border-radius: 35px;
+}
+
+.solution_card_mobile:hover .solu_description_mobile button {
+  background: #fff !important;
+  color: red;
+}
+
+.solution_card_mobile:hover .hover_color_bubble_mobile {
+  top: 0rem;
+}
+
+.solution_card_mobile .so_top_icon_mobile {
+  height: 65px;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.solution_card_mobile .so_top_icon_mobile img {
+  width: 70px;
+  height: 75px;
+  object-fit: contain;
+}
+
+.solution_card_mobile .solu_title_mobile div {
+  color: #ffffff;
+  font-size: 1.3rem;
+  margin-bottom: 13px;
+}
+
+.solution_card_mobile .solu_description_mobile p {
+  font-weight: 500 !important;
+  text-align: left !important;
+  color: rgb(255, 255, 255);
+  font-size: 13px;
+}
+
+.ph_mobile {
+  letter-spacing: -1px;
+  margin-top: 2px;
+  text-align: left !important;
+  font-weight: 600;
+  font-size: 14px;
+  color: #111111 !important;
+}
+
+.simitry_mobile {
+  margin-right: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.solu_description_mobile {
+  text-align: left !important;
+}
+
+.designation1_mobile {
+  font-weight: 600;
+  color: #212121;
+  font-size: 15px !important;
+  text-align: left !important;
+}
+
+.designation_mobile {
+  color: #242424;
+  font-size: 12px !important;
+  text-align: left !important;
+  font-weight: 600 !important;
+}
+
+.name_mobile {
+  letter-spacing: 2px !important;
+  margin-right: 29px !important;
+  margin-bottom: 0px !important;
+  color: #9a0000;
+  font-weight: 600;
+  font-size: 12px !important;
+  text-align: right !important;
+}
+
+.card_boxi1_mobile::before,
+.card_boxi2_mobile::before,
+.card_boxi3_mobile::before,
+.card_boxi4_mobile::before,
+.card_boxi5_mobile::before,
+.card_boxi6_mobile::before {
+  font-size: small;
+  content: "";
+  position: absolute;
+  width: 74%;
+  height: 33px;
+  transform: rotate(-90deg) translateY(131px) translateX(-42px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23);
+}
+
+.card_boxi1_mobile::before {
+  background-color: #f69246;
+  content: "DOOR SUPERVISOR";
+}
+.card_boxi2_mobile::before {
+  background-color: #ac4630;
+  content: "CLOSE PROTECTION";
+}
+.card_boxi3_mobile::before {
+  background-color: #2953aa;
+  content: "SECURITY";
+}
+.card_boxi4_mobile::before {
+  background-color: #5e56a3;
+  content: "CVIT";
+}
+.card_boxi5_mobile::before {
+  background-color: #987e28;
+  content: "VEHICAL IMMOBILISER";
+}
+.card_boxi6_mobile::before {
+  background-color: #a2095a;
+  content: "CCTV";
 }

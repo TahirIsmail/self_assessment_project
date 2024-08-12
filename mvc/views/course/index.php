@@ -3,8 +3,6 @@
         display: flex;
         flex-wrap: wrap;
         padding: 20px;
-        font-family: Arial, sans-serif;
-        background-color: #fdf2f0;
     }
 
     .courses-list,
@@ -16,7 +14,7 @@
     }
 
     .courses-list {
-        background-color: #ffefeb;
+        
         flex: 0 0 30%;
     }
 
@@ -24,11 +22,11 @@
         flex: 0 0 60%;
     }
 
-    .courses-list h2,
+    /* .courses-list h2,
     .course-detail h2 {
         color: #b71c1c;
         font-size: 1.5em;
-    }
+    } */
 
     .courses-list ul {
         list-style-type: none;
@@ -182,9 +180,6 @@
             border-bottom: 2px solid #ddd;
         }
     }
-
-
-    
 </style>
 
 <?php $this->load->view("components/frontend/header.php"); ?>
@@ -194,34 +189,34 @@
         <h2>Courses</h2>
 
         <ul>
-            <li>Level 3: Award in Education & Training (AET) Course</li>
-            <li>Level 4: Certificate in Education & Training (CET) Course</li>
-            <li>Level 5: Diploma in Education & Training (DET) Course</li>
-            <li>Level 3: Teacher Training (PTLLS) Course</li>
-            <li>Level 4: Certificate in Teaching (CTLLS) Course</li>
-            <li>Level 5: Diploma in Teaching (DTLLS) Course</li>
-            <li>Level 3: Assessor (TAQA) Understanding Course</li>
-            <li>Level 3: Assessor (TAQA) Vocational Level Course</li>
-            <li>Level 3: Assessor (TAQA) Competence Level Course</li>
-            <li>Level 3: Assessor Certificate (Combined) CAVA Course</li>
-            <li>Level 4: Verifier Award (IQA) Course</li>
-            <li>Study in the UK: International Students</li>
-            <li>Restraint Reduction Training Course</li>
-            <li>Level 3: Emergency First Aid at Work Course</li>
-            <li>Level 3 First Aid At Work 3 Day Course</li>
-            <li>Level 3: SIA-Trainer Course</li>
-            <li>Level 3: Conflict Management Course</li>
-            <li>Level 3: Physical Intervention (Trainer) Course</li>
-            <li>Level 2: Upskilling Door Supervisor Course</li>
-            <li>Level 2: SIA Door Supervisor Course</li>
-            <li>Level 2: SIA CCTV Public Surveillance Course</li>
-            <li>Level 2: Security Guarding (SIA) Course</li>
-            <li>Level 2: Professional Taxi and Private Hire Driver Course</li>
-            <li>TFL PCO B1 English and SERU Training</li>
-            <li>Level 3: Driver CPC Training Course</li>
-            <li>Forklift 1 Day Refresher & Retest Course</li>
-            <li>Forklift 3 Day Basic Training Course</li>
-            <li>Forklift 5 Day Novice Operator Training</li>
+            <li class="btn btn-primary  w-100 ">Level 3: Award in Education & Training (AET) Course</li>
+            <li class="btn btn-primary  w-100 ">Level 4: Certificate in Education & Training (CET) Course</li>
+            <li class="btn btn-primary  w-100 ">Level 5: Diploma in Education & Training (DET) Course</li>
+            <li class="btn btn-primary  w-100 ">Level 3: Teacher Training (PTLLS) Course</li>
+            <li class="btn btn-primary  w-100 ">Level 4: Certificate in Teaching (CTLLS) Course</li>
+            <li class="btn btn-primary  w-100 "> Level 5: Diploma in Teaching (DTLLS) Course</li>
+            <li class="btn btn-primary  w-100 ">Level 3: Assessor (TAQA) Understanding Course</li>
+            <li class="btn btn-primary  w-100 ">Level 3: Assessor (TAQA) Vocational Level Course</li>
+            <li class="btn btn-primary  w-100 ">Level 3: Assessor (TAQA) Competence Level Course</li>
+            <li class="btn btn-primary  w-100 ">Level 3: Assessor Certificate (Combined) CAVA Course</li>
+            <li class="btn btn-primary  w-100 ">Level 4: Verifier Award (IQA) Course</li>
+            <li class="btn btn-primary  w-100 ">Study in the UK: International Students</li>
+            <li class="btn btn-primary  w-100 ">Restraint Reduction Training Course</li>
+            <li class="btn btn-primary  w-100 ">Level 3: Emergency First Aid at Work Course</li>
+            <li class="btn btn-primary  w-100 ">Level 3 First Aid At Work 3 Day Course</li>
+            <li class="btn btn-primary  w-100 ">Level 3: SIA-Trainer Course</li>
+            <li class="btn btn-primary  w-100 ">Level 3: Conflict Management Course</li>
+            <li class="btn btn-primary  w-100 ">Level 3: Physical Intervention (Trainer) Course</li>
+            <li class="btn btn-primary  w-100 ">Level 2: Upskilling Door Supervisor Course</li>
+            <li class="btn btn-primary  w-100 ">Level 2: SIA Door Supervisor Course</li>
+            <li class="btn btn-primary  w-100 ">Level 2: SIA CCTV Public Surveillance Course</li>
+            <li class="btn btn-primary  w-100 ">Level 2: Security Guarding (SIA) Course</li>
+            <li class="btn btn-primary  w-100 ">Level 2: Professional Taxi and Private Hire Driver Course</li>
+            <li class="btn btn-primary  w-100 ">TFL PCO B1 English and SERU Training</li>
+            <li class="btn btn-primary  w-100 ">Level 3: Driver CPC Training Course</li>
+            <li class="btn btn-primary  w-100 ">Forklift 1 Day Refresher & Retest Course</li>
+            <li class="btn btn-primary  w-100 ">Forklift 3 Day Basic Training Course</li>
+            <li class="btn btn-primary  w-100 ">Forklift 5 Day Novice Operator Training</li>
         </ul>
     </div>
     <div class="course-detail">
