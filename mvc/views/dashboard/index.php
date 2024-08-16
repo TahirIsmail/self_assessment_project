@@ -1,3 +1,4 @@
+
 <style>
     .data-text--show {
         opacity: 1;
@@ -49,6 +50,7 @@
     }
 </style>
 
+<link rel="stylesheet" href="<?php echo base_url('assets/dash_css/argon-dashboard.min.css'); ?>">
 
 <div class="container-fluid py-4">
     <div class="row ">
@@ -333,7 +335,7 @@
                         <div class="carousel-item h-100" style="background-image: url('<?= base_url('uploads/images/course/course3.jpg') ?>'); background-size: cover;">
                             <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                                 <div class="icon icon-shape icon-sm  text-center border-radius-md mb-3">
-                                <i class="fa-solid fa-2x fa-trophy "></i>
+                                    <i class="fa-solid fa-2x fa-trophy "></i>
                                 </div>
                                 <h5 class="text-black  mb-1">Share with us your design tips!</h5>
                                 <p class="text-black ">Don’t be afraid to be wrong because you can’t learn anything from a compliment.</p>
