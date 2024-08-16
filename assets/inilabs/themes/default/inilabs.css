@@ -179,8 +179,8 @@ label {
 .pagination>.active>span:hover,
 .pagination>.active>a:focus,
 .pagination>.active>span:focus {
-  border-color: #242A30;
-  background-color: #242A30;
+  border-color: #990f14;
+  background-color: #d71920;
 }
 
 .pagination>li>a,
@@ -628,7 +628,7 @@ label {
   display: block;
   overflow: hidden;
   cursor: pointer;
-  border: 2px solid #999999;
+  border: 2px solid #d71920;
   border-radius: 10px;
 }
 
@@ -657,7 +657,7 @@ label {
 .onoffswitch-small-inner:before {
   content: "ON";
   padding-left: 9px;
-  background-color: #34A7C1;
+  background-color: #d71920;
   color: #FFFFFF;
 }
 
@@ -678,7 +678,7 @@ label {
   top: 0;
   bottom: 0;
   right: 38px;
-  border: 2px solid #999999;
+  border: 2px solid #d71920;
   border-radius: 10px;
   transition: all 0.3s ease-in 0s;
 }

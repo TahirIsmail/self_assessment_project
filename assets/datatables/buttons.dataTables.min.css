@@ -31,14 +31,14 @@ a.dt-button {
   box-sizing: border-box;
   margin-right: 0.333em;
   padding: 0.5em 1em;
-  border: 1px solid #c3c3c3;
+  border: 1px solid #9b1318;
   border-radius: 2px;
   cursor: pointer;
   font-size: 0.88em;
-  color: #4c4c4c;
+  color: #ffffff;
   white-space: nowrap;
   overflow: hidden;
-  background-color: #FFF;
+  background-color: #d71920;
 }
 button.dt-button.disabled,
 div.dt-button.disabled,
@@ -105,8 +105,8 @@ a.dt-button:hover {
 button.dt-button:hover:not(.disabled),
 div.dt-button:hover:not(.disabled),
 a.dt-button:hover:not(.disabled) {
- 	background-color: #e2e2e2;
- 	border: 1px solid #c3c3c3;
+ 	background-color: #000000;
+ 	border: 1px solid #000000;
 }
 button.dt-button:focus:not(.disabled),
 div.dt-button:focus:not(.disabled),
