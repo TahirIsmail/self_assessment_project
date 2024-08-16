@@ -5,7 +5,7 @@
         <aside class="right-side">
             <section class="content">
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-xs-12 bg-litegray" style="padding:0px">
                     <?php $this->load->view("components/page_topbar"); ?>
                         <?php  $this->load->view($subview);  ?>
                     </div>

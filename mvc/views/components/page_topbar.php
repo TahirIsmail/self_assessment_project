@@ -1,37 +1,89 @@
-        <!-- header logo: style can be found in header.less -->
-        <header class="header">
-           
-            <nav class="navbar navbar-static-top" role="navigation">
-                <!-- Sidebar toggle button-->
-                <a href="#" class="navbar-btn sidebar-toggle switch" data-toggle="offcanvas" type="checkbox">
-                    <!-- <span class="sr-only">Toggle navigation</span> -->
-                    <!-- <label class=""> -->
-                    <input type="checkbox">
-                    <span class="slider"></span>
-                    <!-- </label> -->
-                </a>
+<style>
+    /* <reset-style> ============================ */
+    button {
+        border: none;
+        background: none;
+    
+    }
+
+    /* ============================ */
+    
+
+    /* <style for menu__icon> ======== */
+    .menu__icon {
+        margin-top:15px;
+        margin-left: 15px;
+        width: 32px;
+        height: 32px;
+        padding: 4px;
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: end;
+        transition: transform .4s;
+    }
+
+    .menu__icon span {
+        width: 100%;
+        height: 0.25rem;
+        border-radius: 0.125rem;
+        background: linear-gradient(to right, #ed213a, #93291e);
+        box-shadow: 0 .5px 2px 0 hsla(0, 0%, 0%, .2);
+        transition: width .4s, transform .4s, background-color .4s;
+    }
+
+    .menu__icon :nth-child(2) {
+        width: 75%;
+    }
+
+    .menu__icon :nth-child(3) {
+        width: 50%;
+    }
+
+    .menu__icon:hover {
+        transform: rotate(-90deg);
+    }
+
+    .menu__icon:hover span {
+        width: .25rem;
+        transform: translateX(-10px);
+        background-color: rgb(255, 59, 48);
+    }
+</style>
+<!-- header logo: style can be found in header.less -->
+<header class="header">
+
+    <nav class="navbar navbar-static-top" role="navigation">
+
+        <a href="#" class="menu__icon navbar-btn sidebar-toggle " data-toggle="offcanvas">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
 
 
-                <div class="navbar-right">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown messages-menu my-push-message">
-                            <a href="#" class="dropdown-toggle my-push-message-a" data-toggle="dropdown">
-                                <i class="fa fa-bell-o"></i>
-                            </a>
-                            <ul class="dropdown-menu my-push-message-ul" style="display:none">
-                                <li class='header my-push-message-number'>
-                                </li>
-                                <li>
-                                    <ul class="menu my-push-message-list">
-                                    </ul>
-                                </li>
+
+
+        <div class="navbar-right">
+            <ul class="nav navbar-nav">
+                <!-- <li class="dropdown messages-menu my-push-message">
+                    <a href="#" class="dropdown-toggle my-push-message-a" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                    </a>
+                    <ul class="dropdown-menu my-push-message-ul" style="display:none">
+                        <li class='header my-push-message-number'>
+                        </li>
+                        <li>
+                            <ul class="menu my-push-message-list">
                             </ul>
                         </li>
+                    </ul>
+                </li> -->
 
 
-                        <?php if (isset($siteinfos->language_status) && $siteinfos->language_status == 0) { ?>
-                           
-                            <!-- <li class="dropdown notifications-menu">
+                <?php if (isset($siteinfos->language_status) && $siteinfos->language_status == 0) { ?>
+
+                    <!-- <li class="dropdown notifications-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <img class="language-img" src="<?php
                                                                     $image = $this->session->userdata('lang');
@@ -228,52 +280,51 @@
                                     <li class="footer"></li>
                                 </ul>
                             </li> -->
-                            
-                        <?php } ?>
+                <?php } ?>
 
-                        <li class="dropdown user user-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="<?= imagelink($this->session->userdata('photo')) ?>" class="user-logo" alt="" />
-                                <span>
-                                    <?php
-                                    $name = $this->session->userdata('name');
-                                    if (strlen($name) > 11) {
-                                        echo substr($name, 0, 11) . "..";
-                                    } else {
-                                        echo $name;
-                                    }
-                                    ?>
-                                    <i class="caret"></i>
-                                </span>
-                            </a>
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="<?= imagelink($this->session->userdata('photo')) ?>" class="user-logo" alt="" />
+                        <span>
+                            <?php
+                            $name = $this->session->userdata('name');
+                            if (strlen($name) > 11) {
+                                echo substr($name, 0, 11) . "..";
+                            } else {
+                                echo $name;
+                            }
+                            ?>
+                            <i class="caret"></i>
+                        </span>
+                    </a>
 
-                            <ul class="dropdown-menu">
-                                <li class="user-body">
-                                    <div class="col-xs-6 text-center">
-                                        <a href="<?= base_url("profile/index") ?>">
-                                            <div><i class="fa fa-briefcase"></i></div>
-                                            <?= $this->lang->line("profile") ?>
-                                        </a>
-                                    </div>
-                                    <div class="col-xs-6 text-center">
-                                        <a href="<?= base_url("signin/cpassword") ?>">
-                                            <div><i class="fa fa-lock"></i></div>
-                                            <?= $this->lang->line("change_password") ?>
-                                        </a>
-                                    </div>
-                                </li>
+                    <ul class="dropdown-menu">
+                        <li class="user-body">
+                            <div class="col-xs-6 text-center">
+                                <a href="<?= base_url("profile/index") ?>">
+                                    <div><i class="fa fa-briefcase"></i></div>
+                                    <?= $this->lang->line("profile") ?>
+                                </a>
+                            </div>
+                            <div class="col-xs-6 text-center">
+                                <a href="<?= base_url("signin/cpassword") ?>">
+                                    <div><i class="fa fa-lock"></i></div>
+                                    <?= $this->lang->line("change_password") ?>
+                                </a>
+                            </div>
+                        </li>
 
-                                <li class="user-footer">
-                                    <div class="text-center">
-                                        <a href="<?= base_url("signin/signout") ?>">
-                                            <div><i class="fa fa-power-off"></i></div>
-                                            <?= $this->lang->line("logout") ?>
-                                        </a>
-                                    </div>
-                                </li>
-                            </ul>
+                        <li class="user-footer">
+                            <div class="text-center">
+                                <a href="<?= base_url("signin/signout") ?>">
+                                    <div><i class="fa fa-power-off"></i></div>
+                                    <?= $this->lang->line("logout") ?>
+                                </a>
+                            </div>
                         </li>
                     </ul>
-                </div>
-            </nav>
-        </header>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
