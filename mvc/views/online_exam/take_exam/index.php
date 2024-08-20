@@ -5,21 +5,28 @@
         font-family: 'Helvetica', sans-serif;
         border-radius: 15px;
     }
-    .modal-header, .modal-body, .modal-footer {
+
+    .modal-header,
+    .modal-body,
+    .modal-footer {
         padding: 20px;
     }
+
     .modal-header {
         background-color: #DDEEFF;
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;
     }
+
     .modal-title {
         color: #333333;
     }
+
     .btn-custom {
         background-color: #4CAF50;
         color: white;
     }
+
     .btn-close {
         background-color: #f44336;
         border: none;
@@ -27,6 +34,7 @@
         padding: 0 12px;
         color: white;
     }
+
     .modal-footer {
         border-top: 1px solid #DDDDDD;
     }
@@ -42,16 +50,17 @@
     <!-- form start -->
     <div class="box-body">
         <div class="row">
+
             <div class="col-sm-12">
                 <div id="hide-table">
                     <table id="example1" class="table table-striped table-bordered table-hover dataTable no-footer">
                         <thead>
                             <tr>
-                                
+
                                 <th class="col-sm-3"><?= $this->lang->line('take_exam_name') ?></th>
-       
+
                                 <th class="col-sm-1"><?= $this->lang->line('take_exam_duration') ?></th>
-                         
+
                                 <th class="col-sm-2"><?= $this->lang->line('action') ?></th>
                             </tr>
                         </thead>
@@ -133,7 +142,7 @@
                                             // dd($onlineExam);
                             ?>
                                             <tr>
-                                                
+
                                                 <td data-title="<?= $this->lang->line('take_exam_name') ?>">
                                                     <?php if (strlen($onlineExam->name) > 50) {
                                                         echo strip_tags(substr($onlineExam->name, 0, 50) . "...");
@@ -145,11 +154,11 @@
                                                     echo $examLabel;
                                                     ?>
                                                 </td>
-                                               
+
                                                 <td data-title="<?= $this->lang->line('take_exam_duration') ?>">
                                                     <?php echo $onlineExam->duration; ?>
                                                 </td>
-                                             
+
                                                 <td data-title="<?= $this->lang->line('action') ?>">
                                                     <?php
                                                     $paidStatus = 0;
@@ -181,50 +190,38 @@
                                                     ?>
 
 
-                                                    <button type="button" class="btn btn-success btn-xs mrg" data-toggle="modal" data-target="#imageModal<?php $onlineExam->onlineExamID ?>">
+                                                    <button type="button" class="btn btn-success btn-xs mrg" onclick="load_mock_test(<?php echo $onlineExam->onlineExamID;?>)">
                                                         <i class="fa fa-columns"></i>
                                                     </button>
 
-                                                   
+
 
                                                     <?php
-                                                    if ($onlineExam->paid && ($onlineExam->examStatus == 2) && !($paymentExpireStatus)) {
-                                                        echo '<a href="#addpayment" id="' . $onlineExam->onlineExamID . '" class="btn btn-primary btn-xs mrg getpaymentinfobtn" rel="tooltip" data-toggle="modal"><i class="fa fa-credit-card" data-toggle="tooltip" data-placement="top" data-original-title="' . $this->lang->line('take_exam_add_payment') . '"></i></a>';
-                                                    } elseif ($onlineExam->paid && !($lStatusTaken) && !isset($payments[$onlineExam->onlineExamID]) && !($paymentExpireStatus)) {
-                                                        echo '<a href="#addpayment" id="' . $onlineExam->onlineExamID . '" class="btn btn-primary btn-xs mrg getpaymentinfobtn" rel="tooltip" data-toggle="modal"><i class="fa fa-credit-card" data-toggle="tooltip" data-placement="top" data-original-title="' . $this->lang->line('take_exam_add_payment') . '"></i></a>';
+                                                    if ($onlineExam->paid && $onlineExam->examStatus == 2 && !$paymentExpireStatus) {
+                                                        echo '<a href="#addpayment" id="' . $onlineExam->onlineExamID . '" class="btn btn-primary btn-xs mrg getpaymentinfobtn" rel="tooltip" data-toggle="modal">
+            <i class="fa fa-credit-card" data-toggle="tooltip" data-placement="top" data-original-title="' . $this->lang->line('take_exam_add_payment') . '"></i>
+          </a>';
+                                                    } elseif ($onlineExam->paid && !$lStatusTaken && !isset($payments[$onlineExam->onlineExamID]) && !$paymentExpireStatus) {
+                                                        echo '<a href="#addpayment" id="' . $onlineExam->onlineExamID . '" class="btn btn-primary btn-xs mrg getpaymentinfobtn" rel="tooltip" data-toggle="modal">
+            <i class="fa fa-credit-card" data-toggle="tooltip" data-placement="top" data-original-title="' . $this->lang->line('take_exam_add_payment') . '"></i>
+          </a>';
                                                     }
 
                                                     if ($onlineExam->paid) {
-                                                        echo '<a href="#payment-list" id="' . $onlineExam->onlineExamID . '" class="btn btn-info btn-xs mrg getpaymentlistinfobtn" rel="tooltip" data-toggle="modal"><i class="fa fa-list-ul" data-toggle="tooltip" data-placement="top" data-original-title="' . $this->lang->line('take_exam_view_payments') . '"></i></a>';
+                                                        echo '<a href="#payment-list" id="' . $onlineExam->onlineExamID . '" class="btn btn-info btn-xs mrg getpaymentlistinfobtn" rel="tooltip" data-toggle="modal">
+            <i class="fa fa-list-ul" data-toggle="tooltip" data-placement="top" data-original-title="' . $this->lang->line('take_exam_view_payments') . '"></i>
+          </a>';
                                                     }
                                                     ?>
+
                                                 </td>
                                             </tr>
 
-                                       
 
 
 
-                                            <div class="modal fade" id="imageModal<?php $onlineExam->onlineExamID ?>" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="modalLabel">Unit 1: Working in the Private Security Industry</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p>Questions: 20<br>Time: 20 minutes</p>
-                                                            <p>Please note:</p>
-                                                            <p>This mock exam is designed for you to check your understanding and knowledge. Your score from this mock exam will not count towards your actual exam score taken on the course.</p>
-                                                            <p>Please note that the questions in this mock exam might not appear in the actual test.</p>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft" onclick="newPopup('<?= base_url('take_exam/instruction/' . $onlineExam->onlineExamID) ?>', '<?= $paidStatus ?>', '<?= $onlineExam->onlineExamID ?>')" rel="tooltip" data-toggle="tooltip" data-placement="top" data-original-title="<?= $this->lang->line('panel_title') ?>"><i class="fa fa-columns"></i> Start Mock Exam</button>
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+
+
                             <?php
                                         }
                                     }
@@ -237,7 +234,31 @@
         </div>
     </div>
 </div>
+
 <!-- Modal -->
+
+
+<div class="modal fade" id="imageModal<?php echo $onlineExam->onlineExamID ?>" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Unit 1: Working in the Private Security Industry</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Questions: 20<br>Time: 20 minutes</p>
+                <p>Please note:</p>
+                <p>This mock exam is designed for you to check your understanding and knowledge. Your score from this mock exam will not count towards your actual exam score taken on the course.</p>
+                <p>Please note that the questions in this mock exam might not appear in the actual test.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft" onclick="newPopup('<?= base_url('take_exam/instruction/' . $onlineExam->onlineExamID) ?>', '<?= $paidStatus ?>', '<?= $onlineExam->onlineExamID ?>')" rel="tooltip" data-toggle="tooltip" data-placement="top" data-original-title="<?= $this->lang->line('panel_title') ?>"><i class="fa fa-columns"></i> Start Mock Exam</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <form class="form-horizontal" role="form" method="post" id="paymentAddDataForm" enctype="multipart/form-data" action="<?= base_url('take_exam/index') ?>">
     <div class="modal fade" id="addpayment">
@@ -366,6 +387,14 @@ $submit_gateway = json_encode($submit_gateway);
 ?>
 
 <script type="text/javascript">
+
+    function load_mock_test(mock_test_id){
+        $('#imageModal'+mock_test_id).modal('show');
+        alert(mock_test_id);
+    }
+
+
+
     const gateway = <?= $js_gateway ?>;
     const submit_gateway = <?= $submit_gateway ?>;
     let form = document.getElementById('paymentAddDataForm');
@@ -524,6 +553,8 @@ $submit_gateway = json_encode($submit_gateway);
 <?php if (inicompute($validationErrors)) { ?>
     <script type="application/javascript">
         $(window).load(function() {
+
+        
             var onlineExamID = "<?= $validationOnlineExamID ?>";
             if (onlineExamID > 0) {
                 $('#onlineExamID').val(onlineExamID);
