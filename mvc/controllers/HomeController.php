@@ -50,7 +50,7 @@ public $load;
      
             $this->data["subview"]  = "signin/index";
             $this->load->view('landingPage/index', $this->data);
-            $this->session->sess_destroy();
+            // $this->session->sess_destroy();
 	}
 
 	
