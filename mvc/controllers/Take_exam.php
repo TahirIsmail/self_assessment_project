@@ -190,10 +190,12 @@ class Take_exam extends Admin_Controller
                 $this->load->view('_layout_main', $this->data);
             } elseif ($this->input->post('onlineExamID')) {
                 $invoice_data = $this->online_exam_m->get_single_online_exam(['onlineExamID' => $this->input->post('onlineExamID')]);
+                
                 if (($invoice_data->paid == 1) && ((float)$invoice_data->cost == 0)) {
                     $this->session->set_flashdata('error', 'Exam amount can not be zero');
                     redirect(base_url('take_exam/index'));
                 }
+                
                 if (($invoice_data->examStatus == 1) && ($invoice_data->paid == 1) && isset($this->data['paindingpayments'][$invoice_data->onlineExamID])) {
                     $this->session->set_flashdata('error', 'This exam price already paid');
                     redirect(base_url('take_exam/index'));

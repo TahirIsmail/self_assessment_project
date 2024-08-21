@@ -17,7 +17,7 @@
           	<div class="pull-right hidden-xs">
             	<b>v</b> <?=config_item('ini_version')?>
           	</div>
-          	<strong>Copyright © OXBRIDGE DIGITAL</strong>
+          	<strong>Copyright © <a href="https://oxbridgedigital.com/">OXBRIDGE DIGITAL</a></strong>
         </footer>
 <?php $this->load->view("components/page_footer"); ?>
 

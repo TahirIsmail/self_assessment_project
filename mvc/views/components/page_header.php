@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="<?= base_url('assets/pace/pace.css') ?>">
 
   <script type="text/javascript" src="<?php echo base_url('assets/inilabs/jquery.min.js'); ?>"></script>
-  <!-- <script type="text/javascript" src="<?php echo base_url('assets/slimScroll/jquery.slimscroll.min.js'); ?>"></script> -->
+  <script type="text/javascript" src="<?php echo base_url('assets/slimScroll/jquery.slimscroll.min.js'); ?>"></script>
 
   <script type="text/javascript" src="<?php echo base_url('assets/toastr/toastr.min.js'); ?>"></script>
 
@@ -53,7 +53,7 @@
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   
-  <script src="<?php echo base_url('assets/js/core/bootstrap.min.js'); ?>"></script>
+  <!-- <script src="<?php echo base_url('assets/js/core/bootstrap.min.js'); ?>"></script> -->
   <script src="<?php echo base_url('assets/js/plugins/chartjs.min.js'); ?>"></script>
   <script src="<?php echo base_url('assets/js/plugins/perfect-scrollbar.min.js'); ?>"></script>
   <script src="<?php echo base_url('assets/js/plugins/smooth-scrollbar.min.js'); ?>"></script>
