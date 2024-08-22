@@ -34,6 +34,8 @@ class PaymentService
                 'status'        => 0,
             ];
 
+            // dd($online_exam_payment);
+
             $this->ci->online_exam_payment_m->insert_online_exam_payment($online_exam_payment);
             $this->ci->session->set_flashdata('success', 'Payment successful');
             $this->data['ApiPaymentStatus']=true;

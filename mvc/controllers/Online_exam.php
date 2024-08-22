@@ -68,6 +68,14 @@ class Online_exam extends Admin_Controller
                     $this->data['userSubjectPluck'][$optionalSubject->subjectID] = $optionalSubject->subjectID;
                 }
             }
+
+
+            $this->data['usertypeID']   = $usertypeID;
+            $this->data['online_exams'] = $this->online_exam_m->get_order_by_online_exam();
+            $this->data["subview"] = "online_exam/course";
+            $this->load->view('_layout_main', $this->data);
+
+
         }
 
        

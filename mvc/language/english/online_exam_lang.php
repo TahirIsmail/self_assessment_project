@@ -86,3 +86,14 @@ $lang['mail_subject'] = "The Subject field is required.";
 $lang['mail_success'] = 'Email send successfully!';
 $lang['mail_error']   = 'oops! Email not send!';
 $lang['online_exam_date']   = 'Date';
+
+
+
+
+
+
+
+//   custom
+
+$lang['enrolled_courses'] = 'Enrolled Courses';
+$lang['suggestion_courses'] = 'Course Suggestion';
