@@ -39,6 +39,16 @@ class student_m extends MY_Model {
 		return $query;
 	}
 
+	public function get_enrollment_record($array) 
+	{
+		$array = $this->makeArrayWithTableName($array);
+        $this->db->join('student_enrollment_mock_test', 'student_enrollment_mock_test.studentID = student.studentID', 'LEFT');
+		$this->db->select()->from($this->_table_name)->where($array);
+		$query = $this->db->get();
+
+		return $query->row();
+	}
+
 	public function get_order_by_student($array=[]) 
 	{
 		$array = $this->makeArrayWithTableName($array);

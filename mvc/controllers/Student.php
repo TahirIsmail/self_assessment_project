@@ -1,25 +1,26 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Student extends Admin_Controller {
-public $load;
- public $session;
- public $lang;
- public $form_validation;
- public $uri;
- public $student_m;
- public $input;
- public $upload;
- public $upload_data;
- public $data;
- public $section_m;
- public $parents_m;
- public $db;
- public $classes_m;
- public $studentextend_m;
- public $studentrelation_m;
- public $subject_m;
- public $document_m;
- /*
+class Student extends Admin_Controller
+{
+	public $load;
+	public $session;
+	public $lang;
+	public $form_validation;
+	public $uri;
+	public $student_m;
+	public $input;
+	public $upload;
+	public $upload_data;
+	public $data;
+	public $section_m;
+	public $parents_m;
+	public $db;
+	public $classes_m;
+	public $studentextend_m;
+	public $studentrelation_m;
+	public $subject_m;
+	public $document_m;
+	/*
 | -----------------------------------------------------
 | PRODUCT NAME: 	INILABS SCHOOL MANAGEMENT SYSTEM
 | -----------------------------------------------------
@@ -32,7 +33,8 @@ public $load;
 | WEBSITE:			http://inilabs.net
 | -----------------------------------------------------
 */
-	function __construct () {
+	function __construct()
+	{
 		parent::__construct();
 		$this->load->model("student_m");
 		$this->load->model("parents_m");
@@ -50,7 +52,8 @@ public $load;
 		$this->lang->load('student', $language);
 	}
 
-	protected function rules() {
+	protected function rules()
+	{
 		return array(
 			array(
 				'field' => 'name',
@@ -103,28 +106,28 @@ public $load;
 			// 	'rules' => 'trim|required|max_length[11]|xss_clean|numeric'
 			// ),
 			// array(
-            //     'field' => 'studentGroupID',
-            //     'label' => $this->lang->line("student_studentgroup"),
-            //     'rules' => 'trim|max_length[11]|xss_clean|numeric'
-            // ),
+			//     'field' => 'studentGroupID',
+			//     'label' => $this->lang->line("student_studentgroup"),
+			//     'rules' => 'trim|max_length[11]|xss_clean|numeric'
+			// ),
 
-            // array(
-            //     'field' => 'optionalSubjectID',
-            //     'label' => $this->lang->line("student_optionalsubject"),
-            //     'rules' => 'trim|max_length[11]|xss_clean|numeric'
-            // ),
+			// array(
+			//     'field' => 'optionalSubjectID',
+			//     'label' => $this->lang->line("student_optionalsubject"),
+			//     'rules' => 'trim|max_length[11]|xss_clean|numeric'
+			// ),
 
-            // array(
-            //     'field' => 'extraCurricularActivities',
-            //     'label' => $this->lang->line("student_extracurricularactivities"),
-            //     'rules' => 'trim|max_length[128]|xss_clean'
-            // ),
+			// array(
+			//     'field' => 'extraCurricularActivities',
+			//     'label' => $this->lang->line("student_extracurricularactivities"),
+			//     'rules' => 'trim|max_length[128]|xss_clean'
+			// ),
 
-            // array(
-            //     'field' => 'remarks',
-            //     'label' => $this->lang->line("student_remarks"),
-            //     'rules' => 'trim|max_length[128]|xss_clean'
-            // ),
+			// array(
+			//     'field' => 'remarks',
+			//     'label' => $this->lang->line("student_remarks"),
+			//     'rules' => 'trim|max_length[128]|xss_clean'
+			// ),
 			array(
 				'field' => 'email',
 				'label' => $this->lang->line("student_email"),
@@ -169,7 +172,8 @@ public $load;
 		);
 	}
 
-	public function send_mail_rules() {
+	public function send_mail_rules()
+	{
 		return array(
 			array(
 				'field' => 'to',
@@ -199,9 +203,10 @@ public $load;
 		);
 	}
 
-	public function unique_data($data) {
-		if($data != '') {
-			if($data == '0') {
+	public function unique_data($data)
+	{
+		if ($data != '') {
+			if ($data == '0') {
 				$this->form_validation->set_message('unique_data', 'The %s field is required.');
 				return FALSE;
 			}
@@ -210,22 +215,23 @@ public $load;
 		return TRUE;
 	}
 
-	public function photoupload() {
+	public function photoupload()
+	{
 		$id = htmlentities((string) escapeString($this->uri->segment(3)));
 		$student = array();
-		if((int)$id !== 0) {
+		if ((int)$id !== 0) {
 			$student = $this->student_m->get_student($id);
 		}
 
 		$new_file = "default.png";
 		if ($_FILES["photo"]['name'] != "") {
-      $file_name = $_FILES["photo"]['name'];
-      $random = rand(1, 10000000000000000);
-      $makeRandom = hash('sha512', $random.$this->input->post('username') . config_item("encryption_key"));
-      $file_name_rename = $makeRandom;
-      $explode = explode('.', (string) $file_name);
-      if(inicompute($explode) >= 2) {
-	            $new_file = $file_name_rename.'.'.end($explode);
+			$file_name = $_FILES["photo"]['name'];
+			$random = rand(1, 10000000000000000);
+			$makeRandom = hash('sha512', $random . $this->input->post('username') . config_item("encryption_key"));
+			$file_name_rename = $makeRandom;
+			$explode = explode('.', (string) $file_name);
+			if (inicompute($explode) >= 2) {
+				$new_file = $file_name_rename . '.' . end($explode);
 				$config['upload_path'] = "./uploads/images";
 				$config['allowed_types'] = "gif|jpg|png";
 				$config['file_name'] = $new_file;
@@ -233,41 +239,42 @@ public $load;
 				$config['max_width'] = '3000';
 				$config['max_height'] = '3000';
 				$this->load->library('upload', $config);
-				if(!$this->upload->do_upload("photo")) {
+				if (!$this->upload->do_upload("photo")) {
 					$this->form_validation->set_message("photoupload", $this->upload->display_errors());
-	     			return FALSE;
+					return FALSE;
 				} else {
 					$this->upload_data['file'] =  $this->upload->data();
 					return TRUE;
 				}
 			} else {
 				$this->form_validation->set_message("photoupload", "Invalid file.");
-	     		return FALSE;
+				return FALSE;
 			}
-  } elseif (inicompute($student)) {
-      $this->upload_data['file'] = array('file_name' => $student->photo);
-      return TRUE;
-  } else {
-				$this->upload_data['file'] = array('file_name' => $new_file);
+		} elseif (inicompute($student)) {
+			$this->upload_data['file'] = array('file_name' => $student->photo);
 			return TRUE;
-			}
+		} else {
+			$this->upload_data['file'] = array('file_name' => $new_file);
+			return TRUE;
+		}
 	}
 
-	public function index() {
+	public function index()
+	{
 		$usertypeID   = $this->session->userdata('usertypeID');
 		$loginuserID  = $this->session->userdata("loginuserID");
 		$schoolyearID = $this->session->userdata('defaultschoolyearID');
 
 		// echo $usertypeID;exit;
 
-		if($usertypeID == 3) {
-			if(permissionChecker('student_view')) {
+		if ($usertypeID == 3) {
+			if (permissionChecker('student_view')) {
 				$singleStudent = $this->student_m->get_single_student(array("studentID" => $loginuserID, 'schoolyearID' => $schoolyearID));
-				if(inicompute($singleStudent)) {
+				if (inicompute($singleStudent)) {
 					$this->data['students'] = $this->student_m->get_order_by_student(array('classesID' => $singleStudent->classesID, 'schoolyearID' => $schoolyearID));
-					if(inicompute($this->data['students'])) {
+					if (inicompute($this->data['students'])) {
 						$sections = $this->section_m->get_order_by_section(array("classesID" => $singleStudent->classesID));
-						if(inicompute($sections)) {
+						if (inicompute($sections)) {
 							foreach ($sections as $section) {
 								$this->data['allsection'][$section->sectionID] = $this->student_m->get_order_by_student(array('classesID' => $singleStudent->classesID, "sectionID" => $section->sectionID, 'schoolyearID' => $schoolyearID));
 							}
@@ -286,18 +293,18 @@ public $load;
 			} else {
 				$loginuserID = $this->session->userdata("loginuserID");
 				$student = $this->student_m->get_single_student(array('studentID' => $loginuserID, 'schoolyearID' => $schoolyearID));
-				if(inicompute($student)) {
+				if (inicompute($student)) {
 					$this->data['classesID'] = $student->classesID;
 					$this->data['studentID'] = $student->studentID;
-					$this->getView($student->studentID,$student->classesID);
+					$this->getView($student->studentID, $student->classesID);
 				} else {
 					$this->data["subview"] = "error";
 					$this->load->view('_layout_main', $this->data);
 				}
 			}
-		} elseif($usertypeID == 4) {
+		} elseif ($usertypeID == 4) {
 			$parents      = $this->parents_m->get_single_parents(array('parentsID' => $loginuserID));
-			if(inicompute($parents)) {
+			if (inicompute($parents)) {
 				$this->data['students'] = $this->student_m->get_order_by_student(array('parentID' => $loginuserID, 'schoolyearID' => $schoolyearID));
 				$this->data["subview"] = "student/index_parents";
 				$this->load->view('_layout_main', $this->data);
@@ -318,13 +325,11 @@ public $load;
 
 			$classesID = htmlentities((string) escapeString($this->uri->segment(3)));
 			$this->data['students'] = $this->student_m->get_order_by_student();
-			// echo '<pre>';
-			// print_r($this->data['students']);
-			// echo '</pre>';
-			// exit;
-			if(inicompute($this->data['students'])) {
+
+
+			if (inicompute($this->data['students'])) {
 				$sections = $this->section_m->get_order_by_section(array("classesID" => $classesID));
-				if(inicompute($sections)) {
+				if (inicompute($sections)) {
 					foreach ($sections as $section) {
 						$this->data['allsection'][$section->sectionID] = $this->student_m->get_order_by_student(array('classesID' => $classesID, "sectionID" => $section->sectionID, 'schoolyearID' => $schoolyearID));
 					}
@@ -333,6 +338,7 @@ public $load;
 			} else {
 				$this->data['students'] = [];
 			}
+
 			$this->data['set'] = $classesID;
 			$this->data['classes'] = $this->classes_m->get_classes();
 
@@ -341,8 +347,9 @@ public $load;
 		}
 	}
 
-	public function add() {
-		
+	public function add()
+	{
+
 		$this->data['headerassets'] = array(
 			'css' => array(
 				'assets/datepicker/datepicker.css',
@@ -362,18 +369,18 @@ public $load;
 
 		$classesID = $this->input->post("classesID");
 
-		if($classesID != 0) {
-			$this->data['sections'] = $this->section_m->get_order_by_section(array("classesID" =>$classesID));
-            $this->data['optionalSubjects'] = $this->subject_m->get_order_by_subject(array("classesID" =>$classesID, 'type' => 0));
+		if ($classesID != 0) {
+			$this->data['sections'] = $this->section_m->get_order_by_section(array("classesID" => $classesID));
+			$this->data['optionalSubjects'] = $this->subject_m->get_order_by_subject(array("classesID" => $classesID, 'type' => 0));
 		} else {
 			$this->data['sections'] = "empty";
 			$this->data['optionalSubjects'] = 'empty';
 		}
 
 		$this->data['sectionID'] = $this->input->post("sectionID");
-        $this->data['optionalSubjectID'] = 0;
+		$this->data['optionalSubjectID'] = 0;
 
-		if($_POST !== []) {
+		if ($_POST !== []) {
 			$rules = $this->rules();
 			// dd($rules);
 
@@ -407,7 +414,7 @@ public $load;
 				// $array["bloodgroup"] = $this->input->post("bloodgroup");
 				// $array["registerNO"] = $this->input->post("registerNO");
 				// $array['parentID'] = $this->input->post('guargianID');
-				
+
 				$array["state"] = $this->input->post("state");
 				$array["country"] = $this->input->post("country");
 				$array["username"] = $this->input->post("username");
@@ -423,11 +430,11 @@ public $load;
 				$array["create_usertype"] = $this->session->userdata('usertype');
 				$array["active"] = 1;
 
-				if($this->input->post('dob')) {
+				if ($this->input->post('dob')) {
 					$array["dob"] 		= date("Y-m-d", strtotime((string) $this->input->post("dob")));
 				}
 				$array['photo'] = $this->upload_data['file']['file_name'];
-				
+
 
 
 				// echo '<pre>';
@@ -459,15 +466,15 @@ public $load;
 				// 	'srschoolyearID' => $this->data['siteinfos']->school_year
 				// );
 
-                // $studentExtendArray = array(
-                //     'studentID' => $studentID,
-                //     'studentgroupID' => $this->input->post('studentGroupID'),
-                //     'optionalsubjectID' => $this->input->post('optionalSubjectID'),
-                //     'extracurricularactivities' => $this->input->post('extraCurricularActivities'),
-                //     'remarks' => $this->input->post('remarks')
-                // );
+				// $studentExtendArray = array(
+				//     'studentID' => $studentID,
+				//     'studentgroupID' => $this->input->post('studentGroupID'),
+				//     'optionalsubjectID' => $this->input->post('optionalSubjectID'),
+				//     'extracurricularactivities' => $this->input->post('extraCurricularActivities'),
+				//     'remarks' => $this->input->post('remarks')
+				// );
 
-                // $this->studentextend_m->insert_studentextend($studentExtendArray);
+				// $this->studentextend_m->insert_studentextend($studentExtendArray);
 				// $this->studentrelation_m->insert_studentrelation($arrayStudentRelation);
 				$this->usercreatemail($this->input->post('email'), $this->input->post('username'), $this->input->post('password'));
 				$this->session->set_flashdata('success', $this->lang->line('menu_success'));
@@ -479,7 +486,8 @@ public $load;
 		}
 	}
 
-	public function edit() {
+	public function edit()
+	{
 		$this->data['headerassets'] = array(
 			'css' => array(
 				'assets/datepicker/datepicker.css',
@@ -504,26 +512,26 @@ public $load;
 		// echo '<br>';
 		// echo $url;
 		// exit;
-		if((int)$studentID) {
+		if ((int)$studentID) {
 			$this->data['classes'] = $this->classes_m->get_classes();
 			$this->data['student'] = $this->student_m->get_single_student(array('studentID' => $studentID, 'schoolyearID' => $schoolyearID));
 
 
 			$this->data['parents'] = $this->parents_m->get_parents();
-            $this->data['studentgroups'] = $this->studentgroup_m->get_studentgroup();
+			$this->data['studentgroups'] = $this->studentgroup_m->get_studentgroup();
 
 
-			if($this->data['student']) {
+			if ($this->data['student']) {
 				$classesID = $this->data['student']->classesID;
 				$this->data['sections'] = $this->section_m->get_order_by_section(array('classesID' => $classesID));
-                $this->data['optionalSubjects'] = $this->subject_m->get_order_by_subject(array("classesID" =>$classesID, 'type' => 0));
+				$this->data['optionalSubjects'] = $this->subject_m->get_order_by_subject(array("classesID" => $classesID, 'type' => 0));
 
-                $this->data['optionalSubjectID'] = $this->input->post('optionalSubjectID') ? $this->input->post('optionalSubjectID') : 0;
+				$this->data['optionalSubjectID'] = $this->input->post('optionalSubjectID') ? $this->input->post('optionalSubjectID') : 0;
 			}
 
 			// $this->data['set'] = $url;
-			if($this->data['student']) {
-				if($_POST !== []) {
+			if ($this->data['student']) {
+				if ($_POST !== []) {
 					$rules = $this->rules();
 					unset($rules[21]);
 					$this->form_validation->set_rules($rules);
@@ -555,13 +563,13 @@ public $load;
 
 						$studentReletion = $this->studentrelation_m->get_order_by_studentrelation(array('srstudentID' => $studentID, 'srschoolyearID' => $this->data['siteinfos']->school_year));
 						$section = $this->section_m->get_section($this->input->post("sectionID"));
-						$classes = $this->classes_m ->get_classes($this->input->post("classesID"));
+						$classes = $this->classes_m->get_classes($this->input->post("classesID"));
 
 						$setClasses = inicompute($classes) ? $classes->classes : NULL;
 
 						$setSection = inicompute($section) ? $section->section : NULL;
 
-						if(!inicompute($studentReletion)) {
+						if (!inicompute($studentReletion)) {
 							$arrayStudentRelation = array(
 								'srstudentID' => $studentID,
 								'srname' => $this->input->post("name"),
@@ -592,14 +600,14 @@ public $load;
 							$this->studentrelation_m->update_studentrelation_with_multicondition($arrayStudentRelation, array('srstudentID' => $studentID, 'srschoolyearID' => $this->data['siteinfos']->school_year));
 						}
 
-                        $studentExtendArray = array(
-                            'studentgroupID' => $this->input->post('studentGroupID'),
-                            'optionalsubjectID' => $this->input->post('optionalSubjectID'),
-                            'extracurricularactivities' => $this->input->post('extraCurricularActivities'),
-                            'remarks' => $this->input->post('remarks')
-                        );
+						$studentExtendArray = array(
+							'studentgroupID' => $this->input->post('studentGroupID'),
+							'optionalsubjectID' => $this->input->post('optionalSubjectID'),
+							'extracurricularactivities' => $this->input->post('extraCurricularActivities'),
+							'remarks' => $this->input->post('remarks')
+						);
 
-                        $this->studentextend_m->update_studentextend_by_studentID($studentExtendArray, $studentID);
+						$this->studentextend_m->update_studentextend_by_studentID($studentExtendArray, $studentID);
 						$this->student_m->update_student($array, $studentID);
 						$this->session->set_flashdata('success', $this->lang->line('menu_success'));
 						redirect(base_url("student/index/"));
@@ -618,8 +626,9 @@ public $load;
 		}
 	}
 
-	public function view() {
-	
+	public function view()
+	{
+
 		$classesID = htmlentities((string) escapeString($this->uri->segment(4)));
 		$studentID = htmlentities((string) escapeString($this->uri->segment(3)));
 
@@ -628,24 +637,24 @@ public $load;
 		// echo '<br>';
 		// echo $studentID;
 		// exit;
-		
+
 		$usertypeID   = $this->session->userdata('usertypeID');
 		$schoolyearID = $this->session->userdata('defaultschoolyearID');
 		$username     = $this->session->userdata("username");
-		
+
 		// echo $usertypeID;exit;
 		$this->data['classesID'] = $classesID;
 		$this->data['studentID'] = $studentID;
-		
-		if($usertypeID == 3) {
-			if(permissionChecker('student_view')) {
-				if((int)$studentID) {
+
+		if ($usertypeID == 3) {
+			if (permissionChecker('student_view')) {
+				if ((int)$studentID) {
 					$originalStudent = $this->student_m->get_single_student(array("username" => $username));
-					if(inicompute($originalStudent)) {
+					if (inicompute($originalStudent)) {
 						$student = $this->student_m->get_single_student(array('studentID' => $studentID, 'schoolyearID' => $schoolyearID));
-						if(inicompute($student)) {
-							if($originalStudent->classesID == $student->classesID) {
-								$this->getView($studentID,$classesID);
+						if (inicompute($student)) {
+							if ($originalStudent->classesID == $student->classesID) {
+								$this->getView($studentID, $classesID);
 							} else {
 								$this->data["subview"] = "error";
 								$this->load->view('_layout_main', $this->data);
@@ -664,20 +673,20 @@ public $load;
 				}
 			} else {
 				$student = $this->student_m->get_single_student(array('username' => $username, 'schoolyearID' => $schoolyearID));
-				if(inicompute($student)) {
-					$this->getView($student->studentID,$student->classesID);
+				if (inicompute($student)) {
+					$this->getView($student->studentID, $student->classesID);
 				} else {
 					$this->data["subview"] = "error";
 					$this->load->view('_layout_main', $this->data);
 				}
 			}
-		} elseif($usertypeID == 4) {
+		} elseif ($usertypeID == 4) {
 			$parents = $this->parents_m->get_single_parents(array('username' => $username));
-			if(inicompute($parents)) {
-				if((int)$studentID) {
+			if (inicompute($parents)) {
+				if ((int)$studentID) {
 					$checkstudent = $this->student_m->get_single_student(array('studentID' => $studentID, 'schoolyearID' => $schoolyearID));
-					if(inicompute($checkstudent)) {
-						if($checkstudent->parentID == $parents->parentsID) {
+					if (inicompute($checkstudent)) {
+						if ($checkstudent->parentID == $parents->parentsID) {
 							$this->getView($studentID, $classesID);
 						} else {
 							$this->data["subview"] = "error";
@@ -702,7 +711,7 @@ public $load;
 			// print_r($student);
 			// echo '</pre>';
 			// exit;
-			if(inicompute($student)) {
+			if (inicompute($student)) {
 				$this->getView($studentID, $classesID);
 			} else {
 				$this->data["subview"] = "error";
@@ -711,18 +720,19 @@ public $load;
 		}
 	}
 
-	private function getView($studentID, $classesID) {
+	private function getView($studentID, $classesID)
+	{
 		$schoolyearID = $this->session->userdata('defaultschoolyearID');
-		if((int)$studentID) {
+		if ((int)$studentID) {
 			$studentInfo = $this->student_m->get_single_student(array('studentID' => $studentID, 'schoolyearID' => $schoolyearID));
 
-			
+
 			$this->basicInfo($studentInfo);
 			$this->parentInfo($studentInfo);
 			$this->examInfo($studentInfo);
 			$this->documentInfo($studentInfo);
 
-			if(inicompute($studentInfo)) {
+			if (inicompute($studentInfo)) {
 				$this->data["subview"] = "student/getView";
 				$this->load->view('_layout_main', $this->data);
 			} else {
@@ -732,13 +742,15 @@ public $load;
 		}
 	}
 
-	private function pluckInfo() {
+	private function pluckInfo()
+	{
 		$this->data['subjects'] = pluck($this->subject_m->get_subject(), 'subject', 'subjectID');
 		$this->data['teachers'] = pluck($this->teacher_m->get_teacher(), 'name', 'teacherID');
 	}
 
-	private function basicInfo($studentInfo) {
-		if(inicompute($studentInfo)) {
+	private function basicInfo($studentInfo)
+	{
+		if (inicompute($studentInfo)) {
 			$this->data['profile'] = $studentInfo;
 			$this->data['usertype'] = $this->usertype_m->get_single_usertype(array('usertypeID' => $studentInfo->usertypeID));
 			$this->data['class'] = $this->classes_m->get_single_classes(array('classesID' => $studentInfo->classesID));
@@ -751,38 +763,41 @@ public $load;
 		}
 	}
 
-	private function parentInfo($studentInfo) {
-		if(inicompute($studentInfo)) {
+	private function parentInfo($studentInfo)
+	{
+		if (inicompute($studentInfo)) {
 			$this->data['parents'] = $this->parents_m->get_single_parents(array('parentsID' => $studentInfo->parentID));
 		} else {
 			$this->data['parents'] = [];
 		}
 	}
 
-	private function examInfo($studentInfo) {
-		$this->data['onlineexams'] = pluck($this->online_exam_m->get_online_exam(),'obj','onlineExamID');
-		$this->data['examresults'] = $this->online_exam_user_status_m->get_order_by_online_exam_user_status(array('userID'=>$studentInfo->studentID)); 
+	private function examInfo($studentInfo)
+	{
+		$this->data['onlineexams'] = pluck($this->online_exam_m->get_online_exam(), 'obj', 'onlineExamID');
+		$this->data['examresults'] = $this->online_exam_user_status_m->get_order_by_online_exam_user_status(array('userID' => $studentInfo->studentID));
 	}
 
-	public function print_preview() {
+	public function print_preview()
+	{
 		$studentID = htmlentities((string) escapeString($this->uri->segment(3)));
 		$classesID = htmlentities((string) escapeString($this->uri->segment(4)));
 		$schoolyearID = $this->session->userdata('defaultschoolyearID');
 		$usertypeID   = $this->session->userdata('usertypeID');
 		$loginuserID  = $this->session->userdata('loginuserID');
 
-		if(permissionChecker('student_view') || (($usertypeID == 3) && permissionChecker('student') && ($loginuserID == htmlentities((string) escapeString($this->uri->segment(3)))))) {
-			if((int)$studentID && (int)$classesID) {
+		if (permissionChecker('student_view') || (($usertypeID == 3) && permissionChecker('student') && ($loginuserID == htmlentities((string) escapeString($this->uri->segment(3)))))) {
+			if ((int)$studentID && (int)$classesID) {
 				$student = $this->student_m->get_single_student(array('studentID' => $studentID, 'schoolyearID' => $schoolyearID));
-				if(inicompute($student)) {
-					$this->data["class"]   = $this->classes_m->get_single_classes(array('classesID'=>$student->classesID));
-					$this->data["section"] = $this->section_m->get_single_section(array('sectionID'=>$student->sectionID));
-					$this->data["studentgroup"] = $this->studentgroup_m->get_single_studentgroup(array('studentgroupID'=>$student->studentgroupID));
-					$this->data["usertype"] = $this->usertype_m->get_single_usertype(array('usertypeID'=> $student->usertypeID));
-					$this->data["optionalsubject"] = $this->subject_m->get_single_subject(array('subjectID'=> $student->optionalsubjectID,'type'=>0));
+				if (inicompute($student)) {
+					$this->data["class"]   = $this->classes_m->get_single_classes(array('classesID' => $student->classesID));
+					$this->data["section"] = $this->section_m->get_single_section(array('sectionID' => $student->sectionID));
+					$this->data["studentgroup"] = $this->studentgroup_m->get_single_studentgroup(array('studentgroupID' => $student->studentgroupID));
+					$this->data["usertype"] = $this->usertype_m->get_single_usertype(array('usertypeID' => $student->usertypeID));
+					$this->data["optionalsubject"] = $this->subject_m->get_single_subject(array('subjectID' => $student->optionalsubjectID, 'type' => 0));
 
 					$this->data['student'] = $student;
-					$this->reportPDF('studentprofile.css',$this->data, 'student/print_preview');
+					$this->reportPDF('studentprofile.css', $this->data, 'student/print_preview');
 				} else {
 					$this->data["subview"] = "error";
 					$this->load->view('_layout_main', $this->data);
@@ -797,52 +812,53 @@ public $load;
 		}
 	}
 
-	public function send_mail() {
+	public function send_mail()
+	{
 		$studentID = $this->input->post('studentID');
 		$classesID = $this->input->post('classesID');
 		$usertypeID   = $this->session->userdata('usertypeID');
 		$loginuserID  = $this->session->userdata('loginuserID');
 		$schoolyearID = $this->session->userdata('defaultschoolyearID');
-		
+
 		$retArray['message'] = '';
 		$retArray['status'] = FALSE;
-		if(permissionChecker('student_view') || (($usertypeID == 3) && permissionChecker('student') && ($loginuserID == $studentID))) {
-			if($_POST !== []) {
+		if (permissionChecker('student_view') || (($usertypeID == 3) && permissionChecker('student') && ($loginuserID == $studentID))) {
+			if ($_POST !== []) {
 				$rules = $this->send_mail_rules();
 				$this->form_validation->set_rules($rules);
 				if ($this->form_validation->run() == FALSE) {
-        $retArray = $this->form_validation->error_array();
-        $retArray['status'] = FALSE;
-        echo json_encode($retArray);
-        exit;
-    } elseif ((int)$studentID && (int)$classesID) {
-        $student = $this->student_m->get_single_student(array('studentID' => $studentID, 'schoolyearID' => $schoolyearID));
-        if(inicompute($student)) {
-  							$this->data["class"]        = $this->classes_m->get_single_classes(array('classesID'=>$student->classesID));
-  							$this->data["section"]      = $this->section_m->get_single_section(array('sectionID'=>$student->sectionID));
-  							$this->data["studentgroup"] = $this->studentgroup_m->get_single_studentgroup(array('studentgroupID'=>$student->studentgroupID));
-  							$this->data["usertype"]        = $this->usertype_m->get_single_usertype(array('usertypeID'=> $student->usertypeID));
-  							$this->data["optionalsubject"] = $this->subject_m->get_single_subject(array('subjectID'=> $student->optionalsubjectID,'type'=>0));
-  							$this->data['student'] = $student;
-  							
-  							$email   = $this->input->post('to');
-  							$subject = $this->input->post('subject');
-  							$message = $this->input->post('message');
-  							$this->reportSendToMail('studentprofile.css', $this->data, 'student/print_preview', $email, $subject, $message);
-  							$retArray['message'] = "Success";
-  							$retArray['status']  = TRUE;
-  							echo json_encode($retArray);
-  						    exit;
-  						} else {
-  							$retArray['message'] = $this->lang->line('student_data_not_found');
-  							echo json_encode($retArray);
-  							exit;
-  						}
-    } else {
+					$retArray = $this->form_validation->error_array();
+					$retArray['status'] = FALSE;
+					echo json_encode($retArray);
+					exit;
+				} elseif ((int)$studentID && (int)$classesID) {
+					$student = $this->student_m->get_single_student(array('studentID' => $studentID, 'schoolyearID' => $schoolyearID));
+					if (inicompute($student)) {
+						$this->data["class"]        = $this->classes_m->get_single_classes(array('classesID' => $student->classesID));
+						$this->data["section"]      = $this->section_m->get_single_section(array('sectionID' => $student->sectionID));
+						$this->data["studentgroup"] = $this->studentgroup_m->get_single_studentgroup(array('studentgroupID' => $student->studentgroupID));
+						$this->data["usertype"]        = $this->usertype_m->get_single_usertype(array('usertypeID' => $student->usertypeID));
+						$this->data["optionalsubject"] = $this->subject_m->get_single_subject(array('subjectID' => $student->optionalsubjectID, 'type' => 0));
+						$this->data['student'] = $student;
+
+						$email   = $this->input->post('to');
+						$subject = $this->input->post('subject');
+						$message = $this->input->post('message');
+						$this->reportSendToMail('studentprofile.css', $this->data, 'student/print_preview', $email, $subject, $message);
+						$retArray['message'] = "Success";
+						$retArray['status']  = TRUE;
+						echo json_encode($retArray);
+						exit;
+					} else {
 						$retArray['message'] = $this->lang->line('student_data_not_found');
 						echo json_encode($retArray);
 						exit;
 					}
+				} else {
+					$retArray['message'] = $this->lang->line('student_data_not_found');
+					echo json_encode($retArray);
+					exit;
+				}
 			} else {
 				$retArray['message'] = $this->lang->line('student_permissionmethod');
 				echo json_encode($retArray);
@@ -855,18 +871,19 @@ public $load;
 		}
 	}
 
-	public function delete() {
+	public function delete()
+	{
 		$studentID = htmlentities((string) escapeString($this->uri->segment(3)));
 		$classesID = htmlentities((string) escapeString($this->uri->segment(4)));
 		$usertype = $this->session->userdata("usertype");
 		$schoolyearID = $this->session->userdata('defaultschoolyearID');
 		if ((int)$studentID && (int)$classesID) {
 			$this->data['student'] = $this->student_m->get_single_student(array('studentID' => $studentID, 'schoolyearID' => $schoolyearID));
-			if(inicompute($this->data['student'])) {
-				if(config_item('demo') == FALSE && ($this->data['student']->photo != 'default.png' && $this->data['student']->photo != 'defualt.png')) {
-					if(file_exists(FCPATH.'uploads/images/'.$this->data['student']->photo)) {
-							unlink(FCPATH.'uploads/images/'.$this->data['student']->photo);
-						}
+			if (inicompute($this->data['student'])) {
+				if (config_item('demo') == FALSE && ($this->data['student']->photo != 'default.png' && $this->data['student']->photo != 'defualt.png')) {
+					if (file_exists(FCPATH . 'uploads/images/' . $this->data['student']->photo)) {
+						unlink(FCPATH . 'uploads/images/' . $this->data['student']->photo);
+					}
 				}
 				$this->student_m->delete_student($studentID);
 				$this->studentextend_m->delete_studentextend_by_studentID($studentID);
@@ -880,7 +897,8 @@ public $load;
 		}
 	}
 
-	public function get_user_exam_status() {
+	public function get_user_exam_status()
+	{
 		$retArray = [];
 		$retArray['status'] = FALSE;
 
@@ -888,12 +906,12 @@ public $load;
 		$loginuserID  = $this->session->userdata('loginuserID');
 		$studentID    = $this->input->post('studentID');
 		$examstatusid = $this->input->post('examstatusid');
-		if(permissionChecker('student_view') || (($usertypeID == 3) && permissionChecker('student') && ($loginuserID == $studentID))) {
-			if((int)$studentID && (int)$examstatusid) {
-				$this->data['examresult'] = $this->online_exam_user_status_m->get_single_online_exam_user_status(array('onlineExamUserStatus'=>$examstatusid,'userID'=>$studentID));
-				if(inicompute($this->data['examresult'])) {
+		if (permissionChecker('student_view') || (($usertypeID == 3) && permissionChecker('student') && ($loginuserID == $studentID))) {
+			if ((int)$studentID && (int)$examstatusid) {
+				$this->data['examresult'] = $this->online_exam_user_status_m->get_single_online_exam_user_status(array('onlineExamUserStatus' => $examstatusid, 'userID' => $studentID));
+				if (inicompute($this->data['examresult'])) {
 					$retArray['status'] = TRUE;
-					$retArray['render'] = $this->load->view('student/examresult',$this->data ,TRUE);
+					$retArray['render'] = $this->load->view('student/examresult', $this->data, TRUE);
 				} else {
 					$retArray['msg'] = $this->lang->line('student_data_not_found');
 				}
@@ -906,12 +924,13 @@ public $load;
 		echo json_encode($retArray);
 	}
 
-	public function unique_roll() {
+	public function unique_roll()
+	{
 		$id = htmlentities((string) escapeString($this->uri->segment(3)));
 		$schoolyearID = $this->data['siteinfos']->school_year;
-		if((int)$id !== 0) {
+		if ((int)$id !== 0) {
 			$student = $this->student_m->get_order_by_student(array("roll" => $this->input->post("roll"), "studentID !=" => $id, "classesID" => $this->input->post('classesID'), 'schoolyearID' => $schoolyearID));
-			if(inicompute($student)) {
+			if (inicompute($student)) {
 				$this->form_validation->set_message("unique_roll", "The %s is already exists.");
 				return FALSE;
 			}
@@ -919,7 +938,7 @@ public $load;
 		} else {
 			$student = $this->student_m->get_order_by_student(array("roll" => $this->input->post("roll"), "classesID" => $this->input->post('classesID'), 'schoolyearID' => $schoolyearID));
 
-			if(inicompute($student)) {
+			if (inicompute($student)) {
 				$this->form_validation->set_message("unique_roll", "The %s is already exists.");
 				return FALSE;
 			}
@@ -927,16 +946,17 @@ public $load;
 		}
 	}
 
-	public function lol_username() {
+	public function lol_username()
+	{
 		$id = htmlentities((string) escapeString($this->uri->segment(3)));
-		if((int)$id !== 0) {
+		if ((int)$id !== 0) {
 			$student_info = $this->student_m->get_single_student(array('studentID' => $id));
 			$tables = array('student' => 'student', 'parents' => 'parents', 'teacher' => 'teacher', 'user' => 'user', 'systemadmin' => 'systemadmin');
 			$array = array();
 			$i = 0;
 			foreach ($tables as $table) {
 				$user = $this->student_m->get_username($table, array("username" => $this->input->post('username'), "username !=" => $student_info->username));
-				if(inicompute($user)) {
+				if (inicompute($user)) {
 					$this->form_validation->set_message("lol_username", "%s already exists.");
 					$array['permition'][$i] = 'no';
 				} else {
@@ -944,7 +964,7 @@ public $load;
 				}
 				$i++;
 			}
-			if(in_array('no', $array['permition'])) {
+			if (in_array('no', $array['permition'])) {
 				return FALSE;
 			} else {
 				return TRUE;
@@ -955,7 +975,7 @@ public $load;
 			$i = 0;
 			foreach ($tables as $table) {
 				$user = $this->student_m->get_username($table, array("username" => $this->input->post('username')));
-				if(inicompute($user)) {
+				if (inicompute($user)) {
 					$this->form_validation->set_message("lol_username", "%s already exists.");
 					$array['permition'][$i] = 'no';
 				} else {
@@ -964,7 +984,7 @@ public $load;
 				$i++;
 			}
 
-			if(in_array('no', $array['permition'])) {
+			if (in_array('no', $array['permition'])) {
 				return FALSE;
 			} else {
 				return TRUE;
@@ -972,65 +992,69 @@ public $load;
 		}
 	}
 
-	public function date_valid($date) {
-		if($date) {
-			if(strlen((string) $date) <10) {
+	public function date_valid($date)
+	{
+		if ($date) {
+			if (strlen((string) $date) < 10) {
 				$this->form_validation->set_message("date_valid", "%s is not valid dd-mm-yyyy.");
-		     	return FALSE;
+				return FALSE;
 			} else {
-		   		$arr = explode("-", (string) $date);
-		        $dd = $arr[0];
-		        $mm = $arr[1];
-		        $yyyy = $arr[2];
-		      	if(checkdate($mm, $dd, $yyyy)) {
-		      		return TRUE;
-		      	} else {
-		      		$this->form_validation->set_message("date_valid", "%s is not valid dd-mm-yyyy.");
-		     		return FALSE;
-		      	}
-		    }
+				$arr = explode("-", (string) $date);
+				$dd = $arr[0];
+				$mm = $arr[1];
+				$yyyy = $arr[2];
+				if (checkdate($mm, $dd, $yyyy)) {
+					return TRUE;
+				} else {
+					$this->form_validation->set_message("date_valid", "%s is not valid dd-mm-yyyy.");
+					return FALSE;
+				}
+			}
 		}
 		return TRUE;
 	}
 
-	public function unique_classesID() {
-		if($this->input->post('classesID') == 0) {
+	public function unique_classesID()
+	{
+		if ($this->input->post('classesID') == 0) {
 			$this->form_validation->set_message("unique_classesID", "The %s field is required.");
-	     	return FALSE;
+			return FALSE;
 		}
 		return TRUE;
 	}
 
-	public function unique_sectionID() {
-		if($this->input->post('sectionID') == 0) {
+	public function unique_sectionID()
+	{
+		if ($this->input->post('sectionID') == 0) {
 			$this->form_validation->set_message("unique_sectionID", "The %s field is required.");
-	     	return FALSE;
+			return FALSE;
 		}
 		return TRUE;
 	}
 
-	public function student_list() {
+	public function student_list()
+	{
 		$classID = $this->input->post('id');
-		
-		if((int)$classID !== 0) {
+
+		if ((int)$classID !== 0) {
 			$string = base_url("student/index/$classID");
-			
 		} else {
 			redirect(base_url("student/index"));
 		}
 	}
 
-	public function unique_email() {
-		if($this->input->post('email')) {
+	public function unique_email()
+	{
+		if ($this->input->post('email')) {
 			$id = htmlentities((string) escapeString($this->uri->segment(3)));
-			if((int)$id !== 0) {
+			if ((int)$id !== 0) {
 				$student_info = $this->student_m->get_single_student(array('studentID' => $id));
 				$tables = array('student' => 'student', 'parents' => 'parents', 'teacher' => 'teacher', 'user' => 'user', 'systemadmin' => 'systemadmin');
 				$array = array();
 				$i = 0;
 				foreach ($tables as $table) {
-					$user = $this->student_m->get_username($table, array("email" => $this->input->post('email'), 'username !=' => $student_info->username ));
-					if(inicompute($user)) {
+					$user = $this->student_m->get_username($table, array("email" => $this->input->post('email'), 'username !=' => $student_info->username));
+					if (inicompute($user)) {
 						$this->form_validation->set_message("unique_email", "%s already exists.");
 						$array['permition'][$i] = 'no';
 					} else {
@@ -1038,7 +1062,7 @@ public $load;
 					}
 					$i++;
 				}
-				if(in_array('no', $array['permition'])) {
+				if (in_array('no', $array['permition'])) {
 					return FALSE;
 				} else {
 					return TRUE;
@@ -1049,7 +1073,7 @@ public $load;
 				$i = 0;
 				foreach ($tables as $table) {
 					$user = $this->student_m->get_username($table, array("email" => $this->input->post('email')));
-					if(inicompute($user)) {
+					if (inicompute($user)) {
 						$this->form_validation->set_message("unique_email", "%s already exists.");
 						$array['permition'][$i] = 'no';
 					} else {
@@ -1058,7 +1082,7 @@ public $load;
 					$i++;
 				}
 
-				if(in_array('no', $array['permition'])) {
+				if (in_array('no', $array['permition'])) {
 					return FALSE;
 				} else {
 					return TRUE;
@@ -1068,69 +1092,73 @@ public $load;
 		return TRUE;
 	}
 
-	public function sectioncall() {
+	public function sectioncall()
+	{
 		$classesID = $this->input->post('id');
-		if((int)$classesID !== 0) {
+		if ((int)$classesID !== 0) {
 			$allsection = $this->section_m->get_order_by_section(array('classesID' => $classesID));
-			echo "<option value='0'>", $this->lang->line("student_select_section"),"</option>";
+			echo "<option value='0'>", $this->lang->line("student_select_section"), "</option>";
 			foreach ($allsection as $value) {
-				echo "<option value=\"$value->sectionID\">",$value->section,"</option>";
+				echo "<option value=\"$value->sectionID\">", $value->section, "</option>";
 			}
 		}
 	}
 
-    public function optionalsubjectcall() {
-        $classesID = $this->input->post('id');
-        if((int)$classesID !== 0) {
-            $allOptionalSubjects = $this->subject_m->get_order_by_subject(array("classesID" =>$classesID, 'type' => 0));
-            echo "<option value='0'>", $this->lang->line("student_select_optionalsubject"),"</option>";
-            foreach ($allOptionalSubjects as $value) {
-                echo "<option value=\"$value->subjectID\">",$value->subject,"</option>";
-            }
-        }
-    }
-
-	public function unique_capacity() {
-		$id = htmlentities((string) escapeString($this->uri->segment(3)));
-		if ((int)$id !== 0) {
-      if($this->input->post('sectionID')) {
-   				$sectionID = $this->input->post('sectionID');
-   				$classesID = $this->input->post('classesID');
-   				$schoolyearID = $this->data['siteinfos']->school_year;
-   				$section = $this->section_m->get_section($this->input->post('sectionID'));
-   				$student = $this->student_m->get_order_by_student(array('classesID' => $classesID, 'sectionID' => $sectionID, 'schoolyearID' => $schoolyearID, 'studentID !=' => $id));
-   				if(inicompute($student) >= $section->capacity) {
-   					$this->form_validation->set_message("unique_capacity", "The %s capacity is full.");
-   		     		return FALSE;
-   				}
-   				return TRUE;
-   			} else {
-   				$this->form_validation->set_message("unique_capacity", "The %s field is required.");
-   		     	return FALSE;
-   			}
-  } elseif ($this->input->post('sectionID')) {
-      $sectionID = $this->input->post('sectionID');
-      $classesID = $this->input->post('classesID');
-      $schoolyearID = $this->data['siteinfos']->school_year;
-      $section = $this->section_m->get_section($this->input->post('sectionID'));
-      $student = $this->student_m->get_order_by_student(array('classesID' => $classesID, 'sectionID' => $sectionID, 'schoolyearID' => $schoolyearID));
-      if(inicompute($student) >= $section->capacity) {
-  					$this->form_validation->set_message("unique_capacity", "The %s capacity is full.");
-  		     		return FALSE;
-  				}
-      return TRUE;
-  } else {
-				$this->form_validation->set_message("unique_capacity", "The %s field is required.");
-		     	return FALSE;
+	public function optionalsubjectcall()
+	{
+		$classesID = $this->input->post('id');
+		if ((int)$classesID !== 0) {
+			$allOptionalSubjects = $this->subject_m->get_order_by_subject(array("classesID" => $classesID, 'type' => 0));
+			echo "<option value='0'>", $this->lang->line("student_select_optionalsubject"), "</option>";
+			foreach ($allOptionalSubjects as $value) {
+				echo "<option value=\"$value->subjectID\">", $value->subject, "</option>";
 			}
+		}
 	}
 
-	public function unique_registerNO() {
+	public function unique_capacity()
+	{
+		$id = htmlentities((string) escapeString($this->uri->segment(3)));
+		if ((int)$id !== 0) {
+			if ($this->input->post('sectionID')) {
+				$sectionID = $this->input->post('sectionID');
+				$classesID = $this->input->post('classesID');
+				$schoolyearID = $this->data['siteinfos']->school_year;
+				$section = $this->section_m->get_section($this->input->post('sectionID'));
+				$student = $this->student_m->get_order_by_student(array('classesID' => $classesID, 'sectionID' => $sectionID, 'schoolyearID' => $schoolyearID, 'studentID !=' => $id));
+				if (inicompute($student) >= $section->capacity) {
+					$this->form_validation->set_message("unique_capacity", "The %s capacity is full.");
+					return FALSE;
+				}
+				return TRUE;
+			} else {
+				$this->form_validation->set_message("unique_capacity", "The %s field is required.");
+				return FALSE;
+			}
+		} elseif ($this->input->post('sectionID')) {
+			$sectionID = $this->input->post('sectionID');
+			$classesID = $this->input->post('classesID');
+			$schoolyearID = $this->data['siteinfos']->school_year;
+			$section = $this->section_m->get_section($this->input->post('sectionID'));
+			$student = $this->student_m->get_order_by_student(array('classesID' => $classesID, 'sectionID' => $sectionID, 'schoolyearID' => $schoolyearID));
+			if (inicompute($student) >= $section->capacity) {
+				$this->form_validation->set_message("unique_capacity", "The %s capacity is full.");
+				return FALSE;
+			}
+			return TRUE;
+		} else {
+			$this->form_validation->set_message("unique_capacity", "The %s field is required.");
+			return FALSE;
+		}
+	}
+
+	public function unique_registerNO()
+	{
 		$id = htmlentities((string) escapeString($this->uri->segment(3)));
 		$schoolyearID = $this->data['siteinfos']->school_year;
-		if((int)$id !== 0) {
+		if ((int)$id !== 0) {
 			$student = $this->student_m->get_single_student(array("registerNO" => $this->input->post("registerNO"), "studentID !=" => $id, "classesID" => $this->input->post('classesID'), 'schoolyearID' => $schoolyearID));
-			if(inicompute($student)) {
+			if (inicompute($student)) {
 				$this->form_validation->set_message("unique_registerNO", "The %s is already exists.");
 				return FALSE;
 			}
@@ -1138,7 +1166,7 @@ public $load;
 		} else {
 			$student = $this->student_m->get_single_student(array("registerNO" => $this->input->post("registerNO"), "classesID" => $this->input->post('classesID'), 'schoolyearID' => $schoolyearID));
 
-			if(inicompute($student)) {
+			if (inicompute($student)) {
 				$this->form_validation->set_message("unique_registerNO", "The %s is already exists.");
 				return FALSE;
 			}
@@ -1146,16 +1174,17 @@ public $load;
 		}
 	}
 
-	public function active() {
-		if(permissionChecker('student_edit')) {
+	public function active()
+	{
+		if (permissionChecker('student_edit')) {
 			$id = $this->input->post('id');
 			$status = $this->input->post('status');
-			if($id != '' && $status != '') {
-				if((int)$id !== 0) {
-					if($status == 'chacked') {
+			if ($id != '' && $status != '') {
+				if ((int)$id !== 0) {
+					if ($status == 'chacked') {
 						$this->student_m->update_student(array('active' => 1), $id);
 						echo 'Success';
-					} elseif($status == 'unchacked') {
+					} elseif ($status == 'unchacked') {
 						$this->student_m->update_student(array('active' => 0), $id);
 						echo 'Success';
 					} else {
@@ -1172,7 +1201,8 @@ public $load;
 		}
 	}
 
-	protected function rules_documentupload() {
+	protected function rules_documentupload()
+	{
 		return array(
 			array(
 				'field' => 'title',
@@ -1187,16 +1217,17 @@ public $load;
 		);
 	}
 
-	public function unique_document_upload() {
+	public function unique_document_upload()
+	{
 		$new_file = '';
-		if($_FILES["file"]['name'] != "") {
+		if ($_FILES["file"]['name'] != "") {
 			$file_name = $_FILES["file"]['name'];
 			$random = rand(1, 10000000000000000);
-	    	$makeRandom = hash('sha512', $random.(strtotime(date('Y-m-d H:i:s'))). config_item("encryption_key"));
+			$makeRandom = hash('sha512', $random . (strtotime(date('Y-m-d H:i:s'))) . config_item("encryption_key"));
 			$file_name_rename = $makeRandom;
-            $explode = explode('.', (string) $file_name);
-            if(inicompute($explode) >= 2) {
-	            $new_file = $file_name_rename.'.'.end($explode);
+			$explode = explode('.', (string) $file_name);
+			if (inicompute($explode) >= 2) {
+				$new_file = $file_name_rename . '.' . end($explode);
 				$config['upload_path'] = "./uploads/documents";
 				$config['allowed_types'] = "gif|jpg|png|jpeg|pdf|doc|xml|docx|GIF|JPG|PNG|JPEG|PDF|DOC|XML|DOCX|xls|xlsx|txt|ppt|csv";
 				$config['file_name'] = $new_file;
@@ -1204,16 +1235,16 @@ public $load;
 				$config['max_width'] = '10000';
 				$config['max_height'] = '10000';
 				$this->load->library('upload', $config);
-				if(!$this->upload->do_upload("file")) {
+				if (!$this->upload->do_upload("file")) {
 					$this->form_validation->set_message("unique_document_upload", $this->upload->display_errors());
-	     			return FALSE;
+					return FALSE;
 				} else {
 					$this->upload_data['file'] =  $this->upload->data();
 					return TRUE;
 				}
 			} else {
 				$this->form_validation->set_message("unique_document_upload", "Invalid file.");
-	     		return FALSE;
+				return FALSE;
 			}
 		} else {
 			$this->form_validation->set_message("unique_document_upload", "The file is required.");
@@ -1221,19 +1252,20 @@ public $load;
 		}
 	}
 
-	public function documentUpload() {
+	public function documentUpload()
+	{
 		$retArray['status'] = FALSE;
 		$retArray['render'] = '';
 
-		if(permissionChecker('student_add')) {
-			if($_POST !== []) {
+		if (permissionChecker('student_add')) {
+			if ($_POST !== []) {
 				$rules = $this->rules_documentupload();
 				$this->form_validation->set_rules($rules);
 				if ($this->form_validation->run() == FALSE) {
 					$retArray['errors'] = $this->form_validation->error_array();
 					$retArray['status'] = FALSE;
-				    echo json_encode($retArray);
-				    exit;
+					echo json_encode($retArray);
+					exit;
 				} else {
 					$title = $this->input->post('title');
 					$file = $this->upload_data['file']['file_name'];
@@ -1254,85 +1286,87 @@ public $load;
 
 					$retArray['status'] = TRUE;
 					$retArray['render'] = 'Success';
-				    echo json_encode($retArray);
-				    exit;
+					echo json_encode($retArray);
+					exit;
 				}
 			} else {
 				$retArray['status'] = FALSE;
 				$retArray['render'] = 'Error';
-			    echo json_encode($retArray);
-			    exit;
+				echo json_encode($retArray);
+				exit;
 			}
 		} else {
 			$retArray['status'] = FALSE;
 			$retArray['render'] = 'Permission Denay.';
-		    echo json_encode($retArray);
-		    exit;
+			echo json_encode($retArray);
+			exit;
 		}
 	}
 
-	private function documentInfo($studentInfo) {
-		if(inicompute($studentInfo)) {
+	private function documentInfo($studentInfo)
+	{
+		if (inicompute($studentInfo)) {
 			$this->data['documents'] = $this->document_m->get_order_by_document(array('usertypeID' => 3, 'userID' => $studentInfo->studentID));
 		} else {
 			$this->data['documents'] = [];
 		}
 	}
 
-	public function download_document() {
+	public function download_document()
+	{
 		$documentID = htmlentities((string) escapeString($this->uri->segment(3)));
 		$studentID 	= htmlentities((string) escapeString($this->uri->segment(4)));
 		$classesID 	= htmlentities((string) escapeString($this->uri->segment(5)));
-		if((int)$documentID && (int)$studentID && (int)$classesID) {
-			if((permissionChecker('student_add') && permissionChecker('student_delete')) || ($this->session->userdata('usertypeID') == 3 && $this->session->userdata('loginuserID') == $studentID)) {
+		if ((int)$documentID && (int)$studentID && (int)$classesID) {
+			if ((permissionChecker('student_add') && permissionChecker('student_delete')) || ($this->session->userdata('usertypeID') == 3 && $this->session->userdata('loginuserID') == $studentID)) {
 				$document = $this->document_m->get_single_document(array('documentID' => $documentID));
-				$file = realpath('uploads/documents/'.$document->file);
-			    if (file_exists($file)) {
-			    	$expFileName = explode('.', $file);
-					$originalname = ($document->title).'.'.end($expFileName);
-			    	header('Content-Description: File Transfer');
-				    header('Content-Type: application/octet-stream');
-				    header('Content-Disposition: attachment; filename="'.basename($originalname).'"');
-				    header('Expires: 0');
-				    header('Cache-Control: must-revalidate');
-				    header('Pragma: public');
-				    header('Content-Length: ' . filesize($file));
-				    readfile($file);
-				    exit;
-			    } else {
-			    	redirect(base_url('student/view/'.$studentID.'/'.$classesID));
-			    }
+				$file = realpath('uploads/documents/' . $document->file);
+				if (file_exists($file)) {
+					$expFileName = explode('.', $file);
+					$originalname = ($document->title) . '.' . end($expFileName);
+					header('Content-Description: File Transfer');
+					header('Content-Type: application/octet-stream');
+					header('Content-Disposition: attachment; filename="' . basename($originalname) . '"');
+					header('Expires: 0');
+					header('Cache-Control: must-revalidate');
+					header('Pragma: public');
+					header('Content-Length: ' . filesize($file));
+					readfile($file);
+					exit;
+				} else {
+					redirect(base_url('student/view/' . $studentID . '/' . $classesID));
+				}
 			} else {
-				redirect(base_url('student/view/'.$studentID.'/'.$classesID));
+				redirect(base_url('student/view/' . $studentID . '/' . $classesID));
 			}
 		} else {
 			redirect(base_url('student/index'));
 		}
 	}
 
-	public function delete_document() {
+	public function delete_document()
+	{
 		$documentID = htmlentities((string) escapeString($this->uri->segment(3)));
 		$studentID 	= htmlentities((string) escapeString($this->uri->segment(4)));
 		$classesID 	= htmlentities((string) escapeString($this->uri->segment(5)));
-		if((int)$documentID && (int)$studentID && (int)$classesID) {
-			if(permissionChecker('student_add') && permissionChecker('student_delete')) {
+		if ((int)$documentID && (int)$studentID && (int)$classesID) {
+			if (permissionChecker('student_add') && permissionChecker('student_delete')) {
 				$document = $this->document_m->get_single_document(array('documentID' => $documentID));
-				if(inicompute($document)) {
-					if(config_item('demo') == FALSE && file_exists(FCPATH.'uploads/document/'.$document->file)) {
-						unlink(FCPATH.'uploads/document/'.$document->file);
+				if (inicompute($document)) {
+					if (config_item('demo') == FALSE && file_exists(FCPATH . 'uploads/document/' . $document->file)) {
+						unlink(FCPATH . 'uploads/document/' . $document->file);
 					}
 					$this->document_m->delete_document($documentID);
 					$this->session->set_flashdata('success', $this->lang->line('menu_success'));
-					redirect(base_url('student/view/'.$studentID.'/'.$classesID));
+					redirect(base_url('student/view/' . $studentID . '/' . $classesID));
 				} else {
-					redirect(base_url('student/view/'.$studentID.'/'.$classesID));
+					redirect(base_url('student/view/' . $studentID . '/' . $classesID));
 				}
 			} else {
-				redirect(base_url('student/view/'.$studentID.'/'.$classesID));
+				redirect(base_url('student/view/' . $studentID . '/' . $classesID));
 			}
 		} else {
 			redirect(base_url('student/index'));
 		}
 	}
-	
 }

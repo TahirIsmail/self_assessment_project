@@ -39,3 +39,5 @@ $lang['online_exam_free']               = "Free";
 $lang['online_exam_paid']               = "Paid";
 $lang['online_exam_unpaid']             = "Unpaid";
 $lang['online_exam_payment_status']                   = "Payment Status";
+$lang['section_file_browse'] = 'File Browse';
+$lang['section_photo'] = "Course Image";

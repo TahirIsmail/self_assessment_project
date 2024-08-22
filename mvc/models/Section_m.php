@@ -92,6 +92,15 @@ class Section_m extends MY_Model
 		return $query;
 	}
 
+	public function get_section_record($slug = NULL)
+	{
+		$this->db->where($slug);
+		$query = $this->db->get('section');
+		$result = $query->result();
+
+		return $result;
+	}
+
 	public function get_order_by_section($array = NULL)
 	{
 		$query = parent::get_order_by($array);
@@ -111,6 +120,9 @@ class Section_m extends MY_Model
 		$id = parent::insert($array); // Call the insert method and get the ID
 		return $id;
 	}
+
+
+
 
 
 	public function update_section($data, $id = NULL)

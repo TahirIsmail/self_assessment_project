@@ -86,6 +86,8 @@ class Stripe extends PaymentAbstract
 
     public function payment( $array, $invoice ) //done
     {
+
+       
         $this->params = [
             'online_exam_id' => $array['onlineExamID'],
             'description'    => $invoice->name,
@@ -94,6 +96,7 @@ class Stripe extends PaymentAbstract
             'token'          => $array['stripeToken']
         ];
 
+        dd($this->params);
         $this->response = $this->gateway->purchase($this->params)->send();
         $this->success();
     }

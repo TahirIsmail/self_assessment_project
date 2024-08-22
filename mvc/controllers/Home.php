@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class HomeController extends Admin_Controller {
+class Home extends Admin_Controller {
 public $load;
  public $session;
  public $data;
@@ -47,7 +47,7 @@ public $load;
 
 	public function index() {
      
-            $this->data["subview"]  = "signin/index";
+            $this->data["subview"]         = "signin/index";
             $this->load->view('landingPage/index', $this->data);
 	}
 

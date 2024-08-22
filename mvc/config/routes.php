@@ -61,7 +61,7 @@
     */
 
     if($this->config->item('installed') == true) {
-        $route['default_controller'] = "HomeController";
+        $route['default_controller'] = "Home";
     } else {
         $route["default_controller"] = "install";
     }

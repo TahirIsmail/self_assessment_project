@@ -31,6 +31,7 @@ class PaymentGateway
 
     public function payment( $post_data, $invoice_data )
     {
+        // dd($this->gateway);
         return $this->gateway->payment($post_data, $invoice_data);
     }
 
