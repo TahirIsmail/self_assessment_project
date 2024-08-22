@@ -1833,6 +1833,8 @@ progress {
     transition: none;
   }
 }
+
+
 .form-control[type="file"] {
   overflow: hidden;
 }
@@ -2514,6 +2516,13 @@ textarea.form-control.is-invalid {
 .input-group .form-select.is-invalid {
   z-index: 3;
 }
+
+
+.rounded-top-round {
+  border-top-left-radius: 15px !important;
+  border-top-right-radius: 15px !important;
+}
+
 .btn {
   display: inline-block;
   font-weight: 400;
@@ -6849,6 +6858,11 @@ fieldset:disabled .btn {
 }
 .bg-light {
   background-color: #f0fbfc !important;
+}
+
+
+.bg-theme {
+  background-color: #d71920 !important;
 }
 .bg-dark {
   background-color: #181d38 !important;

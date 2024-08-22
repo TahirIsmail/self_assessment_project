@@ -96,17 +96,19 @@ class Stripe extends PaymentAbstract
             'token'          => $array['stripeToken']
         ];
 
-        dd($this->params);
+       
         $this->response = $this->gateway->purchase($this->params)->send();
         $this->success();
     }
 
     public function success() //done
     {
+       
         if($this->response->isSuccessful()) {
             if($this->response->getData()['status'] === "succeeded") {
-                $transaction_id = $this->response->getData()['id'];
+                $transaction_id = $this->response->getData()["id"];
                 if($transaction_id) {
+                    // dd($transaction_id);
                     $paymentService = new PaymentService($transaction_id);
                     $paymentService->add_transaction([
                         'online_exam_id' => $this->params['online_exam_id'],

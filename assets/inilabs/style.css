@@ -1433,6 +1433,7 @@ body > .header .logo .icon {
   max-height: 300px;
   overflow: auto;
 }
+
 .box .box-header {
   position: relative;
   background:linear-gradient(to right, #ed213a, #93291e) !important;
