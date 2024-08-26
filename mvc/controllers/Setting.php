@@ -202,13 +202,15 @@ public $load;
 					$this->data["subview"] = "setting/index";
 					$this->load->view('_layout_main', $this->data);
 				} else {
-                    if ( config_item('demo') == false ) {
-                        $updateValidation = $this->updatechecker->verifyValidUser();
-                        if ( $updateValidation->status == false ) {
-                            $this->session->set_flashdata('error', $updateValidation->message);
-                            redirect(base_url('setting/index'));
-                        }
-                    }
+					
+                    // if ( config_item('demo') == false ) {
+                    //     $updateValidation = $this->updatechecker->verifyValidUser();
+                    //     if ( $updateValidation->status == false ) {
+                    //         $this->session->set_flashdata('error', $updateValidation->message);
+                    //         redirect(base_url('setting/index'));
+                    //     }
+                    // }
+					// dd(config_item('demo'));
 
 					$array = [];
 					for($i=0; $i<inicompute($rules); $i++) {
