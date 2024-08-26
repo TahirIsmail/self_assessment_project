@@ -14,7 +14,7 @@
     }
 
     .courses-list {
-        
+
         flex: 0 0 30%;
     }
 
@@ -51,6 +51,7 @@
 
     .course-detail p,
     .course-detail ul {
+        text-align: justify;
         color: #333;
         line-height: 1.6;
         font-size: 1em;
@@ -180,14 +181,85 @@
             border-bottom: 2px solid #ddd;
         }
     }
+
+
+
+
+
+
+
+
+
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .btn {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #007bff;
+        /* Default button color */
+        color: #fff;
+        /* Default text color */
+        padding: 15px;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+        /* Ensure text color transitions smoothly */
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+        /* Darker blue when hovering */
+    }
+
+    .btn.active {
+        background-color: #000;
+        /* Black background for active state */
+        color: #fff;
+        /* White text color for active state */
+    }
+
+    .icon {
+        font-size: 16px;
+        transition: transform 0.3s;
+        /* Ensure smooth icon rotation */
+    }
+
+    .sub-list-show .icon {
+        transform: rotate(180deg);
+        /* Rotate icon when sub-list is visible */
+    }
+
+    .sub-list {
+        display: none;
+        padding-left: 20px;
+        margin: 0;
+        border-left: 2px solid #ddd;
+        /* Border to visually separate sub-lists */
+    }
+
+    .sub-list li {
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .sub-list li:last-child {
+        border-bottom: none;
+    }
 </style>
 
 <?php $this->load->view("components/frontend/header.php"); ?>
 
 <div class="all-courses-container">
-    <div class="courses-list">
+    <!-- <div class="courses-list">
         <h2>Courses</h2>
-
         <ul>
             <li class="btn btn-primary  w-100 ">Level 3: Award in Education & Training (AET) Course</li>
             <li class="btn btn-primary  w-100 ">Level 4: Certificate in Education & Training (CET) Course</li>
@@ -218,10 +290,22 @@
             <li class="btn btn-primary  w-100 ">Forklift 3 Day Basic Training Course</li>
             <li class="btn btn-primary  w-100 ">Forklift 5 Day Novice Operator Training</li>
         </ul>
+    </div> -->
+    <div class="courses-list">
+        <h2>Courses</h2>
+        <ul id="coursesContainer">
+            <!-- Dynamic content will be injected here -->
+        </ul>
     </div>
+
+
+
+
     <div class="course-detail">
         <h2>Level 3: Award in Education & Training (AET) Course</h2>
-        <img src="image1.jpg" alt="Education Training Course">
+        <div class="col-md-12 h-10 mb-5">
+            <img class="h-100 w-100" src="<?= base_url('uploads/landing_img/course-3.jpg') ?>" alt="Education Training Course">
+        </div>
         <p>Level 3 Award in Education and Training (AET), formerly known as PTLLS, is designed to give people the knowledge and confidence to teach adults in any specialty subject area. It is suitable for those wishing to work as a teacher, trainer, or tutor in further education.</p>
         <p>Russbridge Academy offers this qualification via Distance Learning, Online, Face to Face Classroom, or Live Zoom classroom. This Level 3 AET is a direct replacement qualification of the Level 3/4 Preparing to Teach in the Lifelong Learning Sector (PTLLS) course, colloquially known as "PETALS" since 2011.</p>
         <p>This course is an initial teacher training qualification, also a Regulated Qualifications Framework (RQF) and OFQUAL regulated. It is best suited for those new to teaching or currently teaching in England, Wales, Scotland, and Ireland. It provides the knowledge and confidence to teach adult learners at a nationally accredited standard.</p>
@@ -236,19 +320,19 @@
         </div>
 
         <h3>Book a Course from our Wide-range of Venue (Online/ Class-based)</h3>
-        <table class="booking-table">
+        <table class="booking-table mb-5">
             <thead>
                 <tr>
-                    <th>Location</th>
-                    <th>Address</th>
-                    <th>Date</th>
-                    <th>Price</th>
-                    <th>Book Now</th>
+                    <th style="width: 10%;">Id</th>
+                    <th style="width: 25%;">City</th>
+                    <th style="width: 15%;">Date</th>
+                    <th style="width: 10%;">Price</th>
+                    <th style="width: 40%;">Book Now</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td data-label="Location">WOOD GREEN Call: 02081031238, 01483947061</td>
+                    <td data-label="id">1</td>
                     <td data-label="Address">Stuart Crescent, Wood Green, London N22 5NJ</td>
                     <td data-label="Date">
                         <select>
@@ -260,25 +344,9 @@
                     <td data-label="Price">£269.99</td>
                     <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
                 </tr>
-                <!-- Additional rows omitted for brevity -->
+
                 <tr>
-                    <td data-label="Location">MANCHESTER Call: 02081031238, 01615194329</td>
-                    <td data-label="Address">Sackville Street, Manchester M1 3BB</td>
-                    <td data-label="Date">
-                        <select>
-                            <option>5th - 7th Aug</option>
-                            <option>2nd - 4th Sept 2024</option>
-                            <option>30th Sep - 2nd Oct 2024</option>
-                            <option>4th - 6th Nov 2024</option>
-                            <option>2nd - 4th Dec 2024</option>
-                            <option>6th - 8th Jan 2025</option>
-                        </select>
-                    </td>
-                    <td data-label="Price">£319.99</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="Location">HARROW Call: 02081031238, 01483947061</td>
+                    <td data-label="id">1</td>
                     <td data-label="Address">1 Greenhill Way, Harrow, London HA1 1LE</td>
                     <td data-label="Date">
                         <select>
@@ -288,10 +356,10 @@
                         </select>
                     </td>
                     <td data-label="Price">£269.99</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart"></button></td>
+                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
                 </tr>
                 <tr>
-                    <td data-label="Location">STRATFORD Call: 02081031238, 01483947061</td>
+                    <td data-label="id">1</td>
                     <td data-label="Address">196 High Street, Stratford, London E15 2NE</td>
                     <td data-label="Date">
                         <select>
@@ -304,7 +372,7 @@
                     <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
                 </tr>
                 <tr>
-                    <td data-label="Location">RAINHAM Call: 02081031238, 01483947061</td>
+                    <td data-label="id">1</td>
                     <td data-label="Address">Suite 26, Harbour House, Coldharbour Lane, Rainham RM13 9YB</td>
                     <td data-label="Date">
                         <select>
@@ -317,7 +385,7 @@
                     <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
                 </tr>
                 <tr>
-                    <td data-label="Location">GREENWICH Call: 02081031238, 01483947061</td>
+                    <td data-label="id">1</td>
                     <td data-label="Address">Catherine Grove, Greenwich, London SE10 8FR</td>
                     <td data-label="Date">
                         <select>
@@ -330,7 +398,7 @@
                     <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
                 </tr>
                 <tr>
-                    <td data-label="Location">NORTH ACTON Call: 02081031238, 01483947061</td>
+                    <td data-label="id">1</td>
                     <td data-label="Address">Victoria Rd, North Acton, London W3 6UP</td>
                     <td data-label="Date">
                         <select>
@@ -343,7 +411,7 @@
                     <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
                 </tr>
                 <tr>
-                    <td data-label="Location">ELEPHANT & CASTLE Call: 02081031238, 01483947061</td>
+                    <td data-label="id">1</td>
                     <td data-label="Address">156 Blackfriars Road, Southwark, Elephant & Castle, London SE1 8EN</td>
                     <td data-label="Date">
                         <select>
@@ -356,7 +424,7 @@
                     <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
                 </tr>
                 <tr>
-                    <td data-label="Location">WEMBLEY Call: 02081031238, 01483947061</td>
+                    <td data-label="id">1</td>
                     <td data-label="Address">Empire Way, Wembley, London HA9 8DS</td>
                     <td data-label="Date">
                         <select>
@@ -369,7 +437,7 @@
                     <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
                 </tr>
                 <tr>
-                    <td data-label="Location">CHELMSFORD Call: 02081031238, 01245204457</td>
+                    <td data-label="id">1</td>
                     <td data-label="Address">Main Road, Boreham, Essex CM3 3HJ</td>
                     <td data-label="Date">
                         <select>
@@ -382,7 +450,7 @@
                     <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
                 </tr>
                 <tr>
-                    <td data-label="Location">SLOUGH Call: 02081031238, 01183381989</td>
+                    <td data-label="id">1</td>
                     <td data-label="Address">Church Street, Chalvey, Slough SL1 2NH</td>
                     <td data-label="Date">
                         <select>
@@ -395,7 +463,7 @@
                     <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
                 </tr>
                 <tr>
-                    <td data-label="Location">HERTFORDSHIRE Call: 02081031238, 01992669772</td>
+                    <td data-label="id">1</td>
                     <td data-label="Address">The Watermill, London Road, Bourne End, Hemel Hempstead, Hertfordshire HP1 2RJ</td>
                     <td data-label="Date">
                         <select>
@@ -408,7 +476,7 @@
                     <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
                 </tr>
                 <tr>
-                    <td data-label="Location">BIRMINGHAM Call: 02081031238, 01156710197, 02476016185</td>
+                    <td data-label="id">1</td>
                     <td data-label="Address">Star City, Cuckoo Road, Heartlands Parkway Nechells, Birmingham B7 5SB</td>
                     <td data-label="Date">
                         <select>
@@ -420,74 +488,8 @@
                     <td data-label="Price">£319.99</td>
                     <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
                 </tr>
-                <tr>
-                    <td data-label="Location">MANCHESTER Call: 02081031238, 01615194329</td>
-                    <td data-label="Address">Sackville Street, Manchester M1 3BB</td>
-                    <td data-label="Date">
-                        <select>
-                            <option>5th - 7th Aug</option>
-                            <option>2nd - 4th Sept 2024</option>
-                            <option>30th Sep - 2nd Oct 2024</option>
-                            <option>4th - 6th Nov 2024</option>
-                            <option>2nd - 4th Dec 2024</option>
-                            <option>6th - 8th Jan 2025</option>
-                        </select>
-                    </td>
-                    <td data-label="Price">£319.99</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="Location">SOUTHAMPTON Call: 02081031238, 02382023997</td>
-                    <td data-label="Address">1 West Quay Road, Southampton, Hampshire SO15 1RA</td>
-                    <td data-label="Date">
-                        <select>
-                            <option>19th - 21st Aug</option>
-                            <option>26th - 28th Aug</option>
-                            <option>2nd - 4th Sept 2024</option>
-                        </select>
-                    </td>
-                    <td data-label="Price">£319.99</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="Location">OXFORD Call: 02081031238, 01865411679</td>
-                    <td data-label="Address">Moto Service Area, Peartree Roundabout, Woodstock Road, Oxford OX2 8JZ</td>
-                    <td data-label="Date">
-                        <select>
-                            <option>5th - 7th Aug</option>
-                            <option>12th - 14th Aug</option>
-                            <option>19th - 21st Aug</option>
-                        </select>
-                    </td>
-                    <td data-label="Price">£319.99</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="Location">GLASGOW Call: 01414835868</td>
-                    <td data-label="Address">201 Ingram Street, Glasgow G1 1DQ</td>
-                    <td data-label="Date">
-                        <select>
-                            <option>27th - 29th Aug</option>
-                            <option>2nd - 4th Sept 2024</option>
-                            <option>4th - 6th Nov 2024</option>
-                        </select>
-                    </td>
-                    <td data-label="Price">£319.99</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="Location">SHEFFIELD Call: 02081031238, 01145533385</td>
-                    <td data-label="Address">Victoria Station Road, Sheffield, South Yorkshire S4 7YE</td>
-                    <td data-label="Date">
-                        <select>
-                            <option>5th - 7th Aug</option>
-                            <option>6th - 8th Jan 2025</option>
-                            <option>2nd - 4th Sept 2024</option>
-                        </select>
-                    </td>
-                    <td data-label="Price">£319.99</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
+
+
             </tbody>
         </table>
 
@@ -495,9 +497,9 @@
         <table class="booking-table">
             <thead>
                 <tr>
-                    <th>Course</th>
-                    <th>Price</th>
-                    <th>Book Now</th>
+                    <th style="width:55%">Course</th>
+                    <th style="width:15%">Price</th>
+                    <th style="width:30%">Book Now</th>
                 </tr>
             </thead>
             <tbody>
@@ -556,41 +558,81 @@
 
         <!-- New sections added in the table structure -->
         <h3>Course Introduction</h3>
-        <table class="booking-table">
+        <table class="mb-3">
             <tbody>
                 <tr>
-                    <td data-label="Course Introduction">Level 3 Award in Education and Training (AET) course is designed to contribute towards the knowledge and understanding for Further Education National Training Organisation (FENTO) or the Employment National Training Organisation (EMPNTO) occupational standards in the United Kingdom. This course is designed for anyone wishing to enter in the adult training and teaching industry in this country.</td>
+                    <td data-label="Course Introduction">
+                        <p>Level 3 Award in Education and Training (AET) course
+                             is designed to contribute towards the knowledge and 
+                             understanding for Further Education National Training
+                              Organisation (FENTO) or the Employment National Training
+                               Organisation (EMPNTO) occupational standards in the United
+                                Kingdom. This course is designed for anyone wishing to enter
+                                 in the adult training and teaching industry in this country.
+                        </p>
+                    </td>
+
                 </tr>
                 <tr>
-                    <td>This course is suitable if you work or want to work as a teacher/trainer/tutor in Further Education Colleges, adult and community education, beauty salon or beauty industry, private training centres, voluntary sector, commerce, industry, public sector, HM forces, Beauty Salon industry, Hair Extension training, Eye Lashes, Grooming, Health Industry, aesthetic trainer, Nail Technician, Waxing Training, Beauty schools, care home and Care Instructor, Driving Instructors, NHS Trusts, various police and military forces, Dog Grooming training, Midwives, Librarians, Laboratory Technicians, Teaching Assistants, Higher Education Teaching Professional, Further Education Teaching Professionals, Secondary Education Teaching Professionals, SIA Security Instructor, Primary and Nursery Education Teaching Professionals, Special Needs Education Teaching Professionals, Security Industry, Teaching/Training, Educational Support Assistants, Education Advisers and School Inspectors, Veterinarians, Nurses, Care sector and First Aid sector.</td>
+                    <td>
+                        <p>This course is suitable if you work or want to work as a 
+                            teacher/trainer/tutor in Further Education Colleges, adult
+                             and community education, beauty salon or beauty industry, 
+                             private training centres, voluntary sector, commerce, industry, 
+                             public sector, HM forces, Beauty Salon industry, Hair Extension 
+                             training, Eye Lashes, Grooming, Health Industry, aesthetic trainer, 
+                             Nail Technician, Waxing Training, Beauty schools, care home and Care
+                              Instructor, Driving Instructors, NHS Trusts, various police and military 
+                              forces, Dog Grooming training, Midwives, Librarians, Laboratory Technicians, 
+                              Teaching Assistants, Higher Education Teaching Professional, Further
+                               Education Teaching Professionals, Secondary Education Teaching 
+                               Professionals, SIA Security Instructor, Primary and Nursery Education
+                                Teaching Professionals, Special Needs Education Teaching Professionals,
+                                 Security Industry, Teaching/Training, Educational Support Assistants,
+                                  Education Advisers and School Inspectors, Veterinarians, Nurses, 
+                                  Care sector and First Aid sector.
+                        </p>
+                    </td>
+
                 </tr>
             </tbody>
         </table>
 
         <h3>Course Overview</h3>
-        <table class="booking-table">
+        <table class="mb-3">
             <tbody>
                 <tr>
-                    <td data-label="Course Overview">Chapter 1: The roles and responsibilities of a teacher / Trainer in education & Training<br>
-                        Chapter 2: Relationships between education and training<br>
-                        Chapter 3: Inclusive teaching approaches to meet the needs of learners<br>
-                        Chapter 4: Principle of assessment in Education and Training<br>
-                        Chapter 5: How to create a safe and supportive learning environment<br>
-                        Chapter 6: How to motivate learners<br>
-                        Chapter 7: Planning, delivery and evaluation of inclusive teaching and training<br>
-                        Chapter 8: Different assessment methods<br>
-                        Chapter 9: How to recognise and deal with potential problems<br>
-                        Chapter 10: Teaching equipment and aids<br>
-                        Chapter 11: Practical teaching sessions (Teaching concept and Technique)</td>
+                    <td data-label="Course Overview">
+                        <p>Chapter 1: The roles and responsibilities of a teacher / Trainer in education & Training<br>
+                            Chapter 2: Relationships between education and training<br>
+                            Chapter 3: Inclusive teaching approaches to meet the needs of learners<br>
+                            Chapter 4: Principle of assessment in Education and Training<br>
+                            Chapter 5: How to create a safe and supportive learning environment<br>
+                            Chapter 6: How to motivate learners<br>
+                            Chapter 7: Planning, delivery and evaluation of inclusive teaching and training<br>
+                            Chapter 8: Different assessment methods<br>
+                            Chapter 9: How to recognise and deal with potential problems<br>
+                            Chapter 10: Teaching equipment and aids<br>
+                            Chapter 11: Practical teaching sessions (Teaching concept and Technique)
+                        </p>
+                    </td>
+
                 </tr>
             </tbody>
         </table>
 
         <h3>Entry Requirement</h3>
-        <table class="booking-table">
+        <table class="mb-3">
             <tbody>
                 <tr>
-                    <td data-label="Entry Requirement">Level 3 Award in Education and Training AET is an introductory, knowledge based teaching qualification. It can be undertaken by individuals who are not yet in a teaching or training role (pre-service) or are currently teaching or training (in-service), however the learners/candidates must be 19 years or above.</td>
+
+                    <td data-label="Entry Requirement">
+                        <p>Level 3 Award in Education and Training AET is an introductory,
+                            knowledge based teaching qualification. It can be undertaken by
+                            individuals who are not yet in a teaching or training role (pre-service)
+                            or are currently teaching or training (in-service), however the
+                            learners/candidates must be 19 years or above. </p>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -598,3 +640,95 @@
 </div>
 
 <?php $this->load->view("components/frontend/footer.php"); ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const courses = [{
+                id: 'aet',
+                title: 'DOOR SUPERVISOR',
+                subItems: ['Sub-item 1', 'Sub-item 2']
+            },
+            {
+                id: 'cet',
+                title: 'CLOSE PROTECTION',
+                subItems: ['Sub-item 1', 'Sub-item 2']
+            }
+            // Add more courses as needed
+        ];
+
+        const coursesContainer = document.getElementById('coursesContainer');
+
+        // Function to render courses
+        function renderCourses(courses) {
+            courses.forEach(course => {
+                const courseItem = document.createElement('li');
+                courseItem.className = 'btn btn-primary w-100';
+                courseItem.innerHTML = `
+                <span class="course-title">${course.title}</span>
+                <span class="icon">&#9662;</span> <!-- Downward arrow -->
+            `;
+
+                const subList = document.createElement('ul');
+                subList.className = 'sub-list';
+                subList.id = course.id;
+                subList.style.display = 'none';
+
+                course.subItems.forEach(subItem => {
+                    const subItemElement = document.createElement('li');
+                    subItemElement.className = 'btn btn-primary w-100';
+                    subItemElement.textContent = subItem;
+                    subList.appendChild(subItemElement);
+                });
+
+                coursesContainer.appendChild(courseItem);
+                coursesContainer.appendChild(subList);
+            });
+        }
+
+        renderCourses(courses);
+
+        // Event delegation for handling clicks on course items and sub-list items
+        coursesContainer.addEventListener('click', function(event) {
+            const target = event.target.closest('.btn');
+
+            if (target) {
+                const subList = target.nextElementSibling;
+
+                if (subList && subList.classList.contains('sub-list')) {
+                    // Close all other sub-lists
+                    document.querySelectorAll('.sub-list').forEach(list => {
+                        if (list !== subList) {
+                            list.style.display = 'none';
+                        }
+                    });
+
+                    // Remove active class from all course buttons
+                    document.querySelectorAll('.btn').forEach(button => {
+                        if (button !== target) {
+                            button.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle the clicked sub-list and button
+                    if (subList.style.display === 'none' || subList.style.display === '') {
+                        subList.style.display = 'block';
+                        target.classList.add('active');
+                    } else {
+                        subList.style.display = 'none';
+                        target.classList.remove('active');
+                    }
+                } else {
+                    // Handle clicks on sub-list items
+                    if (target.parentElement.classList.contains('sub-list')) {
+                        // Remove active class from all sub-list items
+                        document.querySelectorAll('.sub-list .btn').forEach(button => {
+                            button.classList.remove('active');
+                        });
+
+                        // Add active class to the clicked sub-list item
+                        target.classList.add('active');
+                    }
+                }
+            }
+        });
+    });
+</script>
