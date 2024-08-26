@@ -426,6 +426,7 @@ $submit_gateway = json_encode($submit_gateway);
                 success: function(data) {
                     $('#paymentAmount').val('');
                     var response = JSON.parse(data);
+                    console.log(response);
                     if(response.status == true) {
                         $('#paymentAmount').val(response.payableamount);
                     } else {

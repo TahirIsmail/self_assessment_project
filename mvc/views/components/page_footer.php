@@ -59,7 +59,7 @@
                     "hideMethod": "fadeOut"
                 }
             </script>
-        <?php endif ?>
+        <?php $this->session->set_flashdata('success', ''); endif ?>
         <?php if ($this->session->flashdata('error')): ?>
            <script type="text/javascript">
                 toastr["error"]("<?=$this->session->flashdata('error');?>")
@@ -82,7 +82,7 @@
                     "hideMethod": "fadeOut"
                 }
             </script>
-        <?php endif ?>
+        <?php $this->session->set_flashdata('error', ''); endif ?>
 
         <?php
             if(isset($footerassets)) {

@@ -70,10 +70,19 @@ class Online_exam extends Admin_Controller
             }
 
 
+
+            $enrolled_courses = $this->section_m->get_enrolled_sections($loginuserID);
+            $unenrolled_courses = $this->section_m->get_unenrolled_sections($loginuserID);
+
+            
+
+            $this->data['enrolled_courses'] = $enrolled_courses;
+            $this->data['unenrolled_courses'] = $unenrolled_courses;
             $this->data['usertypeID']   = $usertypeID;
             $this->data['online_exams'] = $this->online_exam_m->get_order_by_online_exam();
             $this->data["subview"] = "online_exam/course";
             $this->load->view('_layout_main', $this->data);
+            return;
 
 
         }

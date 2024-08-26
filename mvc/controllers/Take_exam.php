@@ -92,7 +92,16 @@ class Take_exam extends Admin_Controller
 
         $course = [];
         if ($slug) {
+
             $course = $this->section_m->get_section_record(['slug' => $slug]);
+
+        
+            // $is_enrolled = $this->section_m->is_student_enrolled($course->sectionID, $loginuserID);
+            // if (!$is_enrolled) {
+            //     $this->session->set_flashdata('error', 'You need to enroll in this course first.');
+            //     redirect('online_exam');
+            // }
+            
             if (!empty($course) && isset($course[0])) {
                 $this->db->from('student_enrollment_mock_test')
                     ->select()
@@ -105,6 +114,7 @@ class Take_exam extends Admin_Controller
                     ]);
                 $query = $this->db->get();
                 $enrolled_course = $query->result();
+                // dd($enrolled_course);
 
                 if (!empty($enrolled_course)) {
                     // Process the enrolled course as needed

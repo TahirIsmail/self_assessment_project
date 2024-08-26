@@ -97,3 +97,6 @@ $lang['online_exam_date']   = 'Date';
 
 $lang['enrolled_courses'] = 'Enrolled Courses';
 $lang['suggestion_courses'] = 'Course Suggestion';
+
+$lang['enroll_now'] = "Enroll Now";
+$lang['view_course'] = "View Course";

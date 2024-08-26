@@ -102,8 +102,6 @@ class Section extends Admin_Controller
 		}
 		$new_file = "default.png";
 
-		dd($this->input->post('photo'), $_FILES["photo"]);
-		
 		if ($_FILES["photo"]['name'] != "") {
 			$file_name = $_FILES["photo"]['name'];
 			$random = rand(1, 10000000000000000);

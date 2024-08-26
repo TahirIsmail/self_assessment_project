@@ -23,6 +23,42 @@ class Section_m extends MY_Model
 		return $query->result();
 	}
 
+
+	public function get_enrolled_sections($student_id) {
+        $this->db->select('section.sectionID as id, section.section as name, section.slug, section.image, section.cost, section.paid');
+        $this->db->from('section');
+        $this->db->join('student_enrollment_mock_test', 'section.sectionID = student_enrollment_mock_test.section_id');
+        $this->db->where('student_enrollment_mock_test.studentID', $student_id);
+        $this->db->where('student_enrollment_mock_test.is_expired !=', 0);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function get_unenrolled_sections($student_id) {
+        $this->db->select('section.sectionID as id, section.section as name, section.slug, section.image, section.cost, section.paid');
+        $this->db->from('section');
+        $this->db->join('student_enrollment_mock_test', 'section.sectionID = student_enrollment_mock_test.section_id AND student_enrollment_mock_test.studentID = ' . $student_id, 'left');
+
+        // Fixing the SQL syntax issue
+        $this->db->group_start(); // Start grouping
+        $this->db->where('student_enrollment_mock_test.section_id IS NULL');
+        $this->db->or_where('student_enrollment_mock_test.is_expired', 0);
+        $this->db->group_end();
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+	public function is_student_enrolled($section_id, $student_id) {
+		$this->db->where('section_id', $section_id);
+		$this->db->where('studentID', $student_id);
+		$this->db->where('is_expired', 0); // Check if the enrollment is not expired
+		$query = $this->db->get('student_enrollment_mock_test');
+	
+		return $query->num_rows() > 0;
+	}
+
+
 	public function get_join_section_units($id)
 	{
 		// Select fields you need from section and subject tables
@@ -100,6 +136,8 @@ class Section_m extends MY_Model
 
 		return $result;
 	}
+
+
 
 	public function get_order_by_section($array = NULL)
 	{
