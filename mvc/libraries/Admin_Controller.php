@@ -45,16 +45,18 @@ class Admin_Controller extends MY_Controller {
 
         $module            = $this->uri->segment(1);
         $action            = $this->uri->segment(2);
+        
         $siteInfo          = $this->site_m->get_site();
         $loginManager      = $this->_loginManager();
         $permissionManager = $this->_permissionManager($module, $action);
         if ( !empty($loginManager) ) {
+            
             redirect($loginManager);
         } elseif ( !empty($permissionManager) ) {
             redirect($permissionManager);
         }
-
         $this->data["siteinfos"]         = $siteInfo;
+        
         $this->_backendTheme             = strtolower($this->data["siteinfos"]->backend_theme);
         $this->_backendThemePath         = 'assets/inilabs/themes/' . strtolower($this->data["siteinfos"]->backend_theme);
         $this->data['backendTheme']      = $this->_backendTheme;
@@ -62,41 +64,51 @@ class Admin_Controller extends MY_Controller {
         $this->data['topbarschoolyears'] = $this->schoolyear_m->get_order_by_schoolyear([ 'schooltype' => $this->data["siteinfos"]->school_type ]);
         $this->data['allcountry']        = $this->_country();
         $this->data['allbloodgroup']     = $this->_bloodGroup();
+
+        
     }
 
     private function _loginManager()
     {
         $url            = '';
         $exception_uris = [
-            "Home/index",
+            "home/index",
             "signin/index",
             "signin/signout",
-            "signup/page","signup/index","course/index"
+            "signup/page","signup/index","course/index",
+            "home/course"
         ];
 
+        dd(in_array(uri_string(), $exception_uris));
+
+       
         if ( in_array(uri_string(), $exception_uris) == false ) {
+            // dd(in_array(uri_string(), $exception_uris));
             if ( $this->signin_m->loggedin() == false ) {
-                $url = base_url("Home/index");
+                $url = base_url("home/index");
             }
         }
+       
         return $url;
     }
 
     private function _permissionManager( $module, $action )
     {
+
+       
         
         if ( $action == 'index' || $action == false ) {
             $permission = $module;
         } else {
             $permission = $module . '_' . $action;
         }
-
+      
         
         $url             = '';
         $permissionArray = [];
         $sessionData     = $this->session->userdata;
         
-     
+       
 
         if ( $this->session->userdata('usertypeID') == 1 && $this->session->userdata('loginuserID') == 1 ) {
             if ( isset($sessionData['loginuserID']) && !isset($sessionData['get_permission']) ) {
@@ -136,6 +148,7 @@ class Admin_Controller extends MY_Controller {
         $sessionPermission     = $this->session->userdata('master_permission_set');
         $dbMenus               = $this->_menuTree(json_decode(json_encode(pluck($this->menu_m->get_order_by_menu([ 'status' => '1']),
         'obj', 'menuID')), true), $sessionPermission);
+       
         $this->data["dbMenus"] = $dbMenus;
         
        

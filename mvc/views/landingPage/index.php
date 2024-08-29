@@ -474,34 +474,33 @@
             <h1 class="mb-5">Our Students Say!  </h1>
         </div>
         <div class="owl-carousel testimonial-carousel">
+            <?php if($mockTests){?>
+            <?php foreach($mockTests as $test) {?>
             <div class="testimonial-item text-center">
                 <div class="item">
                     <div class="course-item">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid rounded-top-round" src="<?= base_url('uploads/landing_img/course-1.jpg') ?>" alt="Course Image">
+                        <img class="img-fluid rounded-top-round" src="<?= base_url('uploads/images/'.$test['image']) ?>" alt="Course Image">
+
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
+                                <a href="<?= base_url('Home/course')?>" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
                                 <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
                             </div>
                         </div>
                         <div class="course-item bg-theme   p-4 rounded-top-round rounded-bottom-round" style="margin-top: -15px;position:relative; z-index:1;height:160px !important">
                             <div class="text-center pb-0">
-                                <h3 class="mb-2 text-white">$149.00</h3>
-                                <!-- <div class="mb-3">
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small>(123)</small>
-                                </div> -->
-                                <h5 class="mb-4 text-white">Web Design & Development Course for Beginners</h5>
+                                <h3 class="mb-2 text-white"><?= $test['cost']?></h3>                                
+                                <h5 class="mb-4 text-white"><?= $test['section']?></h5>
                             </div>
                         </div>
                     </div>
                 </div>
 
             </div>
+
+            <?php } 
+            }else {
+            ?>
 
             <div class="testimonial-item text-center">
                 <div class="item">
@@ -524,8 +523,10 @@
 
             </div>
 
+            <?php } ?>
 
-            <div class="testimonial-item text-center">
+
+            <!-- <div class="testimonial-item text-center">
                 <div class="item">
                     <div class="course-item">
                         <div class="position-relative overflow-hidden">
@@ -544,7 +545,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
         </div>
     </div>
 
