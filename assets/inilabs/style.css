@@ -1433,9 +1433,10 @@ body > .header .logo .icon {
   max-height: 300px;
   overflow: auto;
 }
+
 .box .box-header {
   position: relative;
-  background-color: #23292F;
+  background:linear-gradient(to right, #ed213a, #93291e) !important;
   -webkit-border-top-left-radius: 3px;
   -webkit-border-top-right-radius: 3px;
   -webkit-border-bottom-right-radius: 0;

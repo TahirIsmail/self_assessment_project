@@ -495,6 +495,7 @@ class CI_Loader {
 	 */
 	public function view($view, $vars = array(), $return = FALSE)
 	{
+		
 		return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_prepare_view_vars($vars), '_ci_return' => $return));
 	}
 
@@ -509,6 +510,7 @@ class CI_Loader {
 	 */
 	public function file($path, $return = FALSE)
 	{
+		
 		return $this->_ci_load(array('_ci_path' => $path, '_ci_return' => $return));
 	}
 
@@ -884,14 +886,15 @@ class CI_Loader {
 	 */
 	protected function _ci_load($_ci_data)
 	{
+		
 		// Set the default data variables
 		foreach (array('_ci_view', '_ci_vars', '_ci_path', '_ci_return') as $_ci_val)
 		{
 			$$_ci_val = isset($_ci_data[$_ci_val]) ? $_ci_data[$_ci_val] : FALSE;
 		}
-
+		
 		$file_exists = FALSE;
-
+	
 		// Set the path to the requested file
 		if (is_string($_ci_path) && $_ci_path !== '')
 		{
@@ -902,9 +905,10 @@ class CI_Loader {
 		{
 			$_ci_ext = pathinfo($_ci_view, PATHINFO_EXTENSION);
 			$_ci_file = ($_ci_ext === '') ? $_ci_view.'.php' : $_ci_view;
-
+			
 			foreach ($this->_ci_view_paths as $_ci_view_file => $cascade)
 			{
+				
 				if (file_exists($_ci_view_file.$_ci_file))
 				{
 					$_ci_path = $_ci_view_file.$_ci_file;
@@ -918,11 +922,14 @@ class CI_Loader {
 				}
 			}
 		}
-
+		// dd($_ci_path);
+		// dd(! $file_exists, ! file_exists($_ci_path));
 		if ( ! $file_exists && ! file_exists($_ci_path))
 		{
+			// dd($file_exists);
 			show_error('Unable to load the requested file: '.$_ci_file);
 		}
+		
 
 		// This allows anything loaded using $this->load (views, files, etc.)
 		// to become accessible from within the Controller and Model functions.
@@ -969,10 +976,11 @@ class CI_Loader {
 		else
 		{
 			include($_ci_path); // include() vs include_once() allows for multiple views with the same name
+			// dd($_ci_path);
 		}
 
 		log_message('info', 'File loaded: '.$_ci_path);
-
+		
 		// Return the file data if requested
 		if ($_ci_return === TRUE)
 		{
@@ -999,7 +1007,7 @@ class CI_Loader {
 			$_ci_CI->output->append_output(ob_get_contents());
 			@ob_end_clean();
 		}
-
+		
 		return $this;
 	}
 

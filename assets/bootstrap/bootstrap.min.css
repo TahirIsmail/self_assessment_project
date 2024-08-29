@@ -4188,11 +4188,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .breadcrumb > li + li:before {
   padding: 0 5px;
-  color: #ccc;
+  color: #ffffff;
   content: "/\00a0";
 }
 .breadcrumb > .active {
-  color: #1aa;
+  color: rgb(255, 255, 255);
 }
 .pagination {
   display: inline-block;

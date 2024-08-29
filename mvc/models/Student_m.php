@@ -30,6 +30,19 @@ class student_m extends MY_Model {
 		$query = parent::get($array, $signal);
 		return $query;
 	}
+	public function get_enroll_course_detail($student_id) {
+		
+		$this->db->where('student.studentID', $student_id);
+		$this->db->join('student_enrollment_mock_test', 'student_enrollment_mock_test.studentID = student.studentID', 'LEFT');
+	
+		$query = $this->db->get('student');
+		if ($query->num_rows() > 0) {
+			return $query->result_array();
+		} else {
+			return [];
+		}
+	}
+	
 
 	public function get_single_student($array) 
 	{
@@ -37,6 +50,16 @@ class student_m extends MY_Model {
         $this->db->join('studentextend', 'studentextend.studentID = student.studentID', 'LEFT');
 		$query = parent::get_single($array);
 		return $query;
+	}
+
+	public function get_enrollment_record($array) 
+	{
+		$array = $this->makeArrayWithTableName($array);
+        $this->db->join('student_enrollment_mock_test', 'student_enrollment_mock_test.studentID = student.studentID', 'LEFT');
+		$this->db->select()->from($this->_table_name)->where($array);
+		$query = $this->db->get();
+
+		return $query->row();
 	}
 
 	public function get_order_by_student($array=[]) 

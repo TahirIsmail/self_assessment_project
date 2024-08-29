@@ -60,16 +60,24 @@ class Section extends Admin_Controller
 			// 	'label' => $this->lang->line("section_capacity"),
 			// 	'rules' => 'trim|required|max_length[11]|xss_clean|numeric|callback_valid_number'
 			// ),
+
 			array(
 				'field' => 'classesID',
 				'label' => $this->lang->line("section_classes"),
 				'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_allclasses'
 			),
+
 			// array(
 			// 	'field' => 'teacherID',
 			// 	'label' => $this->lang->line("section_teacher_name"),
 			// 	'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_allteacher'
 			// ),
+
+			array(
+				'field' => 'photo',
+				'label' => $this->lang->line("section_photo"),
+				'rules' => 'trim|max_length[200]|xss_clean|callback_photoupload'
+			),   
 			array(
 				'field' => 'note',
 				'label' => $this->lang->line("section_note"),
@@ -82,6 +90,50 @@ class Section extends Admin_Controller
 				'label' => $this->lang->line("online_exam_cost"),
 				'rules' => 'trim|xss_clean|required|numeric|callback_unique_cost'
 			);
+		}
+	}
+
+	public function photoupload()
+	{
+		$id = htmlentities((string) escapeString($this->uri->segment(3)));
+		$student = array();
+		if ((int)$id !== 0) {
+			$student = $this->student_m->get_student($id);
+		}
+		$new_file = "default.png";
+
+		if ($_FILES["photo"]['name'] != "") {
+			$file_name = $_FILES["photo"]['name'];
+			$random = rand(1, 10000000000000000);
+			$makeRandom = hash('sha512', $random . $this->input->post('section') . config_item("encryption_key"));
+			$file_name_rename = $makeRandom;
+			$explode = explode('.', (string) $file_name);
+			if (inicompute($explode) >= 2) {
+				$new_file = $file_name_rename . '.' . end($explode);
+				$config['upload_path'] = "./uploads/images";
+				$config['allowed_types'] = "gif|jpg|png";
+				$config['file_name'] = $new_file;
+				$config['max_size'] = '1024';
+				$config['max_width'] = '3000';
+				$config['max_height'] = '3000';
+				$this->load->library('upload', $config);
+				if (!$this->upload->do_upload("photo")) {
+					$this->form_validation->set_message("photoupload", $this->upload->display_errors());
+					return FALSE;
+				} else {
+					$this->upload_data['file'] =  $this->upload->data();
+					return TRUE;
+				}
+			} else {
+				$this->form_validation->set_message("photoupload", "Invalid file.");
+				return FALSE;
+			}
+		} elseif (inicompute($student)) {
+			$this->upload_data['file'] = array('file_name' => $student->photo);
+			return TRUE;
+		} else {
+			$this->upload_data['file'] = array('file_name' => $new_file);
+			return TRUE;
 		}
 	}
 
@@ -126,10 +178,12 @@ class Section extends Admin_Controller
 				'assets/select2/select2.js'
 			)
 		);
+
 		$this->data['classes'] = $this->classes_m->get_classes();
 		$this->data['teachers'] = $this->teacher_m->get_teacher();
 
 		if ($_POST !== []) {
+			// echo $this->input->post('photo');exit;
 			$rules = $this->rules($this->input->post('ispaid'));
 			$this->form_validation->set_rules($rules);
 
@@ -137,8 +191,16 @@ class Section extends Admin_Controller
 				$this->data["subview"] = "section/add";
 				$this->load->view('_layout_main', $this->data);
 			} else {
+
+
+				$slug = create_slug($this->input->post("section"));
+				$slug = ensure_unique_slug($slug, 'section');
+				$image = $this->upload_data['file']['file_name'];
+
 				$array = array(
 					"section" => $this->input->post("section"),
+					"slug" => $slug,
+					"image" => $image,
 					"category" => $this->input->post("category"),
 					"classesID" => $this->input->post("classesID"),
 					"note" => $this->input->post("note"),
@@ -172,6 +234,7 @@ class Section extends Admin_Controller
 							'subject' => $unit,
 							'course_id' => $course_id,
 							"create_date" => date("Y-m-d h:i:s"),
+							"type"         => 1,
 							"create_userID" => $this->session->userdata('loginuserID'),
 							"create_username" => $this->session->userdata('username'),
 							"create_usertype" => $this->session->userdata('usertype')

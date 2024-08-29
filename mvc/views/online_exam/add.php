@@ -448,25 +448,26 @@
                         </span>
                     </div>
 
-
-                    <div class="form-group <?=form_error('ispaid') ? 'has-error' : '' ?>" id="ispaidDiv" >
-                        <label for="ispaid" class="col-sm-2 control-label">
+                    <div class="form-group <?=form_error('ispaid') ? 'has-error' : '' ?>" id="ispaidDiv">
+                        <label for="ispaid" class="col-sm-2 control-label" style="display:none;">
                             <?=$this->lang->line("online_exam_payment_status")?> <span class="text-red">*</span>
                         </label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-6" style="display:none;">
                             <?php
                                 $array = [
                                     5 => $this->lang->line("online_exam_select"),
                                     0 => $this->lang->line("online_exam_free"),
                                     1 => $this->lang->line("online_exam_paid")
                                 ];
-                                echo form_dropdown("ispaid", $array, set_value("ispaid"), "id='ispaid' class='form-control select2'");
+                                // Set '0' as the selected value and hide the dropdown
+                                echo form_dropdown("ispaid", $array, 0, "id='ispaid' class='form-control select2'");
                             ?>
                         </div>
-                        <span class="col-sm-4 control-label">
+                        <span class="col-sm-4 control-label" style="display:none;">
                             <?php echo form_error('ispaid'); ?>
                         </span>
                     </div>
+
 
                     <?php
                         if(form_error('validDays'))
