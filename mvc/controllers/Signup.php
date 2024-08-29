@@ -32,7 +32,7 @@ class Signup extends Admin_Controller
 
     public function index()
     {
-
+    
 
         if ($this->data['siteinfos']->captcha_status == 0) {
             $this->load->library('recaptcha');
