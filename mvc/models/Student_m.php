@@ -30,6 +30,19 @@ class student_m extends MY_Model {
 		$query = parent::get($array, $signal);
 		return $query;
 	}
+	public function get_enroll_course_detail($student_id) {
+		
+		$this->db->where('student.studentID', $student_id);
+		$this->db->join('student_enrollment_mock_test', 'student_enrollment_mock_test.studentID = student.studentID', 'LEFT');
+	
+		$query = $this->db->get('student');
+		if ($query->num_rows() > 0) {
+			return $query->result_array();
+		} else {
+			return [];
+		}
+	}
+	
 
 	public function get_single_student($array) 
 	{

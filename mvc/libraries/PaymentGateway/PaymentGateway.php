@@ -29,9 +29,13 @@ class PaymentGateway
         return $this;
     }
 
+    // public function payment( $post_data, $invoice_data )
+    // {
+    //     return $this->gateway->payment($post_data, $invoice_data);
+    // }
+
     public function payment( $post_data, $invoice_data )
     {
-        // dd($this->gateway);
         return $this->gateway->payment($post_data, $invoice_data);
     }
 

@@ -18,8 +18,9 @@ class Stripe extends PaymentAbstract
     {
         parent::__construct();
         $this->ci->lang->load('stripe_rules', $this->ci->session->userdata('lang'));
-        $paymentWebview= $this->ci->session->userdata('paymentWebview') ?? false;
-        $this->url = $paymentWebview ? base_url("paymentWebview/paymentSuccess") : base_url("take_exam/index");
+        $paymentWebview = $this->ci->session->userdata('paymentWebview') ?? false;
+        // $this->url = $paymentWebview ? base_url("paymentWebview/paymentSuccess") : base_url("take_exam/index");
+        $this->url = $paymentWebview ? base_url("paymentWebview/paymentSuccess") : base_url("online_exam/index");
         $this->gateway = Omnipay::create('Stripe');
         $this->gateway->setApiKey($this->payment_Setting_option['stripe_secret']);
         $this->gateway->setTestMode((bool)$this->payment_Setting_option['stripe_demo']);
@@ -84,13 +85,61 @@ class Stripe extends PaymentAbstract
         redirect($this->url);
     }
 
-    public function payment( $array, $invoice ) //done
-    {
+    // public function payment( $array, $invoice ) //done
+    // {
 
        
+    //     $this->params = [
+    //         'online_exam_id' => $array['onlineExamID'],
+    //         'description'    => $invoice->name,
+    //         'amount'         => number_format((float)($invoice->cost), 2, '.', ''),
+    //         'currency'       => $this->setting->currency_code,
+    //         'token'          => $array['stripeToken']
+    //     ];
+
+       
+    //     $this->response = $this->gateway->purchase($this->params)->send();
+    //     $this->success();
+    // }
+
+    // public function success() //done
+    // {
+       
+    //     if($this->response->isSuccessful()) {
+    //         if($this->response->getData()['status'] === "succeeded") {
+    //             $transaction_id = $this->response->getData()["id"];
+    //             if($transaction_id) {
+    //                 // dd($transaction_id);
+    //                 $paymentService = new PaymentService($transaction_id);
+    //                 $paymentService->add_transaction([
+    //                     'online_exam_id' => $this->params['online_exam_id'],
+    //                     'amount'         => $this->params['amount'],
+    //                     'payment_method' => 'stripe'
+    //                 ]);
+    //                 redirect($this->url);
+    //             } else {
+    //                 $this->session->set_flashdata('error', 'Payer id not found!');
+    //                 redirect($this->url);
+    //             }
+    //         } else {
+    //             $this->session->set_flashdata('error', 'Payment not success!');
+    //             redirect($this->url);
+    //         }
+    //     } elseif($this->response->isRedirect()) {
+    //         $this->response->redirect();
+    //     } else {
+    //         $this->session->set_flashdata('error', "Something went wrong!");
+    //         redirect($this->url);
+    //     }
+    // }
+
+
+    public function payment( $array, $invoice ) //done
+    {
+       
         $this->params = [
-            'online_exam_id' => $array['onlineExamID'],
-            'description'    => $invoice->name,
+            'online_exam_id'  => $invoice->sectionID,
+            'description'    => $invoice->section,
             'amount'         => number_format((float)($invoice->cost), 2, '.', ''),
             'currency'       => $this->setting->currency_code,
             'token'          => $array['stripeToken']
@@ -111,7 +160,7 @@ class Stripe extends PaymentAbstract
                     // dd($transaction_id);
                     $paymentService = new PaymentService($transaction_id);
                     $paymentService->add_transaction([
-                        'online_exam_id' => $this->params['online_exam_id'],
+                        'sectionID' => $this->params['online_exam_id'],
                         'amount'         => $this->params['amount'],
                         'payment_method' => 'stripe'
                     ]);

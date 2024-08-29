@@ -28,8 +28,8 @@ class Section_m extends MY_Model
         $this->db->select('section.sectionID as id, section.section as name, section.slug, section.image, section.cost, section.paid');
         $this->db->from('section');
         $this->db->join('student_enrollment_mock_test', 'section.sectionID = student_enrollment_mock_test.section_id');
-        $this->db->where('student_enrollment_mock_test.studentID', $student_id);
-        $this->db->where('student_enrollment_mock_test.is_expired !=', 0);
+        $this->db->where('student_enrollment_mock_test.studentID', $student_id);        
+        $this->db->or_where('student_enrollment_mock_test.is_expired', 0);
         $query = $this->db->get();
         return $query->result();
     }
@@ -42,7 +42,6 @@ class Section_m extends MY_Model
         // Fixing the SQL syntax issue
         $this->db->group_start(); // Start grouping
         $this->db->where('student_enrollment_mock_test.section_id IS NULL');
-        $this->db->or_where('student_enrollment_mock_test.is_expired', 0);
         $this->db->group_end();
 
         $query = $this->db->get();
