@@ -29,7 +29,7 @@ public $load;
 */
 	function __construct() {
 		parent::__construct();
-        // $this->load->model("signin_m");
+        $this->load->model("section_m");
         // $this->load->model("user_m");
         // $this->load->model("usertype_m");
         // $this->load->model("loginlog_m");
@@ -47,9 +47,25 @@ public $load;
 
 	public function index() {
      
+            $this->data['mockTests']        = $this->section_m->get_all_courses_details();
+            // dd($this->data['mockTests']);
             $this->data["subview"]         = "signin/index";
             $this->load->view('landingPage/index', $this->data);
 	}
+
+    public function course() {
+    //    dd('course');
+        $this->load->library('session');
+    
+        // Check if the user is logged in
+        if ($this->session->userdata('logged_in')) {
+            // Redirect to the online exam page
+            redirect('online_exam/index');
+        } else {
+            // Redirect to the sign-in page
+            redirect('signin/index');
+        }
+    }
 
 	
 }

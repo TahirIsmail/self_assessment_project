@@ -102,6 +102,11 @@ class Section_m extends MY_Model
 		return $sectionData;
 	}
 
+	public function get_all_courses_details() {
+		$query = $this->db->get('section');
+		return $query->result_array();
+	}
+
 
 	public function general_get_section($array = NULL, $signal = FALSE)
 	{
