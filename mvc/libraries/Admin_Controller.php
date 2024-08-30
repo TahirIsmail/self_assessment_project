@@ -78,13 +78,16 @@ class Admin_Controller extends MY_Controller {
             "home/index",
             "signin/index",
             "signin/signout",
-<<<<<<< HEAD
-            "signup/page","signup/index","course/index","contactus/index"
-=======
-            "signup/page","signup/index","course/index",
+            "signup/page",
+            "signup/index",
+            "course/index",
+            "contactus/index",
+            "signup/page",
+            "signup/index",
+            "course/index",
             "home/course",
             "home/payment"
->>>>>>> 32fa0923a3585087fc94ab36ba393fee06b33e8c
+
         ];
 
         // dd(in_array(uri_string(), $exception_uris));
