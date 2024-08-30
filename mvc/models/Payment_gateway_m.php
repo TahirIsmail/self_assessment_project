@@ -14,7 +14,7 @@ class Payment_gateway_m extends MY_Model
     {
         parent::__construct();
     }
-
+    
     public function get_payment_gateway($array = null, $signal = false)
     {
         return parent::get($array, $signal);

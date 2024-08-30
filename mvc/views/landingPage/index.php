@@ -1,3 +1,7 @@
+<?php
+$is_logged_in = $this->session->userdata('loggedin');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,6 +26,9 @@
 
     <!-- Libraries Stylesheet -->
 
+    <link href="<?php echo base_url('assets/toastr/toastr.min.css'); ?>" rel="stylesheet">
+    <script type="text/javascript" src="<?php echo base_url('assets/toastr/toastr.min.js'); ?>"></script>
+
 
     <link href="<?php echo base_url('assets/inilabs/owlcarousel/assets/owl.carousel.min.css'); ?>" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url('assets/inilabs/animate/animate.min.css'); ?>" rel="stylesheet" type="text/css">
@@ -41,9 +48,68 @@
 
 
 
+    <style>
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            min-width: 250px;
+            opacity: 0;
+            animation: fadeInOut 5s ease forwards;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .toast.toast-success {
+            background-color: #28a745;
+        }
+
+        .toast.toast-error {
+            background-color: #dc3545;
+        }
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            10% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+        }
+    </style>
 </head>
 
 <body>
+
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -197,84 +263,68 @@
 
     <div class="container">
         <div class="text-center">
-            <h6 class="section-title bg-white text-center text-primary px-3">Testimonial</h6>
-            <h1 class="mb-5">Our Students Say!  </h1>
+            <h6 class="section-title bg-white text-center text-primary px-3">Tests</h6>
+            <h1 class="mb-5">All Mock Test! </h1>
         </div>
-        <div class="owl-carousel testimonial-carousel">
-            <?php if($mockTests){?>
-            <?php foreach($mockTests as $test) {?>
-            <div class="testimonial-item text-center">
-                <div class="item">
-                    <div class="course-item">
-                        <div class="position-relative overflow-hidden">
-                        <img class="img-fluid rounded-top-round" src="<?= base_url('uploads/images/'.$test['image']) ?>" alt="Course Image">
+        <!-- <div class="owl-carousel testimonial-carousel">
+            <?php if ($mockTests) { ?>
+                <?php foreach ($mockTests as $test) { ?>
+                    <div class="testimonial-item text-center">
+                        <div class="item">
+                            <div class="course-item">
+                                <div class="position-relative overflow-hidden">
+                                    <img class="img-fluid rounded-top-round" src="<?= base_url('uploads/images/' . $test['image']) ?>" alt="Course Image">
 
-                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                                <a href="<?= base_url('Home/course')?>" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
-                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
+                                    <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                        <a onclick='checkLogin(<?= json_encode($test) ?>, event)' class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
+
+                                        <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="course-item bg-theme   p-4 rounded-top-round rounded-bottom-round" style="margin-top: -15px;position:relative; z-index:1;height:160px !important">
+                                    <div class="text-center pb-0">
+                                        <h3 class="mb-2 text-white">£<?= intval($test['cost']) ?></h3>
+
+                                        <h5 class="mb-4 text-white"><?= $test['section'] ?></h5>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="course-item bg-theme   p-4 rounded-top-round rounded-bottom-round" style="margin-top: -15px;position:relative; z-index:1;height:160px !important">
-                            <div class="text-center pb-0">
-                                <h3 class="mb-2 text-white"><?= $test['cost']?></h3>                                
-                                <h5 class="mb-4 text-white"><?= $test['section']?></h5>
-                            </div>
-                        </div>
+
                     </div>
-                </div>
-
-            </div>
-
-            <?php } 
-            }else {
+            <?php }
+            }
             ?>
 
-            <div class="testimonial-item text-center">
-                <div class="item">
-                    <div class="course-item">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid rounded-top-round" src="<?= base_url('uploads/landing_img/course-2.jpg') ?>" alt="Course Image">
-                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
-                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
+        </div> -->
+    </div>
+
+
+
+    <div class="container mt-5">
+        <div class="row">
+            <?php if ($mockTests) { ?>
+                <?php foreach ($mockTests as $test) { ?>
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm">
+                            <div class="position-relative">
+                                <img class="img-fluid rounded-top" src="<?= base_url('uploads/images/' . $test['image']) ?>" alt="Course Image">
+                                <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                    <a onclick='checkLogin(<?= json_encode($test) ?>, event)' class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
+                                    <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="course-item bg-theme   p-4 rounded-top-round rounded-bottom-round" style="margin-top: -15px;position:relative; z-index:1;height:160px !important">
-                            <div class="text-center pb-0">
-                                <h3 class="mb-2 text-white">$149.00</h3>
-                                <h5 class="mb-4 text-white">Web Design & Development Course for Beginners</h5>
+                            <div class="card-body bg-theme text-center rounded-bottom" style="height: 108px;">
+                                <h3 class="mb-2 text-white">£<?= intval($test['cost']) ?></h3>
+                                <h5 class="mb-4 text-white"><?= $test['section'] ?></h5>
                             </div>
                         </div>
                     </div>
-                </div>
-
-            </div>
-
+                <?php } ?>
             <?php } ?>
-
-
-            <!-- <div class="testimonial-item text-center">
-                <div class="item">
-                    <div class="course-item">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid rounded-top-round" src="<?= base_url('uploads/landing_img/course-3.jpg') ?>" alt="Course Image">
-                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
-                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
-                            </div>
-                        </div>
-                        <div class="course-item bg-theme   p-4 rounded-top-round rounded-bottom-round" style="margin-top: -15px;position:relative; z-index:1;height:160px !important">
-                            <div class="text-center pb-0">
-                                <h3 class="mb-2 text-white">$149.00</h3>
-                                <h5 class="mb-4 text-white">Web Design & Development Course for Beginners</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div> -->
         </div>
     </div>
+
 
     <!-- Courses End -->
 
@@ -423,58 +473,111 @@
     <!-- Team End -->
 
 
-    <!-- Testimonial Start -->
-    <!-- <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="text-center">
-                <h6 class="section-title bg-white text-center text-primary px-3">Testimonial</h6>
-                <h1 class="mb-5">Our Students Say!</h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel">
-                <div class="testimonial-item text-center">
-                    <img class="border rounded-circle p-2 mx-auto mb-3" src="../../../uploads/landing_img/testimonial-1.jpg" style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">Client Name</h5>
-                    <p>Profession</p>
-                    <div class="testimonial-text bg-light text-center p-4">
-                        <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    </div>
-                </div>
-                <div class="testimonial-item text-center">
-                    <img class="border rounded-circle p-2 mx-auto mb-3" src="../../../uploads/landing_img/testimonial-2.jpg" style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">Client Name</h5>
-                    <p>Profession</p>
-                    <div class="testimonial-text bg-light text-center p-4">
-                        <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    </div>
-                </div>
-                <div class="testimonial-item text-center">
-                    <img class="border rounded-circle p-2 mx-auto mb-3" src="../../../uploads/landing_img/testimonial-3.jpg" style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">Client Name</h5>
-                    <p>Profession</p>
-                    <div class="testimonial-text bg-light text-center p-4">
-                        <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    </div>
-                </div>
-                <div class="testimonial-item text-center">
-                    <img class="border rounded-circle p-2 mx-auto mb-3" src="../../../uploads/landing_img/testimonial-4.jpg" style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">Client Name</h5>
-                    <p>Profession</p>
-                    <div class="testimonial-text bg-light text-center p-4">
-                        <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Testimonial End -->
-
-
-
-
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     <?php $this->load->view("components/frontend/footer.php"); ?>
+
+
+
+    <!-- Improved Form and Modal Structure -->
+    <form class="form-horizontal" method="post" id="paymentAddDataForm" action="<?= base_url('home/payment') ?>" enctype="multipart/form-data">
+        <div class="modal fade" id="addpayment" tabindex="-1" role="dialog" aria-labelledby="addPaymentModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="addPaymentModalLabel"><?= $this->lang->line('take_exam_add_payment') ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <input type="hidden" name="course_slug" id="course_slug">
+
+                            <div class="col-sm-6">
+                                <div class="form-group <?= form_error('paymentAmount') ? 'has-error' : ''; ?>" id="paymentAmountErrorDiv">
+                                    <label for="paymentAmount"><?= $this->lang->line('take_exam_payment_amount') ?> <span class="text-red">*</span></label>
+                                    <input type="text" class="form-control" id="paymentAmount" name="paymentAmount" readonly="readonly">
+                                    <span id="paymentAmountError"><?= form_error('paymentAmount') ?></span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group <?= form_error('payment_method') ? 'has-error' : ''; ?>" id="payment_method_error_div">
+                                    <label for="payment_method"><?= $this->lang->line('take_exam_payment_method') ?> <span class="text-red">*</span></label>
+                                    <?php
+                                    $payment_method_array['select'] = $this->lang->line('take_exam_select_payment_method');
+                                    if (customCompute($payment_settings)) {
+                                        foreach ($payment_settings as $payment_setting) {
+                                            $payment_method_array[$payment_setting->slug] = $payment_setting->name;
+                                        }
+                                    }
+                                    echo form_dropdown("payment_method", $payment_method_array, set_value("payment_method"), "id='payment_method' class='form-control select2'");
+                                    ?>
+                                    <span id="payment_method_error"><?= form_error('payment_method') ?></span>
+                                </div>
+                            </div>
+
+                            <!-- Additional Inputs -->
+                            <?php
+                            if (inicompute($payment_settings)) {
+                                foreach ($payment_settings as $payment_setting) {
+                                    if ($payment_setting->misc != null) {
+                                        $misc = json_decode($payment_setting->misc);
+                                        if (inicompute($misc->input)) {
+                                            foreach ($misc->input as $input) {
+                                                $this->load->view($input);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><?= $this->lang->line('close') ?></button>
+                        <input type="submit" id="add_payment_button" class="btn btn-success" value="<?= $this->lang->line("take_exam_add_payment") ?>" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <?php
+    $js_gateway     = [];
+    $submit_gateway = [];
+    if (inicompute($payment_settings)) {
+        foreach ($payment_settings as $payment_setting) {
+            if ($payment_setting->misc != null) {
+                $misc = json_decode($payment_setting->misc);
+                if (inicompute($misc->js)) {
+                    foreach ($misc->js as $js) {
+                        $this->load->view($js);
+                    }
+                }
+
+                if (inicompute($misc->input)) {
+                    if (isset($misc->input[0])) {
+                        $js_gateway[$payment_setting->slug] = isset($misc->input[0]);
+                    }
+                }
+
+                if (inicompute($misc->input)) {
+                    if (isset($misc->submit) && $misc->submit) {
+                        $submit_gateway[$payment_setting->slug] = $misc->submit;
+                    }
+                }
+            }
+        }
+    }
+
+    $js_gateway     = json_encode($js_gateway);
+    $submit_gateway = json_encode($submit_gateway);
+    ?>
+
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -486,16 +589,202 @@
     <script src="<?php echo base_url('assets/inilabs/landing_js/main.js'); ?>"></script>
     <!-- Template Javascript -->
 
+    <?php if ($this->session->flashdata('success')): ?>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                showToast('success', "<?= $this->session->flashdata('success'); ?>");
+            });
+        </script>
+    <?php $this->session->set_flashdata('success', '');
+    endif; ?>
+
+    <?php if ($this->session->flashdata('error')): ?>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                showToast('error', "<?= $this->session->flashdata('error'); ?>");
+            });
+        </script>
+    <?php $this->session->set_flashdata('error', '');
+    endif; ?>
 
 
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl.carousel/2.2.1/owl.carousel.min.js"></script>
 
 
     <script>
+        const gateway = <?= $js_gateway ?>;
+        const submit_gateway = <?= $submit_gateway ?>;
+        let form = document.getElementById('paymentAddDataForm');
+        // document.getElementById('paymentAddDataForm').addEventListener('submit', function(event) {
+        //     event.preventDefault();
+
+        //     let payment_method = $('#payment_method').val();
+        //     let submit = true;
+
+        //     // Call payment gateway function if exists
+        //     // for (let item in submit_gateway) {
+        //     //     if (item == payment_method) {
+        //     //         submit = true;
+        //     //         window[payment_method + '_payment'](); 
+        //     //         break;
+        //     //     }
+        //     // }
+
+        //     if (submit) {
+        //         let formData = new FormData(this);
+
+        //         $.ajax({
+        //             url: "<?= base_url('home/payment') ?>",
+        //             type: "POST",
+        //             data: formData,
+        //             processData: false,
+        //             contentType: false,
+        //             success: function(response) {
+        //                 // Assuming `response` is a success message or data
+        //                 showToast('success', 'Payment successfully processed.');
+        //                 // Optionally, close the modal
+        //                 // $('#addpayment').modal('hide');
+        //             },
+        //             error: function(xhr, status, error) {
+        //                 // Handle error response
+        //                 showToast('error', 'Failed to process payment. Please try again.');
+        //             }
+        //         });
+        //     }
+        // });
+    </script>
+
+    <script>
+        function showToast(type, message) {
+            var toastContainer = document.getElementById('toastContainer');
+            var toast = document.createElement('div');
+            toast.className = 'toast toast-' + type;
+            toast.textContent = message;
+
+            toastContainer.appendChild(toast);
+
+            // Remove the toast after 5 seconds (animation duration)
+            setTimeout(function() {
+                toast.remove();
+            }, 5000);
+        }
+        var isLoggedIn = <?= json_encode($is_logged_in) ?>;
+    </script>
+
+
+
+
+    <script>
+        function payment_form(slug) {
+            var course_slug = slug;
+
+            if (course_slug) {
+                $('#course_slug').val(course_slug);
+                $.ajax({
+                    type: 'POST',
+                    url: "<?= base_url('online_exam/get_payment_info') ?>",
+                    data: {
+                        'course_slug': course_slug
+                    },
+                    dataType: "html",
+                    success: function(data) {
+                        $('#paymentAmount').val('');
+                        var response = JSON.parse(data);
+                        console.log(response);
+                        if (response.status == true) {
+                            $('#addpayment').modal('show');
+                            $('#paymentAmount').val(response.payableamount);
+                        } else {
+                            $('#paymentAmount').val('0.00');
+                        }
+                    }
+                });
+            }
+        };
+
+        function runner() {
+
+            url = localStorage.getItem('redirect_url');
+            if (url) {
+                localStorage.clear();
+                window.location = url;
+            }
+            setTimeout(function() {
+                runner();
+            }, 500);
+        }
+
+        $(document).change(function() {
+
+            console.log(gateway);
+            let payment_method = $('#payment_method').val();
+            for (let item in gateway) {
+                if (item == payment_method) {
+                    if (gateway[item]) {
+                        $('#' + item + '_div').show();
+                    }
+                } else {
+                    $('#' + item + '_div').hide();
+                }
+            }
+        });
+
         $(document).ready(function() {
+
+            $('#addpayment').on('show.bs.modal', function() {
+                $('#stripe_div').css('display', 'none');
+                $('#paymentAddDataForm')[0].reset();
+                $('#paymentAmountError').text('');
+                $('#payment_method_error').text('');
+                $('#payment_method').val('');
+                $('#paymentAmountErrorDiv').removeClass('has-error');
+                $('#payment_method_error_div').removeClass('has-error');
+            });
+
+            // Handle form submission
+            $('#paymentAddDataForm').submit(function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                let payment_method = $('#payment_method').val();
+                let submit = true;
+
+                // Call payment gateway function if exists
+                for (let item in submit_gateway) {
+                    if (item === payment_method) {
+                        submit = true;
+                        window[payment_method + '_payment'](); // Call the payment method function dynamically
+                        break;
+                    }
+                }
+
+                if (submit) {
+
+                    // let formData = new FormData(this);
+
+                    // $.ajax({
+                    //     url: "<?= base_url('home/payment') ?>", // Target URL
+                    //     type: "POST",
+                    //     data: formData,
+                    //     processData: false,
+                    //     contentType: false,
+                    //     success: function(response) {
+
+                    //         // Show success message and close the modal
+                    //         showToast('success', 'Payment successfully processed.');
+                    //         // $('#addpayment').modal('hide'); // Close the modal
+                    //         // $('#paymentAddDataForm')[0].reset(); // Reset the form
+                    //     },
+                    //     error: function(xhr, status, error) {
+                    //         // Handle error response
+                    //         showToast('error', 'Failed to process payment. Please try again.');
+                    //     }
+                    // });
+                }
+            });
+
+            // Close modal and reset form when close button is clicked
+            $('#addpayment .btn-default').click(function() {
+                $('#paymentAddDataForm')[0].reset();
+            });
             $(".owl-carousel").owlCarousel({
                 loop: true,
                 margin: 10,
@@ -506,7 +795,38 @@
                 autoplayHoverPause: true
             });
         });
+
+        function checkLogin(mockTest, e) {
+            e.preventDefault();
+
+            if (isLoggedIn) {
+                $.ajax({
+                    type: 'POST',
+                    url: "<?= base_url('home/check_payment') ?>",
+                    data: {
+                        'sectionID': mockTest.sectionID
+                    },
+                    dataType: "html",
+                    success: function(data) {
+
+                        if (data == "true") {
+                            showToast('error', 'You have Already Buy that Mock Test !');
+                        } else {
+                            payment_form(mockTest.slug);
+
+                        }
+                    }
+                });
+            } else {
+
+                window.location.href = "<?= base_url('signin/index') ?>";
+            }
+        }
     </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl.carousel/2.2.1/owl.carousel.min.js"></script>
+
 </body>
 
 </html>

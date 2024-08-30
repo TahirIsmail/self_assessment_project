@@ -26,6 +26,7 @@ class Admin_Controller extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->model("contactus_m");
         $this->load->model("course_m");
         $this->load->model("signup_m");
         $this->load->model("signin_m");
@@ -49,12 +50,14 @@ class Admin_Controller extends MY_Controller {
         $siteInfo          = $this->site_m->get_site();
         $loginManager      = $this->_loginManager();
         $permissionManager = $this->_permissionManager($module, $action);
+        
         if ( !empty($loginManager) ) {
             
             redirect($loginManager);
         } elseif ( !empty($permissionManager) ) {
             redirect($permissionManager);
         }
+       
         $this->data["siteinfos"]         = $siteInfo;
         
         $this->_backendTheme             = strtolower($this->data["siteinfos"]->backend_theme);
@@ -75,8 +78,13 @@ class Admin_Controller extends MY_Controller {
             "home/index",
             "signin/index",
             "signin/signout",
+<<<<<<< HEAD
+            "signup/page","signup/index","course/index","contactus/index"
+=======
             "signup/page","signup/index","course/index",
-            "home/course"
+            "home/course",
+            "home/payment"
+>>>>>>> 32fa0923a3585087fc94ab36ba393fee06b33e8c
         ];
 
         // dd(in_array(uri_string(), $exception_uris));

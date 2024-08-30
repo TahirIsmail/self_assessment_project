@@ -145,6 +145,8 @@ class Stripe extends PaymentAbstract
             'token'          => $array['stripeToken']
         ];
 
+        
+
        
         $this->response = $this->gateway->purchase($this->params)->send();
         $this->success();
@@ -178,6 +180,64 @@ class Stripe extends PaymentAbstract
         } else {
             $this->session->set_flashdata('error', "Something went wrong!");
             redirect($this->url);
+        }
+    }
+
+
+
+
+
+
+
+    // payment through ajax request
+    public function ajax_payment( $array, $invoice ) //done
+    {
+      
+        
+        $this->params = [
+            'online_exam_id'  => $invoice->sectionID,
+            'description'    => $invoice->section,
+            'amount'         => number_format((float)($invoice->cost), 2, '.', ''),
+            'currency'       => $this->setting->currency_code,
+            'token'          => $array['stripeToken']
+        ];
+
+
+        // dd($this->params);
+
+       
+        $this->response = $this->gateway->purchase($this->params)->send();
+        $this->ajax_success();
+    }
+
+    public function ajax_success() //done
+    {
+       
+        if($this->response->isSuccessful()) {
+            if($this->response->getData()['status'] === "succeeded") {
+                $transaction_id = $this->response->getData()["id"];
+                if($transaction_id) {
+                    // dd($transaction_id);
+                    $paymentService = new PaymentService($transaction_id);
+                    $paymentService->add_transaction([
+                        'sectionID' => $this->params['online_exam_id'],
+                        'amount'         => $this->params['amount'],
+                        'payment_method' => 'stripe'
+                    ]);
+                    redirect('home/index');
+                } else {
+                    $this->session->set_flashdata('error', 'Payer id not found!');
+                    redirect('home/index');
+                }
+            } else {
+                $this->session->set_flashdata('error', 'Payment not success!');
+                redirect('home/index');
+            }
+        } elseif($this->response->isRedirect()) {
+            $this->response->redirect();
+        } else {
+            $this->session->set_flashdata('error', "Something went wrong!");
+            redirect('home/index');
         }
     }
 }

@@ -107,6 +107,8 @@ class Section_m extends MY_Model
 		return $query->result_array();
 	}
 
+	
+
 
 	public function general_get_section($array = NULL, $signal = FALSE)
 	{
