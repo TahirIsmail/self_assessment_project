@@ -137,6 +137,7 @@ class Online_exam extends Admin_Controller
     }
 
     public function payment(){
+       
         $rules = $this->payment_rules($this->input->post('payment_method'));
         $this->form_validation->set_rules($rules);
         if ($this->form_validation->run() == FALSE) {
@@ -160,6 +161,8 @@ class Online_exam extends Admin_Controller
                 $this->session->set_flashdata('error', 'This course price already paid');
                 redirect(base_url('online_exam/index'));
             }
+
+         
 
             $this->payment_gateway->gateway($this->input->post('payment_method'))->payment($this->input->post(), $invoice_data);
 

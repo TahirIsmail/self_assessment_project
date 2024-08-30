@@ -49,12 +49,14 @@ class Admin_Controller extends MY_Controller {
         $siteInfo          = $this->site_m->get_site();
         $loginManager      = $this->_loginManager();
         $permissionManager = $this->_permissionManager($module, $action);
+        
         if ( !empty($loginManager) ) {
             
             redirect($loginManager);
         } elseif ( !empty($permissionManager) ) {
             redirect($permissionManager);
         }
+       
         $this->data["siteinfos"]         = $siteInfo;
         
         $this->_backendTheme             = strtolower($this->data["siteinfos"]->backend_theme);
@@ -76,10 +78,11 @@ class Admin_Controller extends MY_Controller {
             "signin/index",
             "signin/signout",
             "signup/page","signup/index","course/index",
-            "home/course"
+            "home/course",
+            "home/payment"
         ];
 
-        dd(in_array(uri_string(), $exception_uris));
+        // dd(in_array(uri_string(), $exception_uris));
 
        
         if ( in_array(uri_string(), $exception_uris) == false ) {
