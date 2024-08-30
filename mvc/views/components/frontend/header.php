@@ -1,3 +1,7 @@
+<?php
+        $is_logged_in = $this->session->userdata('loggedin');
+        
+    ?>
 <!DOCTYPE html>
 <html>
 
@@ -44,8 +48,10 @@
 
 <body>
 
+
+
   <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
-    <a href="<?= base_url('HomeController/index') ?>" class="navbar-brand p-0">
+    <a href="<?= base_url('home/index') ?>" class="navbar-brand p-0">
       <img class="w-100" src="<?= base_url('uploads/landing_img/SL-white-logo.png') ?>" alt="Image" style="    width: 200px !important;">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -74,8 +80,14 @@
         <a href="contact.html" class="nav-item nav-link">Blog</a>
       </div>
       <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
-      <a href="<?php echo base_url('signin/index') ?>" class="btn btn-primary py-2 px-4 ms-3">LOGIN</a>
-      <a href="<?= base_url('signup/page') ?>" class="nav-item nav-link">SIGN UP</a>
+      <?php if ($is_logged_in) { ?>
+        <!-- Show Dashboard link if the user is logged in -->
+        <a href="<?= base_url('dashboard/index') ?>" class="btn btn-primary py-2 px-4 ms-3">DASHBOARD</a>
+    <?php } else { ?>
+        <!-- Show Login and Sign Up links if the user is not logged in -->
+        <a href="<?= base_url('signin/index') ?>" class="btn btn-primary py-2 px-4 ms-3">LOGIN</a>
+        <a href="<?= base_url('signup/page') ?>" class="nav-item nav-link">SIGN UP</a>
+    <?php } ?>
     </div>
   </nav>
 

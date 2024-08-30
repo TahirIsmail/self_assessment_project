@@ -57,7 +57,7 @@
 
 <div class="icon-container">
 
-    <a href="<?= base_url('HomeController/index') ?>" class="navbar-brand p-0">
+    <a href="<?= base_url('home/index') ?>" class="navbar-brand p-0">
 
 
         <img src="http://self_assessment_project.test/uploads/images/SL-red-logo.png" alt="Logo">
@@ -144,6 +144,10 @@
                 </div>
             <?php } ?>
             <input type="submit" class="btn btn-lg btn-success btn-block" value="Sign up" />
+
+            <div class="form-group">
+                Have you an account ? <a href="<?= base_url('signin/index')?>" style="text-decoration: underline">Login Now</a>
+            </div>
         </div>
     </form>
 </div>

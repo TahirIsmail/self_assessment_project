@@ -2,7 +2,7 @@
     
     <aside class="left-side sidebar-offcanvas" style="min-height: 90vh !important; height: 90vh !important;">
         <div class="logonew">
-            <a href="<?= base_url('HomeController/index')?>" class="logo1">
+            <a href="<?= base_url('home/index')?>" class="logo1">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 <img class="" src="<?php echo base_url('uploads/landing_img/SL-black-logo.png');?>" alt="Image" style="width: 80%;">
             </a>

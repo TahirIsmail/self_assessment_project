@@ -24,14 +24,18 @@ class PaymentGateway
         if(count($args) == 0) {
             $args = null;
         }
-
+              
         $this->gateway = new $payment_method($args);
         return $this;
     }
 
+    public function ajax_payment( $post_data, $invoice_data )
+    {
+        return $this->gateway->ajax_payment($post_data, $invoice_data);
+    }
+
     public function payment( $post_data, $invoice_data )
     {
-        // dd($this->gateway);
         return $this->gateway->payment($post_data, $invoice_data);
     }
 
