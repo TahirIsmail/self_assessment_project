@@ -91,9 +91,9 @@ class Take_exam extends Admin_Controller
         if ($slug) {
 
             $course = $this->section_m->get_section_record(['slug' => $slug]);
-
             // dd($course[0]->sectionID);
             $is_enrolled = $this->section_m->is_student_enrolled($course[0]->sectionID, $loginuserID);
+           
             // dd($is_enrolled);
             if (!$is_enrolled) {
                 $this->session->set_flashdata('error', 'You need to enroll in this course first.');
@@ -112,7 +112,7 @@ class Take_exam extends Admin_Controller
                     ]);
                 $query = $this->db->get();
                 $enrolled_course = $query->result();
-                
+               
                 if (!empty($enrolled_course)) {
                     // Process the enrolled course as needed
                    
@@ -123,7 +123,7 @@ class Take_exam extends Admin_Controller
                         // $this->data['student'] = $this->student_m->get_single_student(['studentID' => $loginuserID]);
                         $this->data['student'] = $enrolled_course[0];
 
-
+                        // dd($this->data['student']);
 
                         // echo '<pre>';
                         // print_r($this->data['student']);
@@ -156,7 +156,7 @@ class Take_exam extends Admin_Controller
         }
 
 
-
+        
 
 
 
@@ -180,7 +180,7 @@ class Take_exam extends Admin_Controller
         $this->data['examStatus']       = pluck($this->online_exam_user_status_m->get_order_by_online_exam_user_status(['userID' => $loginuserID]), 'obj', 'onlineExamID');
         $this->data['usertypeID']       = $usertypeID;
         $this->data['onlineExams']      = $this->online_exam_m->get_order_by_online_exam([
-            
+            'sectionID' => $this->data['student']->section_id,
             'usertypeID' => $usertypeID,
             'published'  => 1
         ]);

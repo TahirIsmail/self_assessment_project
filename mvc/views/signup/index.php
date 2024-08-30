@@ -67,7 +67,6 @@
 <div class="form-box" id="login-box">
 
     <div class="header">SIGN UP</div>
-
     <form method="post">
         <div class="body white-bg">
             <div class="lottie">
@@ -79,24 +78,33 @@
             } else {
                 if (inicompute($form_validation)) {
                     echo "<div class=\"alert alert-danger alert-dismissable\">
-                        <i class=\"fa fa-ban\"></i>
-                        <button aria-hidden=\"true\" data-dismiss=\"alert\" class=\"close\" type=\"button\">×</button>
-                        $form_validation
-                    </div>";
+                    <i class=\"fa fa-ban\"></i>
+                    <button aria-hidden=\"true\" data-dismiss=\"alert\" class=\"close\" type=\"button\">×</button>
+                    $form_validation
+                </div>";
                 }
             }
             if ($this->session->flashdata('reset_success')) {
                 $message = $this->session->flashdata('reset_success');
                 echo "<div class=\"alert alert-success alert-dismissable\">
-                    <i class=\"fa fa-ban\"></i>
-                    <button aria-hidden=\"true\" data-dismiss=\"alert\" class=\"close\" type=\"button\">×</button>
-                    $message
-                </div>";
+                <i class=\"fa fa-ban\"></i>
+                <button aria-hidden=\"true\" data-dismiss=\"alert\" class=\"close\" type=\"button\">×</button>
+                $message
+            </div>";
             }
             ?>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <input class="form-control" placeholder="First Name" name="first_name" type="text" value="<?= set_value('first_name') ?>">
+                    <input class="form-control" placeholder="Username" name="username" type="text" value="<?= set_value('username') ?>" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <input class="form-control" placeholder="Email" name="email" type="email" value="<?= set_value('email') ?>" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input class="form-control" placeholder="First Name" name="first_name" type="text" value="<?= set_value('first_name') ?>" required>
                 </div>
                 <div class="form-group col-md-6">
                     <input class="form-control" placeholder="Last Name" name="last_name" type="text" value="<?= set_value('last_name') ?>">
@@ -105,28 +113,29 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                <input class="form-control" placeholder="Address" name="address" type="text" value="<?= set_value('address') ?>">
+                    <input class="form-control" placeholder="Password" name="password" type="password" required>
                 </div>
                 <div class="form-group col-md-6">
-                <input class="form-control" placeholder="Phone Number" name="phone" type="text" value="<?= set_value('phone') ?>">
+                    <input class="form-control" placeholder="Confirm Password" name="confirm_password" type="password" required>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                <input class="form-control" placeholder="Password" name="password" type="password">
+                    <input class="form-control" placeholder="Address" name="address" type="text" value="<?= set_value('address') ?>">
                 </div>
                 <div class="form-group col-md-6">
-                <input class="form-control" placeholder="Confirm Password" name="confirm_password" type="password">
+                    <input class="form-control" placeholder="Phone Number" name="phone" type="text" value="<?= set_value('phone') ?>">
                 </div>
             </div>
 
-            
-         
-
-
-
-            <div class="checkbox">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <input class="form-control" placeholder="Referred By" name="referred_by" type="text" value="<?= set_value('referred_by') ?>">
+                </div>
+            </div>
+            <br>
+            <div class="checkbox form-row">
                 <label>
                     <input type="checkbox" value="Remember Me" name="remember">
                     <span> &nbsp; Remember Me</span>
@@ -146,8 +155,10 @@
             <input type="submit" class="btn btn-lg btn-success btn-block" value="Sign up" />
 
             <div class="form-group">
-                Have you an account ? <a href="<?= base_url('signin/index')?>" style="text-decoration: underline">Login Now</a>
+                Have you an account? <a href="<?= base_url('signin/index') ?>" style="text-decoration: underline">Login Now</a>
             </div>
         </div>
     </form>
+
+
 </div>

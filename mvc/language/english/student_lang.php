@@ -129,3 +129,7 @@ $lang['student_total_correctanswer'] = "Total Correct Answer";
 $lang['student_total_mark'] = "Total Mark";
 $lang['student_total_obtainedmark'] = "Total Obtained Mark";
 $lang['student_total_percentage'] = "Total Percentage";
+
+
+
+$lang['referred_by'] = 'Referred By';

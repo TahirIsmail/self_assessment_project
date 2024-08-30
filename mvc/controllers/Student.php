@@ -52,6 +52,22 @@ class Student extends Admin_Controller
 		$this->lang->load('student', $language);
 	}
 
+	public function check_referral_id($referral_id)
+	{
+		if (!empty($referral_id)) {
+			// Check if the referral ID exists in the student table
+			$this->db->where('referral_id', $referral_id);
+			$query = $this->db->get('student');
+			if ($query->num_rows() == 0) {
+				$this->form_validation->set_message('check_referral_id', 'The {field} is not valid.');
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+
 	protected function rules()
 	{
 		return array(
@@ -59,6 +75,11 @@ class Student extends Admin_Controller
 				'field' => 'name',
 				'label' => $this->lang->line("student_name"),
 				'rules' => 'trim|required|xss_clean|max_length[60]'
+			),
+			array(
+				'field' => 'referred_by',
+				'label' => 'Referral ID',
+				'rules' => 'trim|callback_check_referral_id'
 			),
 			// array(
 			// 	'field' => 'dob',
@@ -347,6 +368,21 @@ class Student extends Admin_Controller
 		}
 	}
 
+	protected function generateUniqueReferralID()
+	{
+		$this->load->model('student_m'); // Load the student model if not already loaded
+
+		do {
+			// Generate a random 6-digit number
+			$referral_id = rand(100000, 999999);
+
+			// Check if the referral ID is unique
+			$existing = $this->student_m->get_single_student_details(array('referral_id' => $referral_id));
+		} while ($existing); // If the referral ID exists, generate a new one
+
+		return $referral_id;
+	}
+
 	public function add()
 	{
 
@@ -399,14 +435,7 @@ class Student extends Admin_Controller
 				// }
 
 				// $this->data['optionalSubjectID'] = $this->input->post('optionalSubjectID') ? $this->input->post('optionalSubjectID') : 0;
-
 				$array = array();
-				$array["name"] = $this->input->post("name");
-				$array["sex"] = $this->input->post("sex");
-				$array["email"] = $this->input->post("email");
-				$array["phone"] = $this->input->post("phone");
-				$array["address"] = $this->input->post("address");
-
 				// $array["religion"] = $this->input->post("religion");
 				// $array["classesID"] = $this->input->post("classesID");
 				// $array["sectionID"] = $this->input->post("sectionID");
@@ -415,9 +444,24 @@ class Student extends Admin_Controller
 				// $array["registerNO"] = $this->input->post("registerNO");
 				// $array['parentID'] = $this->input->post('guargianID');
 
+
+				$array["name"] = $this->input->post("name");
+				$array["sex"] = $this->input->post("sex");
+				$array["email"] = $this->input->post("email");
+				$array["phone"] = $this->input->post("phone");
+				$array["address"] = $this->input->post("address");
+
+				// Generate and save the referral ID
+				$array['referral_id'] = $this->generateUniqueReferralID();
+
 				$array["state"] = $this->input->post("state");
 				$array["country"] = $this->input->post("country");
 				$array["username"] = $this->input->post("username");
+
+
+				$array["referred_by"] = $this->input->post("referred_by");
+
+
 				$array['password'] = $this->student_m->hash($this->input->post("password"));
 				$array['usertypeID'] = 3;
 				$array['create_date'] = date("Y-m-d");
@@ -435,12 +479,6 @@ class Student extends Admin_Controller
 				}
 				$array['photo'] = $this->upload_data['file']['file_name'];
 
-
-
-				// echo '<pre>';
-				// print_r($array);
-				// echo '</pre>';
-				// exit;
 
 				$this->student_m->insert_student($array);
 				$studentID = $this->db->insert_id();
