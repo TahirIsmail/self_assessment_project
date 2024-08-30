@@ -44,6 +44,8 @@ class Online_exam_payment_m extends MY_Model {
         return $id;
     }
 
+
+
     public function update_online_exam_payment($data, $id = NULL) 
     {
         parent::update($data, $id);
@@ -53,5 +55,17 @@ class Online_exam_payment_m extends MY_Model {
     public function delete_online_exam_payment($id)
     {
         parent::delete($id);
+    }
+
+
+    public function student_enroll_course($data){
+        $this->db->insert('student_enrollment_mock_test', $data);
+
+        // Check if the insert was successful
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

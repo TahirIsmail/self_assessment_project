@@ -100,3 +100,8 @@ $lang['suggestion_courses'] = 'Course Suggestion';
 
 $lang['enroll_now'] = "Enroll Now";
 $lang['view_course'] = "View Course";
+
+$lang['take_exam_payment_amount'] = "Payment Amount";
+$lang['take_exam_payment_method'] = "Payment Method";
+$lang['take_exam_select_payment_method'] = "Select Payment Method";
+$lang['take_exam_add_payment'] = "Add Payment";

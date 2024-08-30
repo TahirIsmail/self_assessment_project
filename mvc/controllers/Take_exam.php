@@ -74,9 +74,6 @@ class Take_exam extends Admin_Controller
 
     public function index($slug = null)
     {
-
-
-
         $this->data['headerassets'] = [
             'css' => [
                 'assets/select2/css/select2.css',
@@ -95,12 +92,13 @@ class Take_exam extends Admin_Controller
 
             $course = $this->section_m->get_section_record(['slug' => $slug]);
 
-        
-            // $is_enrolled = $this->section_m->is_student_enrolled($course->sectionID, $loginuserID);
-            // if (!$is_enrolled) {
-            //     $this->session->set_flashdata('error', 'You need to enroll in this course first.');
-            //     redirect('online_exam');
-            // }
+            // dd($course[0]->sectionID);
+            $is_enrolled = $this->section_m->is_student_enrolled($course[0]->sectionID, $loginuserID);
+            // dd($is_enrolled);
+            if (!$is_enrolled) {
+                $this->session->set_flashdata('error', 'You need to enroll in this course first.');
+                redirect('online_exam');
+            }
             
             if (!empty($course) && isset($course[0])) {
                 $this->db->from('student_enrollment_mock_test')
@@ -114,11 +112,10 @@ class Take_exam extends Admin_Controller
                     ]);
                 $query = $this->db->get();
                 $enrolled_course = $query->result();
-                // dd($enrolled_course);
-
+                
                 if (!empty($enrolled_course)) {
                     // Process the enrolled course as needed
-                    // dd($enrolled_course);
+                   
                     $this->data['userSubjectPluck'] = [];
                     if ($usertypeID == '3') {
 
@@ -145,6 +142,7 @@ class Take_exam extends Admin_Controller
                             // if (inicompute($optionalSubject)) {
                             //     $this->data['userSubjectPluck'][$optionalSubject->subjectID] = $optionalSubject->subjectID;
                             // }
+                            
                         }
 
                         // dd($this->data['userSubjectPluck']);
@@ -187,7 +185,7 @@ class Take_exam extends Admin_Controller
             'published'  => 1
         ]);
         
-        // dd($this->data['onlineExams']);
+        
         $this->data['validationErrors']       = [];
         $this->data['validationOnlineExamID'] = 0;
         if ($_POST !== []) {
@@ -218,7 +216,7 @@ class Take_exam extends Admin_Controller
         } else {
 
 
-
+            // dd($this->data['onlineExams']);
             $this->data["subview"] = "online_exam/take_exam/index";
             $this->load->view('_layout_main', $this->data);
         }
@@ -240,6 +238,7 @@ class Take_exam extends Admin_Controller
 
         $userID       = $this->session->userdata("loginuserID");
         $onlineExamID = htmlentities((string) escapeString($this->uri->segment(3)));
+        
 
         $examGivenStatus     = FALSE;
         $examGivenDataStatus = FALSE;
@@ -249,13 +248,22 @@ class Take_exam extends Admin_Controller
         if ((int)$onlineExamID !== 0) {
 
             $this->data['student'] = $this->student_m->get_student($userID);
-            if (inicompute($this->data['student'])) {
+            $student_enroll_course_detail = $this->student_m->get_enroll_course_detail($userID);
+
+            // dd($student_enroll_course_detail[0]['section_id']);
+            // dd($this->data['student']);
+
+            if (inicompute($this->data['student']) && $student_enroll_course_detail[0]['section_id']) {
+
                 $array['classesID']      = $this->data['student']->classesID;
-                $array['sectionID']      = $this->data['student']->sectionID;
+                $array['sectionID']      = $student_enroll_course_detail[0]['section_id'];
                 $array['studentgroupID'] = $this->data['student']->studentgroupID;
                 $array['onlineExamID']   = $onlineExamID;
-                $online_exam             = $this->online_exam_m->get_online_exam_by_student($array);
 
+                
+                $online_exam             = $this->online_exam_m->get_online_exam_by_student($array);
+                
+                // dd($online_exam);
 
                 $userExamCheck = $this->online_exam_user_status_m->get_order_by_online_exam_user_status([
                     'userID'       => $userID,
@@ -562,7 +570,9 @@ class Take_exam extends Admin_Controller
                     $allUserExams = $this->online_exam_user_status_m->get_online_exam_user_status();
                     $givenTimes = [];
                     $allExams = pluck($this->online_exam_m->get_online_exam(), 'showMarkAfterExam', 'onlineExamID');
+                    // dd($allUserExams);
                     foreach ($allUserExams as $allUserExam) {
+                        // dd(!array_key_exists($allUserExam->onlineExamID, $givenTimes));
                         if (!array_key_exists($allUserExam->onlineExamID, $givenTimes)) {
                             $givenTimes[$allUserExam->onlineExamID] = $allExams[$allUserExam->onlineExamID];
                         }

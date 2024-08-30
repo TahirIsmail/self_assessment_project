@@ -195,10 +195,12 @@ class Section extends Admin_Controller
 
 				$slug = create_slug($this->input->post("section"));
 				$slug = ensure_unique_slug($slug, 'section');
+				$image = $this->upload_data['file']['file_name'];
 
 				$array = array(
 					"section" => $this->input->post("section"),
 					"slug" => $slug,
+					"image" => $image,
 					"category" => $this->input->post("category"),
 					"classesID" => $this->input->post("classesID"),
 					"note" => $this->input->post("note"),
@@ -232,6 +234,7 @@ class Section extends Admin_Controller
 							'subject' => $unit,
 							'course_id' => $course_id,
 							"create_date" => date("Y-m-d h:i:s"),
+							"type"         => 1,
 							"create_userID" => $this->session->userdata('loginuserID'),
 							"create_username" => $this->session->userdata('username'),
 							"create_usertype" => $this->session->userdata('usertype')
