@@ -140,15 +140,6 @@ $is_logged_in = $this->session->userdata('loggedin');
     </div>
 
 
-
-
-
-
-
-
-
-
-
     <!-- Service Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -193,6 +184,282 @@ $is_logged_in = $this->session->userdata('loggedin');
         </div>
 
     </div>
+
+
+
+
+    <!-- <div class="cont1_mobile">
+
+        <div class="card-new_mobile">
+            <div class="row">
+
+                <div class="col-lg-12 col-md-12 col-sm-12">
+
+                    <div class="our_solution_category_mobile ">
+
+                        <div class="solution_cards_box_mobile ">
+
+                            <div class="solution_card_mobile">
+
+                                <div class="hover_color_bubble_mobile"></div>
+
+
+
+
+                                <div class="ph_mobile">7869 1234 7869 3245</div>
+
+                                <div class="card_boxi1_mobile "></div>
+
+                                <div class="solu_title_mobile ">
+                                    <div class="name_mobile">LICENSE</div>
+                                </div>
+
+                                <div class="simitry_mobile">
+
+                                    <div class="solu_description_mobile">
+                                        <p>
+                                            Security Industry Authority
+                                        </p>
+
+                                    </div>
+                                    <div class="so_top_icon_mobile">
+
+                                        <img src="<?= base_url('uploads/images/team-1.jpg') ?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+
+                                        </img>
+                                    </div>
+                                </div>
+                                <div class="xp_mobile">
+                                    <div class="designation_mobile">EXPIRES</div>
+                                    <div class="designation1_mobile">18 JUNE 20XX</div>
+                                    <div class="designation_mobile">MR JOHNS</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-new_mobile">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="our_solution_category_mobile">
+                        <div class="solution_cards_box_mobile">
+                            <div class="solution_card_mobile">
+                                <div class="hover_color_bubble_mobile"></div>
+
+                                <div class="ph_mobile">4321 1234 7869 3245</div>
+
+                                <div class="card_boxi2_mobile"></div>
+
+                                <div class="solu_title_mobile">
+                                    <div class="name_mobile">LICENSE</div>
+                                </div>
+
+
+                                <div class="simitry_mobile">
+
+                                    <div class="solu_description_mobile">
+                                        <p>
+                                            Security Industry Authority
+                                        </p>
+
+                                    </div>
+                                    <div class="so_top_icon_mobile">
+
+                                        <img src="<?= base_url('uploads/images/team-2.jpg') ?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+
+                                        </img>
+                                    </div>
+                                </div>
+                                <div class="xp_mobile">
+                                    <div class="designation_mobile">EXPIRES</div>
+                                    <div class="designation1_mobile">07 OCT 20XX</div>
+                                    <div class="designation_mobile">MRS ANNA</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-new_mobile">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="our_solution_category_mobile">
+                        <div class="solution_cards_box_mobile">
+                            <div class="solution_card_mobile">
+                                <div class="hover_color_bubble_mobile"></div>
+
+                                <div class="ph_mobile">1234 1234 7869 3245</div>
+
+                                <div class="card_boxi3_mobile"></div>
+
+                                <div class="solu_title_mobile">
+                                    <div class="name_mobile">LICENSE</div>
+                                </div>
+
+
+                                <div class="simitry_mobile">
+
+                                    <div class="solu_description_mobile">
+                                        <p>
+                                            Security Industry Authority
+                                        </p>
+
+                                    </div>
+                                    <div class="so_top_icon_mobile">
+
+                                        <img src="<?= base_url('uploads/images/team-3.jpg') ?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+
+                                        </img>
+                                    </div>
+                                </div>
+                                <div class="xp">
+                                    <div class="designation_mobile">EXPIRES</div>
+                                    <div class="designation1_mobile">31 APR 20XX</div>
+                                    <div class="designation_mobile">MR ADAM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-new_mobile">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="our_solution_category_mobile">
+                        <div class="solution_cards_box_mobile">
+                            <div class="solution_card_mobile">
+                                <div class="hover_color_bubble_mobile"></div>
+
+                                <div class="ph_mobile">1111 1234 7869 3245</div>
+
+                                <div class="card_boxi4_mobile"></div>
+
+                                <div class="solu_title_mobile">
+                                    <div class="name_mobile">LICENSE</div>
+                                </div>
+
+
+                                <div class="simitry_mobile">
+
+                                    <div class="solu_description_mobile">
+                                        <p>
+                                            Security Industry Authority
+                                        </p>
+
+                                    </div>
+                                    <div class="so_top_icon_mobile">
+
+                                        <img src="<?= base_url('uploads/images/team-4.jpg') ?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+
+                                        </img>
+                                    </div>
+                                </div>
+                                <div class="xp">
+                                    <div class="designation_mobile">EXPIRES</div>
+                                    <div class="designation1_mobile">27 JAN 20XX</div>
+                                    <div class="designation_mobile">MRS JULIE</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-new_mobile">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="our_solution_category_mobile">
+                        <div class="solution_cards_box_mobile">
+                            <div class="solution_card_mobile">
+                                <div class="hover_color_bubble_mobile"></div>
+
+                                <div class="ph_mobile">1111 1234 7869 3245</div>
+
+                                <div class="card_boxi5_mobile"></div>
+
+                                <div class="solu_title_mobile">
+                                    <div class="name_mobile">LICENSE</div>
+                                </div>
+
+
+                                <div class="simitry_mobile">
+
+                                    <div class="solu_description_mobile">
+                                        <p>
+                                            Security Industry Authority
+                                        </p>
+
+                                    </div>
+                                    <div class="so_top_icon_mobile">
+
+                                        <img src="<?= base_url('uploads/images/testimonial-3.jpg') ?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+
+                                        </img>
+                                    </div>
+                                </div>
+                                <div class="xp">
+                                    <div class="designation_mobile">EXPIRES</div>
+                                    <div class="designation1_mobile">27 JAN 20XX</div>
+                                    <div class="designation_mobile">MRS JULIE</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-new_mobile">
+            <div class="row_mobile">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="our_solution_category_mobile">
+                        <div class="solution_cards_box_mobile">
+                            <div class="solution_card_mobile">
+                                <div class="hover_color_bubble_mobile"></div>
+
+                                <div class="ph_mobile">1111 1234 7869 3245</div>
+
+                                <div class="card_boxi6_mobile"></div>
+
+                                <div class="solu_title_mobile">
+                                    <div class="name_mobile">LICENSE</div>
+                                </div>
+
+
+                                <div class="simitry_mobile">
+
+                                    <div class="solu_description_mobile">
+                                        <p>
+                                            Security Industry Authority
+                                        </p>
+
+                                    </div>
+                                    <div class="so_top_icon_mobile">
+
+                                        <img src="<?= base_url('uploads/images/testimonial-3.jpg') ?>" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
+
+                                        </img>
+                                    </div>
+                                </div>
+                                <div class="xp">
+                                    <div class="designation_mobile">EXPIRES</div>
+                                    <div class="designation1_mobile">27 JAN 20XX</div>
+                                    <div class="designation_mobile">MRS JULIE</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div> -->
     <div class="container-xxl " style="margin-bottom: 40px;">
         <div class="container">
             <div class="row g-4">
@@ -301,7 +568,7 @@ $is_logged_in = $this->session->userdata('loggedin');
                                         <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
                                     </div>
                                 </div>
-                                <div class="course-item bg-theme   p-4 rounded-top-round rounded-bottom-round" style="margin-top: -15px;position:relative; z-index:1;height:160px !important">
+                                <div class="course-item bg-theme   p-4 rounded-top-round rounded-bottom-round" style="margin-top: -15px;position:relative; z-index:1;height:120px !important">
                                     <div class="text-center pb-0">
                                         <h3 class="mb-2 text-white">£<?= intval($test['cost']) ?></h3>
 
@@ -312,16 +579,40 @@ $is_logged_in = $this->session->userdata('loggedin');
                         </div>
 
                     </div>
+            <?php }
+            }
+            ?>
 
-                <?php } ?>
-            <?php } ?>
-        </div>
+        </div> -->
     </div>
 
+<!-- This section is edited by me for linking read more with page  -->
 
 
+    <div class="container mt-5">
+    <div class="row">
+        <?php if ($mockTests) { ?>
+            <?php foreach ($mockTests as $test) { ?>
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="position-relative">
+                            <img class="img-fluid rounded-top" src="<?= base_url('uploads/images/' . $test['image']) ?>" alt="Course Image">
+                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                <a onclick='checkLogin(<?= json_encode($test) ?>, event)' class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
+                                <<a href="<?= base_url('mock_course/index'); ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
 
-
+                            </div>
+                        </div>
+                        <div class="card-body bg-theme text-center rounded-bottom" style="height: 108px;">
+                            <h3 class="mb-2 text-white">£<?= intval($test['cost']) ?></h3>
+                            <h5 class="mb-4 text-white"><?= $test['section'] ?></h5>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        <?php } ?>
+    </div>
+</div>
 
     <!-- Courses End -->
 

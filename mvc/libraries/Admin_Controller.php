@@ -28,6 +28,7 @@ class Admin_Controller extends MY_Controller {
         parent::__construct();
         $this->load->model("contactus_m");
         $this->load->model("course_m");
+        $this->load->model("Mock_m");
         $this->load->model("signup_m");
         $this->load->model("signin_m");
         $this->load->model("permission_m");
@@ -86,7 +87,8 @@ class Admin_Controller extends MY_Controller {
             "signup/index",
             "course/index",
             "home/course",
-            "home/payment"
+            "home/payment",
+            "mock_course/index",
 
 
         ];
