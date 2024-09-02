@@ -1843,9 +1843,9 @@ progress {
 .form-control:focus {
   color: #52565b;
   background-color: #fff;
-  border-color: #83dde6;
+  border-color: #d71920;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(6, 187, 204, 0.25);
+  box-shadow:0 0 0 0.25rem rgb(215 25 32 / 25%);
 }
 .form-control::-webkit-date-and-time-value {
   height: 1.5em;
@@ -1995,10 +1995,11 @@ textarea.form-control-lg {
   border-radius: 0px;
   appearance: none;
 }
+
 .form-select:focus {
-  border-color: #83dde6;
+  border-color: #d71920;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(6, 187, 204, 0.25);
+  box-shadow: 0 0 0 0.25rem rgb(215 25 32 / 25%);
 }
 .form-select[multiple],
 .form-select[size]:not([size="1"]) {
@@ -2602,14 +2603,16 @@ fieldset:disabled .btn {
   border-color: #06bbcc;
 }
 .btn-secondary {
-  color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  border-radius: 5px;
+  background-color: #fafafa;
+  color: #666 !important;
+  border-color: #ddd;
+  border-bottom-color: #ddd; 
 }
 .btn-secondary:hover {
-  color: #fff;
-  background-color: #5c636a;
-  border-color: #565e64;
+
+  background-color: #f4f4f4!important;
+ 
 }
 .btn-check:focus + .btn-secondary,
 .btn-secondary:focus {
@@ -2641,9 +2644,10 @@ fieldset:disabled .btn {
   border-color: #6c757d;
 }
 .btn-success {
+  border-radius: 5px;
   color: #fff;
-  background-color: #198754;
-  border-color: #198754;
+  background: linear-gradient(to right, #ed213a, #93291e) !important;
+  border-color: #d71920;
 }
 .btn-success:hover {
   color: #fff;
@@ -4980,20 +4984,16 @@ fieldset:disabled .btn {
   opacity: 0.5;
 }
 .modal-header {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1rem;
-  border-bottom: 1px solid #dee2e6;
-  border-top-left-radius: calc(0.3rem - 1px);
-  border-top-right-radius: calc(0.3rem - 1px);
+  min-height: 16.428571429px;
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
 }
 .modal-header .btn-close {
   padding: 0.5rem 0.5rem;
   margin: -0.5rem -0.5rem -0.5rem auto;
 }
 .modal-title {
+  color:gray;
   margin-bottom: 0;
   line-height: 1.5;
 }

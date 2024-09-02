@@ -8,7 +8,7 @@
     </div><!-- /.box-header -->
     <!-- form start -->
     <div class="box-body">
-        <div class="row">
+        <div class="row ">
             <div class="col-sm-12">
                 <?php
                 if (permissionChecker('online_exam_add')) {

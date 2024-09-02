@@ -1962,15 +1962,15 @@ Component: timeline
 }
 .btn.btn-primary {
   color: #fff;
-  background-color: #348fe2;
-  border-color: #348fe2;
+  background: linear-gradient(to right, #ed213a, #93291e);
+  border-color: #93291e;
 }
 .btn.btn-primary:hover,
 .btn.btn-primary:active,
 .btn.btn-primary.hover {
   color: #fff;
-  background-color: #3487D3;
-  border-color: #3487D3;
+  background-color: #93291e;
+  border-color: #93291e;
 }
 .btn.btn-success {
   color: #fff;
