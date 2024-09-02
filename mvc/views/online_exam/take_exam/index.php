@@ -159,7 +159,7 @@
                                                 $paidStatus = 1;
                                             }
                                         ?>
-                                        <button class="btn btn-success btn-xs mrg" onclick="newPopup('<?=base_url('take_exam/instruction/'.$onlineExam->onlineExamID)?>', '<?=$paidStatus?>', '<?=$onlineExam->onlineExamID?>')" rel="tooltip" data-toggle="tooltip" data-placement="top" data-original-title="<?=$this->lang->line('panel_title')?>"><i class="fa fa-columns"></i></button>
+                                        <button class="btn btn-success btn-xs mrg" onclick="newPopup('<?=base_url('take_exam/instruction/'.$onlineExam->onlineExamID)?>', '<?=$paidStatus?>', '<?=$onlineExam->onlineExamID?>')" rel="tooltip" data-toggle="tooltip" data-placement="top" data-original-title="<?=$this->lang->line('panel_title')?>"><i class="fa fa-columns"></i> <?=$this->lang->line('take_exam_start_exam')?></button>
 
                                         <?php
                                             if($onlineExam->paid && ($onlineExam->examStatus == 2) && !($paymentExpireStatus))  {
