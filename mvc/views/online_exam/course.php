@@ -8,22 +8,24 @@
     </div>
 
     <div class="box-body">
-        <div class="row">
+        <div class="row container">
             <div class="col-sm-12">
                 <h5 class="page-header"><?= $this->lang->line('enrolled_courses') ?></h5>
                 <div class="row">
                     <?php if ($enrolled_courses) {
                         foreach ($enrolled_courses as $en_course) { ?>
-                            <div class="col-md-4">
-                                <div class="course-card">
-                                    <img src="<?= base_url('uploads/images/' . $en_course->image); ?>" alt="<?= $en_course->name; ?>" class="img-responsive course-image" style="width: 80px; height:auto;">
 
-                                    <h4 class="course-name"><?= $en_course->name; ?></h4>
-                                    <!-- <p class="course-cost"><?= $en_course->cost ? '$' . number_format($en_course->cost, 2) : $this->lang->line('free'); ?></p> -->
-                                    <p class="course-status"><?= $en_course->paid ? $this->lang->line('paid') : $this->lang->line('free'); ?></p>
-                                    <a href="<?= site_url('take_exam/index/' . $en_course->slug); ?>" class="btn btn-primary"><?= $this->lang->line('view_course'); ?></a>
+                            <div class="col-md-4">
+                                <div class="course-card" style="position: relative; background-color: white; border-radius: 8px; overflow: hidden;">
+                                    <img src="<?= base_url('uploads/images/' . $en_course->image); ?>" alt="<?= $en_course->name; ?>" class="img-responsive" style="width: 100%; height: auto;">
+                                    <div class="course-details" style="padding: 15px; text-align: center;">
+                                        <h4 class="course-name" style="font-weight: bold; color: black;"><?= $en_course->name; ?></h4>
+                                        <p class="course-status" style="margin-bottom: 20px; font-size: 18px;"><?= $en_course->paid ? $this->lang->line('paid') : $this->lang->line('free'); ?></p>
+                                        <a href="<?= site_url('take_exam/index/' . $en_course->slug); ?>" class="btn btn-primary"><?= $this->lang->line('view_course'); ?></a>
+                                    </div>
                                 </div>
                             </div>
+
                         <?php }
                     } else { ?>
                         <div class="col-sm-12">
@@ -35,16 +37,18 @@
 
             <div class="col-sm-12">
                 <div class="row">
+                <h5 class="page-header"><?= $this->lang->line('suggestion_courses') ?></h5>
                     <?php if ($unenrolled_courses) { ?>
-                        <h5 class="page-header"><?= $this->lang->line('suggestion_courses') ?></h5>
                         <?php foreach ($unenrolled_courses as $un_course) { ?>
                             <div class="col-md-4">
-                                <div class="course-card">
-                                    <img src="<?= base_url('uploads/images/' . $un_course->image); ?>" alt="<?= $un_course->name; ?>" class="img-responsive course-image" style="width: 80px; height:auto;">
-                                    <h4 class="course-name"><?= $un_course->name; ?></h4>
-                                    <p class="course-cost"><?= $un_course->cost ? '$' . number_format($un_course->cost, 2) : $this->lang->line('free'); ?></p>
-                                    <p class="course-status"><?= $un_course->paid ? $this->lang->line('paid') : $this->lang->line('free'); ?></p>
-                                    <a href="#addpayment" id="<?= $un_course->slug ?>" class="btn btn-primary btn-xs mrg getpaymentinfobtn" rel="tooltip" data-toggle="modal"><i class="fa fa-credit-card" data-toggle="tooltip" data-placement="top" data-original-title="<?= $this->lang->line('enroll_now') ?>"></i></a>
+                                <div class="course-card" style="position: relative; background-color: white; border-radius: 8px; overflow: hidden;">
+                                    <img src="<?= base_url('uploads/images/' . $un_course->image); ?>" alt="<?= $un_course->name; ?>" class="img-responsive" style="width: 100%; height: auto;">
+                                    <div class="course-details" style="padding: 15px; text-align: center;">
+                                        <h4 class="course-name"><?= $un_course->name; ?></h4>
+                                        <p class="course-cost"><?= $un_course->cost ? '$' . number_format($un_course->cost, 2) : $this->lang->line('free'); ?></p>
+                                        <!-- <p class="course-status"><?= $un_course->paid ? $this->lang->line('paid') : $this->lang->line('free'); ?></p> -->
+                                        <a href="#addpayment" id="<?= $un_course->slug ?>" class="btn btn-primary" rel="tooltip" data-toggle="modal"><i class="fa fa-credit-card" data-toggle="tooltip" data-placement="top" data-original-title="<?= $this->lang->line('enroll_now') ?>"></i>  <?= $this->lang->line('enroll_now') ?></a>
+                                    </div>
                                 </div>
                             </div>
                     <?php }
@@ -121,24 +125,24 @@
 <?php
 $js_gateway     = [];
 $submit_gateway = [];
-if(inicompute($payment_settings)) {
-    foreach($payment_settings as $payment_setting) {
-        if($payment_setting->misc != null) {
+if (inicompute($payment_settings)) {
+    foreach ($payment_settings as $payment_setting) {
+        if ($payment_setting->misc != null) {
             $misc = json_decode($payment_setting->misc);
-            if(inicompute($misc->js)) {
-                foreach($misc->js as $js) {
+            if (inicompute($misc->js)) {
+                foreach ($misc->js as $js) {
                     $this->load->view($js);
                 }
             }
 
-            if(inicompute($misc->input)) {
-                if(isset($misc->input[0])) {
+            if (inicompute($misc->input)) {
+                if (isset($misc->input[0])) {
                     $js_gateway[$payment_setting->slug] = isset($misc->input[0]);
                 }
             }
 
-            if(inicompute($misc->input)) {
-                if(isset($misc->submit) && $misc->submit) {
+            if (inicompute($misc->input)) {
+                if (isset($misc->submit) && $misc->submit) {
                     $submit_gateway[$payment_setting->slug] = $misc->submit;
                 }
             }
@@ -156,7 +160,6 @@ $submit_gateway = json_encode($submit_gateway);
 <style>
     .course-card {
         border: 1px solid #ddd;
-        padding: 15px;
         margin-bottom: 20px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
@@ -189,22 +192,22 @@ $submit_gateway = json_encode($submit_gateway);
     }
 </style>
 <script type="text/javascript">
-     const gateway = <?=$js_gateway?>;
-    const submit_gateway = <?=$submit_gateway?>;
+    const gateway = <?= $js_gateway ?>;
+    const submit_gateway = <?= $submit_gateway ?>;
     let form = document.getElementById('paymentAddDataForm');
-    form.addEventListener('submit', function (event) {
+    form.addEventListener('submit', function(event) {
         event.preventDefault();
         let payment_method = $('#payment_method').val();
         let submit = false;
-        for(let item in submit_gateway) {
-            if(item == payment_method) {
+        for (let item in submit_gateway) {
+            if (item == payment_method) {
                 submit = true;
                 window[payment_method + '_payment']();
                 break;
             }
         }
 
-        if(submit == false) {
+        if (submit == false) {
             form.submit();
         }
     });
@@ -222,7 +225,7 @@ $submit_gateway = json_encode($submit_gateway);
     //             $('#onlineExamID').val(onlineExamID);
     //             $.ajax({
     //                 type: 'POST',
-    //                 url: "<?=base_url('take_exam/get_payment_info')?>",
+    //                 url: "<?= base_url('take_exam/get_payment_info') ?>",
     //                 data: {'onlineExamID' : onlineExamID},
     //                 dataType: "html",
     //                 success: function(data) {
@@ -241,7 +244,7 @@ $submit_gateway = json_encode($submit_gateway);
 
     //     // $.ajax({
     //     //     type: 'POST',
-    //     //     url: "<?=base_url('take_exam/paymentChecking')?>",
+    //     //     url: "<?= base_url('take_exam/paymentChecking') ?>",
     //     //     data: {'onlineExamID' : onlineExamID},
     //     //     dataType: "html",
     //     //     success: function(data) {
@@ -252,7 +255,7 @@ $submit_gateway = json_encode($submit_gateway);
     //     //                 $('#onlineExamID').val(onlineExamID);
     //     //                 $.ajax({
     //     //                     type: 'POST',
-    //     //                     url: "<?=base_url('take_exam/get_payment_info')?>",
+    //     //                     url: "<?= base_url('take_exam/get_payment_info') ?>",
     //     //                     data: {'onlineExamID' : onlineExamID},
     //     //                     dataType: "html",
     //     //                     success: function(data) {
@@ -273,7 +276,7 @@ $submit_gateway = json_encode($submit_gateway);
     // }
     $('.getpaymentinfobtn').click(function() {
         var course_slug = $(this).attr('id');
-        
+
         if (course_slug) {
             $('#course_slug').val(course_slug);
             $.ajax({
@@ -298,9 +301,9 @@ $submit_gateway = json_encode($submit_gateway);
     });
 
     function runner() {
-       
+
         url = localStorage.getItem('redirect_url');
-        if(url) {
+        if (url) {
             localStorage.clear();
             window.location = url;
         }
@@ -310,12 +313,12 @@ $submit_gateway = json_encode($submit_gateway);
     }
 
     $(document).change(function() {
-       
+
         console.log(gateway);
         let payment_method = $('#payment_method').val();
-        for(let item in gateway) {
-            if(item == payment_method) {
-                if(gateway[item]) {
+        for (let item in gateway) {
+            if (item == payment_method) {
+                if (gateway[item]) {
                     $('#' + item + '_div').show();
                 }
             } else {

@@ -95,11 +95,11 @@ $lang['online_exam_date']   = 'Date';
 
 //   custom
 
-$lang['enrolled_courses'] = 'Enrolled Courses';
-$lang['suggestion_courses'] = 'Course Suggestion';
+$lang['enrolled_courses'] = 'Enrolled Mock Test';
+$lang['suggestion_courses'] = 'Mock Test Suggestion';
 
 $lang['enroll_now'] = "Enroll Now";
-$lang['view_course'] = "View Course";
+$lang['view_course'] = "View Mock";
 
 $lang['take_exam_payment_amount'] = "Payment Amount";
 $lang['take_exam_payment_method'] = "Payment Method";
