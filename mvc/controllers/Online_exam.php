@@ -82,11 +82,10 @@ class Online_exam extends Admin_Controller
             }
 
 
-            // dd($loginuserID);
+            // dd($loginuserID);            
             $enrolled_courses = $this->section_m->get_enrolled_sections($loginuserID);
 
             // dd($enrolled_courses);
-
             $unenrolled_courses = $this->section_m->get_unenrolled_sections($loginuserID);
 
             $this->data['payment_settings'] = $this->payment_gateway_m->get_order_by_payment_gateway(['status' => 1]);
