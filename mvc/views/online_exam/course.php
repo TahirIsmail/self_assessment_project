@@ -37,18 +37,23 @@
 
             <div class="col-sm-12">
                 <div class="row">
-                <h5 class="page-header"><?= $this->lang->line('suggestion_courses') ?></h5>
                     <?php if ($unenrolled_courses) { ?>
+                        <h5 class="page-header"><?= $this->lang->line('suggestion_courses') ?></h5>
                         <?php foreach ($unenrolled_courses as $un_course) { ?>
                             <div class="col-md-4">
                                 <div class="course-card" style="position: relative; background-color: white; border-radius: 8px; overflow: hidden;">
+
                                     <img src="<?= base_url('uploads/images/' . $un_course->image); ?>" alt="<?= $un_course->name; ?>" class="img-responsive" style="width: 100%; height: auto;">
                                     <div class="course-details" style="padding: 15px; text-align: center;">
-                                        <h4 class="course-name"><?= $un_course->name; ?></h4>
+                                        <h4 class="course-name" style="font-weight: bold; color: black;"><?= $un_course->name; ?></h4>
                                         <p class="course-cost"><?= $un_course->cost ? '$' . number_format($un_course->cost, 2) : $this->lang->line('free'); ?></p>
-                                        <!-- <p class="course-status"><?= $un_course->paid ? $this->lang->line('paid') : $this->lang->line('free'); ?></p> -->
-                                        <a href="#addpayment" id="<?= $un_course->slug ?>" class="btn btn-primary" rel="tooltip" data-toggle="modal"><i class="fa fa-credit-card" data-toggle="tooltip" data-placement="top" data-original-title="<?= $this->lang->line('enroll_now') ?>"></i>  <?= $this->lang->line('enroll_now') ?></a>
+                                        <p class="course-status"><?= $un_course->paid ? $this->lang->line('paid') : $this->lang->line('free'); ?></p>
+                                        <a href="#addpayment" id="<?= $un_course->slug ?>" class="btn btn-primary mrg getpaymentinfobtn" rel="tooltip" data-toggle="modal"><i class="fa fa-credit-card" data-toggle="tooltip" data-placement="top" data-original-title="<?= $this->lang->line('enroll_now') ?>"></i> <?= $this->lang->line('enroll_now') ?></a>
                                     </div>
+
+
+
+
                                 </div>
                             </div>
                     <?php }
