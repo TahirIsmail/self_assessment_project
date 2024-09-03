@@ -565,7 +565,7 @@ $is_logged_in = $this->session->userdata('loggedin');
                                     <img class="img-fluid " src="<?= base_url('uploads/images/' . $test['image']) ?>" alt="Course Image">
                                     <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                                         <a onclick='checkLogin(<?= json_encode($test) ?>, event)' class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
-                                        <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
+                                        <a href="<?= base_url('mock_course/index'); ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
                                     </div>
                                 </div>
                                 <div class="course-item bg-theme   p-4 rounded-top-round rounded-bottom-round" style="margin-top: -15px;position:relative; z-index:1;height:120px !important">
@@ -583,38 +583,10 @@ $is_logged_in = $this->session->userdata('loggedin');
             }
             ?>
 
-        </div> -->
+        </div>
     </div>
 
-<!-- This section is edited by me for linking read more with page  -->
 
-
-    <div class="container mt-5">
-    <div class="row">
-        <?php if ($mockTests) { ?>
-            <?php foreach ($mockTests as $test) { ?>
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm">
-                        <div class="position-relative">
-                            <img class="img-fluid rounded-top" src="<?= base_url('uploads/images/' . $test['image']) ?>" alt="Course Image">
-                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                                <a onclick='checkLogin(<?= json_encode($test) ?>, event)' class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
-                                <<a href="<?= base_url('mock_course/index'); ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
-
-                            </div>
-                        </div>
-                        <div class="card-body bg-theme text-center rounded-bottom" style="height: 108px;">
-                            <h3 class="mb-2 text-white">£<?= intval($test['cost']) ?></h3>
-                            <h5 class="mb-4 text-white"><?= $test['section'] ?></h5>
-                        </div>
-                    </div>
-                </div>
-            <?php } ?>
-        <?php } ?>
-    </div>
-</div>
-
-    <!-- Courses End -->
 
 
 
