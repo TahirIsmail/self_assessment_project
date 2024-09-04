@@ -898,10 +898,23 @@ span {
   .cont1 {
     display: none;
   }
+
+}
+
+
+@media (min-width: 50px) and (max-width: 750px) {
+ 
   .carousel-item{
     height: 330px !important;
   }
 }
+
+@media (min-width: 1221px) {
+  .cont1_mobile {
+    display: none !important;
+  }
+}
+
 
 @media (min-width: 50px) and (max-width: 767px) {
   .carousel-item img {
