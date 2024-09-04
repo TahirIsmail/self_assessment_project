@@ -1,10 +1,10 @@
 <?php
 
 /* List Language  */
-$lang['panel_title'] = "Courses";
-$lang['add_title'] = "Add a course";
+$lang['panel_title'] = "Mock Courses";
+$lang['add_title'] = "Add a mock course";
 $lang['slno'] = "#";
-$lang['section_name'] = "Course";
+$lang['section_name'] = "Mock Course";
 $lang['section_category'] = "Category";
 $lang['section_capacity'] = "Capacity";
 $lang['section_classes'] = "Category";
@@ -23,8 +23,8 @@ $lang['delete'] = 'Delete';
 
 /* Add Language */
 
-$lang['add_section'] = 'Add Course';
-$lang['update_section'] = 'Update Course';
+$lang['add_section'] = 'Add Mock Course';
+$lang['update_section'] = 'Update Mock Course';
 
 $lang['subject_name'] = 'Unit Name';
 $lang['subject_names'] = 'Unit Names';
@@ -40,4 +40,4 @@ $lang['online_exam_paid']               = "Paid";
 $lang['online_exam_unpaid']             = "Unpaid";
 $lang['online_exam_payment_status']                   = "Payment Status";
 $lang['section_file_browse'] = 'File Browse';
-$lang['section_photo'] = "Course Image";
+$lang['section_photo'] = "Mock Course Image";
