@@ -151,7 +151,7 @@
 <!-- New Section -->
 <div class="container my-5">
     <div class="row align-items-center Contact ">
-        <div class="col-md-7 px-5">
+        <div class="col-md-7 px-3">
             <h2>Best practices to deliver the best resilience, outcomes and continuity</h2>
             <p>In the world of data centres, where uptime and continuity are paramount, the demand for ultra-clean environments is critical. Our facilities services for data centres focus on meticulous cleanliness, adhering to stringent protocols that maintain the highest levels of hygiene.</p>
             <p>This hyper-hygienic ‘cleanroom cleaning’ approach is essential in preventing any particulate or microbial contamination that could disrupt operations.</p>
@@ -168,7 +168,7 @@
 <!-- Data Centres FM Section -->
 <div class="container my-5">
     <div class="row Data">
-        <div class="col-md-7 px-5">
+        <div class="col-md-7 px-3">
             <h2>Data Centres FM</h2>
             <p>Our mission’s BEST strategy and ethos addresses five areas of concern highlighted by industry leaders in reference to facilities management: Experiences, Productivity, Practices, Resilience and Outcomes.</p>
             <a href="#" class="btn btn-primary py-md-3 px-md-5 me-3 my-3">Our Mission & Best Strategy</a>
@@ -221,7 +221,7 @@
         <div class="col-md-5">
             <img src="<?php echo base_url('uploads/landing_img/course mock/pic1.png'); ?>" alt="Image" class="h-100 img-fluid rounded">
         </div>
-        <div class="col-md-7 px-5">
+        <div class="col-md-7 px-3">
             <h2>Success is built on industry insights and a dedication to the detail</h2>
             <p>Our specialised cleaning services focus on creating a healthier atmosphere by meticulously removing dust, debris, and other contaminants. Achieving the highest levels of cleanliness promotes the well-being of personnel and ensures a safer working environment. Our approach involves hyper-hygienic cleaning methods and proactive maintenance, which play a crucial role in extending the lifespan of critical equipment, thus reducing the frequency of replacements and minimising any costly operational downtime.</p>
             <p>We provide flexible scheduling options to suit your needs, from annual to monthly cleanings. These services are also available for emergencies, such as in response to floods or other disasters, and for preparing spaces for new equipment installation post-construction. Additionally, our cleaning processes are designed to maintain optimal power quality, sustain the necessary humidity levels, and enhance indoor air quality, contributing to the overall efficiency and safety of the environment.</p>
@@ -232,7 +232,7 @@
 <!-- ESG Section -->
 <div class="container my-5 esg-section">
     <div class="row Data_Centres">
-        <div class="col-md-7 px-5">
+        <div class="col-md-7 px-3">
             <h2>Data Centres + ESG</h2>
             <p>OCS provides carbon management services for data centres, focusing on reducing their carbon footprint and enhancing sustainability. These services are crucial in a country like India, where demand for data storage and processing is growing alongside an increasing emphasis on environmental responsibility.</p>
             <ul class="list-unstyled">

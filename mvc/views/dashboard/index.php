@@ -531,7 +531,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
 
-                                    <i class="fa-solid fa-tag text-white opacity-10"></i>
+                                    <i class="fa-solid fa-tag fa-2x text-white opacity-10"></i>
                                 </div>
                                 <div class="d-flex flex-column">
                                     <h6 class="mb-1 text-dark text-sm">Tickets</h6>
@@ -545,7 +545,7 @@
                         <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                             <div class="d-flex align-items-center">
                                 <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                                    <i class="fa-solid fa-circle-xmark  text-white opacity-10"></i>
+                                    <i class="fa-solid fa-circle-xmark fa-2x text-white opacity-10"></i>
                                 </div>
                                 <div class="d-flex flex-column">
                                     <h6 class="mb-1 text-dark text-sm">Error logs</h6>
@@ -560,7 +560,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
 
-                                    <i class="fa-solid fa-face-smile text-white opacity-10"></i>
+                                    <i class="fa-solid fa-face-smile fa-2x text-white opacity-10"></i>
                                 </div>
                                 <div class="d-flex flex-column">
                                     <h6 class="mb-1 text-dark text-sm">Happy users</h6>
