@@ -110,7 +110,7 @@ class Signin extends REST_Controller
                 "loggedin"                => true,
                 "varifyvaliduser"       => true,
             ];
-
+           
             $this->session->unset_userdata('master_permission_set');
             $this->session->set_userdata($sessionArray);
             $permissionSet  = [];
@@ -118,6 +118,7 @@ class Signin extends REST_Controller
             if ($this->session->userdata('usertypeID') == 1 && $this->session->userdata('loginuserID') == 1) {
                 if (isset($session['loginuserID'])) {
                     $features   = $this->permission_m->get_permission();
+                    // dd($features);
                     if (customCompute($features)) {
                         foreach ($features as $featureKey => $feature) {
                             $permissionSet['master_permission_set'][trim((string) $feature->name)] = $feature->active;
@@ -129,6 +130,7 @@ class Signin extends REST_Controller
                 }
             } elseif (isset($session['loginuserID'])) {
                 $features   = $this->permission_m->get_modules_with_permission($session['usertypeID']);
+                
                 foreach ($features as $feature) {
                     $permissionSet['master_permission_set'][$feature->name] = $feature->active;
                 }
@@ -137,7 +139,7 @@ class Signin extends REST_Controller
                 }
                 $this->session->set_userdata($permissionSet);
             }
-
+           
             return $sessionArray;
         } else {
             return false;
