@@ -89,7 +89,8 @@ public $data;
 				// dd($getLoginStudent->studentID);
 				$student_enrollment = $this->student_m->get_enrollment_record(array('studentID' => $getLoginStudent->studentID));
 				// dd($student_enrollment->section_id);
-				$subjects	= $this->subject_m->get_order_by_subject(array('classesID' => $student_enrollment->section_id));
+				// $subjects	= $this->subject_m->get_order_by_subject(array('classesID' => $student_enrollment->section_id));
+					$subjects = array();
 				
 			} else {
 				$subjects = array();

@@ -90,6 +90,7 @@ class Admin_Controller extends MY_Controller {
             "home/payment",
             "mock_course/index",
 
+
         ];
 
         // dd(in_array(uri_string(), $exception_uris));

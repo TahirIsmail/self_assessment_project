@@ -42,6 +42,11 @@ class student_m extends MY_Model {
 			return [];
 		}
 	}
+
+	public function get_single_student_details($array) {
+        $query = $this->db->get_where('student', $array);
+        return $query->row(); // Returns a single row as an object
+    }
 	
 
 	public function get_single_student($array) 

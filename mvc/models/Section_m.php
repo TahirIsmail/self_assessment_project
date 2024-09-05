@@ -25,14 +25,19 @@ class Section_m extends MY_Model
 
 
 	public function get_enrolled_sections($student_id) {
-        $this->db->select('section.sectionID as id, section.section as name, section.slug, section.image, section.cost, section.paid');
-        $this->db->from('section');
-        $this->db->join('student_enrollment_mock_test', 'section.sectionID = student_enrollment_mock_test.section_id');
-        $this->db->where('student_enrollment_mock_test.studentID', $student_id);        
-        $this->db->or_where('student_enrollment_mock_test.is_expired', 0);
-        $query = $this->db->get();
-        return $query->result();
-    }
+		$this->db->select('section.sectionID as id, section.section as name, section.slug, section.image, section.cost, section.paid');
+		$this->db->from('section');
+		$this->db->join('student_enrollment_mock_test', 'section.sectionID = student_enrollment_mock_test.section_id');
+		
+		// Use where to ensure that the studentID is correctly filtered
+		$this->db->where('student_enrollment_mock_test.studentID', $student_id);
+		
+		// Check if is_expired = 0 should be combined with studentID check
+		$this->db->where('student_enrollment_mock_test.is_expired', 0);
+	
+		$query = $this->db->get();
+		return $query->result();
+	}
 
     public function get_unenrolled_sections($student_id) {
         $this->db->select('section.sectionID as id, section.section as name, section.slug, section.image, section.cost, section.paid');
