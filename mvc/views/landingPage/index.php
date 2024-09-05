@@ -140,18 +140,6 @@ $is_logged_in = $this->session->userdata('loggedin');
     </div>
 
 
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> 6b92c1715cbfaeef94fb060cf1b4115d0295e343
     <!-- Service Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -595,24 +583,11 @@ $is_logged_in = $this->session->userdata('loggedin');
             }
             ?>
 
-<<<<<<< HEAD
-                <?php } ?>
-            <?php } ?>
-=======
->>>>>>> 6b92c1715cbfaeef94fb060cf1b4115d0295e343
         </div>
     </div>
 
 
 
-<<<<<<< HEAD
-
-
-
-    <!-- Courses End -->
-
-=======
->>>>>>> 6b92c1715cbfaeef94fb060cf1b4115d0295e343
 
 
     <!-- Categories Start -->
