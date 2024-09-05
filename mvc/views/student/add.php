@@ -94,6 +94,21 @@
                         </span>
                     </div>
 
+
+
+                    <div class="form-group <?= form_error('referred_by') ? 'has-error' : '' ?>"">
+                        <label for="referred_by" class="col-sm-2 control-label">
+                            <?= $this->lang->line("referred_by") ?>
+                        </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="referred_by" name="referred_by" value="<?= set_value('referred_by') ?>">
+                        </div>
+                        <span class="col-sm-4 control-label">
+                            <?php echo form_error('referred_by'); ?>
+                        </span>
+                        
+                    </div>
+
                     <!-- <div class="form-group <?= form_error('state') ? 'has-error' : '' ?>">
                         <label for="state" class="col-sm-2 control-label">
                             <?= $this->lang->line("student_state") ?>

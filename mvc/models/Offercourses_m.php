@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Section_m extends MY_Model
+class Offercourses_m extends MY_Model
 {
 
 	protected $_table_name = 'section';

@@ -165,7 +165,7 @@ class home extends Admin_Controller
             $this->payment_gateway->gateway($this->input->post('payment_method'))->payment($this->input->post(), $invoice_data);
 
         } else {
-            $this->session->set_flashdata('error', 'Course does not found');
+            $this->session->set_flashdata('error', 'Mock Test does not found');
             redirect(base_url('home/index'));
         }
     }

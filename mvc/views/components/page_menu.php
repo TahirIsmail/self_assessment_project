@@ -30,6 +30,7 @@
         <?php $usertype = $this->session->userdata("usertype"); ?>
         <ul class="sidebar-menu">
             <?php
+            
             if(inicompute($dbMenus)) {
                 $menuDesign = '';               
                 display_menu($dbMenus, $menuDesign);

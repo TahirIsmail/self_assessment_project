@@ -36,9 +36,10 @@
             </div>
 
             <div class="col-sm-12">
+                <h5 class="page-header"><?= $this->lang->line('suggestion_courses') ?></h5>
                 <div class="row">
                     <?php if ($unenrolled_courses) { ?>
-                        <h5 class="page-header"><?= $this->lang->line('suggestion_courses') ?></h5>
+
                         <?php foreach ($unenrolled_courses as $un_course) { ?>
                             <div class="col-md-4">
                                 <div class="course-card" style="position: relative; background-color: white; border-radius: 8px; overflow: hidden;">
