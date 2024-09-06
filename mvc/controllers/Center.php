@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Section extends Admin_Controller
+class Center extends Admin_Controller
 {
 	public $load;
 	public $session;
@@ -9,7 +9,7 @@ class Section extends Admin_Controller
 	public $uri;
 	public $form_validation;
 	public $input;
-	public $section_m;
+	public $Center_m;
 	public $studentrelation_m;
 	/*
 | -----------------------------------------------------
@@ -27,7 +27,7 @@ class Section extends Admin_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("section_m");
+		$this->load->model("Center_m");
 		$this->load->model('classes_m');
 		$this->load->model('studentrelation_m');
 		$this->load->model('teacher_m');
@@ -140,8 +140,6 @@ class Section extends Admin_Controller
 	public function index()
 	{
 
-		
-
 		$this->data['headerassets'] = array(
 			'css' => array(
 				'assets/select2/css/select2.css',
@@ -158,7 +156,7 @@ class Section extends Admin_Controller
 			$this->data['classes'] = $this->classes_m->get_classes();
 			// $this->data['sections'] = $this->section_m->get_join_section($id);
 			$this->data['sections'] = $this->section_m->get_join_section_units($id);
-			$this->data["subview"] = "section/index";
+			$this->data["subview"] = "center/index";
 			// dd($this->data['sections']);
 			$this->load->view('_layout_main', $this->data);
 		} else {
@@ -190,7 +188,7 @@ class Section extends Admin_Controller
 			$this->form_validation->set_rules($rules);
 
 			if ($this->form_validation->run() == FALSE) {
-				$this->data["subview"] = "section/add";
+				$this->data["subview"] = "center/add";
 				$this->load->view('_layout_main', $this->data);
 			} else {
 
@@ -253,7 +251,7 @@ class Section extends Admin_Controller
 						// Commit transaction
 						$this->db->trans_commit();
 						$this->session->set_flashdata('success', $this->lang->line('menu_success'));
-						redirect(base_url("section/index/" . $this->input->post('classesID')));
+						redirect(base_url("center/index/" . $this->input->post('classesID')));
 					}
 				} else {
 					// Rollback transaction if course insertion fails
@@ -262,7 +260,7 @@ class Section extends Admin_Controller
 				}
 			}
 		} else {
-			$this->data["subview"] = "section/add";
+			$this->data["subview"] = "center/add";
 			$this->load->view('_layout_main', $this->data);
 		}
 	}
@@ -309,7 +307,7 @@ class Section extends Admin_Controller
 
 						$this->section_m->update_section($array, $id);
 						$this->session->set_flashdata('success', $this->lang->line('menu_success'));
-						redirect(base_url("section/index/$url"));
+						redirect(base_url("center/index/$url"));
 					}
 				} else {
 					$this->data["subview"] = "section/edit";
@@ -332,9 +330,9 @@ class Section extends Admin_Controller
 		if ((int)$id && (int)$url) {
 			$this->section_m->delete_section($id);
 			$this->session->set_flashdata('success', $this->lang->line('menu_success'));
-			redirect(base_url("section/index/$url"));
+			redirect(base_url("center/index/$url"));
 		} else {
-			redirect(base_url("section/index"));
+			redirect(base_url("center/index"));
 		}
 	}
 
@@ -370,10 +368,10 @@ class Section extends Admin_Controller
 	{
 		$classID = $this->input->post('id');
 		if ((int)$classID !== 0) {
-			$string = base_url("section/index/$classID");
+			$string = base_url("center/index/$classID");
 			echo $string;
 		} else {
-			redirect(base_url("section/index"));
+			redirect(base_url("center/index"));
 		}
 	}
 

@@ -1,6 +1,15 @@
 <?php
 
 /* List Language  */
+$lang['center_price'] = "Price";
+$lang['center_date'] = "Date";
+$lang['center_title'] = "Center";
+$lang['center_city'] = "City";
+$lang['course_photo'] = "Course Image";
+$lang['course_name'] = "Name";
+$lang['course_description'] = "Description";
+$lang['course_title'] = "Courses";
+$lang['course_id'] = "Id Courses";
 $lang['panel_title'] = "Mock Courses";
 $lang['add_title'] = "Add a mock course";
 $lang['slno'] = "#";

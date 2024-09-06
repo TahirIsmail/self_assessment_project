@@ -313,7 +313,9 @@ function btn_payment($uri, $name)
 function permissionChecker($data)
 {
     $CI = &get_instance();
+    // dd($CI->session->userdata('master_permission_set'));
     $sessionPermission = $CI->session->userdata('master_permission_set');
+   
     if (isset($sessionPermission[$data]) && $sessionPermission[$data] == 'yes') {
         return true;
     }
@@ -603,7 +605,7 @@ function btn_upload($uri, $name)
 
 function display_menu($nodes, &$menu)
 {
-
+   
     // dd($nodes);
     $subUrl = ['/add', '/edit', '/view', '/index'];
 
@@ -618,6 +620,8 @@ function display_menu($nodes, &$menu)
         if (isset($node['child'])) {
             $f = 1;
         }
+
+        
 
         if (permissionChecker($node['link']) || ($node['link'] == '#' && $f)) {
             if ($f && inicompute($node['child']) == 1) {
@@ -650,6 +654,8 @@ function display_menu($nodes, &$menu)
             }
             $menu .= "</li>";
         }
+
+       
     }
 }
 
