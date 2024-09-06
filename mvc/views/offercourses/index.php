@@ -4,7 +4,7 @@
 
         <ol class="breadcrumb">
             <li><a href="<?= base_url("dashboard/index") ?>"><i class="fa fa-laptop"></i> <?= $this->lang->line('menu_dashboard') ?></a></li>
-            <li class="active"><?= $this->lang->line('menu_section') ?></li>
+            <li class="active"><?= $this->lang->line('menu_course') ?></li>
         </ol>
     </div><!-- /.box-header -->
     <!-- form start -->
@@ -13,7 +13,7 @@
             <div class="col-sm-12">
 
                 <?php
-                if (permissionChecker('section_add')) {
+                if (permissionChecker('course_add')) {
                 ?>
                     <h5 class="page-header">
                         <a href="<?php echo base_url('offercourses/add') ?>">
@@ -23,7 +23,7 @@
 
                         <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12 pull-right drop-marg">
                             <?php
-                            $array = array("0" => $this->lang->line("section_select_class"));
+                            $array = array("0" => $this->lang->line("course_select_class"));
                             if (inicompute($classes)) {
                                 foreach ($classes as $classa) {
                                     $array[$classa->classesID] = $classa->classes;
@@ -43,44 +43,44 @@
                         <thead>
                             <tr>
                                 <th class="col-lg-1"><?= $this->lang->line('slno') ?></th>
-                                <th class="col-lg-2"><?= $this->lang->line('section_name') ?></th>
-                                <th class="col-lg-2"><?= $this->lang->line('section_category') ?></th>
+                                <th class="col-lg-2"><?= $this->lang->line('course_name') ?></th>
+                                <th class="col-lg-2"><?= $this->lang->line('course_category') ?></th>
                                 <th class="col-lg-2"><?= $this->lang->line('subject_names') ?></th>
-                                <th class="col-lg-2"><?= $this->lang->line('section_note') ?></th>
-                                <?php if (permissionChecker('section_edit') || permissionChecker('section_delete')) { ?>
+                                <th class="col-lg-2"><?= $this->lang->line('course_note') ?></th>
+                                <?php if (permissionChecker('course_edit') || permissionChecker('course_delete')) { ?>
                                     <th class="col-lg-1"><?= $this->lang->line('action') ?></th>
                                 <?php } ?>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (inicompute($sections)) {
+                            <?php if (inicompute($courses)) {
                                 $i = 1;
-                                foreach ($sections as $section) {
-                                    // dd($section['section']);
+                                foreach ($courses as $course) {
+                                    // dd($course['course']);
                             ?>
                                     <tr>
                                         <td data-title="<?= $this->lang->line('slno') ?>">
                                             <?php echo $i; ?>
                                         </td>
-                                        <td data-title="<?= $this->lang->line('section_name') ?>">
-                                            <?php echo $section['section']; ?>
+                                        <td data-title="<?= $this->lang->line('course_name') ?>">
+                                            <?php echo $course['course_name']; ?>
                                         </td>
-                                        <td data-title="<?= $this->lang->line('section_category') ?>">
-                                            <?php echo $section['category']; ?>
+                                        <td data-title="<?= $this->lang->line('course_category') ?>">
+                                            <?php echo $course['category']; ?>
                                         </td>
-                                        <td data-title="<?= $this->lang->line('section_capacity') ?>">
+                                        <td data-title="<?= $this->lang->line('subject_names') ?>">
                                             <?php
-                                            $subjectNames = array_column($section['subjects'], 'subject');
+                                            $subjectNames = array_column($course['subjects'], 'subject');
                                             echo implode(', ', $subjectNames);
                                             ?>
                                         </td>
-                                        <td data-title="<?= $this->lang->line('section_note') ?>">
-                                            <?php echo $section['note']; ?>
+                                        <td data-title="<?= $this->lang->line('course_note') ?>">
+                                            <?php echo $course['note']; ?>
                                         </td>
-                                        <?php if (permissionChecker('section_edit') || permissionChecker('section_delete')) { ?>
+                                        <?php if (permissionChecker('course_edit') || permissionChecker('course_delete')) { ?>
                                             <td data-title="<?= $this->lang->line('action') ?>">
-                                                <?php echo btn_edit('section/edit/' . $section['sectionID'] . '/' . $set, $this->lang->line('edit')) ?>
-                                                <?php echo btn_delete('section/delete/' . $section['sectionID'] . '/' . $set, $this->lang->line('delete')) ?>
+                                                <?php echo btn_edit('offercourses/edit/' . $course['courseID'] . '/' . $set, $this->lang->line('edit')) ?>
+                                                <?php echo btn_delete('offercourses/delete/' . $course['courseID'] . '/' . $set, $this->lang->line('delete')) ?>
                                             </td>
                                         <?php } ?>
                                     </tr>
@@ -90,8 +90,6 @@
                         </tbody>
                     </table>
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -105,7 +103,7 @@
         } else {
             $.ajax({
                 type: 'POST',
-                url: "<?= base_url('section/section_list') ?>",
+                url: "<?= base_url('offercourses/course_list') ?>",
                 data: "id=" + classesID,
                 dataType: "html",
                 success: function(data) {
