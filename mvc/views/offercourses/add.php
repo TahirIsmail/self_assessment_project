@@ -138,6 +138,7 @@ if (form_error('judge')) {
     echo form_dropdown("judge", $array, set_value("judge"), "id='judge' class='form-control select2'");
     ?>
 </div>
+
 <span class="col-sm-4 control-label">
     <?php echo form_error('judge'); ?>
 </span>
