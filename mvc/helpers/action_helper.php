@@ -620,10 +620,10 @@ function display_menu($nodes, &$menu)
         if (isset($node['child'])) {
             $f = 1;
         }
-
         
-
-        if (permissionChecker($node['link']) || ($node['link'] == '#' && $f)) {
+        
+        if(isset($node['link'])){
+        if ((permissionChecker($node['link'])) || ($node['link'] == '#' && $f)) {
             if ($f && inicompute($node['child']) == 1) {
                 $f = 0;
                 $node = current($node['child']);
@@ -654,6 +654,7 @@ function display_menu($nodes, &$menu)
             }
             $menu .= "</li>";
         }
+    }
 
        
     }

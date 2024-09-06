@@ -19,15 +19,13 @@ class Offercourses_m extends MY_Model
         return $this->db->insert_id();  
     }
 
-    
     public function get_all_courses()
     {
         $query = $this->db->get('courses');
         return $query->result_array();
     }
 
-    
-    public function get_join_course($id)
+        public function get_join_course($id)
     {
         $this->db->select('*');
         $this->db->from('courses');
@@ -37,9 +35,10 @@ class Offercourses_m extends MY_Model
         return $query->result();
     }
 
+    
     public function get_enrolled_courses($student_id)
     {
-        $this->db->select('courses.id as id, courses.course_name as name, courses.slug, courses.image, courses.cost, courses.paid');
+        $this->db->select('courses.id as id, courses.course_name as name, courses.course_id, courses.photo, courses.cost');
         $this->db->from('courses');
         $this->db->join('student_enrollment_mock_test', 'courses.id = student_enrollment_mock_test.course_id');
         $this->db->where('student_enrollment_mock_test.studentID', $student_id);
@@ -48,10 +47,10 @@ class Offercourses_m extends MY_Model
         return $query->result();
     }
 
-   
+    
     public function get_unenrolled_courses($student_id)
     {
-        $this->db->select('courses.id as id, courses.course_name as name, courses.slug, courses.image, courses.cost, courses.paid');
+        $this->db->select('courses.id as id, courses.course_name as name, courses.course_id, courses.photo, courses.cost');
         $this->db->from('courses');
         $this->db->join('student_enrollment_mock_test', 'courses.id = student_enrollment_mock_test.course_id AND student_enrollment_mock_test.studentID = ' . $student_id, 'left');
         $this->db->group_start();
@@ -88,7 +87,10 @@ class Offercourses_m extends MY_Model
                 $courseData[$row['id']] = [
                     'courseID' => $row['id'],
                     'course_name' => $row['course_name'],
-                    'note' => $row['note'],
+                    'course_description' => $row['course_description'],
+                    'validDays' => $row['validDays'],
+                    'cost' => $row['cost'],
+                    'photo' => $row['photo'],
                     'subjects' => []
                 ];
             }
@@ -103,68 +105,84 @@ class Offercourses_m extends MY_Model
         return array_values($courseData);
     }
 
-    // Get all course details
+   
     public function get_all_course_details()
     {
         $query = $this->db->get('courses');
         return $query->result_array();
     }
 
-    // Generic get method for courses
+   
     public function general_get_course($array = NULL, $signal = FALSE)
     {
         return parent::get($array, $signal);
     }
 
-    // Generic get order by method for courses
+    
     public function general_get_order_by_course($array = NULL)
     {
         return parent::get_order_by($array);
     }
 
-    // Get single course by array
+    
     public function get_single_course($array)
     {
         return parent::get_single($array);
     }
 
-    // Get courses by array (for more than one)
-    public function get_course($array = NULL, $signal = FALSE)
-    {
-        return parent::get($array, $signal);
-    }
-
-    // Get course by slug
+    
     public function get_course_record($slug = NULL)
     {
-        $this->db->where($slug);
+        if($slug){
+        $this->db->where('course_id', $slug);
+         }
         $query = $this->db->get('courses');
         return $query->result();
-    }
-
-    // Get courses in order
-    public function get_order_by_course($array = NULL)
+    }    public function get_order_by_course($array = NULL)
     {
         return parent::get_order_by($array);
     }
 
-    // Insert course and return the ID
+    
     public function insert_course_return_record($array)
     {
         $id = parent::insert($array);
         return $id;
     }
 
-    // Update course data
-    public function update_course($data, $id = NULL)
-    {
-        parent::update($data, $id);
-        return $id;
-    }
+    
+    
 
-    // Delete course
     public function delete_course($id)
     {
         parent::delete($id);
     }
+	public function get_course_by_id($course_id)
+{
+    $this->db->where('id', $course_id); 
+    $query = $this->db->get('courses'); 
+    if ($query === false) {
+       
+        return false;
+    }
+
+    return $query->row(); 
+}
+
+public function update_course_by_id($data, $course_id) {
+	// Ensure data and course_id are provided
+	if (!empty($data) && !empty($course_id)) {
+		// Set the condition to update the course with the given ID
+		$this->db->where('id', $course_id);  // Assuming 'id' is the primary key in the 'courses' table
+
+		// Update the course with the provided data
+		$this->db->update('courses', $data);  // Replace 'courses' with the correct table name
+		
+		return $this->db->affected_rows();  // Return the number of affected rows
+	} else {
+		return false;  // Return false if data or course_id is missing
+	}
+}
+
+
 }

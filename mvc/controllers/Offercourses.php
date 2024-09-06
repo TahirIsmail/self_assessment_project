@@ -10,27 +10,37 @@ class Offercourses extends Admin_Controller
         $this->load->model('studentrelation_m');
         $this->load->model('teacher_m');
         $this->load->model('subject_m');
+		
+		
+		
         $language = $this->session->userdata('lang');
         $this->lang->load('course', $language);  
+    }
+	
+
+    
+    protected function create_slug($string) {
+        return strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $string)));
+    }
+
+    
+    protected function ensure_unique_slug($slug, $table) {
+        $this->db->like('course_id', $slug, 'after');
+        $existing_slugs = $this->db->get($table)->result_array();
+        if (!empty($existing_slugs)) {
+           
+            $slug .= '-' . (count($existing_slugs) + 1);
+        }
+        return $slug;
     }
 
     protected function rules($ispaid = 0)
     {
         return array(
             array(
-                'field' => 'course',
+                'field' => 'course_name',
                 'label' => $this->lang->line("course_name"),
-                'rules' => 'trim|required|xss_clean|max_length[60]|callback_unique_course'
-            ),
-            array(
-                'field' => 'subject_name',
-                'label' => $this->lang->line("subject_name"),
-                'rules' => 'trim|required|xss_clean'
-            ),
-            array(
-                'field' => 'classesID',
-                'label' => $this->lang->line("course_classes"),
-                'rules' => 'trim|required|numeric|max_length[11]|xss_clean|callback_allclasses'
+                'rules' => 'trim|required|xss_clean|max_length[60]'
             ),
             array(
                 'field' => 'photo',
@@ -43,14 +53,51 @@ class Offercourses extends Admin_Controller
                 'rules' => 'trim|max_length[200]|xss_clean'
             )
         );
-        if ($ispaid == 1) {
-            $rules[] = array(
-                'field' => 'cost',
-                'label' => $this->lang->line("course_cost"),
-                'rules' => 'trim|xss_clean|required|numeric|callback_unique_cost'
-            );
-        }
+       
     }
+	public function photoupload()
+	{
+		$id = htmlentities((string) escapeString($this->uri->segment(3)));
+		$student = array();
+		if ((int)$id !== 0) {
+			$student = $this->student_m->get_student($id);
+		}
+		$new_file = "default.png";
+
+		if ($_FILES["photo"]['name'] != "") {
+			$file_name = $_FILES["photo"]['name'];
+			$random = rand(1, 10000000000000000);
+			$makeRandom = hash('sha512', $random . $this->input->post('section') . config_item("encryption_key"));
+			$file_name_rename = $makeRandom;
+			$explode = explode('.', (string) $file_name);
+			if (inicompute($explode) >= 2) {
+				$new_file = $file_name_rename . '.' . end($explode);
+				$config['upload_path'] = "./uploads/images";
+				$config['allowed_types'] = "gif|jpg|png";
+				$config['file_name'] = $new_file;
+				$config['max_size'] = '1024';
+				$config['max_width'] = '3000';
+				$config['max_height'] = '3000';
+				$this->load->library('upload', $config);
+				if (!$this->upload->do_upload("photo")) {
+					$this->form_validation->set_message("photoupload", $this->upload->display_errors());
+					return FALSE;
+				} else {
+					$this->upload_data['file'] =  $this->upload->data();
+					return TRUE;
+				}
+			} else {
+				$this->form_validation->set_message("photoupload", "Invalid file.");
+				return FALSE;
+			}
+		} elseif (inicompute($student)) {
+			$this->upload_data['file'] = array('file_name' => $student->photo);
+			return TRUE;
+		} else {
+			$this->upload_data['file'] = array('file_name' => $new_file);
+			return TRUE;
+		}
+	}
 
     public function index()
     {
@@ -64,17 +111,21 @@ class Offercourses extends Admin_Controller
             )
         );
         
-        // Fetching courses for the selected class ID
+        
         $id = htmlentities((string) escapeString($this->uri->segment(3)));
-        if ((int)$id !== 0) {
-            $this->data['set'] = $id;
+        if (!$id) {
+			
+            
             $this->data['classes'] = $this->classes_m->get_classes();
-            $this->data['courses'] = $this->Offercourses_m->get_join_course_units($id);  // Corrected to use courses
-            $this->data["subview"] = "offercourses/index";  // Ensure correct view
+            $this->data['courses'] = $this->Offercourses_m->get_course_record();
+			// dd($this->data['courses']);
+            $this->data["subview"] = "offercourses/index";
             $this->load->view('_layout_main', $this->data);
         } else {
+			$this->data['set'] = $id;
             $this->data['classes'] = $this->classes_m->get_classes();
-            $this->data["subview"] = "offercourses/search";  // Ensure view path is correct
+			$this->data['courses'] = $this->Offercourses_m->get_course_record($id);
+            $this->data["subview"] = "offercourses/search";
             $this->load->view('_layout_main', $this->data);
         }
     }
@@ -95,70 +146,36 @@ class Offercourses extends Admin_Controller
         $this->data['teachers'] = $this->teacher_m->get_teacher();
 
         if ($_POST !== []) {
-            $rules = $this->rules($this->input->post('ispaid'));
+            $rules = $this->rules();
             $this->form_validation->set_rules($rules);
 
             if ($this->form_validation->run() == FALSE) {
-                $this->data["subview"] = "offercourses/add";  // Ensure correct view path
+                $this->data["subview"] = "offercourses/add";  
                 $this->load->view('_layout_main', $this->data);
-            } else {
-                $slug = create_slug($this->input->post("course"));
-                $slug = ensure_unique_slug($slug, 'courses');
-                $image = $this->upload_data['file']['file_name'];
 
+            } else {
+                
+
+				// dd($this->upload_data['file']['file_name']);
+                $slug = $this->create_slug($this->input->post("course_name"));
+                $slug = $this->ensure_unique_slug($slug, 'courses');
+				$image = $this->upload_data['file']['file_name'];
+				// dd($image);
                 $array = array(
-                    "course" => $this->input->post("course"),
-                    "slug" => $slug,
-                    "image" => $image,
-                    "classesID" => $this->input->post("classesID"),
-                    "note" => $this->input->post("note"),
-                    "create_date" => date("Y-m-d h:i:s"),
-                    "modify_date" => date("Y-m-d h:i:s"),
-                    "create_userID" => $this->session->userdata('loginuserID'),
-                    "create_username" => $this->session->userdata('username'),
-                    "create_usertype" => $this->session->userdata('usertype'),
-                    'paid' => $this->input->post('ispaid'),
-                    'validDays' => $this->input->post('validDays') != null ? $this->input->post('validDays') : '0',
-                    'cost' => $this->input->post('cost'),
+                    "course_id" => $slug, 
+					"photo" => $image,
+                    "course_name" => $this->input->post("course_name"),
+                    "course_description" => $this->input->post("course_description"),
+                    "validDays" => $this->input->post("validDays") != null ? $this->input->post('validDays') : '0',
+                    "cost" => $this->input->post("cost"),
                 );
 
-                if ($this->input->post('ispaid') == 0) {
-                    $array['cost'] = 0;
-                }
+				// dd($array);
 
-                $subjectNamesString = $this->input->post('subject_name');
-                $subjectNamesArray = explode(',', $subjectNamesString);
-                $units = [];
-
-                $this->db->trans_begin();
-
-                $course_id = $this->Offercourses_m->insert_course_return_record($array);
-
-                if ($course_id) {
-                    foreach ($subjectNamesArray as $unit) {
-                        $units[] = array(
-                            'subject' => $unit,
-                            'course_id' => $course_id,
-                            "create_date" => date("Y-m-d h:i:s"),
-                            "create_userID" => $this->session->userdata('loginuserID'),
-                            "create_username" => $this->session->userdata('username'),
-                            "create_usertype" => $this->session->userdata('usertype')
-                        );
-                    }
-                    $u = $this->subject_m->insert_subject($units);
-
-                    if ($this->db->trans_status() === FALSE) {
-                        $this->db->trans_rollback();
-                        $this->session->set_flashdata('error', $this->lang->line('menu_failure'));
-                    } else {
-                        $this->db->trans_commit();
-                        $this->session->set_flashdata('success', $this->lang->line('menu_success'));
-                        redirect(base_url("offercourses/index/" . $this->input->post('classesID')));
-                    }
-                } else {
-                    $this->db->trans_rollback();
-                    $this->session->set_flashdata('error', $this->lang->line('menu_failure'));
-                }
+               
+                $this->Offercourses_m->insert_course($array);
+                $this->session->set_flashdata('success', 'Course added successfully');
+                redirect(base_url("offercourses/index"));
             }
         } else {
             $this->data["subview"] = "offercourses/add";
@@ -177,5 +194,39 @@ class Offercourses extends Admin_Controller
         } else {
             redirect(base_url("offercourses/index"));
         }
+    }
+	public function edit($course_id = null)
+    {
+        if ($course_id === null || !is_numeric($course_id)) {
+            $this->session->set_flashdata('error', 'Invalid course ID');
+            redirect(base_url("offercourses/index"));
+        }
+
+        $this->data['course'] = $this->Offercourses_m->get_course_by_id($course_id);
+
+        if (empty($this->data['course'])) {
+            $this->session->set_flashdata('error', 'Course not found');
+            redirect(base_url("offercourses/index"));
+        }
+
+        $this->data['classes'] = $this->classes_m->get_classes();
+        $this->data['teachers'] = $this->teacher_m->get_teacher();
+
+
+        $this->data["subview"] = "offercourses/edit";
+        $this->load->view('_layout_main', $this->data);
+    }
+
+	public function update($course_id = null)
+    {
+		$array = array(
+			"course_name" => $this->input->post("course_name"),
+			"course_description" => $this->input->post("course_description"),			
+		);
+
+		
+		$this->Offercourses_m->update_course_by_id($array, $this->input->post('id'));
+		$this->session->set_flashdata('success', 'Course has been Updated!');
+		redirect(base_url("offercourses/index"));
     }
 }
