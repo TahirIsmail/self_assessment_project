@@ -1,6 +1,10 @@
 <?php
 
 /* List Language  */
+$lang['center_price'] = "Price";
+$lang['center_date'] = "Date";
+$lang['center_title'] = "Center";
+$lang['center_city'] = "City";
 $lang['course_photo'] = "Course Image";
 $lang['course_name'] = "Name";
 $lang['course_description'] = "Description";

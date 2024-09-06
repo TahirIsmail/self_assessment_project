@@ -26,6 +26,7 @@ class Admin_Controller extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->model("center_m");
         $this->load->model("Offercourses_m");
         $this->load->model("contactus_m");
         $this->load->model("course_m");
@@ -90,7 +91,8 @@ class Admin_Controller extends MY_Controller {
             "home/course",
             "home/payment",
             "mock_course/index",
-            "offercourses/index"
+            "offercourses/index",
+             "center/index"
 
 
         ];
