@@ -74,10 +74,9 @@ class Online_exam_m extends MY_Model {
         // $this->db->or_where('classID', '0');
         // $this->db->group_end();
 
-        $this->db->group_start(); // Starting a group for sectionID condition
-        $this->db->where('sectionID', $array['sectionID']);
-        $this->db->or_where('sectionID', '0');
-        $this->db->group_end();
+        // $this->db->group_start(); // Starting a group for sectionID condition
+        // $this->db->where('sectionID', $array['sectionID']);
+        // $this->db->group_end();
 
         // $this->db->group_start(); // Starting a group for studentgroupID condition
         // $this->db->where('studentgroupID', $array['studentgroupID']);

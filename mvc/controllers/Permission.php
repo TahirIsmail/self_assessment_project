@@ -42,7 +42,7 @@ public $load;
 		);
  		$id = htmlentities((string) escapeString($this->uri->segment(3)));
 		
-		if((int)$id !== 0) {
+		if($id && $id !==0) {
 			$usertype = $this->usertype_m->get_usertype($id);
 			if(inicompute($usertype)) {
 				$this->data['set'] = $id;

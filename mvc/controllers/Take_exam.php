@@ -250,25 +250,25 @@ class Take_exam extends Admin_Controller
             $this->data['student'] = $this->student_m->get_student($userID);
             $student_enroll_course_detail = $this->student_m->get_enroll_course_detail($userID);
 
-            // dd($student_enroll_course_detail[0]['section_id']);
+            // dd($student_enroll_course_detail);
             // dd($this->data['student']);
 
             if (inicompute($this->data['student']) && $student_enroll_course_detail[0]['section_id']) {
 
-                $array['classesID']      = $this->data['student']->classesID;
-                $array['sectionID']      = $student_enroll_course_detail[0]['section_id'];
-                $array['studentgroupID'] = $this->data['student']->studentgroupID;
+                // $array['classesID']      = $this->data['student']->classesID;
+                // $array['sectionID']      = $student_enroll_course_detail[0]['section_id'];
+                // $array['studentgroupID'] = $this->data['student']->studentgroupID;
                 $array['onlineExamID']   = $onlineExamID;
 
                 
-                $online_exam             = $this->online_exam_m->get_online_exam_by_student($array);
                 
+                $online_exam             = $this->online_exam_m->get_online_exam_by_student($array);
                 // dd($online_exam);
 
                 $userExamCheck = $this->online_exam_user_status_m->get_order_by_online_exam_user_status([
                     'userID'       => $userID,
-                    'classesID'    => $array['classesID'],
-                    'sectionID'    => $array['sectionID'],
+                    // 'classesID'    => $array['classesID'],
+                    // 'sectionID'    => $array['sectionID'],
                     'onlineExamID' => $onlineExamID
                 ]);
 
@@ -329,6 +329,8 @@ class Take_exam extends Admin_Controller
                             } else {
                                 $examSubjectStatus = FALSE;
                             }
+
+                            
                         } else {
                             $examSubjectStatus = TRUE;
                         }

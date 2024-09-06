@@ -73,6 +73,8 @@ public $data;
 		$mainmenu     = $this->menu_m->get_order_by_menu();
 		$allmenu 	  = pluck($mainmenu, 'icon', 'link');
 		$allmenulang  = pluck($mainmenu, 'menuName', 'link');
+
+	
 		
 		if((config_item('demo') === FALSE) && ($this->data['siteinfos']->auto_update_notification == 1) && ($this->session->userdata('usertypeID') == 1) && ($this->session->userdata('loginuserID') == 1)) {
 			$this->data['versionChecking'] = $this->session->userdata('updatestatus') === null ? $this->checkUpdate() : 'none';
@@ -120,7 +122,7 @@ public $data;
 		$this->data['dashboardWidget']['allmenulang'] 		= $allmenulang;
 		
 		// echo '<pre>';
-		// print_r($this->data['dashboardWidget']);
+		// print_r($this->data['dashboardWidget']['allmenu']);
 		// echo '</pre>';exit;
 		
 		$currentDate = strtotime(date('Y-m-d H:i:s'));
