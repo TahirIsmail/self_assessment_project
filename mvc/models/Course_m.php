@@ -7,13 +7,5 @@ class Course_m extends MY_Model {
         parent::__construct();
     }
 
-    public function signout()
-    {
-        $this->session->sess_destroy();
-    }
-
-    public function loggedin()
-    {
-        return (bool) $this->session->userdata("loggedin");
-    }
+  
 }

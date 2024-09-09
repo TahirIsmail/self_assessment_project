@@ -33,6 +33,5 @@ class Course extends Admin_Controller
     public function index()
     {
         $this->load->view('course/index');
-        $this->session->sess_destroy();
     }
 }
