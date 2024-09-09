@@ -82,9 +82,7 @@ class Signin extends Admin_Controller
             }
         } else {
             $this->data["subview"]         = "signin/index";
-            $this->load->view('_layout_signin', $this->data);
-            $this->session->sess_destroy();
-        }
+            $this->load->view('_layout_signin', $this->data);        }
     }
 
    

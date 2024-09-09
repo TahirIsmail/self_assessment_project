@@ -60,7 +60,7 @@
     <a href="<?= base_url('home/index') ?>" class="navbar-brand p-0">
 
 
-        <img src="http://self_assessment_project.test/uploads/images/SL-red-logo.png" alt="Logo">
+        <img src="<?= base_url('/uploads/images/SL-red-logo.png')?>" alt="Logo">
     </a>
 </div>
 
