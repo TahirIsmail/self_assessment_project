@@ -6,7 +6,7 @@ class Center extends Admin_Controller
     {
         parent::__construct();
         $this->load->model("Center_m");
-        $this->load->model('Coursecenter_m'); 
+        $this->load->model('Coursecenter_m');
         $this->load->library('form_validation');
         $language = $this->session->userdata('lang');
         $this->lang->load('center_lang', $language);
@@ -30,7 +30,7 @@ class Center extends Admin_Controller
                 'label' => 'address',
                 'rules' => 'required|xss_clean|callback_trim_check|max_length[255]'
             ),
-           
+
         );
     }
 
@@ -52,7 +52,7 @@ class Center extends Admin_Controller
                 'label' => 'address',
                 'rules' => 'required|max_length[255]|callback_custom_trim'
             ),
-            
+
         );
     }
 
@@ -78,7 +78,7 @@ class Center extends Admin_Controller
         return TRUE;
     }
 
-    
+
 
     public function index()
     {
@@ -96,136 +96,209 @@ class Center extends Admin_Controller
         $this->data["subview"] = "center/index";
         $this->load->view('_layout_main', $this->data);
     }
-
     public function add()
-{
-    
-    $this->data['courses'] = $this->db->get('courses')->result(); 
-    
-    if ($_POST) {
-        $rules = $this->rules();
-        $this->form_validation->set_rules($rules);
+    {
+        $this->data['courses'] = $this->db->get('courses')->result();
 
-        if ($this->form_validation->run() == FALSE) {
-            $this->data["subview"] = "center/add";
-            $this->load->view('_layout_main', $this->data);
-        } else {
-          
+        try {
+            if ($this->input->post()) {
+                $rules = $this->rules();
+                $this->form_validation->set_rules($rules);
 
-            
-            $data = array(
-                "city" => $this->input->post("city"),
-                "date" => $this->input->post("date"),
-                "address" => $this->input->post("address"),
-                
-            );
+                if ($this->form_validation->run() == FALSE) {
+                    $this->data['selected_courses'] = $this->input->post('selected_courses');
+                    $this->data['course_prices'] = $this->get_course_prices($this->input->post('selected_courses'));
 
-            
-            $center_id = $this->Center_m->insert_center($data);
+                    $this->data["subview"] = "center/add";
+                    $this->load->view('_layout_main', $this->data);
+                } else {
+                    $this->db->trans_begin();
 
-            if($center_id){
-                if ($this->input->post('selected_courses')) {
-                    $selected_courses = $this->input->post('selected_courses');
-            
-                    foreach ($selected_courses as $course_id) {
-                        $price_key = 'course_price_' . $course_id;
-            
-                       
-                        if ($this->input->post($price_key)) {
-                            $price = $this->input->post($price_key);
-            
-                            
-                            $data = array(
-                                'center_id'   => $center_id,
-                                'course_name' => $course_id,  
-                                'price'       => $price
-                            );
-            
-                            
-                            if ($this->Coursecenter_m->add_course_to_center($data)) {
-                                echo "Course $course_id saved with price $price<br>";
-                            } else {
-                                echo "Error saving course $course_id<br>";
-                            }
-                        }
+                    $data = array(
+                        "city" => $this->input->post("city"),
+                        "date" => $this->input->post("date"),
+                        "address" => $this->input->post("address"),
+                    );
+
+                    $center_id = $this->Center_m->insert_center($data);
+
+                    if ($center_id) {
+                        $this->save_courses($center_id);
+                    } else {
+                        throw new Exception('Error saving the center. Please try again.');
+                    }
+
+                    if ($this->db->trans_status() === FALSE) {
+
+                        $this->db->trans_rollback();
+                        throw new Exception('Transaction failed. Changes rolled back.');
+                    } else {
+                        $this->db->trans_commit();
+                        $this->session->set_flashdata('success', 'Center added successfully!');
+                        redirect(base_url("center/index"));
                     }
                 }
+            } else {
+                $this->data["subview"] = "center/add";
+                $this->load->view('_layout_main', $this->data);
             }
-          
+        } catch (Exception $e) {
 
-
-           
-           
-
-            $this->session->set_flashdata('success', 'Center added successfully!');
-            redirect(base_url("center/index"));
+            $this->db->trans_rollback();
+            log_message('error', $e->getMessage());
+            $this->session->set_flashdata('error', $e->getMessage());
+            redirect(base_url('center/add'));
         }
-    } else {
-        $this->data["subview"] = "center/add";
-        $this->load->view('_layout_main', $this->data);
     }
-}
+    private function get_course_prices($selected_courses)
+    {
+        $course_prices = [];
+        if ($selected_courses) {
+            foreach ($selected_courses as $course_id) {
+                $price_key = 'course_price_' . $course_id;
+                $course_prices[$course_id] = $this->input->post($price_key) ?? '';
+            }
+        }
+        return $course_prices;
+    }
+
+    private function save_courses($center_id)
+    {
+        $selected_courses = $this->input->post('selected_courses');
+
+        if ($selected_courses) {
+            foreach ($selected_courses as $course_id) {
+                $price_key = 'course_price_' . $course_id;
+                $price = $this->input->post($price_key);
+
+                if ($price && is_numeric($price)) {
+                    $data = array(
+                        'center_id' => $center_id,
+                        'course_id' => $course_id,
+                        'price' => $price
+                    );
+
+                    if (!$this->Coursecenter_m->add_course_to_center($data)) {
+                        throw new Exception("Error adding course $course_id to center.");
+                    }
+                } else {
+                    throw new Exception("Price for course ID $course_id is missing or invalid.");
+                }
+            }
+        }
+    }
+
 
     public function edit($id)
     {
+        // Validate the center ID
         if (!$id || !is_numeric($id)) {
             redirect(base_url('center/index'));
             return;
         }
-
+    
+        // Fetch the center details
         $this->data['center'] = $this->Center_m->get_center($id);
         if (!$this->data['center']) {
             $this->session->set_flashdata('error', 'No center found with that ID.');
             redirect(base_url('center/index'));
             return;
         }
-
-        if ($_POST) {
+    
+        // Fetch all available courses
+        $this->data['courses'] = $this->Center_m->get_all_courses();
+    
+        // Fetch selected courses and their prices for this center
+        $this->data['selected_courses'] = $this->Center_m->get_center_courses($id);
+        // dd($this->data['selected_courses']);
+    
+        if ($this->input->post()) {
+            // Define validation rules
             $rules = $this->edit_rules();
             $this->form_validation->set_rules($rules);
-
+    
+            // Check if form validation passes
             if ($this->form_validation->run()) {
-              
+                // Prepare update array for center details
                 $update_array = array(
                     'city' => $this->input->post('city'),
                     'date' => $this->input->post('date'),
-                    'price' => $this->input->post('price'),
-                   
+                    'address' => $this->input->post('address'),
                 );
-
-                $this->Center_m->update_ceneter($update_array, $id);
-                $this->session->set_flashdata('success', 'Center updated successfully');
+    
+                // Begin database transaction
+                $this->db->trans_start();
+    
+                // Update center information
+                $this->Center_m->update_center($update_array, $id);
+    
+                // Save or update selected courses and their prices
+                $this->update_courses($id);
+    
+                // Complete transaction
+                $this->db->trans_complete();
+    
+                // Check if transaction was successful
+                if ($this->db->trans_status() === FALSE) {
+                    $this->session->set_flashdata('error', 'Failed to update the center and its courses.');
+                } else {
+                    $this->session->set_flashdata('success', 'Center updated successfully.');
+                }
+    
+                // Redirect to the center index page
                 redirect(base_url('center/index'));
             }
         }
-
-        
+    
+        // Load the edit view with subview
         $this->data["subview"] = "center/edit";
         $this->load->view('_layout_main', $this->data);
     }
-
     
+    // Helper function to save courses for the center
+    private function update_courses($center_id)
+    {
+        // Get selected courses from form input
+        $selected_courses = $this->input->post('selected_courses');
+        
+        // Check if any courses were selected
+        if ($selected_courses) {
+            foreach ($selected_courses as $course_id) {
+                // Get the course price input for each selected course
+                $course_price = $this->input->post('course_price_' . $course_id);
+                
+                // Ensure the price is provided for the selected course
+                if (!empty($course_price)) {
+                    // Save or update the selected course with its price for the center
+                    $this->Center_m->update_center_course($center_id, $course_id, $course_price);
+                }
+            }
+        } else {
+            // If no courses were selected, you can decide to delete existing courses or keep them unchanged
+            // $this->Center_m->remove_all_center_courses($center_id); // Uncomment this if needed
+        }
+    }
+    
+
+
     public function delete($id = NULL)
-{
-    if (!$id || !is_numeric($id)) {
-       
-        $this->session->set_flashdata('error', 'Invalid delete operation.');
+    {
+        if (!$id || !is_numeric($id)) {
+
+            $this->session->set_flashdata('error', 'Invalid delete operation.');
+            redirect('center/index');
+            return;
+        }
+
+
+        $deleted = $this->Center_m->delete_center($id);
+        if ($deleted) {
+            $this->session->set_flashdata('success', 'Center successfully deleted.');
+        } else {
+            $this->session->set_flashdata('error', 'Failed to delete the center. It may not exist.');
+        }
+
+
         redirect('center/index');
-        return;
     }
-
-   
-    $deleted = $this->Center_m->delete_center($id);
-    if ($deleted) {
-        $this->session->set_flashdata('success', 'Center successfully deleted.');
-    } else {
-        $this->session->set_flashdata('error', 'Failed to delete the center. It may not exist.');
-    }
-
-    
-    redirect('center/index');
-}
-
-
-
 }

@@ -8,7 +8,7 @@
             <li class="active"><?= $this->lang->line('menu_add') ?> <?= $this->lang->line('menu_offercourses') ?></li>
         </ol>
     </div><!-- /.box-header -->
-    
+
     <!-- form start -->
     <div class="box-body">
         <div class="row">
@@ -31,119 +31,81 @@
                     <span class="col-sm-4 control-label">
                         <?php echo form_error('course_id'); ?>
                     </span>
-                </div>
+            </div>
 
-                <!-- Course Name -->
-                <?php
-                if (form_error('course_name')) {
-                    echo "<div class='form-group has-error'>";
-                } else {
-                    echo "<div class='form-group'>";
-                }
-                ?>
-                <label for="course_name" class="col-sm-2 control-label">
-                    <?= $this->lang->line("course_name") ?> <span class="text-red">*</span>
-                </label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" id="course_name" name="course_name" value="<?= set_value('course_name') ?>">
-                </div>
-                <span class="col-sm-4 control-label">
-                    <?php echo form_error('course_name'); ?>
-                </span>
-                </div>
+            <!-- Course Name -->
+            <?php
+            if (form_error('course_name')) {
+                echo "<div class='form-group has-error'>";
+            } else {
+                echo "<div class='form-group'>";
+            }
+            ?>
+            <label for="course_name" class="col-sm-2 control-label">
+                <?= $this->lang->line("course_name") ?> <span class="text-red">*</span>
+            </label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="course_name" name="course_name" value="<?= set_value('course_name') ?>">
+            </div>
+            <span class="col-sm-4 control-label">
+                <?php echo form_error('course_name'); ?>
+            </span>
+        </div>
 
-                <!-- Course Description -->
-                <?php
-                if (form_error('course_description')) {
-                    echo "<div class='form-group has-error'>";
-                } else {
-                    echo "<div class='form-group'>";
-                }
-                ?>
-                <label for="course_description" class="col-sm-2 control-label">
-                    <?= $this->lang->line("course_description") ?>
-                </label>
-                <div class="col-sm-6">
-                    <textarea class="form-control" style="resize:none;" id="course_description" name="course_description"><?= set_value('course_description') ?></textarea>
-                </div>
-                <span class="col-sm-4 control-label">
-                    <?php echo form_error('course_description'); ?>
-                </span>
-                </div>
+        <!-- Course Description -->
+        <?php
+        if (form_error('course_description')) {
+            echo "<div class='form-group has-error'>";
+        } else {
+            echo "<div class='form-group'>";
+        }
+        ?>
+        <label for="course_description" class="col-sm-2 control-label">
+            <?= $this->lang->line("course_description") ?>
+        </label>
+        <div class="col-sm-6">
+            <textarea class="form-control" style="resize:none;" id="course_description" name="course_description"><?= set_value('course_description') ?></textarea>
+        </div>
+        <span class="col-sm-4 control-label">
+            <?php echo form_error('course_description'); ?>
+        </span>
+    </div>
 
-                <!-- Valid Days -->
-                <!-- <?php
-                if (form_error('validDays')) {
-                    echo "<div class='form-group has-error'>";
-                } else {
-                    echo "<div class='form-group'>";
-                }
-                ?>
-                <label for="validDays" class="col-sm-2 control-label">
-                    <?= $this->lang->line("validDays") ?>
-                </label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" id="validDays" name="validDays" value="<?= set_value('validDays') ?>">
-                </div>
-                <span class="col-sm-4 control-label">
-                    <?php echo form_error('validDays'); ?>
-                </span>
-                </div> -->
 
-                
-                <!-- <?php
-                if (form_error('cost')) {
-                    echo "<div class='form-group has-error'>";
-                } else {
-                    echo "<div class='form-group'>";
-                }
-                ?>
-                <label for="cost" class="col-sm-2 control-label">
-                    <?= $this->lang->line("cost") ?> <span class="text-red">*</span>
-                </label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" id="cost" name="cost" value="<?= set_value('cost') ?>">
-                </div>
-                <span class="col-sm-4 control-label">
-                    <?php echo form_error('cost'); ?>
-                </span>
-                </div> -->
-
-                <!-- Course Photo -->
-                <div class="form-group <?= form_error('photo') ? 'has-error' : '' ?>">
-                    <label for="photo" class="col-sm-2 control-label">
-                        <?= $this->lang->line("photo") ?>
-                    </label>
-                    <div class="col-sm-6">
-                        <div class="input-group image-preview">
-                            <input type="text" class="form-control image-preview-filename" disabled="disabled">
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                                    <span class="fa fa-remove"></span> <?= $this->lang->line('clear') ?>
-                                </button>
-                                <div class="btn btn-success image-preview-input">
-                                    <span class="fa fa-repeat"></span>
-                                    <span class="image-preview-input-title"><?= $this->lang->line('browse') ?></span>
-                                    <input type="file" accept="image/png, image/jpeg, image/gif" name="photo" />
-                                </div>
-                            </span>
-                        </div>
+    <div class="form-group <?= form_error('photo') ? 'has-error' : '' ?>">
+        <label for="photo" class="col-sm-2 control-label">
+            <?= $this->lang->line("photo") ?>
+        </label>
+        <div class="col-sm-6">
+            <div class="input-group image-preview">
+                <input type="text" class="form-control image-preview-filename" disabled="disabled">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                        <span class="fa fa-remove"></span> <?= $this->lang->line('clear') ?>
+                    </button>
+                    <div class="btn btn-success image-preview-input">
+                        <span class="fa fa-repeat"></span>
+                        <span class="image-preview-input-title"><?= $this->lang->line('browse') ?></span>
+                        <input type="file" accept="image/png, image/jpeg, image/gif" name="photo" />
                     </div>
-                    <span class="col-sm-4 control-label">
-                        <?php echo form_error('photo'); ?>
-                    </span>
-                </div>
-
-                <!-- Submit Button -->
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-8">
-                        <input type="submit" class="btn btn-success" value="<?= $this->lang->line("add_offercourses") ?>">
-                    </div>
-                </div>
-                </form>
+                </span>
             </div>
         </div>
+        <span class="col-sm-4 control-label">
+            <?php echo form_error('photo'); ?>
+        </span>
     </div>
+
+    <!-- Submit Button -->
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-8">
+            <input type="submit" class="btn btn-success" value="<?= $this->lang->line("add_offercourses") ?>">
+        </div>
+    </div>
+    </form>
+</div>
+</div>
+</div>
 </div>
 
 <script>

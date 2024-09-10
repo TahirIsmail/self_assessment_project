@@ -42,5 +42,9 @@ $lang['event_no_courses'] = "No courses found.";
 $lang['course_photo'] = "photo";
 $lang['save_changes'] = "submit";
 
+$lang['add_title'] = 'Add Center';
+$lang['center_date'] = 'Date';
+$lang['address'] = 'Address';
+
 
 ?>
