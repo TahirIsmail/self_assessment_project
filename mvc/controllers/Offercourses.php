@@ -183,18 +183,27 @@ class Offercourses extends Admin_Controller
         }
     }
 
-    public function delete()
-    {
-        $id = htmlentities((string) escapeString($this->uri->segment(3)));
-        $url = htmlentities((string) escapeString($this->uri->segment(4)));
-        if ((int)$id && (int)$url) {
-            $this->Offercourses_m->delete_course($id);
-            $this->session->set_flashdata('success', $this->lang->line('menu_success'));
-            redirect(base_url("offercourses/index/$url"));
-        } else {
-            redirect(base_url("offercourses/index"));
+    public function delete($id) {
+        if (!$id) {
+            
+            $this->session->set_flashdata('error', 'Invalid operation. No ID provided.');
+            redirect('offercourses/index');
+            return;
         }
+    
+        if ($this->Offercourses_m->delete_course_info($id)) {
+            
+            $this->session->set_flashdata('success', 'Course deleted successfully.');
+        } else {
+            
+            $this->session->set_flashdata('error', 'Failed to delete the course.');
+        }
+    
+       
+        redirect('offercourses/index');
     }
+    
+
 	public function edit($course_id = null)
     {
         if ($course_id === null || !is_numeric($course_id)) {
@@ -229,4 +238,5 @@ class Offercourses extends Admin_Controller
 		$this->session->set_flashdata('success', 'Course has been Updated!');
 		redirect(base_url("offercourses/index"));
     }
+    
 }

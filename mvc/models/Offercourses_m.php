@@ -153,10 +153,21 @@ class Offercourses_m extends MY_Model
     
     
 
-    public function delete_course($id)
-    {
-        parent::delete($id);
+    public function delete_course_info($id) {
+        if (!$id) {
+            log_message('error', 'Attempted to delete course without providing an ID.');
+            return FALSE; 
+        }
+    
+        $this->db->where('id', $id); 
+        if (!$this->db->delete('courses')){
+            log_message('error', 'Failed to delete course with ID: ' . $id); // Log error if the deletion fails
+            return FALSE;
+        }
+    
+        return TRUE; 
     }
+    
 	public function get_course_by_id($course_id)
 {
     $this->db->where('id', $course_id); 
