@@ -4,94 +4,56 @@
 
         <ol class="breadcrumb">
             <li><a href="<?= base_url("dashboard/index") ?>"><i class="fa fa-laptop"></i> <?= $this->lang->line('menu_dashboard') ?></a></li>
-            <li class="active"><?= $this->lang->line('menu_section') ?></li>
+            <li class="active"><?= $this->lang->line('menu_center') ?></li>
         </ol>
     </div><!-- /.box-header -->
-    <!-- form start -->
+
     <div class="box-body">
         <div class="row">
             <div class="col-sm-12">
-
-                <?php
-                if (permissionChecker('section_add')) {
-                ?>
-                    <h5 class="page-header">
-                        <a href="<?php echo base_url('center/add') ?>">
-                            <i class="fa fa-plus"></i>
-                            <?= $this->lang->line('add_title') ?>
-                        </a>
-
-                        <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12 pull-right drop-marg">
-                            <?php
-                            $array = array("0" => $this->lang->line("section_select_class"));
-                            if (inicompute($classes)) {
-                                foreach ($classes as $classa) {
-                                    $array[$classa->classesID] = $classa->classes;
-                                }
-                            }
-
-                            echo form_dropdown("classesID", $array, set_value("classesID", $set), "id='classesID' class='pull-right form-control select2'");
-                            ?>
-                        </div>
-
-                    </h5>
-                <?php } ?>
-
+                <h5 class="page-header">
+                    <a href="<?php echo base_url('center/add') ?>">
+                        <i class="fa fa-plus"></i> <?= $this->lang->line('add_title') ?>
+                    </a>
+                </h5>
 
                 <div id="hide-table">
                     <table id="example1" class="table table-striped table-bordered table-hover dataTable no-footer">
                         <thead>
                             <tr>
-                                <th class="col-lg-1"><?= $this->lang->line('slno') ?></th>
-                                <th class="col-lg-2"><?= $this->lang->line('center_city') ?></th>
-                                <th class="col-lg-2"><?= $this->lang->line('center_date') ?></th>
-                                <th class="col-lg-2"><?= $this->lang->line('center_price') ?></th>
-                            
-                                <?php if (permissionChecker('section_edit') || permissionChecker('section_delete')) { ?>
-                                    <th class="col-lg-1"><?= $this->lang->line('action') ?></th>
-                                <?php } ?>
+                                <th><?= $this->lang->line('slno') ?></th>
+                                <th><?= $this->lang->line('center_city') ?></th>
+                                <th><?= $this->lang->line('center_date') ?></th>
+                                <th><?= $this->lang->line('address') ?></th>
+                                <th><?= $this->lang->line('center_image') ?></th>
+                                <th><?= $this->lang->line('action') ?></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (inicompute($sections)) {
+                            <?php if (inicompute($centers)) {
                                 $i = 1;
-                                foreach ($sections as $section) {
-                                    // dd($section['section']);
-                            ?>
+                                foreach ($centers as $center) { ?>
                                     <tr>
-                                        <td data-title="<?= $this->lang->line('slno') ?>">
-                                            <?php echo $i; ?>
-                                        </td>
-                                        <td data-title="<?= $this->lang->line('section_name') ?>">
-                                            <?php echo $section['section']; ?>
-                                        </td>
-                                        <td data-title="<?= $this->lang->line('section_category') ?>">
-                                            <?php echo $section['category']; ?>
-                                        </td>
-                                        <td data-title="<?= $this->lang->line('section_capacity') ?>">
-                                            <?php
-                                            $subjectNames = array_column($section['subjects'], 'subject');
-                                            echo implode(', ', $subjectNames);
-                                            ?>
-                                        </td>
-                                        <td data-title="<?= $this->lang->line('section_note') ?>">
-                                            <?php echo $section['note']; ?>
-                                        </td>
-                                        <?php if (permissionChecker('section_edit') || permissionChecker('section_delete')) { ?>
-                                            <td data-title="<?= $this->lang->line('action') ?>">
-                                                <?php echo btn_edit('section/edit/' . $section['sectionID'] . '/' . $set, $this->lang->line('edit')) ?>
-                                                <?php echo btn_delete('section/delete/' . $section['sectionID'] . '/' . $set, $this->lang->line('delete')) ?>
-                                            </td>
-                                        <?php } ?>
+                                        <td><?= $i++ ?></td>
+                                        <td><?= $center->city ?></td>
+                                        <td><?= $center->date ?></td>
+                                        <td><?= $center->address ?></td>
+                                        <td><img src="<?= base_url('uploads/images/' . $center->course_image) ?>" width="50" /></td>
+                                        <td>
+                                         <a href="<?= base_url('center/edit/' . $center->id) ?>" class="btn btn-primary"><?= $this->lang->line('edit') ?></a>
+                                         <form action="<?= base_url('center/delete/' . $center->id) ?>" method="post" onsubmit="return confirm('Are you sure you want to delete this center?');">
+    <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>">
+    <button type="submit" class="btn btn-danger"><?= $this->lang->line('delete') ?></button>
+</form>
+
+
+                                       </td>
                                     </tr>
-                            <?php $i++;
-                                }
+                                <?php }
                             } ?>
                         </tbody>
                     </table>
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -105,7 +67,7 @@
         } else {
             $.ajax({
                 type: 'POST',
-                url: "<?= base_url('section/section_list') ?>",
+                url: "<?= base_url('center/center_list') ?>",
                 data: "id=" + classesID,
                 dataType: "html",
                 success: function(data) {

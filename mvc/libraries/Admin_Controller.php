@@ -668,7 +668,7 @@ class Admin_Controller extends MY_Controller {
                     $tree[ $id ] =& $node;
                 } else {
                     if ( !isset($dataSet[ $node['parentID'] ]['child']) ) {
-                        $dataSet[ $node['parentID'] ]['child'] = [];
+                        $dataSet[ $node['parentID'] ]['child'] []= [];
                     }
                     $dataSet[ $node['parentID'] ]['child'][ $id ] = &$node;
                 }
