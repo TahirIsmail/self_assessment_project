@@ -191,77 +191,68 @@ class Center extends Admin_Controller
 
     public function edit($id)
     {
-        // Validate the center ID
         if (!$id || !is_numeric($id)) {
             redirect(base_url('center/index'));
             return;
         }
-    
-        // Fetch the center details
+
         $this->data['center'] = $this->Center_m->get_center($id);
         if (!$this->data['center']) {
             $this->session->set_flashdata('error', 'No center found with that ID.');
             redirect(base_url('center/index'));
             return;
         }
-    
-        // Fetch all available courses
+        
         $this->data['courses'] = $this->Center_m->get_all_courses();
-    
-        // Fetch selected courses and their prices for this center
         $this->data['selected_courses'] = $this->Center_m->get_center_courses($id);
-        // dd($this->data['selected_courses']);
-    
+     
+
         if ($this->input->post()) {
-            // Define validation rules
+           
             $rules = $this->edit_rules();
             $this->form_validation->set_rules($rules);
-    
-            // Check if form validation passes
+
             if ($this->form_validation->run()) {
-                // Prepare update array for center details
+            
                 $update_array = array(
                     'city' => $this->input->post('city'),
                     'date' => $this->input->post('date'),
                     'address' => $this->input->post('address'),
                 );
-    
-                // Begin database transaction
+
                 $this->db->trans_start();
-    
-                // Update center information
                 $this->Center_m->update_center($update_array, $id);
-    
-                $this->update_courses($id);    
+                $this->update_courses($id);
                 $this->db->trans_complete();
                 if ($this->db->trans_status() === FALSE) {
                     $this->session->set_flashdata('error', 'Failed to update the center and its courses.');
                 } else {
                     $this->session->set_flashdata('success', 'Center updated successfully.');
                 }
-    
+
                 redirect(base_url('center/index'));
             }
         }
-    
+
         $this->data["subview"] = "center/edit";
         $this->load->view('_layout_main', $this->data);
     }
-    
-   
+
+
     private function update_courses($center_id)
-    {   
-        $selected_courses = $this->input->post('selected_courses');        
+    {
+        $selected_courses = $this->input->post('selected_courses');
         if ($selected_courses) {
-            foreach ($selected_courses as $course_id) {               
-                $course_price = $this->input->post('course_price_' . $course_id);     
-                if (!empty($course_price)) {                   
+            foreach ($selected_courses as $course_id) {
+                $course_price = $this->input->post('course_price_' . $course_id);
+                if (!empty($course_price)) {
                     $this->Center_m->update_center_course($center_id, $course_id, $course_price);
                 }
             }
-        } else {}
+        } else {
+        }
     }
-    
+
 
     public function delete($id = NULL)
     {
