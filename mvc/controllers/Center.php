@@ -255,36 +255,24 @@ class Center extends Admin_Controller
         $this->load->view('_layout_main', $this->data);
     }
     
-    // Helper function to save courses for the center
+   
     private function update_courses($center_id)
-    {
-        // Get selected courses from form input
-        $selected_courses = $this->input->post('selected_courses');
-        
-        // Check if any courses were selected
+    {   
+        $selected_courses = $this->input->post('selected_courses');        
         if ($selected_courses) {
-            foreach ($selected_courses as $course_id) {
-                // Get the course price input for each selected course
-                $course_price = $this->input->post('course_price_' . $course_id);
-                
-                // Ensure the price is provided for the selected course
-                if (!empty($course_price)) {
-                    // Save or update the selected course with its price for the center
+            foreach ($selected_courses as $course_id) {               
+                $course_price = $this->input->post('course_price_' . $course_id);     
+                if (!empty($course_price)) {                   
                     $this->Center_m->update_center_course($center_id, $course_id, $course_price);
                 }
             }
-        } else {
-            // If no courses were selected, you can decide to delete existing courses or keep them unchanged
-            // $this->Center_m->remove_all_center_courses($center_id); // Uncomment this if needed
-        }
+        } else {}
     }
     
-
 
     public function delete($id = NULL)
     {
         if (!$id || !is_numeric($id)) {
-
             $this->session->set_flashdata('error', 'Invalid delete operation.');
             redirect('center/index');
             return;
