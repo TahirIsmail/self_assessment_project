@@ -52,7 +52,7 @@
             </span>
         </div>
 
-        <!-- Course Description -->
+        <!-- Course Description (with CKEditor 5) -->
         <?php
         if (form_error('course_description')) {
             echo "<div class='form-group has-error'>";
@@ -64,7 +64,8 @@
             <?= $this->lang->line("course_description") ?>
         </label>
         <div class="col-sm-6">
-            <textarea class="form-control" style="resize:none;" id="course_description" name="course_description"><?= set_value('course_description') ?></textarea>
+        <textarea class="form-control" style="resize:none; height: 300px; width: 100%;" id="course_description" name="course_description"><?= set_value('course_description') ?></textarea>
+
         </div>
         <span class="col-sm-4 control-label">
             <?php echo form_error('course_description'); ?>
@@ -136,3 +137,19 @@
         });
     });
 </script>
+<script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#course_description'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+
+<style>
+    #course_description {
+        height: 300px;
+        width: 100%;
+    }
+
+</style>
