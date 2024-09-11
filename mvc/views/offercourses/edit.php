@@ -1,3 +1,6 @@
+<!-- CKEditor 5 from CDN -->
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+
 <div class="box">
     <div class="box-header">
         <h3 class="box-title"><?= $this->lang->line('edit_course') ?></h3>
@@ -8,7 +11,7 @@
             <div class="col-sm-10">
                 <form class="form-horizontal" action="<?= base_url('offercourses/update')?>" role="form" method="post" enctype="multipart/form-data">
                     <!-- Course Name -->
-                     <input type="hidden" name="id" value="<?= $course->id?>">
+                    <input type="hidden" name="id" value="<?= $course->id ?>">
                     <div class="form-group <?= form_error('course_name') ? 'has-error' : '' ?>">
                         <label for="course_name" class="col-sm-2 control-label">
                             <?= $this->lang->line("course_name") ?> <span class="text-red">*</span>
@@ -34,7 +37,8 @@
                         </span>
                     </div>
 
-                    <!-- Course Photo
+                    <!-- Course Photo (commented out for now) -->
+                    <!--
                     <div class="form-group <?= form_error('photo') ? 'has-error' : '' ?>">
                         <label for="photo" class="col-sm-2 control-label"><?= $this->lang->line("photo") ?></label>
                         <div class="col-sm-6">
@@ -68,3 +72,12 @@
         </div>
     </div>
 </div>
+
+<!-- Initialize CKEditor 5 for the course_description field -->
+<script>
+    ClassicEditor
+        .create(document.querySelector('#course_description'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
