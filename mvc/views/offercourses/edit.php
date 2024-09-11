@@ -1,3 +1,6 @@
+<!-- CKEditor 5 from CDN -->
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+
 <div class="box">
     <div class="box-header">
         <h3 class="box-title"><?= $this->lang->line('edit_course') ?></h3>
@@ -8,7 +11,7 @@
             <div class="col-sm-10">
                 <form class="form-horizontal" action="<?= base_url('offercourses/update')?>" role="form" method="post" enctype="multipart/form-data">
                     <!-- Course Name -->
-                     <input type="hidden" name="id" value="<?= $course->id?>">
+                    <input type="hidden" name="id" value="<?= $course->id ?>">
                     <div class="form-group <?= form_error('course_name') ? 'has-error' : '' ?>">
                         <label for="course_name" class="col-sm-2 control-label">
                             <?= $this->lang->line("course_name") ?> <span class="text-red">*</span>
@@ -21,26 +24,21 @@
                         </span>
                     </div>
 
-                     <!-- Course Description (with CKEditor 5) -->
-        <?php
-        if (form_error('course_description')) {
-            echo "<div class='form-group has-error'>";
-        } else {
-            echo "<div class='form-group'>";
-        }
-        ?>
-        <label for="course_description" class="col-sm-2 control-label">
-            <?= $this->lang->line("course_description") ?>
-        </label>
-        <div class="col-sm-6">
-        <textarea class="form-control" style="resize:none; height: 300px; width: 100%;" id="course_description" name="course_description"><?= set_value('course_description') ?></textarea>
+                    <!-- Course Description -->
+                    <div class="form-group <?= form_error('course_description') ? 'has-error' : '' ?>">
+                        <label for="course_description" class="col-sm-2 control-label">
+                            <?= $this->lang->line("course_description") ?>
+                        </label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" id="course_description" name="course_description"><?= set_value('course_description', $course->course_description) ?></textarea>
+                        </div>
+                        <span class="col-sm-4 control-label">
+                            <?php echo form_error('course_description'); ?>
+                        </span>
+                    </div>
 
-        </div>
-        <span class="col-sm-4 control-label">
-            <?php echo form_error('course_description'); ?>
-        </span>
-    </div>
-                    <!-- Course Photo
+                    <!-- Course Photo (commented out for now) -->
+                    <!--
                     <div class="form-group <?= form_error('photo') ? 'has-error' : '' ?>">
                         <label for="photo" class="col-sm-2 control-label"><?= $this->lang->line("photo") ?></label>
                         <div class="col-sm-6">
@@ -74,7 +72,8 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script>
+
+<!-- Initialize CKEditor 5 for the course_description field -->
 <script>
     ClassicEditor
         .create(document.querySelector('#course_description'))
@@ -82,10 +81,3 @@
             console.error(error);
         });
 </script>
-
-<style>
-    #course_description {
-        height: 300px;
-        width: 100%;
-    }
-</style>
