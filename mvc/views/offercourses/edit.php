@@ -21,25 +21,19 @@
                         </span>
                     </div>
 
-                     <!-- Course Description (with CKEditor 5) -->
-        <?php
-        if (form_error('course_description')) {
-            echo "<div class='form-group has-error'>";
-        } else {
-            echo "<div class='form-group'>";
-        }
-        ?>
-        <label for="course_description" class="col-sm-2 control-label">
-            <?= $this->lang->line("course_description") ?>
-        </label>
-        <div class="col-sm-6">
-        <textarea class="form-control" style="resize:none; height: 300px; width: 100%;" id="course_description" name="course_description"><?= set_value('course_description') ?></textarea>
+                    <!-- Course Description -->
+                    <div class="form-group <?= form_error('course_description') ? 'has-error' : '' ?>">
+                        <label for="course_description" class="col-sm-2 control-label">
+                            <?= $this->lang->line("course_description") ?>
+                        </label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" id="course_description" name="course_description"><?= set_value('course_description', $course->course_description) ?></textarea>
+                        </div>
+                        <span class="col-sm-4 control-label">
+                            <?php echo form_error('course_description'); ?>
+                        </span>
+                    </div>
 
-        </div>
-        <span class="col-sm-4 control-label">
-            <?php echo form_error('course_description'); ?>
-        </span>
-    </div>
                     <!-- Course Photo
                     <div class="form-group <?= form_error('photo') ? 'has-error' : '' ?>">
                         <label for="photo" class="col-sm-2 control-label"><?= $this->lang->line("photo") ?></label>
@@ -74,18 +68,3 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script>
-<script>
-    ClassicEditor
-        .create(document.querySelector('#course_description'))
-        .catch(error => {
-            console.error(error);
-        });
-</script>
-
-<style>
-    #course_description {
-        height: 300px;
-        width: 100%;
-    }
-</style>
