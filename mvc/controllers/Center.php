@@ -257,30 +257,22 @@ class Center extends Admin_Controller
     
    
     private function update_courses($center_id)
-    {
-      
-        $selected_courses = $this->input->post('selected_courses');
-        
+    {   
+        $selected_courses = $this->input->post('selected_courses');        
         if ($selected_courses) {
-            foreach ($selected_courses as $course_id) {
-               
+            foreach ($selected_courses as $course_id) {               
                 $course_price = $this->input->post('course_price_' . $course_id);     
-                if (!empty($course_price)) {
-                   
+                if (!empty($course_price)) {                   
                     $this->Center_m->update_center_course($center_id, $course_id, $course_price);
                 }
             }
-        } else {
-            
-        }
+        } else {}
     }
     
-
 
     public function delete($id = NULL)
     {
         if (!$id || !is_numeric($id)) {
-
             $this->session->set_flashdata('error', 'Invalid delete operation.');
             redirect('center/index');
             return;
