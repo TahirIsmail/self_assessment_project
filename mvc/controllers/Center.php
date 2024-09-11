@@ -232,25 +232,18 @@ class Center extends Admin_Controller
                 // Update center information
                 $this->Center_m->update_center($update_array, $id);
     
-                // Save or update selected courses and their prices
-                $this->update_courses($id);
-    
-                // Complete transaction
+                $this->update_courses($id);    
                 $this->db->trans_complete();
-    
-                // Check if transaction was successful
                 if ($this->db->trans_status() === FALSE) {
                     $this->session->set_flashdata('error', 'Failed to update the center and its courses.');
                 } else {
                     $this->session->set_flashdata('success', 'Center updated successfully.');
                 }
     
-                // Redirect to the center index page
                 redirect(base_url('center/index'));
             }
         }
     
-        // Load the edit view with subview
         $this->data["subview"] = "center/edit";
         $this->load->view('_layout_main', $this->data);
     }
@@ -278,14 +271,12 @@ class Center extends Admin_Controller
             return;
         }
 
-
         $deleted = $this->Center_m->delete_center($id);
         if ($deleted) {
             $this->session->set_flashdata('success', 'Center successfully deleted.');
         } else {
             $this->session->set_flashdata('error', 'Failed to delete the center. It may not exist.');
         }
-
 
         redirect('center/index');
     }

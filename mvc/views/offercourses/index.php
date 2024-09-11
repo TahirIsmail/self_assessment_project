@@ -53,10 +53,10 @@
                                     <span class="see-more" style="color:blue; cursor:pointer;">See More</span>
                                 <?php endif; ?>
                             </p>
-                            <!-- <p class="full-description" style="display:none;">
+                            <p class="full-description" style="display:none;">
                                 <?= $course->course_description; ?>
                                 <span class="see-less" style="color:blue; cursor:pointer;">See Less</span>
-                            </p> -->
+                            </p>
                         </td>
                         <?php if (permissionChecker('course_edit') || permissionChecker('course_delete')) { ?>
                             <td data-title="<?= $this->lang->line('action') ?>">
@@ -112,30 +112,31 @@
         maximumSelectionSize: 6
     });
 </script>
-<script>
-    // document.addEventListener("DOMContentLoaded", function() {
-      
-    //     const seeMoreElements = document.querySelectorAll('.see-more');
-    //     const seeLessElements = document.querySelectorAll('.see-less');
-        
-    //     seeMoreElements.forEach((element) => {
-    //         element.addEventListener('click', function() {
-                
-    //             const parent = this.closest('td');
-    //             parent.querySelector('.full-description').style.display = 'block';
-    //             parent.querySelector('.short-description').style.display = 'none';
-    //         });
-    //     });
 
-    //     seeLessElements.forEach((element) => {
-    //         element.addEventListener('click', function() {
+<script>
+     document.addEventListener("DOMContentLoaded", function() {
+      
+         const seeMoreElements = document.querySelectorAll('.see-more');
+         const seeLessElements = document.querySelectorAll('.see-less');
+        
+         seeMoreElements.forEach((element) => {
+             element.addEventListener('click', function() {
+                
+                 const parent = this.closest('td');
+                 parent.querySelector('.full-description').style.display = 'block';
+                 parent.querySelector('.short-description').style.display = 'none';
+             });
+         });
+
+         seeLessElements.forEach((element) => {
+             element.addEventListener('click', function() {
             
-    //             const parent = this.closest('td');
-    //             parent.querySelector('.full-description').style.display = 'none';
-    //             parent.querySelector('.short-description').style.display = 'block';
-    //         });
-    //     });
-    // });
+                 const parent = this.closest('td');
+                 parent.querySelector('.full-description').style.display = 'none';
+                 parent.querySelector('.short-description').style.display = 'block';
+             });
+         });
+     });
 </script>
 <style>
 .see-more, .see-less {
