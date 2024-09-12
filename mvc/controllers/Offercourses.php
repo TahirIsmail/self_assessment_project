@@ -108,7 +108,6 @@ class Offercourses extends Admin_Controller
             return TRUE;
         }
     }
-
     public function index()
     {
         $this->data['headerassets'] = array(
@@ -120,15 +119,16 @@ class Offercourses extends Admin_Controller
                 'assets/select2/select2.js'
             )
         );
-
-
+    
         $id = htmlentities((string) escapeString($this->uri->segment(3)));
+        
+        // Fetch course names
+      
+        
+    
         if (!$id) {
-
-
             $this->data['classes'] = $this->classes_m->get_classes();
             $this->data['courses'] = $this->Offercourses_m->get_course_record();
-            // dd($this->data['courses']);
             $this->data["subview"] = "offercourses/index";
             $this->load->view('_layout_main', $this->data);
         } else {
@@ -139,6 +139,8 @@ class Offercourses extends Admin_Controller
             $this->load->view('_layout_main', $this->data);
         }
     }
+    
+    
 
     public function add()
     {

@@ -71,6 +71,8 @@ class home extends Admin_Controller
         // dd($this->session->userdata());
         $loginuserID = $this->session->userdata('loginuserID');
 
+        $this->data['course_names'] = $this->Offercourses_m->get_course_names();
+        // dd($this->data['course_names']);
 
         $this->data['payment_settings'] = $this->payment_gateway_m->get_order_by_payment_gateway(['status' => 1]);
         $this->data['payment_options']  = pluck($this->payment_gateway_option_m->get_payment_gateway_option(), 'payment_value', 'payment_option');
@@ -90,7 +92,7 @@ class home extends Admin_Controller
 
 
         $this->data['mockTests']        = $this->section_m->get_all_courses_details();
-        $this->data["subview"]         = "signin/index";
+        // $this->data["subview"]         = "signin/index";
         $this->load->view('landingPage/index', $this->data);
     }
 

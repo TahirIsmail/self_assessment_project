@@ -39,15 +39,19 @@
                                         <td><?= $center->city ?></td>
                                         <td><?= $center->date ?></td>
                                         <td><?= $center->address ?></td>
-                                        <td>
-                                            <a href="<?= base_url('center/edit/' . $center->id) ?>" class="btn btn-primary"><?= $this->lang->line('edit') ?></a>
-                                            <form action="<?= base_url('center/delete/' . $center->id) ?>" method="post" onsubmit="return confirm('Are you sure you want to delete this center?');">
-                                                <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
-                                                <button type="submit" class="btn btn-danger"><?= $this->lang->line('delete') ?></button>
-                                            </form>
+                                        <td style="width: 150px;">
+    <a href="<?= base_url('center/edit/' . $center->id) ?>" class="btn btn-primary" style="display:inline-block;">
+        <i class="fa fa-edit"></i>
+    </a>
+    
+    <form action="<?= base_url('center/delete/' . $center->id) ?>" method="post" onsubmit="return confirm('Are you sure you want to delete this center?');" style="display:inline-block; margin-left: 5px;">
+        <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
+        <button type="submit" class="btn btn-danger">
+            <i class="fa fa-trash"></i>
+        </button>
+    </form>
+</td>
 
-
-                                        </td>
                                     </tr>
                             <?php }
                             } ?>
