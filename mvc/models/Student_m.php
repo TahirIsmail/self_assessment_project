@@ -70,7 +70,7 @@ class student_m extends MY_Model {
 	public function get_order_by_student($array=[]) 
 	{
 		$array = $this->makeArrayWithTableName($array);
-		$this->db->join('studentextend', 'studentextend.studentID = student.studentID', 'LEFT');
+		// $this->db->join('studentextend', 'studentextend.studentID = student.studentID', 'LEFT');
 		$query = parent::get_order_by($array);
 		return $query;
 	}

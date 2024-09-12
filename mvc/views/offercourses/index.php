@@ -10,8 +10,6 @@
     <div class="box-body">
         <div class="row">
             <div class="col-sm-12">
-
-
                 <?php if (permissionChecker('course_add')) { ?>
                     <h5 class="page-header">
                         <a href="<?= base_url('offercourses/add') ?>">
@@ -19,7 +17,6 @@
                         </a>
                     </h5>
                 <?php } ?>
-
 
                 <div id="hide-table">
                     <table id="example1" class="table table-striped table-bordered table-hover dataTable no-footer">
@@ -79,8 +76,6 @@
                         </tbody>
                     </table>
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -138,6 +133,7 @@
     });
 </script>
 <style>
+
     .see-more,
     .see-less {
         color: blue;
@@ -148,4 +144,5 @@
     .course-description p {
         margin: 0;
     }
+
 </style>
