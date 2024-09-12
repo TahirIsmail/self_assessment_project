@@ -2,8 +2,7 @@
 <div class="box">
     <div class="box-header">
         <h3 class="box-title"><i class="fa icon-student"></i> <?=$this->lang->line('panel_title')?></h3>
-
-       
+      
         <ol class="breadcrumb">
             <li><a href="<?=base_url("dashboard/index")?>"><i class="fa fa-laptop"></i> <?=$this->lang->line('menu_dashboard')?></a></li>           
             <li class="active"><?=$this->lang->line('menu_edit')?> <?=$this->lang->line('panel_title')?></li>
@@ -25,28 +24,6 @@
                             <?php echo form_error('name'); ?>
                         </span>
                     </div>
-
-                    <!-- <div class="form-group <?=form_error('guargianID') ? 'has-error' : ''?>">
-                        <label for="guargianID" class="col-sm-2 control-label">
-                            <?=$this->lang->line("student_guargian")?>
-                        </label>
-                            <div class="col-sm-6">
-                                <?php
-                                    $array = array('0' => $this->lang->line('student_select_guargian'));
-                                    foreach ($parents as $parent) {
-                                        $parentsemail = '';
-                                        if($parent->email) {
-                                            $parentsemail = " (" . $parent->email ." )";
-                                        }
-                                        $array[$parent->parentsID] = $parent->name.$parentsemail;
-                                    }
-                                    echo form_dropdown("guargianID", $array, set_value("guargianID", $student->parentID), "id='guargianID' class='form-control guargianID select2'");
-                                ?>
-                            </div>
-                        <span class="col-sm-4 control-label">
-                            <?php echo form_error('guargianID'); ?>
-                        </span>
-                    </div> -->
 
                     <div class="form-group <?=form_error('dob') ? 'has-error' : ''?>">
                         <label for="dob" class="col-sm-2 control-label">
@@ -74,43 +51,6 @@
                             <?php echo form_error('sex'); ?>
                         </span>
                     </div>
-
-                    <!-- <div class="form-group <?=form_error('bloodgroup') ? 'has-error' : ''?>">
-                        <label for="bloodgroup" class="col-sm-2 control-label">
-                            <?=$this->lang->line("student_bloodgroup")?>
-                        </label>
-                        <div class="col-sm-6">
-                            <?php 
-                                $bloodArray = array(
-                                    '0' => $this->lang->line('student_select_bloodgroup'),
-                                    'A+' => 'A+',
-                                    'A-' => 'A-',
-                                    'B+' => 'B+',
-                                    'B-' => 'B-',
-                                    'O+' => 'O+',
-                                    'O-' => 'O-',
-                                    'AB+' => 'AB+',
-                                    'AB-' => 'AB-'
-                                );
-                                echo form_dropdown("bloodgroup", $bloodArray, set_value("bloodgroup", $student->bloodgroup), "id='bloodgroup' class='form-control select2'"); 
-                            ?>
-                        </div>
-                        <span class="col-sm-4 control-label">
-                            <?php echo form_error('bloodgroup'); ?>
-                        </span>
-                    </div> -->
-
-                    <!-- <div class="form-group <?=form_error('religion') ? 'has-error' : ''?>">
-                        <label for="religion" class="col-sm-2 control-label">
-                            <?=$this->lang->line("student_religion")?>
-                        </label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="religion" name="religion" value="<?=set_value('religion', $student->religion)?>" >
-                        </div>
-                        <span class="col-sm-4 control-label">
-                            <?php echo form_error('religion'); ?>
-                        </span>
-                    </div> -->
 
                     <div class="form-group <?=form_error('email') ? 'has-error' : ''?>">
                         <label for="email" class="col-sm-2 control-label">
@@ -180,107 +120,6 @@
                         </span>
                     </div>
 
-                    <!-- <div class="form-group <?=form_error('classesID') ? 'has-error' : ''?>">
-                        <label for="classesID" class="col-sm-2 control-label">
-                            <?=$this->lang->line("student_classes")?> <span class="text-red"> *</span>
-                        </label>
-                        <div class="col-sm-6">
-                            <?php
-                                $array = array(0 => $this->lang->line("student_select_class"));
-                                foreach ($classes as $classa) {
-                                    $array[$classa->classesID] = $classa->classes;
-                                }
-                                echo form_dropdown("classesID", $array, set_value("classesID", $student->classesID), "id='classesID' class='form-control select2'");
-                            ?>
-                        </div>
-                        <span class="col-sm-4 control-label">
-                            <?php echo form_error('classesID'); ?>
-                        </span>
-                    </div>
-
-                    <div class="form-group <?=form_error('sectionID') ? 'has-error' : ''?>">
-                        <label for="sectionID" class="col-sm-2 control-label">
-                            <?=$this->lang->line("student_section")?> <span class="text-red">*</span>
-                        </label>
-                        <div class="col-sm-6">
-                            <?php
-                                $array = array(0 => $this->lang->line("student_select_section"));
-                                foreach ($sections as $section) {
-                                    $array[$section->sectionID] = $section->section;
-                                }
-                                echo form_dropdown("sectionID", $array, set_value("sectionID", $student->sectionID), "id='sectionID' class='form-control select2'");
-                            ?>
-                        </div>
-                        <span class="col-sm-4 control-label">
-                            <?php echo form_error('sectionID'); ?>
-                        </span>
-                    </div>
-
-                    <div class="form-group <?=form_error('studentGroupID') ? ' has-error' : ''  ?>">
-                        <label for="studentGroupID" class="col-sm-2 control-label">
-                            <?=$this->lang->line("student_studentgroup")?>
-                        </label>
-                        <div class="col-sm-6">
-                            <?php
-                            $groupArray = array(0 => $this->lang->line("student_select_studentgroup"));
-                            if(inicompute($studentgroups)) {
-                                foreach ($studentgroups as $studentgroup) {
-                                    $groupArray[$studentgroup->studentgroupID] = $studentgroup->group;
-                                }
-                            }
-                            echo form_dropdown("studentGroupID", $groupArray, set_value("studentGroupID", $student->studentgroupID), "id='studentGroupID' class='form-control select2'");
-                            ?>
-                        </div>
-                        <span class="col-sm-4 control-label">
-                            <?php echo form_error('studentGroupID'); ?>
-                        </span>
-                    </div>
-
-                    <div class="form-group <?=form_error('optionalSubjectID') ? ' has-error' : ''  ?>">
-                        <label for="optionalSubjectID" class="col-sm-2 control-label">
-                            <?=$this->lang->line("student_optionalsubject")?>
-                        </label>
-                        <div class="col-sm-6">
-                            <?php
-                            $optionalSubjectArray = array(0 => $this->lang->line("student_select_optionalsubject"));
-                            if($optionalSubjects != "empty") {
-                                foreach ($optionalSubjects as $optionalSubject) {
-                                    $optionalSubjectArray[$optionalSubject->subjectID] = $optionalSubject->subject;
-                                }
-                            }
-
-                            echo form_dropdown("optionalSubjectID", $optionalSubjectArray, set_value("optionalSubjectID", $student->optionalsubjectID), "id='optionalSubjectID' class='form-control select2'");
-                            ?>
-                        </div>
-                        <span class="col-sm-4 control-label">
-                            <?php echo form_error('optionalSubjectID'); ?>
-                        </span>
-                    </div>
-
-                    <div class="form-group <?=form_error('registerNO') ? 'has-error' : ''?>">
-                        <label for="registerNO" class="col-sm-2 control-label">
-                            <?=$this->lang->line("student_registerNO")?> <span class="text-red">*</span>
-                        </label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="registerNO" name="registerNO" value="<?=set_value('registerNO', $student->registerNO)?>" >
-                        </div>
-                        <span class="col-sm-4 control-label">
-                            <?php echo form_error('registerNO'); ?>
-                        </span>
-                    </div>
-
-                    <div class="form-group <?=form_error('roll') ? 'has-error' : ''?>">
-                        <label for="roll" class="col-sm-2 control-label">
-                            <?=$this->lang->line("student_roll")?> <span class="text-red">*</span>
-                        </label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="roll" name="roll" value="<?=set_value('roll', $student->roll)?>" >
-                        </div>
-                        <span class="col-sm-4 control-label">
-                            <?php echo form_error('roll'); ?>
-                        </span>
-                    </div> -->
-
                     <div class="form-group <?=form_error('photo') ? 'has-error' : ''?>">
                         <label for="photo" class="col-sm-2 control-label">
                             <?=$this->lang->line("student_photo")?>
@@ -307,30 +146,6 @@
                             <?php echo form_error('photo'); ?>
                         </span>
                     </div>
-
-                    <!-- <div class="form-group <?=form_error('extraCurricularActivities') ? ' has-error' : ''  ?>">
-                        <label for="extraCurricularActivities" class="col-sm-2 control-label">
-                            <?=$this->lang->line("student_extracurricularactivities")?>
-                        </label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="extraCurricularActivities" name="extraCurricularActivities" value="<?=set_value('extraCurricularActivities', $student->extracurricularactivities)?>" >
-                        </div>
-                        <span class="col-sm-4 control-label">
-                            <?php echo form_error('extraCurricularActivities'); ?>
-                        </span>
-                    </div>
-
-                    <div class="form-group <?=form_error('remarks') ? ' has-error' : ''  ?>">
-                        <label for="remarks" class="col-sm-2 control-label">
-                            <?=$this->lang->line("student_remarks")?>
-                        </label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="remarks" name="remarks" value="<?=set_value('remarks', $student->remarks)?>" >
-                        </div>
-                        <span class="col-sm-4 control-label">
-                            <?php echo form_error('remarks'); ?>
-                        </span>
-                    </div> -->
 
                     <div class="form-group <?=form_error('username') ? 'has-error' : ''?>">
                         <label for="username" class="col-sm-2 control-label">
