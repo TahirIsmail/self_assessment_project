@@ -60,18 +60,15 @@
         <a href="about.html" class="nav-item nav-link">Services</a>
         <a href="service.html" class="nav-item nav-link book-now">Book Now</a>
         <div class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">All Courses</a>
-
-          <div class="dropdown-menu m-0">
-            <a href="<?= base_url('course/index') ?>" class="dropdown-item">DOOR SUPERVISOR</a>
-            <a href="detail.html" class="dropdown-item">CCTV</a>
-            <a href="detail.html" class="dropdown-item">CVIT</a>
-            <a href="detail.html" class="dropdown-item">VEHICAL IMMOBILSER</a>
-            <a href="detail.html" class="dropdown-item">CLOSE PROTECTION</a>
-            <a href="detail.html" class="dropdown-item">SECURITY</a>
-          </div>
-
-        </div>
+    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">All Courses</a>
+    <div class="dropdown-menu m-0">
+      
+        <a href="<?= base_url('course/index') ?>" class="dropdown-item"><?= $this->lang->line('course_description') ?></a>
+        <?php foreach ($course_names as $course): ?>
+            <a href="detail.html" class="dropdown-item"><?= htmlspecialchars($course['course_name']) ?></a>
+        <?php endforeach; ?>
+    </div>
+</div>
 
         <a href="<?php echo base_url('contactus/index') ?>" class="nav-item nav-link">Contact Us</a>
         <a href="contact.html" class="nav-item nav-link">Blog</a>

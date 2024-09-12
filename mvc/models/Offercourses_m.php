@@ -192,6 +192,13 @@ class Offercourses_m extends MY_Model
 
         return $query->row();
     }
+    public function get_course_names()
+    {
+        
+        $query = $this->db->select('course_name')->get('courses');
+        return $query->result_array(); 
+    }
+
 
     public function update_course_by_id($data, $course_id)
     {
@@ -214,4 +221,5 @@ class Offercourses_m extends MY_Model
             return false;
         }
     }
+    
 }
