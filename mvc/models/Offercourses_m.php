@@ -162,7 +162,7 @@ class Offercourses_m extends MY_Model
         $id = parent::insert($array);
         return $id;
     }
-    
+
     public function delete_course_info($id)
     {
         if (empty($id) || !is_numeric($id)) {
@@ -194,11 +194,20 @@ class Offercourses_m extends MY_Model
     }
     public function get_course_names()
     {
-        
-        $query = $this->db->select('course_name')->get('courses');
-        return $query->result_array(); 
+        $query = $this->db
+            ->select('*')
+            ->order_by('created_at', 'DESC')
+            ->limit(5)
+            ->get('courses');
+        return $query->result_array();
     }
-
+    public function get_course_by_slug($slug){
+        $query = $this->db
+        ->select('*')
+        ->where('slug', $slug)
+        ->get('courses');
+        return $query->result_array();
+    }
 
     public function update_course_by_id($data, $course_id)
     {
@@ -221,5 +230,4 @@ class Offercourses_m extends MY_Model
             return false;
         }
     }
-    
 }

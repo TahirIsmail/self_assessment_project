@@ -98,7 +98,6 @@ class home extends Admin_Controller
 
     public function course()
     {
-
         $this->load->library('session');
         if ($this->session->userdata()) {
             redirect('online_exam/index');

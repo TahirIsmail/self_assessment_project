@@ -88,6 +88,7 @@ class Admin_Controller extends MY_Controller {
             "signup/page",
             "signup/index",
             "course/index",
+            "course/index/([a-zA-Z0-9_-]+)",
             "home/course",
             "home/payment",
             "mock_course/index",
@@ -99,12 +100,18 @@ class Admin_Controller extends MY_Controller {
 
         // dd(in_array(uri_string(), $exception_uris));
 
-       
-        if ( in_array(uri_string(), $exception_uris) == false ) {
-            // dd(in_array(uri_string(), $exception_uris));
-            if ( $this->signin_m->loggedin() == false ) {
-                $url = base_url("home/index");
+        $current_uri = uri_string();
+        $is_exception = false;
+        foreach ($exception_uris as $exception_uri) {
+            // If it's a regex pattern (e.g., contains a dynamic slug)
+            if (preg_match('#^' . $exception_uri . '$#', $current_uri)) {
+                $is_exception = true;
+                break;
             }
+        }
+       
+        if (!$is_exception && !$this->signin_m->loggedin()) {
+            $url = base_url("home/index");
         }
        
         return $url;

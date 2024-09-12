@@ -22,16 +22,19 @@ class Course extends Admin_Controller
         $this->session->set_userdata($this->data["siteinfos"]->language);
         $language = $this->session->userdata('lang');
         $this->load->model('course_m');
+        $this->load->model('offercourses_m');
     }
 
     public function page()
     {
+        
         $this->signup_m->signup();
         redirect(base_url("course/index"));
     }
 
-    public function index()
+    public function index($slug = null)
     {
-        $this->load->view('course/index');
+        $this->data['course'] = $this->offercourses_m->get_course_by_slug($slug);
+        $this->load->view('course/index', $this->data);
     }
 }
