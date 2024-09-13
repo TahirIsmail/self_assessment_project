@@ -2,39 +2,16 @@
 
 class Course extends Admin_Controller
 {
-    public $load;
-    public $session;
-    public $data;
-    public $lang;
-    public $course_m;
-    public $form_validation;
-    public $input;
-    public $recaptcha;
-    public $usertype_m;
-    public $user_m;
-    public $loginlog_m;
-    public $updatechecker;
-    public $db;
-
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
-        $this->session->set_userdata($this->data["siteinfos"]->language);
-        $language = $this->session->userdata('lang');
-        $this->load->model('course_m');
-        $this->load->model('offercourses_m');
+        $this->load->model('course_m'); 
     }
 
-    public function page()
+    public function index($slug = null) 
     {
-        
-        $this->signup_m->signup();
-        redirect(base_url("course/index"));
-    }
-
-    public function index($slug = null)
-    {
-        $this->data['course'] = $this->offercourses_m->get_course_by_slug($slug);
+        $this->data['course'] = $this->course_m->get_course_by_slug($slug);
         $this->load->view('course/index', $this->data);
     }
 }
+?>

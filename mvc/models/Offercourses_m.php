@@ -201,13 +201,7 @@ class Offercourses_m extends MY_Model
             ->get('courses');
         return $query->result_array();
     }
-    public function get_course_by_slug($slug){
-        $query = $this->db
-        ->select('*')
-        ->where('slug', $slug)
-        ->get('courses');
-        return $query->result_array();
-    }
+   
 
     public function update_course_by_id($data, $course_id)
     {
