@@ -90,7 +90,7 @@
 .sidebar .sidebar-menu .treeview-menu>li>a:hover {
   -webkit-transition: 0.3s ease-out;
  
-  background-color: #5a3939;
+  background-color: #ed213a;
   color: #ffffff;
 }
 
@@ -173,7 +173,7 @@ label {
   border-color: #E2E7EB;
 }
 
-.pagination>.active>a,
+/* .pagination>.active>a,
 .pagination>.active>span,
 .pagination>.active>a:hover,
 .pagination>.active>span:hover,
@@ -181,7 +181,7 @@ label {
 .pagination>.active>span:focus {
   border-color: #990f14;
   background-color: #d71920;
-}
+} */
 
 .pagination>li>a,
 .pagination>li>span {
@@ -767,7 +767,7 @@ label {
 }
 
 .drop-marg {
-  border: 1px solid #09A3A3;
+  border: 1px solid #ed213a;
   padding-left: 0px;
   padding-right: 0px;
 }

@@ -42,11 +42,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="<?= base_url('assets/pace/pace.css') ?>">
 
 </head>
-
 <body>
+
   <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
     <a href="<?= base_url('home/index') ?>" class="navbar-brand p-0">
       <img class="w-100" src="<?= base_url('uploads/landing_img/SL-white-logo.png') ?>" alt="Image" style="    width: 200px !important;">
@@ -56,7 +56,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <div class="navbar-nav ms-auto py-0">
-        <a href="index.html" class="nav-item nav-link active">Home</a>
+      <a href="<?= base_url('home/index') ?>"  class="nav-item nav-link active">Home</a>
         <a href="about.html" class="nav-item nav-link">Services</a>
         <a href="service.html" class="nav-item nav-link book-now">Book Now</a>
         <div class="nav-item dropdown">
@@ -104,196 +104,6 @@
               <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">More Details</a>
               <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
             </div>
-
-
-
-            <!--///////// OLD ID CARDS HERE COMMENTED////////////-->
-            <!-- <div class="card-row " style=" padding-top: 40px;">
-                            <div class="section_our_solution">
-                                <div class="row">
-
-                                    <div class="col-lg-12 col-md-12 col-sm-12">
-
-                                        <div class="our_solution_category ">
-
-                                            <div class="solution_cards_box ">
-
-                                                <div class="solution_card">
-
-                                                    <div class="hover_color_bubble"></div>
-
-
-
-
-                                                    <div class="ph">7869 1234 7869 3245</div>
-
-                                                    <div class="card_boxi1"></div>
-
-                                                    <div class="solu_title">
-                                                        <div class="name">LICENSE</div>
-                                                    </div>
-
-                                                    <div class="simitry">
-
-                                                        <div class="solu_description">
-                                                            <p>
-                                                                Security Industry Authority
-                                                            </p>
-
-                                                        </div>
-                                                        <div class="so_top_icon">
-
-                                                            <img src="../../../uploads/images/team-1.jpg" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
-
-                                                            </img>
-                                                        </div>
-                                                    </div>
-                                                    <div class="xp">
-                                                        <div class="designation">EXPIRES</div>
-                                                        <div class="designation1">18 JUNE 20XX</div>
-                                                        <div class="designation">MR JOHNS</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="section_our_solution">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <div class="our_solution_category">
-                                            <div class="solution_cards_box">
-                                                <div class="solution_card">
-                                                    <div class="hover_color_bubble"></div>
-
-                                                    <div class="ph">4321 1234 7869 3245</div>
-
-                                                    <div class="card_boxi2"></div>
-
-                                                    <div class="solu_title">
-                                                        <div class="name">LICENSE</div>
-                                                    </div>
-
-
-                                                    <div class="simitry">
-
-                                                        <div class="solu_description">
-                                                            <p>
-                                                                Security Industry Authority
-                                                            </p>
-
-                                                        </div>
-                                                        <div class="so_top_icon">
-
-                                                            <img src="../../../uploads/images/team-2.jpg" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
-
-                                                            </img>
-                                                        </div>
-                                                    </div>
-                                                    <div class="xp">
-                                                        <div class="designation">EXPIRES</div>
-                                                        <div class="designation1">07 OCT 20XX</div>
-                                                        <div class="designation">MRS ANNA</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="section_our_solution">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <div class="our_solution_category">
-                                            <div class="solution_cards_box">
-                                                <div class="solution_card">
-                                                    <div class="hover_color_bubble"></div>
-
-                                                    <div class="ph">1234 1234 7869 3245</div>
-
-                                                    <div class="card_boxi3"></div>
-
-                                                    <div class="solu_title">
-                                                        <div class="name">LICENSE</div>
-                                                    </div>
-
-
-                                                    <div class="simitry">
-
-                                                        <div class="solu_description">
-                                                            <p>
-                                                                Security Industry Authority
-                                                            </p>
-
-                                                        </div>
-                                                        <div class="so_top_icon">
-
-                                                            <img src="../../../uploads/images/team-3.jpg" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
-
-                                                            </img>
-                                                        </div>
-                                                    </div>
-                                                    <div class="xp">
-                                                        <div class="designation">EXPIRES</div>
-                                                        <div class="designation1">31 APR 20XX</div>
-                                                        <div class="designation">MR ADAM</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="section_our_solution">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <div class="our_solution_category">
-                                            <div class="solution_cards_box">
-                                                <div class="solution_card">
-                                                    <div class="hover_color_bubble"></div>
-
-                                                    <div class="ph">1111 1234 7869 3245</div>
-
-                                                    <div class="card_boxi4"></div>
-
-                                                    <div class="solu_title">
-                                                        <div class="name">LICENSE</div>
-                                                    </div>
-
-
-                                                    <div class="simitry">
-
-                                                        <div class="solu_description">
-                                                            <p>
-                                                                Security Industry Authority
-                                                            </p>
-
-                                                        </div>
-                                                        <div class="so_top_icon">
-
-                                                            <img src="../../../uploads/images/team-4.jpg" width="40" viewBox="0 0 512 512" height="50" id="Layer_1">
-
-                                                            </img>
-                                                        </div>
-                                                    </div>
-                                                    <div class="xp">
-                                                        <div class="designation">EXPIRES</div>
-                                                        <div class="designation1">27 JAN 20XX</div>
-                                                        <div class="designation">MRS JULIE</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-
-
-
-            <!--///////// NEW ID CARDS HERE ////////////-->
-
             <div class="cont1" style="margin-top: 40px;">
               <div class="card-new">
                 <div class="row">
@@ -570,3 +380,6 @@
       </div>
     </div>
   </div>
+
+
+  

@@ -50,10 +50,10 @@
 body {
   margin: 0;
   font-family: "Heebo", sans-serif;
-  font-size: 1rem;
+  font-size: 12px;
   font-weight: 400;
   line-height: 1.5;
-  color: #000000;
+  color: #707478;
   background-color: #fff;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -1613,7 +1613,7 @@ progress {
 .table {
   --bs-table-bg: rgba(0, 0, 0, 0);
   --bs-table-striped-color: #52565b;
-  --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+  --bs-table-striped-bg: rgba(220, 220, 220, 0.05);
   --bs-table-active-color: #52565b;
   --bs-table-active-bg: rgba(0, 0, 0, 0.1);
   --bs-table-hover-color: #52565b;
@@ -1845,7 +1845,7 @@ progress {
   background-color: #fff;
   border-color: #d71920;
   outline: 0;
-  box-shadow:0 0 0 0.25rem rgb(215 25 32 / 25%);
+  box-shadow: 0 0 0 0.25rem rgb(215 25 32 / 25%);
 }
 .form-control::-webkit-date-and-time-value {
   height: 1.5em;
@@ -1981,8 +1981,8 @@ textarea.form-control-lg {
 .form-select {
   display: block;
   width: 100%;
-  padding: 0.375rem 2.25rem 0.375rem 0.75rem;
-  font-size: 1rem;
+  padding: 0;
+  font-size: 12px;
   font-weight: 400;
   line-height: 1.5;
   color: #52565b;
@@ -2058,13 +2058,13 @@ textarea.form-control-lg {
   filter: brightness(90%);
 }
 .form-check-input:focus {
-  border-color: #83dde6;
+  border-color: #af1414;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(6, 187, 204, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(204, 55, 6, 0.25);
 }
 .form-check-input:checked {
-  background-color: #06bbcc;
-  border-color: #06bbcc;
+  background-color: #af1414;
+  border-color: #af1414;
 }
 .form-check-input:checked[type="checkbox"] {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
@@ -2103,8 +2103,9 @@ textarea.form-control-lg {
   }
 }
 .form-switch .form-check-input:focus {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%2383dde6'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23af1414'/%3e%3c/svg%3e");
 }
+
 .form-switch .form-check-input:checked {
   background-position: right center;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
@@ -2537,8 +2538,8 @@ textarea.form-control.is-invalid {
   user-select: none;
   background-color: transparent;
   border: 1px solid transparent;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
+  padding: 0.1875rem 0.375rem;
+  font-size: 14px;
   border-radius: 0px;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -2607,12 +2608,10 @@ fieldset:disabled .btn {
   background-color: #fafafa;
   color: #666 !important;
   border-color: #ddd;
-  border-bottom-color: #ddd; 
+  border-bottom-color: #ddd;
 }
 .btn-secondary:hover {
-
-  background-color: #f4f4f4!important;
- 
+  background-color: #f4f4f4 !important;
 }
 .btn-check:focus + .btn-secondary,
 .btn-secondary:focus {
@@ -2656,10 +2655,8 @@ fieldset:disabled .btn {
 }
 .btn-check:focus + .btn-success,
 .btn-success:focus {
-  color: #fff;
-  background-color: #157347;
-  border-color: #146c43;
-  box-shadow: 0 0 0 0.25rem rgba(60, 153, 110, 0.5);
+ 
+  box-shadow: 0 0 0 0.25rem rgb(255 0 0 / 89%);
 }
 .btn-check:checked + .btn-success,
 .btn-check:active + .btn-success,
@@ -2675,7 +2672,7 @@ fieldset:disabled .btn {
 .btn-success:active:focus,
 .btn-success.active:focus,
 .show > .btn-success.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.25rem rgba(60, 153, 110, 0.5);
+  box-shadow: 0 0 0 0.25rem rgb(255 0 0 / 89%);
 }
 .btn-success:disabled,
 .btn-success.disabled {
@@ -3987,6 +3984,9 @@ fieldset:disabled .btn {
   color: #fff;
 }
 .card {
+ 
+  width: 100%;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -3994,8 +3994,9 @@ fieldset:disabled .btn {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0px;
+  /* border: 1px solid rgba(0, 0, 0, 0.125); */
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 .card > hr {
   margin-right: 0;
@@ -4024,7 +4025,15 @@ fieldset:disabled .btn {
   padding: 1rem 1rem;
 }
 .card-title {
-  margin-bottom: 0.5rem;
+  display: inline-block;
+  padding: 15px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  float: left;
+  cursor: default;
+  color: #ffffff;
+
 }
 .card-subtitle {
   margin-top: -0.25rem;
@@ -4040,10 +4049,15 @@ fieldset:disabled .btn {
   margin-left: 1rem;
 }
 .card-header {
-  padding: 0.5rem 1rem;
-  margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  position: relative;
+  background: linear-gradient(to right, #ed213a, #93291e) !important;
+
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom: 0px solid #f4f4f4;
+  color: #444;
+  border-top-right-radius: 5px !important;
+  border-top-left-radius:5px !important;
 }
 .card-header:first-child {
   border-radius: 0 0 0 0;
@@ -4056,12 +4070,12 @@ fieldset:disabled .btn {
 .card-footer:last-child {
   border-radius: 0 0 0 0;
 }
-.card-header-tabs {
+/* .card-header-tabs {
   margin-right: -0.5rem;
   margin-bottom: -0.5rem;
   margin-left: -0.5rem;
   border-bottom: 0;
-}
+} */
 .card-header-pills {
   margin-right: -0.5rem;
   margin-left: -0.5rem;
@@ -4993,7 +5007,7 @@ fieldset:disabled .btn {
   margin: -0.5rem -0.5rem -0.5rem auto;
 }
 .modal-title {
-  color:gray;
+  color: gray;
   margin-bottom: 0;
   line-height: 1.5;
 }
@@ -6846,7 +6860,7 @@ fieldset:disabled .btn {
   color: inherit !important;
 }
 .bg-primary {
-  background-color: #f31a34  !important;
+  background-color: #f31a34 !important;
 }
 .bg-secondary {
   background-color: #6c757d !important;
@@ -10043,4 +10057,19 @@ fieldset:disabled .btn {
   .d-print-none {
     display: none !important;
   }
+}
+.breadcrumb {
+  background: none !important;
+  float: right;
+  padding: 14px;
+  margin-bottom: 0px;
+  position: relative;
+  font-size: 12px;
+}
+.card .card-header a {
+  color: #ffffff;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-footer a{
+  color: #fff;
 }
