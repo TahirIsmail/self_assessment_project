@@ -10,7 +10,7 @@ class Course_m extends CI_Model
 
     public function get_course_by_slug($slug = null)
     {
-        // Select the available fields from courses, center, and center_courses tables
+       
         $this->db->select('
             courses.*, 
             center.city, 
