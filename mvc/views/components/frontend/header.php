@@ -42,11 +42,11 @@ $is_logged_in = $this->session->userdata('loggedin');
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="<?= base_url('assets/pace/pace.css') ?>">
 
 </head>
-
 <body>
+
   <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
     <a href="<?= base_url('home/index') ?>" class="navbar-brand p-0">
       <img class="w-100" src="<?= base_url('uploads/landing_img/SL-white-logo.png') ?>" alt="Image" style="    width: 200px !important;">
@@ -373,3 +373,6 @@ $is_logged_in = $this->session->userdata('loggedin');
       </div>
     </div>
   </div>
+
+
+  

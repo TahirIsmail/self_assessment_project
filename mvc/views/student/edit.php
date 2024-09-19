@@ -22,7 +22,7 @@
                         </div>
                         <span class="col-sm-4 control-label">
                             <?php echo form_error('name'); ?>
-                        </span>
+                        </div>
                     </div>
 
                     <div class="form-group <?=form_error('dob') ? 'has-error' : ''?>">
@@ -35,19 +35,17 @@
                         </div>
                         <span class="col-sm-4 control-label">
                             <?php echo form_error('dob'); ?>
-                        </span>
-                    </div>
-
-                    <div class="form-group <?=form_error('sex') ? 'has-error' : ''?>">
-                        <label for="sex" class="col-sm-2 control-label">
-                            <?=$this->lang->line("student_sex")?>
-                        </label>
-                        <div class="col-sm-6">
-                            <?php 
-                                echo form_dropdown("sex", array($this->lang->line('student_sex_male') => $this->lang->line('student_sex_male'), $this->lang->line('student_sex_female') => $this->lang->line('student_sex_female')), set_value("sex", $student->sex), "id='sex' class='form-control'");
-                            ?>
                         </div>
-                        <span class="col-sm-4 control-label">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6 <?= form_error('sex') ? 'has-error' : '' ?>">
+                        <label for="sex" class="form-label"><?= $this->lang->line("student_sex") ?></label>
+                        <?php
+                        echo form_dropdown("sex", array($this->lang->line('student_sex_male') => $this->lang->line('student_sex_male'), $this->lang->line('student_sex_female') => $this->lang->line('student_sex_female')), set_value("sex", $student->sex), "id='sex' class='form-select'");
+                        ?>
+                        <div class="text-danger">
                             <?php echo form_error('sex'); ?>
                         </span>
                     </div>
@@ -61,61 +59,49 @@
                         </div>
                         <span class="col-sm-4 control-label">
                             <?php echo form_error('email'); ?>
-                        </span>
-                    </div>
-
-                    <div class="form-group <?=form_error('phone') ? 'has-error' : ''?>">
-                        <label for="phone" class="col-sm-2 control-label">
-                            <?=$this->lang->line("student_phone")?>
-                        </label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="phone" name="phone" value="<?=set_value('phone', $student->phone)?>" >
                         </div>
-                        <span class="col-sm-4 control-label">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6 <?= form_error('phone') ? 'has-error' : '' ?>">
+                        <label for="phone" class="form-label"><?= $this->lang->line("student_phone") ?></label>
+                        <input type="tel" class="form-control" id="phone" name="phone" value="<?= set_value('phone', $student->phone) ?>">
+                        <div class="text-danger">
                             <?php echo form_error('phone'); ?>
-                        </span>
+                        </div>
                     </div>
 
-                    <div class="form-group <?=form_error('address') ? 'has-error' : ''?>">
-                        <label for="address" class="col-sm-2 control-label">
-                            <?=$this->lang->line("student_address")?>
-                        </label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="address" name="address" value="<?=set_value('address', $student->address)?>" >
-                        </div>
-                        <span class="col-sm-4 control-label">
+                    <div class="col-md-6 <?= form_error('address') ? 'has-error' : '' ?>">
+                        <label for="address" class="form-label"><?= $this->lang->line("student_address") ?></label>
+                        <input type="text" class="form-control" id="address" name="address" value="<?= set_value('address', $student->address) ?>">
+                        <div class="text-danger">
                             <?php echo form_error('address'); ?>
-                        </span>
-                    </div>
-
-                    <div class="form-group <?=form_error('state') ? 'has-error' : ''?>">
-                        <label for="state" class="col-sm-2 control-label">
-                            <?=$this->lang->line("student_state")?>
-                        </label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="state" name="state" value="<?=set_value('state', $student->state)?>" >
                         </div>
-                        <span class="col-sm-4 control-label">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6 <?= form_error('state') ? 'has-error' : '' ?>">
+                        <label for="state" class="form-label"><?= $this->lang->line("student_state") ?></label>
+                        <input type="text" class="form-control" id="state" name="state" value="<?= set_value('state', $student->state) ?>">
+                        <div class="text-danger">
                             <?php echo form_error('state'); ?>
-                        </span>
+                        </div>
                     </div>
 
-                    <div class="form-group <?=form_error('country') ? 'has-error' : ''?>">
-                        <label for="country" class="col-sm-2 control-label">
-                            <?=$this->lang->line("student_country")?>
-                        </label>
-                        <div class="col-sm-6">
-                            <?php
-                                $country['0'] = $this->lang->line('student_select_country');  
-                                foreach ($allcountry as $allcountryKey => $allcountryit) {
-                                    $country[$allcountryKey] = $allcountryit;
-                                }
-                            ?>
-                            <?php 
-                                echo form_dropdown("country", $country, set_value("country", $student->country), "id='country' class='form-control select2'");
-                            ?>
-                        </div>
-                        <span class="col-sm-4 control-label">
+                    <div class="col-md-6 <?= form_error('country') ? 'has-error' : '' ?>">
+                        <label for="country" class="form-label"><?= $this->lang->line("student_country") ?></label>
+                        <?php
+                        $country['0'] = $this->lang->line('student_select_country');
+                        foreach ($allcountry as $allcountryKey => $allcountryit) {
+                            $country[$allcountryKey] = $allcountryit;
+                        }
+                        ?>
+                        <?php
+                        echo form_dropdown("country", $country, set_value("country", $student->country), "id='country' class='form-select select2'");
+                        ?>
+                        <div class="text-danger">
                             <?php echo form_error('country'); ?>
                         </span>
                     </div>
@@ -156,114 +142,113 @@
                         </div>
                          <span class="col-sm-4 control-label">
                             <?php echo form_error('username'); ?>
-                        </span>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-8">
-                            <input type="submit" class="btn btn-success" value="<?=$this->lang->line("update_student")?>" >
                         </div>
                     </div>
-                </form>
+                </div>
 
-            </div> <!-- col-sm-8 -->
-        </div><!-- row -->
-    </div><!-- Body -->
-</div><!-- /.box -->
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-success" value="<?= $this->lang->line("update_student") ?>">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 
 <script type="text/javascript">
-$( ".select2" ).select2();
-$('#dob').datepicker({ startView: 2 });
+    $(".select2").select2();
+    $('#dob').datepicker({
+        startView: 2
+    });
 
-$('#classesID').change(function(event) {
-    var classesID = $(this).val();
-    if(classesID === '0') {
-        $('#classesID').val(0);
-    } else {
-        $.ajax({
-            type: 'POST',
-            url: "<?=base_url('student/sectioncall')?>",
-            data: "id=" + classesID,
-            dataType: "html",
-            success: function(data) {
-               $('#sectionID').html(data);
-            }
-        });
+    $('#classesID').change(function(event) {
+        var classesID = $(this).val();
+        if (classesID === '0') {
+            $('#classesID').val(0);
+        } else {
+            $.ajax({
+                type: 'POST',
+                url: "<?= base_url('student/sectioncall') ?>",
+                data: "id=" + classesID,
+                dataType: "html",
+                success: function(data) {
+                    $('#sectionID').html(data);
+                }
+            });
 
-        $.ajax({
-            type: 'POST',
-            url: "<?=base_url('student/optionalsubjectcall')?>",
-            data: "id=" + classesID,
-            dataType: "html",
-            success: function(data2) {
-                $('#optionalSubjectID').html(data2);
-            }
-        });
-    }
-});
-
-$(document).on('click', '#close-preview', function(){ 
-    $('.image-preview').popover('hide');
-    // Hover befor close the preview
-    $('.image-preview').hover(
-        function () {
-           $('.image-preview').popover('show');
-           $('.content').css('padding-bottom', '130px');
-        }, 
-         function () {
-           $('.image-preview').popover('hide');
-           $('.content').css('padding-bottom', '20px');
+            $.ajax({
+                type: 'POST',
+                url: "<?= base_url('student/optionalsubjectcall') ?>",
+                data: "id=" + classesID,
+                dataType: "html",
+                success: function(data2) {
+                    $('#optionalSubjectID').html(data2);
+                }
+            });
         }
-    );    
-});
-
-$(function() {
-    // Create the close button
-    var closebtn = $('<button/>', {
-        type:"button",
-        text: 'x',
-        id: 'close-preview',
-        style: 'font-size: initial;',
     });
-    closebtn.attr("class","close pull-right");
-    // Set the popover default content
-    $('.image-preview').popover({
-        trigger:'manual',
-        html:true,
-        title: "<strong>Preview</strong>"+$(closebtn)[0].outerHTML,
-        content: "There's no image",
-        placement:'bottom'
+
+    $(document).on('click', '#close-preview', function() {
+        $('.image-preview').popover('hide');
+        // Hover befor close the preview
+        $('.image-preview').hover(
+            function() {
+                $('.image-preview').popover('show');
+                $('.content').css('padding-bottom', '130px');
+            },
+            function() {
+                $('.image-preview').popover('hide');
+                $('.content').css('padding-bottom', '20px');
+            }
+        );
     });
-    // Clear event
-    $('.image-preview-clear').click(function(){
-        $('.image-preview').attr("data-content","").popover('hide');
-        $('.image-preview-filename').val("");
-        $('.image-preview-clear').hide();
-        $('.image-preview-input input:file').val("");
-        $(".image-preview-input-title").text("<?=$this->lang->line('student_file_browse')?>"); 
-    }); 
-    // Create the preview image
-    $(".image-preview-input input:file").change(function (){     
-        var img = $('<img/>', {
-            id: 'dynamic',
-            width:250,
-            height:200,
-            overflow:'hidden'
-        });      
-        var file = this.files[0];
-        var reader = new FileReader();
-        // Set preview image into the popover data-content
-        reader.onload = function (e) {
-            $(".image-preview-input-title").text("<?=$this->lang->line('student_file_browse')?>");
-            $(".image-preview-clear").show();
-            $(".image-preview-filename").val(file.name);            
-            img.attr('src', e.target.result);
-            $(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
-            $('.content').css('padding-bottom', '130px');
-        }        
-        reader.readAsDataURL(file);
-    });  
-});
 
-
+    $(function() {
+        // Create the close button
+        var closebtn = $('<button/>', {
+            type: "button",
+            text: 'x',
+            id: 'close-preview',
+            style: 'font-size: initial;',
+        });
+        closebtn.attr("class", "close pull-right");
+        // Set the popover default content
+        $('.image-preview').popover({
+            trigger: 'manual',
+            html: true,
+            title: "<strong>Preview</strong>" + $(closebtn)[0].outerHTML,
+            content: "There's no image",
+            placement: 'bottom'
+        });
+        // Clear event
+        $('.image-preview-clear').click(function() {
+            $('.image-preview').attr("data-content", "").popover('hide');
+            $('.image-preview-filename').val("");
+            $('.image-preview-clear').hide();
+            $('.image-preview-input input:file').val("");
+            $(".image-preview-input-title").text("<?= $this->lang->line('student_file_browse') ?>");
+        });
+        // Create the preview image
+        $(".image-preview-input input:file").change(function() {
+            var img = $('<img/>', {
+                id: 'dynamic',
+                width: 250,
+                height: 200,
+                overflow: 'hidden'
+            });
+            var file = this.files[0];
+            var reader = new FileReader();
+            // Set preview image into the popover data-content
+            reader.onload = function(e) {
+                $(".image-preview-input-title").text("<?= $this->lang->line('student_file_browse') ?>");
+                $(".image-preview-clear").show();
+                $(".image-preview-filename").val(file.name);
+                img.attr('src', e.target.result);
+                $(".image-preview").attr("data-content", $(img)[0].outerHTML).popover("show");
+                $('.content').css('padding-bottom', '130px');
+            }
+            reader.readAsDataURL(file);
+        });
+    });
 </script>

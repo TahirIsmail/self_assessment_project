@@ -826,14 +826,14 @@ body > .header .logo .icon {
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
   z-index: 2300;
 }
-.dropdown-menu > li > a > .glyphicon,
+.dropdown-menu > li > a > .glyphicon,.btn.btn-success:hover
 .dropdown-menu > li > a > .fa,
 .dropdown-menu > li > a > .ion {
   margin-right: 10px;
 }
 .dropdown-menu > li > a:hover {
-  background-color: #3c8dbc;
-  color: #f9f9f9;
+  /* background-color: #af1414;
+  color: #f9f9f9; */
 }
 /*Drodown in navbars*/
 .skin-blue .navbar .dropdown-menu > li > a {
@@ -1981,8 +1981,8 @@ Component: timeline
 .btn.btn-success:active,
 .btn.btn-success.hover {
   color: #fff;
-  background-color: #09A3A3;
-  border-color: #09A3A3;
+  background-color: #c50707;
+  border-color: #a32009;
 }
 .btn.btn-info {
   color: #fff;
@@ -1998,15 +1998,15 @@ Component: timeline
 }
 .btn.btn-danger {
   color: #fff;
-  background-color: #ff5b57;
-  border-color: #ff5b57;
+  background: linear-gradient(to right, #ed213a, #93291e);
+  border-color: #93291e;
 }
 .btn.btn-danger:hover,
 .btn.btn-danger:active,
 .btn.btn-danger.hover {
   color: #fff;
-  background-color: #F35A57;
-  border-color: #F35A57;
+  background-color: #93291e;
+  border-color: #ed213a;
 }
 .btn.btn-warning {
   color: #fff;
@@ -2327,8 +2327,14 @@ Component: timeline
 }
 /* PAGINATION */
 .pagination > li > a {
-  background: #fafafa;
-  color: #666;
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.428571429;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;6;
 }
 
 .pagination > li:first-of-type a {
@@ -2753,7 +2759,7 @@ Component: timeline
 .skin-blue .treeview-menu > li.active > a,
 .skin-blue .treeview-menu > li > a:hover {
   color: #FFFFFF;
-  background-color: #5a3939;
+  background-color: #ed213a;
 }
 .skin-blue .sidebar-form {
   -webkit-border-radius: 2px;
@@ -3754,4 +3760,17 @@ fieldset[disabled] .btn-vk.active {
 }
 .bootstrap-tagsinput{
   width: 100% !important;
+}
+
+input[type="checkbox"]:checked + label .active
+{
+  background: #ed213a !important
+}
+input[type="checkbox"] + label .active {
+  width: 20px !important;
+  height: 20px !important;
+  line-height: 18px;
+  font-size: 11px;
+  border-radius: 2px;
+  text-align: center;
 }
