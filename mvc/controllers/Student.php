@@ -480,7 +480,8 @@ class Student extends Admin_Controller
 				if ($this->input->post('dob')) {
 					$array["dob"] 		= date("Y-m-d", strtotime((string) $this->input->post("dob")));
 				}
-				$array['photo'] = $this->upload_data['file']['file_name'];
+				
+				$array['photo'] = isset($this->upload_data['file']['file_name']) ? $this->upload_data['file']['file_name'] : '';
 
 
 				$this->student_m->insert_student($array);

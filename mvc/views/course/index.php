@@ -253,48 +253,74 @@
     .sub-list li:last-child {
         border-bottom: none;
     }
+
+    .toast-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .toast {
+        display: flex;
+        align-items: center;
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        min-width: 250px;
+        opacity: 0;
+        animation: fadeInOut 5s ease forwards;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .toast.toast-success {
+        background-color: #28a745;
+    }
+
+    .toast.toast-error {
+        background-color: #dc3545;
+    }
+
+    @keyframes fadeInOut {
+        0% {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+
+        10% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        90% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+    }
 </style>
 
 <?php $this->load->view("components/frontend/header.php"); ?>
-
 <div class="all-courses-container">
-    <!-- <div class="courses-list">
-        <h2>Courses</h2>
-        <ul>
-            <li class="btn btn-primary  w-100 ">Level 3: Award in Education & Training (AET) Course</li>
-            <li class="btn btn-primary  w-100 ">Level 4: Certificate in Education & Training (CET) Course</li>
-            <li class="btn btn-primary  w-100 ">Level 5: Diploma in Education & Training (DET) Course</li>
-            <li class="btn btn-primary  w-100 ">Level 3: Teacher Training (PTLLS) Course</li>
-            <li class="btn btn-primary  w-100 ">Level 4: Certificate in Teaching (CTLLS) Course</li>
-            <li class="btn btn-primary  w-100 "> Level 5: Diploma in Teaching (DTLLS) Course</li>
-            <li class="btn btn-primary  w-100 ">Level 3: Assessor (TAQA) Understanding Course</li>
-            <li class="btn btn-primary  w-100 ">Level 3: Assessor (TAQA) Vocational Level Course</li>
-            <li class="btn btn-primary  w-100 ">Level 3: Assessor (TAQA) Competence Level Course</li>
-            <li class="btn btn-primary  w-100 ">Level 3: Assessor Certificate (Combined) CAVA Course</li>
-            <li class="btn btn-primary  w-100 ">Level 4: Verifier Award (IQA) Course</li>
-            <li class="btn btn-primary  w-100 ">Study in the UK: International Students</li>
-            <li class="btn btn-primary  w-100 ">Restraint Reduction Training Course</li>
-            <li class="btn btn-primary  w-100 ">Level 3: Emergency First Aid at Work Course</li>
-            <li class="btn btn-primary  w-100 ">Level 3 First Aid At Work 3 Day Course</li>
-            <li class="btn btn-primary  w-100 ">Level 3: SIA-Trainer Course</li>
-            <li class="btn btn-primary  w-100 ">Level 3: Conflict Management Course</li>
-            <li class="btn btn-primary  w-100 ">Level 3: Physical Intervention (Trainer) Course</li>
-            <li class="btn btn-primary  w-100 ">Level 2: Upskilling Door Supervisor Course</li>
-            <li class="btn btn-primary  w-100 ">Level 2: SIA Door Supervisor Course</li>
-            <li class="btn btn-primary  w-100 ">Level 2: SIA CCTV Public Surveillance Course</li>
-            <li class="btn btn-primary  w-100 ">Level 2: Security Guarding (SIA) Course</li>
-            <li class="btn btn-primary  w-100 ">Level 2: Professional Taxi and Private Hire Driver Course</li>
-            <li class="btn btn-primary  w-100 ">TFL PCO B1 English and SERU Training</li>
-            <li class="btn btn-primary  w-100 ">Level 3: Driver CPC Training Course</li>
-            <li class="btn btn-primary  w-100 ">Forklift 1 Day Refresher & Retest Course</li>
-            <li class="btn btn-primary  w-100 ">Forklift 3 Day Basic Training Course</li>
-            <li class="btn btn-primary  w-100 ">Forklift 5 Day Novice Operator Training</li>
-        </ul>
-    </div> -->
+    <div id="toastContainer" class="toast-container"></div>
+
     <div class="courses-list">
         <h2>Courses</h2>
         <ul id="coursesContainer">
-            <!-- Dynamic content will be injected here -->
+            <?php foreach ($all_courses as $course) { ?>
+                <li class="btn btn-primary w-100">
+                    <a href="<?= base_url('course/index/' . $course['slug']) ?>" style="color:white;">
+                        <span class="course-title"><?php echo $course['course_name'] ?></span>
+                    </a>
+                </li>
+            <?php } ?>
         </ul>
     </div>
 
@@ -302,259 +328,65 @@
 
 
     <div class="course-detail">
-        <h2>Level 3: Award in Education & Training (AET) Course</h2>
+        <h2><?php echo $course_data['name'] ?></h2>
         <div class="col-md-12 h-10 mb-5">
-            <img class="h-100 w-100" src="<?= base_url('uploads/landing_img/course-3.jpg') ?>" alt="Education Training Course">
+            <img class="h-100 w-100" src="<?= base_url('uploads/images/' . $course_data['image']) ?>" alt="Education Training Course">
         </div>
-        <p>Level 3 Award in Education and Training (AET), formerly known as PTLLS, is designed to give people the knowledge and confidence to teach adults in any specialty subject area. It is suitable for those wishing to work as a teacher, trainer, or tutor in further education.</p>
+        <div>
+            <?php echo $course_data['description'] ?>
+        </div>
+        <!-- <p>Level 3 Award in Education and Training (AET), formerly known as PTLLS, is designed to give people the knowledge and confidence to teach adults in any specialty subject area. It is suitable for those wishing to work as a teacher, trainer, or tutor in further education.</p>
         <p>Russbridge Academy offers this qualification via Distance Learning, Online, Face to Face Classroom, or Live Zoom classroom. This Level 3 AET is a direct replacement qualification of the Level 3/4 Preparing to Teach in the Lifelong Learning Sector (PTLLS) course, colloquially known as "PETALS" since 2011.</p>
-        <p>This course is an initial teacher training qualification, also a Regulated Qualifications Framework (RQF) and OFQUAL regulated. It is best suited for those new to teaching or currently teaching in England, Wales, Scotland, and Ireland. It provides the knowledge and confidence to teach adult learners at a nationally accredited standard.</p>
+        <p>This course is an initial teacher training qualification, also a Regulated Qualifications Framework (RQF) and OFQUAL regulated. It is best suited for those new to teaching or currently teaching in England, Wales, Scotland, and Ireland. It provides the knowledge and confidence to teach adult learners at a nationally accredited standard.</p> -->
 
-        <div class="award-announcement">
+        <!-- <div class="award-announcement">
             <p class="highlight-blue">We are delighted to share that Russbridge Academy Ltd has been awarded</p>
             <p class="highlight-brown">“Training Provider of the Year 2020 – London”</p>
             <p>and</p>
             <p class="highlight-orange">”Innovation and Excellence Awards – Training Provider of the Year 2021”</p>
             <p>and</p>
             <p class="highlight-red">”Global 100- 2022 Winner: Best Leading Training Provider – UK”</p>
-        </div>
-
+        </div> -->
+        <br>
         <h3>Book a Course from our Wide-range of Venue (Online/ Class-based)</h3>
+        <br>
         <table class="booking-table mb-5">
             <thead>
                 <tr>
-                    <th style="width: 10%;">Id</th>
-                    <th style="width: 25%;">City</th>
+                    <th style="width: 5%;">Id</th>
+                    <th style="width: 30%;">City</th>
+                    <th style="width: 30%;">Address</th>
                     <th style="width: 15%;">Date</th>
-                    <th style="width: 10%;">Price</th>
+                    <th style="width: 5%;">Price</th>
                     <th style="width: 40%;">Book Now</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td data-label="id">1</td>
-                    <td data-label="Address">Stuart Crescent, Wood Green, London N22 5NJ</td>
-                    <td data-label="Date">
-                        <select>
-                            <option>5th - 7th Aug</option>
-                            <option>12th - 14th Aug</option>
-                            <option>19th - 21st Aug</option>
-                        </select>
-                    </td>
-                    <td data-label="Price">£269.99</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-
-                <tr>
-                    <td data-label="id">1</td>
-                    <td data-label="Address">1 Greenhill Way, Harrow, London HA1 1LE</td>
-                    <td data-label="Date">
-                        <select>
-                            <option>5th - 7th Aug</option>
-                            <option>12th - 14th Aug</option>
-                            <option>19th - 21st Aug</option>
-                        </select>
-                    </td>
-                    <td data-label="Price">£269.99</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="id">1</td>
-                    <td data-label="Address">196 High Street, Stratford, London E15 2NE</td>
-                    <td data-label="Date">
-                        <select>
-                            <option>12th - 14th Aug</option>
-                            <option>19th - 21st Aug</option>
-                            <option>26th - 28th Aug</option>
-                        </select>
-                    </td>
-                    <td data-label="Price">£269.99</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="id">1</td>
-                    <td data-label="Address">Suite 26, Harbour House, Coldharbour Lane, Rainham RM13 9YB</td>
-                    <td data-label="Date">
-                        <select>
-                            <option>12th - 14th Aug</option>
-                            <option>19th - 21st Aug</option>
-                            <option>26th - 28th Aug</option>
-                        </select>
-                    </td>
-                    <td data-label="Price">£269.99</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="id">1</td>
-                    <td data-label="Address">Catherine Grove, Greenwich, London SE10 8FR</td>
-                    <td data-label="Date">
-                        <select>
-                            <option>12th - 14th Aug</option>
-                            <option>19th - 21st Aug</option>
-                            <option>26th - 28th Aug</option>
-                        </select>
-                    </td>
-                    <td data-label="Price">£269.99</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="id">1</td>
-                    <td data-label="Address">Victoria Rd, North Acton, London W3 6UP</td>
-                    <td data-label="Date">
-                        <select>
-                            <option>5th - 7th Aug</option>
-                            <option>12th - 14th Aug</option>
-                            <option>19th - 21st Aug</option>
-                        </select>
-                    </td>
-                    <td data-label="Price">£269.99</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="id">1</td>
-                    <td data-label="Address">156 Blackfriars Road, Southwark, Elephant & Castle, London SE1 8EN</td>
-                    <td data-label="Date">
-                        <select>
-                            <option>12th - 14th Aug</option>
-                            <option>19th - 21st Aug</option>
-                            <option>26th - 28th Aug</option>
-                        </select>
-                    </td>
-                    <td data-label="Price">£269.99</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="id">1</td>
-                    <td data-label="Address">Empire Way, Wembley, London HA9 8DS</td>
-                    <td data-label="Date">
-                        <select>
-                            <option>5th - 7th Aug</option>
-                            <option>12th - 14th Aug</option>
-                            <option>19th - 21st Aug</option>
-                        </select>
-                    </td>
-                    <td data-label="Price">£269.99</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="id">1</td>
-                    <td data-label="Address">Main Road, Boreham, Essex CM3 3HJ</td>
-                    <td data-label="Date">
-                        <select>
-                            <option>12th - 14th Aug</option>
-                            <option>19th - 21st Aug</option>
-                            <option>26th - 28th Aug</option>
-                        </select>
-                    </td>
-                    <td data-label="Price">£319.99</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="id">1</td>
-                    <td data-label="Address">Church Street, Chalvey, Slough SL1 2NH</td>
-                    <td data-label="Date">
-                        <select>
-                            <option>5th - 7th Aug</option>
-                            <option>12th - 14th Aug</option>
-                            <option>19th - 21st Aug</option>
-                        </select>
-                    </td>
-                    <td data-label="Price">£319.99</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="id">1</td>
-                    <td data-label="Address">The Watermill, London Road, Bourne End, Hemel Hempstead, Hertfordshire HP1 2RJ</td>
-                    <td data-label="Date">
-                        <select>
-                            <option>5th - 7th Aug</option>
-                            <option>12th - 14th Aug</option>
-                            <option>19th - 21st Aug</option>
-                        </select>
-                    </td>
-                    <td data-label="Price">£319.99</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="id">1</td>
-                    <td data-label="Address">Star City, Cuckoo Road, Heartlands Parkway Nechells, Birmingham B7 5SB</td>
-                    <td data-label="Date">
-                        <select>
-                            <option>12th - 14th Aug</option>
-                            <option>19th - 21st Aug</option>
-                            <option>26th - 28th Aug</option>
-                        </select>
-                    </td>
-                    <td data-label="Price">£319.99</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-
+                <?php if (!empty($course_data['centers'])) { ?>
+                    <?php foreach ($course_data['centers'] as $index => $center) { ?>
+                        <tr>
+                            <td data-label="id"><?php echo $index + 1; ?></td>
+                            <td data-label="City"><?php echo $center['city']; ?></td>
+                            <td data-label="Address"><?php echo $center['address']; ?></td>
+                            <td data-label="Date"><?php echo $center['date']; ?></td>
+                            <td data-label="Price">£<?php echo $center['price']; ?></td>
+                            <td data-label="Book Now">
+                                <button onclick='checkLogin(<?= json_encode($course_data) ?>, <?= json_encode($slug) ?>, <?= json_encode($center) ?>)'>Add to Cart</button>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                <?php } else { ?>
+                    <tr>
+                        <td colspan="6" style="text-align: center; padding: 20px;">
+                            No centers found for this course.
+                        </td>
+                    </tr>
+                <?php } ?>
 
             </tbody>
         </table>
 
-        <h3>Book for Combined Course</h3>
-        <table class="booking-table">
-            <thead>
-                <tr>
-                    <th style="width:55%">Course</th>
-                    <th style="width:15%">Price</th>
-                    <th style="width:30%">Book Now</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td data-label="Course">Level 3 AET / PTLLS & Level 4 CET / CTLLS Courses - Online</td>
-                    <td data-label="Price">£680.00</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="Course">Level 3 AET / PTLLS & Level 4 CET / CTLLS Courses - Classroom</td>
-                    <td data-label="Price">£830.00</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="Course">Level 3 AET / PTLLS & Level 5 DET / DTLLS Courses - Online</td>
-                    <td data-label="Price">£1620.00</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="Course">Level 3 AET / PTLLS & Level 5 DET / DTLLS Courses - Classroom</td>
-                    <td data-label="Price">£1850.00</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="Course">Level 3 AET / PTLLS & Level 3 Assessor Understanding Unit Courses - Online</td>
-                    <td data-label="Price">£430.00</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="Course">Level 3 AET / PTLLS & Level 3 Assessor Understanding Unit Courses - Classroom</td>
-                    <td data-label="Price">£530.00</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="Course">Level 3 AET / PTLLS & Level 3 Assessor Vocational / Competence Courses - Online</td>
-                    <td data-label="Price">£490.00</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="Course">Level 3 AET / PTLLS & Level 3 Assessor Vocational / Competence Courses - Classroom</td>
-                    <td data-label="Price">£720.00</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="Course">Level 3 AET / PTLLS & Level 3 Assessor CAVA Courses - Online</td>
-                    <td data-label="Price">£525.00</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td data-label="Course">Level 3 AET / PTLLS & Level 3 Assessor CAVA Courses - Classroom</td>
-                    <td data-label="Price">£740.00</td>
-                    <td data-label="Book Now">Quantity: <input type="number" min="1" value="1"><button>Add to Cart</button></td>
-                </tr>
-            </tbody>
-        </table>
+
 
         <!-- New sections added in the table structure -->
         <h3>Course Introduction</h3>
@@ -563,34 +395,34 @@
                 <tr>
                     <td data-label="Course Introduction">
                         <p>Level 3 Award in Education and Training (AET) course
-                             is designed to contribute towards the knowledge and 
-                             understanding for Further Education National Training
-                              Organisation (FENTO) or the Employment National Training
-                               Organisation (EMPNTO) occupational standards in the United
-                                Kingdom. This course is designed for anyone wishing to enter
-                                 in the adult training and teaching industry in this country.
+                            is designed to contribute towards the knowledge and
+                            understanding for Further Education National Training
+                            Organisation (FENTO) or the Employment National Training
+                            Organisation (EMPNTO) occupational standards in the United
+                            Kingdom. This course is designed for anyone wishing to enter
+                            in the adult training and teaching industry in this country.
                         </p>
                     </td>
 
                 </tr>
                 <tr>
                     <td>
-                        <p>This course is suitable if you work or want to work as a 
+                        <p>This course is suitable if you work or want to work as a
                             teacher/trainer/tutor in Further Education Colleges, adult
-                             and community education, beauty salon or beauty industry, 
-                             private training centres, voluntary sector, commerce, industry, 
-                             public sector, HM forces, Beauty Salon industry, Hair Extension 
-                             training, Eye Lashes, Grooming, Health Industry, aesthetic trainer, 
-                             Nail Technician, Waxing Training, Beauty schools, care home and Care
-                              Instructor, Driving Instructors, NHS Trusts, various police and military 
-                              forces, Dog Grooming training, Midwives, Librarians, Laboratory Technicians, 
-                              Teaching Assistants, Higher Education Teaching Professional, Further
-                               Education Teaching Professionals, Secondary Education Teaching 
-                               Professionals, SIA Security Instructor, Primary and Nursery Education
-                                Teaching Professionals, Special Needs Education Teaching Professionals,
-                                 Security Industry, Teaching/Training, Educational Support Assistants,
-                                  Education Advisers and School Inspectors, Veterinarians, Nurses, 
-                                  Care sector and First Aid sector.
+                            and community education, beauty salon or beauty industry,
+                            private training centres, voluntary sector, commerce, industry,
+                            public sector, HM forces, Beauty Salon industry, Hair Extension
+                            training, Eye Lashes, Grooming, Health Industry, aesthetic trainer,
+                            Nail Technician, Waxing Training, Beauty schools, care home and Care
+                            Instructor, Driving Instructors, NHS Trusts, various police and military
+                            forces, Dog Grooming training, Midwives, Librarians, Laboratory Technicians,
+                            Teaching Assistants, Higher Education Teaching Professional, Further
+                            Education Teaching Professionals, Secondary Education Teaching
+                            Professionals, SIA Security Instructor, Primary and Nursery Education
+                            Teaching Professionals, Special Needs Education Teaching Professionals,
+                            Security Industry, Teaching/Training, Educational Support Assistants,
+                            Education Advisers and School Inspectors, Veterinarians, Nurses,
+                            Care sector and First Aid sector.
                         </p>
                     </td>
 
@@ -625,7 +457,6 @@
         <table class="mb-3">
             <tbody>
                 <tr>
-
                     <td data-label="Entry Requirement">
                         <p>Level 3 Award in Education and Training AET is an introductory,
                             knowledge based teaching qualification. It can be undertaken by
@@ -638,97 +469,267 @@
         </table>
     </div>
 </div>
+<form method="post" id="paymentAddDataForm" action="<?= base_url('course/payment') ?>" enctype="multipart/form-data">
+    <div class="modal fade" id="addpayment" tabindex="-1" aria-labelledby="addPaymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header d-flex justify-content-between align-items-center">
+                    <h5 class="modal-title mb-0" id="addPaymentModalLabel"><?= $this->lang->line('take_exam_add_payment') ?></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
 
-<?php $this->load->view("components/frontend/footer.php"); ?>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const courses = [{
-                id: 'aet',
-                title: 'DOOR SUPERVISOR',
-                subItems: ['Sub-item 1', 'Sub-item 2']
-            },
-            {
-                id: 'cet',
-                title: 'CLOSE PROTECTION',
-                subItems: ['Sub-item 1', 'Sub-item 2']
-            }
-            // Add more courses as needed
-        ];
+                        <input type="hidden" name="course_slug" id="course_slug">
+                        <input type="hidden" name="student_id" id="student_id">
+                        <input type="hidden" name="center_course_id" id="center_course_id">
 
-        const coursesContainer = document.getElementById('coursesContainer');
+                        <div class="col-sm-6">
+                            <div class="mb-3 <?= form_error('paymentAmount') ? 'is-invalid' : ''; ?>" id="paymentAmountErrorDiv">
+                                <label for="paymentAmount" class="form-label"><?= $this->lang->line('take_exam_payment_amount') ?> <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="paymentAmount" name="paymentAmount" readonly="readonly">
+                                <div class="invalid-feedback" id="paymentAmountError"><?= form_error('paymentAmount') ?></div>
+                            </div>
+                        </div>
 
-        // Function to render courses
-        function renderCourses(courses) {
-            courses.forEach(course => {
-                const courseItem = document.createElement('li');
-                courseItem.className = 'btn btn-primary w-100';
-                courseItem.innerHTML = `
-                <span class="course-title">${course.title}</span>
-                <span class="icon">&#9662;</span> <!-- Downward arrow -->
-            `;
+                        <div class="col-sm-6">
+                            <div class="mb-3 <?= form_error('payment_method') ? 'is-invalid' : ''; ?>" id="payment_method_error_div">
+                                <label for="payment_method" class="form-label"><?= $this->lang->line('take_exam_payment_method') ?> <span class="text-danger">*</span></label>
+                                <?php
+                                $payment_method_array['select'] = $this->lang->line('take_exam_select_payment_method');
+                                if (customCompute($payment_settings)) {
+                                    foreach ($payment_settings as $payment_setting) {
+                                        $payment_method_array[$payment_setting->slug] = $payment_setting->name;
+                                    }
+                                }
+                                echo form_dropdown("payment_method", $payment_method_array, set_value("payment_method"), "id='payment_method' class='form-select select2'");
+                                ?>
+                                <div class="invalid-feedback" id="payment_method_error"><?= form_error('payment_method') ?></div>
+                            </div>
+                        </div>
 
-                const subList = document.createElement('ul');
-                subList.className = 'sub-list';
-                subList.id = course.id;
-                subList.style.display = 'none';
-
-                course.subItems.forEach(subItem => {
-                    const subItemElement = document.createElement('li');
-                    subItemElement.className = 'btn btn-primary w-100';
-                    subItemElement.textContent = subItem;
-                    subList.appendChild(subItemElement);
-                });
-
-                coursesContainer.appendChild(courseItem);
-                coursesContainer.appendChild(subList);
-            });
-        }
-
-        renderCourses(courses);
-
-        // Event delegation for handling clicks on course items and sub-list items
-        coursesContainer.addEventListener('click', function(event) {
-            const target = event.target.closest('.btn');
-
-            if (target) {
-                const subList = target.nextElementSibling;
-
-                if (subList && subList.classList.contains('sub-list')) {
-                    // Close all other sub-lists
-                    document.querySelectorAll('.sub-list').forEach(list => {
-                        if (list !== subList) {
-                            list.style.display = 'none';
+                        <!-- Additional Inputs -->
+                        <?php
+                        if (inicompute($payment_settings)) {
+                            foreach ($payment_settings as $payment_setting) {
+                                if ($payment_setting->misc != null) {
+                                    $misc = json_decode($payment_setting->misc);
+                                    if (inicompute($misc->input)) {
+                                        foreach ($misc->input as $input) {
+                                            $this->load->view($input);
+                                        }
+                                    }
+                                }
+                            }
                         }
-                    });
+                        ?>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= $this->lang->line('close') ?></button>
+                    <input type="submit" id="add_payment_button" class="btn btn-success" value="<?= $this->lang->line("take_exam_add_payment") ?>" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 
-                    // Remove active class from all course buttons
-                    document.querySelectorAll('.btn').forEach(button => {
-                        if (button !== target) {
-                            button.classList.remove('active');
-                        }
-                    });
 
-                    // Toggle the clicked sub-list and button
-                    if (subList.style.display === 'none' || subList.style.display === '') {
-                        subList.style.display = 'block';
-                        target.classList.add('active');
-                    } else {
-                        subList.style.display = 'none';
-                        target.classList.remove('active');
-                    }
-                } else {
-                    // Handle clicks on sub-list items
-                    if (target.parentElement.classList.contains('sub-list')) {
-                        // Remove active class from all sub-list items
-                        document.querySelectorAll('.sub-list .btn').forEach(button => {
-                            button.classList.remove('active');
-                        });
-
-                        // Add active class to the clicked sub-list item
-                        target.classList.add('active');
-                    }
+<?php
+$js_gateway     = [];
+$submit_gateway = [];
+if (inicompute($payment_settings)) {
+    foreach ($payment_settings as $payment_setting) {
+        if ($payment_setting->misc != null) {
+            $misc = json_decode($payment_setting->misc);
+            if (inicompute($misc->js)) {
+                foreach ($misc->js as $js) {
+                    $this->load->view($js);
                 }
             }
+
+            if (inicompute($misc->input)) {
+                if (isset($misc->input[0])) {
+                    $js_gateway[$payment_setting->slug] = isset($misc->input[0]);
+                }
+            }
+
+            if (inicompute($misc->input)) {
+                if (isset($misc->submit) && $misc->submit) {
+                    $submit_gateway[$payment_setting->slug] = $misc->submit;
+                }
+            }
+        }
+    }
+}
+
+$js_gateway     = json_encode($js_gateway);
+$submit_gateway = json_encode($submit_gateway);
+?>
+
+<?php $this->load->view("components/frontend/footer.php"); ?>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo base_url('assets/inilabs/easing/easing.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/inilabs/waypoints/waypoints.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/inilabs/wow/wow.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/inilabs/owlcarousel/owl.carousel.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/inilabs/landing_js/main.js'); ?>"></script>
+
+<?php if ($this->session->flashdata('success')): ?>
+    <script type="text/javascript">
+        
+        showToast('success', "<?= $this->session->flashdata('success'); ?>");
+
+        function showToast(type, message) {
+
+            var toastContainer = document.getElementById('toastContainer');
+            var toast = document.createElement('div');
+            toast.className = 'toast toast-' + type;
+            toast.textContent = message;
+
+            toastContainer.appendChild(toast);
+
+            // Remove the toast after 5 seconds (animation duration)
+            setTimeout(function() {
+                toast.remove();
+            }, 5000);
+        }
+    </script>
+<?php $this->session->set_flashdata('success', '');
+endif; ?>
+
+<?php if ($this->session->flashdata('error')): ?>
+    <script type="text/javascript">
+        
+        showToast('error', "<?= $this->session->flashdata('error'); ?>");
+
+        function showToast(type, message) {
+
+            var toastContainer = document.getElementById('toastContainer');
+            var toast = document.createElement('div');
+            toast.className = 'toast toast-' + type;
+            toast.textContent = message;
+
+            toastContainer.appendChild(toast);
+
+            // Remove the toast after 5 seconds (animation duration)
+            setTimeout(function() {
+                toast.remove();
+            }, 5000);
+        }
+    </script>
+<?php $this->session->set_flashdata('error', '');
+endif; ?>
+<script>
+
+</script>
+<script>
+    const gateway = <?= $js_gateway ?>;
+    const submit_gateway = <?= $submit_gateway ?>;
+    let form = document.getElementById('paymentAddDataForm');
+</script>
+<script>
+    $(document).ready(function() {
+
+
+
+        // Handle form submission
+        $('#paymentAddDataForm').submit(function(event) {
+
+            event.preventDefault(); // Prevent default form submission
+
+            let payment_method = $('#payment_method').val();
+            let submit = true;
+            // Call payment gateway function if exists
+            for (let item in submit_gateway) {
+                if (item === payment_method) {
+                    submit = true;
+                    window[payment_method + '_payment'](); // Call the payment method function dynamically
+                    break;
+                }
+            }
+
+            if (submit) {
+
+                // let formData = new FormData(this);
+
+                // $.ajax({
+                //     url: "<?= base_url('home/payment') ?>", // Target URL
+                //     type: "POST",
+                //     data: formData,
+                //     processData: false,
+                //     contentType: false,
+                //     success: function(response) {
+
+                //         // Show success message and close the modal
+                //         showToast('success', 'Payment successfully processed.');
+                //         // $('#addpayment').modal('hide'); // Close the modal
+                //         // $('#paymentAddDataForm')[0].reset(); // Reset the form
+                //     },
+                //     error: function(xhr, status, error) {
+                //         // Handle error response
+                //         showToast('error', 'Failed to process payment. Please try again.');
+                //     }
+                // });
+            }
         });
+
+        // Close modal and reset form when close button is clicked
+        $('#addpayment .btn-default').click(function() {
+            $('#paymentAddDataForm')[0].reset();
+        });
+        $(".owl-carousel").owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            items: 1, // Adjust the number of visible items as needed
+            autoplay: true,
+            autoplayTimeout: 5000, // Adjust the timeout for autoplay
+            autoplayHoverPause: true
+        });
+    });
+    isLoggedIn = <?= json_encode($is_logged_in)
+
+                    ?>;
+
+
+    function checkLogin(course_data, course_slug, center) {
+        if (isLoggedIn) {
+            $('#student_id').val(isLoggedIn);
+            $('#center_course_id').val(course_data.center_course_id);
+            $('#course_slug').val(course_slug);
+            $('#paymentAmount').val(center.price);
+            $('#addpayment').modal('show');
+        } else {
+            window.location.href = "<?= base_url('signin/index?course_slug=') ?>" + course_slug;
+        }
+    }
+
+    function runner() {
+
+        url = localStorage.getItem('redirect_url');
+        if (url) {
+            localStorage.clear();
+            window.location = url;
+        }
+        setTimeout(function() {
+            runner();
+        }, 500);
+    }
+
+    $(document).change(function() {
+
+        console.log(gateway);
+        let payment_method = $('#payment_method').val();
+        for (let item in gateway) {
+            if (item == payment_method) {
+                if (gateway[item]) {
+                    $('#' + item + '_div').show();
+                }
+            } else {
+                $('#' + item + '_div').hide();
+            }
+        }
     });
 </script>

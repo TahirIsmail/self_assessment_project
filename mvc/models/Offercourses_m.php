@@ -201,13 +201,89 @@ class Offercourses_m extends MY_Model
             ->get('courses');
         return $query->result_array();
     }
-    public function get_course_by_slug($slug){
-        $query = $this->db
-        ->select('*')
-        ->where('slug', $slug)
-        ->get('courses');
-        return $query->result_array();
+
+    public function get_course_by_slug($slug = null)
+    {
+
+        $this->db->select('courses.*, center.city, center.address, center_courses.price, center_courses.id AS center_course_id, center.date');
+        $this->db->from('courses');
+
+        $this->db->join('center_courses', 'center_courses.course_id = courses.id', 'left');
+        $this->db->join('center', 'center.id = center_courses.center_id', 'left');
+
+        if ($slug) {
+            $this->db->where('courses.slug', $slug);
+        }
+        $query = $this->db->get();
+
+        $result = $query->result_array();
+
+        $courses = [];
+        $centers = [];
+
+        if (!empty($result)) {
+            foreach ($result as $row) {
+                if (empty($courses)) {
+                    $courses = [
+                        'id' => $row['id'],
+                        'slug' => $row['slug'],
+                        'name' => $row['course_name'],
+                        'image' => $row['photo'],
+                        'center_course_id' => $row['center_course_id'],
+                        'description' => $row['course_description'],
+                    ];
+                }
+
+                if (!empty($row['city'])) {
+                    $centers[] = [
+                        'city' => $row['city'],
+                        'address' => $row['address'],
+                        'price' => $row['price'],
+                        'date' => $row['date']
+                    ];
+                }
+            }
+        }
+
+        $courses['centers'] = !empty($centers) ? $centers : [];
+
+        // If no course was found, return an empty course array or handle it as needed
+        if (empty($courses)) {
+            return null;  // Or handle it with a default message or behavior
+        }
+
+        return $courses;
     }
+
+
+
+    public function get_course_details($slug = null)
+    {
+        $this->db->select('*');
+        $this->db->from('courses');
+        if ($slug) {
+            $this->db->where('slug', $slug);
+        }
+        $query = $this->db->get();
+
+        $result = $query->result_array();
+        return $result;
+    }
+
+    public function get_course_payment_details($center_course_id)
+    {
+        $this->db->select('cc.id as center_course_id, cc.center_id as center_id, cc.course_id as course_pid, cc.price as course_price, c.*, cn.*');
+        $this->db->from('center_courses AS cc');
+        $this->db->join('courses AS c', 'c.id = cc.course_id', 'left');
+        $this->db->join('center AS cn', 'cn.id = cc.center_id', 'left');
+        $this->db->where('cc.id', $center_course_id);
+
+        $query = $this->db->get();
+        $result = $query->result_array();
+        return $result;
+    }
+
+
 
     public function update_course_by_id($data, $course_id)
     {
@@ -229,5 +305,53 @@ class Offercourses_m extends MY_Model
             log_message('error', 'Exception occurred while updating course: ' . $e->getMessage());
             return false;
         }
+    }
+
+
+
+
+
+
+    // course transaction functions
+    public function get_course_transaction($conditions = [])
+    {
+        if (!empty($conditions)) {
+            $this->db->where($conditions);
+        }
+
+        $query = $this->db->get('course_transaction');
+
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+    public function course_transaction($data)
+    {
+        if ($this->db->insert('course_transaction', $data)) {
+            return $this->db->insert_id();
+        } else {
+            return false;
+        }
+    }
+
+
+    public function check_already_paid($conditions = [])
+    {
+        if (!empty($conditions['student_id']) && !empty($conditions['course_id']) && !empty($conditions['center_id'])) {
+
+            $this->db->where('student_id', $conditions['student_id']);
+            $this->db->where('course_id', $conditions['course_id']);
+            $this->db->where('center_id', $conditions['center_id']);
+            $this->db->where('status', 0);
+            $query = $this->db->get('course_transaction');
+
+            if ($query->num_rows() > 0) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

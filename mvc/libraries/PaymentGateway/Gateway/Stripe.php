@@ -20,7 +20,7 @@ class Stripe extends PaymentAbstract
         $this->ci->lang->load('stripe_rules', $this->ci->session->userdata('lang'));
         $paymentWebview = $this->ci->session->userdata('paymentWebview') ?? false;
         // $this->url = $paymentWebview ? base_url("paymentWebview/paymentSuccess") : base_url("take_exam/index");
-        $this->url = $paymentWebview ? base_url("paymentWebview/paymentSuccess") : base_url("online_exam/index");
+        $this->url = $paymentWebview ? base_url("paymentWebview/paymentSuccess") : base_url("home/index");
         $this->gateway = Omnipay::create('Stripe');
         $this->gateway->setApiKey($this->payment_Setting_option['stripe_secret']);
         $this->gateway->setTestMode((bool)$this->payment_Setting_option['stripe_demo']);
@@ -184,33 +184,31 @@ class Stripe extends PaymentAbstract
     }
 
 
-
-
-
-
-
-    // payment through ajax request
-    public function ajax_payment( $array, $invoice ) //done
+    public function course_payment( $array, $invoice ) //done
     {
-      
-        
+        // dd($invoice);
+       
         $this->params = [
-            'online_exam_id'  => $invoice->sectionID,
-            'description'    => $invoice->section,
-            'amount'         => number_format((float)($invoice->cost), 2, '.', ''),
+            'student_id'      => $array['student_id'],
+            'online_exam_id'  => $array['center_course_id'],
+            'description'    => 'Main Course Name: ' . $invoice[0]['course_name'],
+            'amount'         => number_format((float)($array['paymentAmount']), 2, '.', ''),
             'currency'       => $this->setting->currency_code,
             'token'          => $array['stripeToken']
         ];
 
-
+        
+        // dd($array);
         // dd($this->params);
+        // dd($invoice);
+        
 
        
         $this->response = $this->gateway->purchase($this->params)->send();
-        $this->ajax_success();
+        $this->course_payment_success($invoice[0]);
     }
 
-    public function ajax_success() //done
+    public function course_payment_success($course_data) //done
     {
        
         if($this->response->isSuccessful()) {
@@ -219,25 +217,30 @@ class Stripe extends PaymentAbstract
                 if($transaction_id) {
                     // dd($transaction_id);
                     $paymentService = new PaymentService($transaction_id);
-                    $paymentService->add_transaction([
-                        'sectionID' => $this->params['online_exam_id'],
+                    $paymentService->add_course_transaction([
+                        'center_course_id' => $this->params['online_exam_id'],
                         'amount'         => $this->params['amount'],
-                        'payment_method' => 'stripe'
+                        'payment_method' => 'stripe',
+                        'course_id'      => $course_data['course_pid'],
+                        'center_id'      => $course_data['center_id'],
+                        'student_id'     => $this->params['student_id'],
                     ]);
-                    redirect('home/index');
+
+                   
+                    redirect('course/index/' . $course_data['slug']);
                 } else {
                     $this->session->set_flashdata('error', 'Payer id not found!');
-                    redirect('home/index');
+                     redirect('course/index/' . $course_data['slug']);
                 }
             } else {
                 $this->session->set_flashdata('error', 'Payment not success!');
-                redirect('home/index');
+                redirect('course/index/' . $course_data['slug']);
             }
         } elseif($this->response->isRedirect()) {
             $this->response->redirect();
         } else {
             $this->session->set_flashdata('error', "Something went wrong!");
-            redirect('home/index');
+            redirect('course/index/' . $course_data['slug']);
         }
     }
 }
