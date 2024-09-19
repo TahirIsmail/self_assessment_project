@@ -2277,6 +2277,8 @@ textarea.form-control-lg {
   z-index: 3;
 }
 .input-group .btn {
+  background: linear-gradient(to right, #ed213a, #93291e) !important;
+  color:white !important;
   position: relative;
   z-index: 2;
 }
@@ -6878,7 +6880,7 @@ fieldset:disabled .btn {
   background-color: #dc3545 !important;
 }
 .bg-light {
-  background-color: #f0fbfc !important;
+  background-color: #e9ecef !important;
 }
 
 .bg-theme {

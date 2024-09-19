@@ -1,60 +1,53 @@
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-user-shield"></i> <?=$this->lang->line('panel_title')?></h3>
 
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><i class="fa icon-permission"></i> <?=$this->lang->line('panel_title')?></h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?=base_url("dashboard/index")?>"><i class="fas fa-laptop"></i> <?=$this->lang->line('menu_dashboard')?></a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?=$this->lang->line('menu_permission')?></li>
+            </ol>
+        </nav>
+    </div><!-- /.card-header -->
 
-
-        <ol class="breadcrumb">
-            <li><a href="<?=base_url("dashboard/index")?>"><i class="fa fa-laptop"></i> <?=$this->lang->line('menu_dashboard')?></a></li>
-            <li class="active"><?=$this->lang->line('menu_permission')?></li>
-        </ol>
-    </div><!-- /.box-header -->
     <!-- form start -->
-    <div class="box-body">
+    <div class="card-body">
         <div class="row">
             <div class="col-sm-12">
-                <form style="" action="#" class="form-horizontal" role="form" method="post" id="usertype">
-                    <div class="<?php if(form_error('usertypeID')) {echo 'form-group has-error';} else {echo 'form-group';} ?>" >
-                        <label for="usertypeID" class="col-sm-2 col-md-offset-2 control-label">
-                            <?=$this->lang->line("select_usertype")?>
-                        </label>
-
-                        <div class="col-sm-4">
-                           <?php
-                                $array = array("0" => $this->lang->line("permission_select_usertype"));
-                                if (isset($set)) {
-                                    $set = $set;
-                                } else {
-                                    $set = null;
-                                }
-                                foreach ($usertypes as $usertype) {
-                                    $array[$usertype->usertypeID] = $usertype->usertype;
-                                }
-                                echo form_dropdown("usertypeID", $array, set_value("usertypeID", $set), "id='usertypeID' class='form-control select2'");
-                            ?>
-                        </div>
-
-                        <!-- <div class="col-sm-1 rep-mar">
-                            <input type="submit" class="btn btn-success" value="<?=$this->lang->line("permission_table")?>" >
-                        </div> -->
+                <form action="#" class="row g-3" method="post" id="usertype">
+                    <div class="col-md-6">
+                        <label for="usertypeID" class="form-label"><?=$this->lang->line("select_usertype")?></label>
+                        <?php
+                            $array = array("0" => $this->lang->line("permission_select_usertype"));
+                            if (isset($set)) {
+                                $set = $set;
+                            } else {
+                                $set = null;
+                            }
+                            foreach ($usertypes as $usertype) {
+                                $array[$usertype->usertypeID] = $usertype->usertype;
+                            }
+                            echo form_dropdown("usertypeID", $array, set_value("usertypeID", $set), "id='usertypeID' class='form-select select2'");
+                        ?>
                     </div>
                 </form>
             </div>
-        </div><!-- row -->
+        </div><!-- /.row -->
+
         <?php if (isset($set)): ?>
-            <div class="row">
+            <div class="row mt-4">
                 <div class="col-sm-12">
-                    <form action="<?=base_url('permission/save/'.$set)?>" class="form-horizontal" role="form" method="post" id="usertype">
-                        <div id="hide-table">
-                            <table id="" class="table table-striped table-bordered table-hover dataTable no-footer">
+                    <form action="<?=base_url('permission/save/'.$set)?>" class="form-horizontal" method="post" id="usertype">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th class="col-lg-1"><?=$this->lang->line('slno')?></th>
-                                        <th class="col-lg-3"><?=$this->lang->line('module_name')?></th>
-                                        <th class="col-lg-1"><?=$this->lang->line('permission_add')?></th>
-                                        <th class="col-lg-1"><?=$this->lang->line('permission_edit')?></th>
-                                        <th class="col-lg-1"><?=$this->lang->line('permission_delete')?></th>
-                                        <th class="col-lg-1"><?=$this->lang->line('permission_view')?></th>
+                                        <th><?=$this->lang->line('slno')?></th>
+                                        <th><?=$this->lang->line('module_name')?></th>
+                                        <th><?=$this->lang->line('permission_add')?></th>
+                                        <th><?=$this->lang->line('permission_edit')?></th>
+                                        <th><?=$this->lang->line('permission_delete')?></th>
+                                        <th><?=$this->lang->line('permission_view')?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -67,22 +60,18 @@
                                                 $push['name'] = $data->name;
                                                 $push['description'] = $data->description;
                                                 $push['status'] = $data->active;
-
                                                 array_push($permissionTable, $push);
-
                                             }
                                             $permissionCheckBox[ $data->name ] = $data->active;
                                             $permissionCheckBoxVal[ $data->name ] = $data->permissionID;
-
                                         }
                                     ?>
                                     <?php
                                     $i = 1;
                                     foreach($permissionTable as $data) { ?>
                                         <tr>
-                                            <td data-title="<?=$this->lang->line('slno')?>">
+                                            <td>
                                                 <?php
-                                                    //echo $i;
                                                     $status = "";
                                                     if(isset($permissionCheckBox[$data['name']])) {
                                                         if ($permissionCheckBox[$data['name']]=="yes") {
@@ -98,10 +87,8 @@
                                                     }
                                                 ?>
                                             </td>
-                                            <td data-title="<?=$this->lang->line('module_name')?>">
-                                                <?php echo $data['description']; ?>
-                                            </td>
-                                            <td data-title="<?=$this->lang->line('permission_add')?>">
+                                            <td><?=$data['description']?></td>
+                                            <td>
                                                 <?php
                                                     if(isset($permissionCheckBox[$data['name'].'_add'])) {
                                                         if ($permissionCheckBox[$data['name'].'_add']=="yes") {
@@ -116,7 +103,7 @@
                                                     }
                                                 ?>
                                             </td>
-                                            <td data-title="<?=$this->lang->line('permission_edit')?>">
+                                            <td>
                                                 <?php
                                                     if(isset($permissionCheckBox[$data['name'].'_edit'])) {
                                                         if ($permissionCheckBox[$data['name'].'_edit']=="yes") {
@@ -131,10 +118,9 @@
                                                     }
                                                 ?>
                                             </td>
-                                            <td data-title="<?=$this->lang->line('permission_delete')?>">
+                                            <td>
                                                 <?php
                                                     if(isset($permissionCheckBox[$data['name'].'_delete'])) {
-                                                        // echo "delete";
                                                         if ($permissionCheckBox[$data['name'].'_delete']=="yes") {
                                                             if ($permissionCheckBoxVal[$data['name'].'_delete']) {
                                                                 echo "<input type='checkbox' name='".$data['name'].'_delete'."' value=".$permissionCheckBoxVal[$data['name'].'_delete']." checked='checked' id='".$data['name'].'_delete'."' ".$status.">";
@@ -147,7 +133,7 @@
                                                     }
                                                 ?>
                                             </td>
-                                            <td data-title="<?=$this->lang->line('permission_view')?>">
+                                            <td>
                                                 <?php
                                                     if(isset($permissionCheckBox[$data['name'].'_view'])) {
                                                         if ($permissionCheckBox[$data['name'].'_view']=="yes") {
@@ -166,7 +152,7 @@
                                     <?php $i++; } ?>
                                     <tr>
                                         <td colspan="6" rowspan="2">
-                                            <input class="btn btn-success" type="submit" name="" value="Save Permission">
+                                            <input class="btn btn-success" type="submit" value="Save Permission">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -174,25 +160,22 @@
                         </div>
                     </form>
                 </div>
-            </div><!-- row -->
+            </div><!-- /.row -->
         <?php endif ?>
     </div>
 </div>
 
 <script type="text/javascript">
     $('.select2').select2();
-    var usertypeID = $("#usertypeID").val();
 
     $('#usertypeID').change(function(event) {
         var usertypeID = $(this).val();
         $.ajax({
             type: 'POST',
             url: "<?=base_url('permission/permission_list')?>",
-            data: "usertypeID=" + usertypeID,
-            dataType: "html",
+            data: {usertypeID: usertypeID},
             success: function(data) {
-                console.log(data);
-               window.location.href = data;
+                window.location.href = data;
             }
         });
     });
@@ -200,40 +183,19 @@
     $.fn.processCheck = function() {
         var id = $(this).attr('id');
         if ($('input#'+id).is(':checked')) {
-            if ($('input#'+id+"_add").length) {
-                $('input#'+id+"_add").prop('disabled', false);
-                $('input#'+id+"_add").prop('checked', true);
-            }
-            if ($('input#'+id+"_edit").length) {
-                $('input#'+id+"_edit").prop('disabled', false);
-                $('input#'+id+"_edit").prop('checked', true);
-            }
-            if ($('input#'+id+"_delete").length) {
-                $('input#'+id+"_delete").prop('disabled', false);
-                $('input#'+id+"_delete").prop('checked', true);
-            }
-            if ($('input#'+id+"_view").length) {
-                $('input#'+id+"_view").prop('disabled', false);
-                $('input#'+id+"_view").prop('checked', true);
-            }
+            ['add', 'edit', 'delete', 'view'].forEach(function(action) {
+                if ($('input#'+id+"_"+action).length) {
+                    $('input#'+id+"_"+action).prop('disabled', false);
+                    $('input#'+id+"_"+action).prop('checked', true);
+                }
+            });
         } else {
-            if ($('input#'+id+"_add").length) {
-                $('input#'+id+"_add").prop('disabled', true);
-                $('input#'+id+"_add").prop('checked', false);
-            }
-            if ($('input#'+id+"_edit").length) {
-                $('input#'+id+"_edit").prop('disabled', true);
-                $('input#'+id+"_edit").prop('checked', false);
-            }
-            if ($('input#'+id+"_delete").length) {
-                $('input#'+id+"_delete").prop('disabled', true);
-                $('input#'+id+"_delete").prop('checked', false);
-            }
-            if ($('input#'+id+"_view").length) {
-                $('input#'+id+"_view").prop('disabled', true);
-                $('input#'+id+"_view").prop('checked', false);
-            }
+            ['add', 'edit', 'delete', 'view'].forEach(function(action) {
+                if ($('input#'+id+"_"+action).length) {
+                    $('input#'+id+"_"+action).prop('disabled', true);
+                    $('input#'+id+"_"+action).prop('checked', false);
+                }
+            });
         }
     };
-
 </script>

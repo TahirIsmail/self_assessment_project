@@ -51,9 +51,9 @@
     }
 </style>
 <!-- header logo: style can be found in header.less -->
-<header class="header">
+<header class="header ">
 
-    <nav class="navbar navbar-expand-lg navbar-light" role="navigation">
+    <nav class="navbar navbar-expand-lg navbar-light " role="navigation">
         <div class="container-fluid">
             <button class="navbar-toggler sidebar-toggle" type="button" data-bs-toggle="offcanvas">
                 <span class="navbar-toggler-icon"></span>

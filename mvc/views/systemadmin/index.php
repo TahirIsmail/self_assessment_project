@@ -1,28 +1,34 @@
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><i class="fa icon-systemadmin"></i> <?=$this->lang->line('panel_title')?></h3>
-        <ol class="breadcrumb">
-            <li><a href="<?=base_url("dashboard/index")?>"><i class="fa fa-laptop"></i> <?=$this->lang->line('menu_dashboard')?></a></li>
-            <li class="active"><?=$this->lang->line('menu_systemadmin')?></li>
-        </ol>
-    </div><!-- /.box-header -->
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa-solid fa-user-shield"></i> <?=$this->lang->line('panel_title')?></h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="<?=base_url("dashboard/index")?>">
+                        <i class="fa fa-laptop"></i> <?=$this->lang->line('menu_dashboard')?>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page"><?=$this->lang->line('menu_systemadmin')?></li>
+            </ol>
+        </nav>
+    </div><!-- /.card-header -->
     <!-- form start -->
-    <div class="box-body">
+    <div class="card-body">
         <div class="row">
             <div class="col-sm-12">
                 <?php 
                     if(permissionChecker('systemadmin_add')) {
                 ?>
-                    <h5 class="page-header">
-                        <a href="<?php echo base_url('systemadmin/add') ?>">
+                    <h5 class="mb-3">
+                        <a href="<?php echo base_url('systemadmin/add') ?>" class="btn btn-primary">
                             <i class="fa fa-plus"></i> 
                             <?=$this->lang->line('add_title')?>
                         </a>
                     </h5>
                 <?php } ?>
 
-                <div id="hide-table">
-                    <table id="example1" class="table table-striped table-bordered table-hover dataTable no-footer">
+                <div class="table-responsive">
+                    <table id="example1" class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th class="col-lg-1"><?=$this->lang->line('slno')?></th>
@@ -58,13 +64,10 @@
                                     </td>
                                     <?php if(permissionChecker('systemadmin_edit')) { ?>
                                     <td data-title="<?=$this->lang->line('systemadmin_status')?>">
-                                      <div class="onoffswitch-small" id="<?=$systemadmin->systemadminID?>">
-                                          <input type="checkbox" id="myonoffswitch<?=$systemadmin->systemadminID?>" class="onoffswitch-small-checkbox" name="paypal_demo" <?php if($systemadmin->active === '1') echo "checked='checked'"; ?>>
-                                          <label for="myonoffswitch<?=$systemadmin->systemadminID?>" class="onoffswitch-small-label">
-                                              <span class="onoffswitch-small-inner"></span>
-                                              <span class="onoffswitch-small-switch"></span>
-                                          </label>
-                                      </div>           
+                                      <div class="form-check form-switch">
+                                          <input class="form-check-input" type="checkbox" id="switch<?=$systemadmin->systemadminID?>" <?php if($systemadmin->active === '1') echo "checked"; ?>>
+                                          <label class="form-check-label" for="switch<?=$systemadmin->systemadminID?>"></label>
+                                      </div>        
                                     </td>
                                     <?php } ?>
                                     <?php if(permissionChecker('systemadmin_edit') || permissionChecker('systemadmin_delete') || permissionChecker('systemadmin_view')) { ?>
@@ -80,21 +83,20 @@
                     </table>
                 </div>
 
-
             </div> <!-- col-sm-12 -->
         </div><!-- row -->
-    </div><!-- Body -->
-</div><!-- /.box -->
+    </div><!-- card-body -->
+</div><!-- /.card -->
 
 <script>
   var status = '';
   var id = 0;
-  $('.onoffswitch-small-checkbox').click(function() {
+  $('.form-check-input').click(function() {
       if($(this).prop('checked')) {
-          status = 'chacked';
+          status = 'checked';
           id = $(this).parent().attr("id");
       } else {
-          status = 'unchacked';
+          status = 'unchecked';
           id = $(this).parent().attr("id");
       }
 

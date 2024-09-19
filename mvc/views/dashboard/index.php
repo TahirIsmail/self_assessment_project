@@ -1,4 +1,3 @@
-
 <style>
     .data-text--show {
         opacity: 1;
@@ -72,7 +71,7 @@
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                                <i class="fas fa-coins fa-2x" aria-hidden="true"></i>
+                                <i class="fas fa-coins " aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -98,7 +97,7 @@
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
                                 <!-- <i class="fas fa-globe " aria-hidden="true"></i> -->
-                                <i class="fa-solid fa-earth-americas fa-2x"></i>
+                                <i class="fa-solid fa-earth-americas"></i>
                             </div>
                         </div>
                     </div>
@@ -124,7 +123,7 @@
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
 
-                                <i class="fa-solid fa-users fa-2x"></i>
+                                <i class="fa-solid fa-users "></i>
                             </div>
                         </div>
                     </div>
@@ -148,7 +147,7 @@
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                                <i class="fa-solid fa-cart-arrow-down fa-2x"></i>
+                                <i class="fa-solid fa-cart-arrow-down "></i>
                             </div>
                         </div>
                     </div>
@@ -156,7 +155,7 @@
             </div>
         </div>
     </div>
-    <div class="row mt-4">
+    <div class="row mt-2">
         <div class="col-lg-5 mb-lg-0 mb-4">
             <div class="card z-index-2">
                 <div class="card-body p-3">
@@ -275,13 +274,15 @@
         </div>
         <div class="col-lg-7">
             <div class="card z-index-2">
-                <div class="card-header pb-0">
-                    <h6>Sales overview</h6>
-                    <p class="text-sm">
+                <div class="card-header  p-3 d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0">Sales overview</h6>
+                    <p class="text-sm mb-0">
                         <i class="fa fa-arrow-up text-success"></i>
                         <span class="font-weight-bold">4% more</span> in 2021
                     </p>
                 </div>
+
+
                 <div class="card-body p-3">
                     <div class="chart">
                         <canvas id="chart-line2" class="chart-canvas" height="450" width="775" style="display: block; box-sizing: border-box; height: 300px; width: 516.667px;"></canvas>
@@ -290,11 +291,11 @@
             </div>
         </div>
     </div>
-    <div class="row mt-4">
+    <div class="row mt-2">
         <div class="col-lg-7 mb-lg-0 mb-4">
             <div class="card z-index-2 h-100">
-                <div class="card-header pb-0 pt-3 bg-transparent">
-                    <h5 class="text-capitalize">Sales overview</h5>
+                <div class="card-header  p-3 d-flex justify-content-between align-items-center">
+                    <h6 class="text-capitalize">Sales overview</h6>
                     <p class="text-sm mb-0">
                         <i class="fa fa-arrow-up text-success"></i>
                         <span class="font-weight-bold">4% more</span> in 2021
@@ -314,7 +315,7 @@
                         <div class="carousel-item h-100 active" style="background-image: url('<?= base_url('uploads/images/course/course1.webp') ?>'); background-size: cover;">
                             <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                                 <div class="icon icon-shape icon-sm  text-center border-radius-md mb-3">
-                                    <i class="fa-solid fa-2x fa-camera-retro"></i>
+                                    <i class="fa-solid  fa-camera-retro"></i>
                                 </div>
                                 <h5 class="text-black  mb-1">Get started </h5>
                                 <p class="text-black ">There’s nothing I really wanted to do in life that I wasn’t able to get good at.</p>
@@ -325,7 +326,7 @@
 
                             <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                                 <div class="icon icon-shape icon-sm text-center border-radius-md mb-3">
-                                    <i class="fa-solid fa-2x fa-lightbulb"></i>
+                                    <i class="fa-solid fa-lightbulb"></i>
 
                                 </div>
                                 <h5 class="text-black mb-1">Faster way to create web pages</h5>
@@ -335,7 +336,7 @@
                         <div class="carousel-item h-100" style="background-image: url('<?= base_url('uploads/images/course/course3.jpg') ?>'); background-size: cover;">
                             <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                                 <div class="icon icon-shape icon-sm  text-center border-radius-md mb-3">
-                                    <i class="fa-solid fa-2x fa-trophy "></i>
+                                    <i class="fa-solid  fa-trophy "></i>
                                 </div>
                                 <h5 class="text-black  mb-1">Share with us your design tips!</h5>
                                 <p class="text-black ">Don’t be afraid to be wrong because you can’t learn anything from a compliment.</p>
@@ -356,28 +357,17 @@
     </div>
 
 
-    <div class="row mt-4">
+    <div class="row mt-2">
 
         <div class="col-lg-7 mb-lg-0 mb-4">
             <div class="card">
-                <div class="card-header pb-0">
+                <div class="card-header p-3">
                     <div class="row">
                         <div class="col-lg-6 col-7">
-                            <h5>Sales by city</h5>
+                            <h6 class="text-capitalize">Sales by city</h6>
 
                         </div>
-                        <div class="col-lg-6 col-5 my-auto text-end">
-                            <div class="dropdown float-lg-end pe-4">
-                                <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-ellipsis-v text-secondary"></i>
-                                </a>
-                                <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                                    <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                                    <li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-                                    <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
-                                </ul>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
@@ -507,8 +497,8 @@
         </div>
         <div class="col-lg-5">
             <div class="card">
-                <div class="card-header pb-0 p-3">
-                    <h5>Categories</h5>
+                <div class="card-header  p-3 d-flex justify-content-between align-items-center">
+                    <h6>Categories</h6>
                 </div>
                 <div class="card-body p-3">
                     <ul class="list-group">
@@ -516,7 +506,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
 
-                                    <i class="fa-solid fa-mobile fa-2x text-white opacity-10"></i>
+                                    <i class="fa-solid fa-mobile text-white opacity-10"></i>
                                 </div>
                                 <div class="d-flex flex-column">
                                     <h6 class="mb-1 text-dark text-sm">Devices</h6>
@@ -531,7 +521,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
 
-                                    <i class="fa-solid fa-tag fa-2x text-white opacity-10"></i>
+                                    <i class="fa-solid fa-tag  text-white opacity-10"></i>
                                 </div>
                                 <div class="d-flex flex-column">
                                     <h6 class="mb-1 text-dark text-sm">Tickets</h6>
@@ -545,7 +535,7 @@
                         <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                             <div class="d-flex align-items-center">
                                 <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                                    <i class="fa-solid fa-circle-xmark fa-2x text-white opacity-10"></i>
+                                    <i class="fa-solid fa-circle-xmark  text-white opacity-10"></i>
                                 </div>
                                 <div class="d-flex flex-column">
                                     <h6 class="mb-1 text-dark text-sm">Error logs</h6>
@@ -560,7 +550,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
 
-                                    <i class="fa-solid fa-face-smile fa-2x text-white opacity-10"></i>
+                                    <i class="fa-solid fa-face-smile  text-white opacity-10"></i>
                                 </div>
                                 <div class="d-flex flex-column">
                                     <h6 class="mb-1 text-dark text-sm">Happy users</h6>
@@ -582,28 +572,17 @@
     <div class="row my-4">
         <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
             <div class="card">
-                <div class="card-header pb-0">
-                    <div class="row">
-                        <div class="col-lg-6 col-7">
-                            <h5>Projects</h5>
-                            <p class="text-sm mb-0">
+                <div class="card-header p-3 d-flex justify-content-between align-items-center ">
 
-                                <span class="font-weight-bold ms-1">30 done</span> this month
-                            </p>
-                        </div>
-                        <div class="col-lg-6 col-5 my-auto text-end">
-                            <div class="dropdown float-lg-end pe-4">
-                                <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-ellipsis-v text-secondary"></i>
-                                </a>
-                                <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                                    <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                                    <li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-                                    <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+
+                    <h6 class="text-capitalize">Projects</h6>
+                    <p class="text-sm mb-0">
+
+                        <span class="font-weight-bold ms-1">30 done</span> this month
+                    </p>
+
+
+
                 </div>
                 <div class="card-body px-0 pb-2">
                     <div class="table-responsive">
@@ -856,9 +835,9 @@
         </div>
         <div class="col-lg-4 col-md-6">
             <div class="card h-100">
-                <div class="card-header pb-0">
-                    <h5>Orders overview</h5>
-                    <p class="text-sm">
+                <div class="card-header  p-3 d-flex justify-content-between align-items-center">
+                    <h6 class="text-capitalize mb-0">Orders overview</h6>
+                    <p class="text-sm mb-0">
                         <i class="fa fa-arrow-up text-success" aria-hidden="true"></i>
 
                         <span class="font-weight-bold">24%</span> this month
@@ -868,7 +847,7 @@
                     <div class="timeline timeline-one-side">
                         <div class="timeline-block mb-3">
                             <span class="timeline-step">
-                                <i class="fa-solid fa-bell  fa-2x text-success text-gradient"></i>
+                                <i class="fa-solid fa-bell text-success text-gradient"></i>
 
                             </span>
                             <div class="timeline-content">
@@ -878,7 +857,7 @@
                         </div>
                         <div class="timeline-block mb-3">
                             <span class="timeline-step">
-                                <i class="fa-brands fa-html5 fa-2x text-danger text-gradient"></i>
+                                <i class="fa-brands fa-html5  text-danger text-gradient"></i>
 
                             </span>
                             <div class="timeline-content">
@@ -889,7 +868,7 @@
                         <div class="timeline-block mb-3">
                             <span class="timeline-step">
 
-                                <i class="fa-solid fa-cart-shopping  fa-2x text-info text-gradient"></i>
+                                <i class="fa-solid fa-cart-shopping  text-info text-gradient"></i>
                             </span>
                             <div class="timeline-content">
                                 <h6 class="text-dark text-sm font-weight-bold mb-0">Server payments for April</h6>
@@ -899,7 +878,7 @@
                         <div class="timeline-block mb-3">
                             <span class="timeline-step">
 
-                                <i class="fa fa-credit-card-alt fa-2x text-warning text-gradient" aria-hidden="true"></i>
+                                <i class="fa fa-credit-card-alt text-warning text-gradient" aria-hidden="true"></i>
                             </span>
                             <div class="timeline-content">
                                 <h6 class="text-dark text-sm font-weight-bold mb-0">New card added for order #4395133</h6>
@@ -910,7 +889,7 @@
                             <span class="timeline-step">
 
 
-                                <i class="fa-solid fa-key fa-2x text-primary text-gradient"></i>
+                                <i class="fa-solid fa-key  text-primary text-gradient"></i>
                             </span>
                             <div class="timeline-content">
                                 <h6 class="text-dark text-sm font-weight-bold mb-0">Unlock packages for development</h6>
@@ -919,7 +898,7 @@
                         </div>
                         <div class="timeline-block">
                             <span class="timeline-step">
-                                <fa class="fas fa-coins fa-2x text-dark text-gradient"></fa>
+                                <fa class="fas fa-coins  text-dark text-gradient"></fa>
                             </span>
                             <div class="timeline-content">
                                 <h6 class="text-dark text-sm font-weight-bold mb-0">New order #9583120</h6>
@@ -932,11 +911,11 @@
         </div>
     </div>
 
-    <div class="row mt-4">
+    <div class="row mt-2">
         <div class="col-lg-6 mb-lg-0 mb-4">
             <div class="card z-index-2 h-100">
-                <div class="card-header pb-0 pt-3 bg-transparent">
-                    <h5 class="text-capitalize">Sales overview</h5>
+                <div class="card-header  p-3 d-flex justify-content-between align-items-center">
+                    <h6 class="text-capitalize mb-0">Sales overview</h6>
                     <p class="text-sm mb-0">
                         <i class="fa fa-arrow-up text-success"></i>
                         <span class="font-weight-bold">4% more</span> in 2021
@@ -951,8 +930,8 @@
         </div>
         <div class="col-lg-6 mb-lg-0 mb-4">
             <div class="card z-index-2 h-100">
-                <div class="card-header pb-0 pt-3 bg-transparent">
-                    <h5 class="text-capitalize">Sales overview</h5>
+                <div class="card-header  p-3 d-flex justify-content-between align-items-center">
+                    <h6 class="text-capitalize mb-0" >Sales overview</h6>
                     <p class="text-sm mb-0">
                         <i class="fa fa-arrow-up text-success"></i>
                         <span class="font-weight-bold">4% more</span> in 2021

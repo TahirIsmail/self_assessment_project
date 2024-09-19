@@ -1,20 +1,22 @@
-
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><i class="fa iniicon-onlineexamreport"></i> <?=$this->lang->line('panel_title')?></h3>
-        <ol class="breadcrumb">
-            <li><a href="<?=base_url("dashboard/index")?>"><i class="fa fa-laptop"></i> <?=$this->lang->line('menu_dashboard')?></a></li>
-            <li class="active"><?=$this->lang->line('menu_onlineexamreport')?></li>
-        </ol>
-    </div><!-- /.box-header -->
-    <!-- form start -->
-    <div class="box-body">
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="bi bi-journal-code"></i> <?=$this->lang->line('panel_title')?></h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="<?=base_url("dashboard/index")?>"><i class="bi bi-laptop"></i> <?=$this->lang->line('menu_dashboard')?></a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?=$this->lang->line('menu_onlineexamreport')?></li>
+            </ol>
+        </nav>
+    </div><!-- /.card-header -->
+    
+    <!-- Form Start -->
+    <div class="card-body">
         <div class="row">
 
-            <div class="col-sm-12">
-                
-                <div class="form-group col-sm-4" id="onlineexamDiv">
-                    <label for="onlineexamID"><?=$this->lang->line("onlineexamreport_onlineexam")?></label> <span class="text-red">*</span>
+            <div class="col-12">
+                <div class="mb-3 col-md-4" id="onlineexamDiv">
+                    <label for="onlineexamID" class="form-label"><?=$this->lang->line("onlineexamreport_onlineexam")?></label> 
+                    <span class="text-danger">*</span>
                     <?php
                         $array = array("0" => $this->lang->line("onlineexamreport_please_select"));
                         if(inicompute($onlineexams)) {
@@ -22,13 +24,13 @@
                                  $array[$onlineexam->onlineExamID] = $onlineexam->name;
                             }
                         }
-                        echo form_dropdown("onlineexamID", $array, set_value("onlineexamID"), "id='onlineexamID' class='form-control select2'");
+                        echo form_dropdown("onlineexamID", $array, set_value("onlineexamID"), "id='onlineexamID' class='form-select select2'");
                      ?>
                 </div>
 
-                <div class="form-group col-sm-4" id="classesDiv">
-                    <label for="classesID"><?=$this->lang->line("onlineexamreport_classes")?></label>
-                    <span class="text-red">*</span>
+                <div class="mb-3 col-md-4" id="classesDiv">
+                    <label for="classesID" class="form-label"><?=$this->lang->line("onlineexamreport_classes")?></label>
+                    <span class="text-danger">*</span>
                     <?php
                         $array = array("0" => $this->lang->line("onlineexamreport_please_select"));
                         if(inicompute($classes)) {
@@ -36,52 +38,52 @@
                                  $array[$classa->classesID] = $classa->classes;
                             }
                         }
-                        echo form_dropdown("classesID", $array, set_value("classesID"), "id='classesID' class='form-control select2'");
+                        echo form_dropdown("classesID", $array, set_value("classesID"), "id='classesID' class='form-select select2'");
                      ?>
                 </div>
 
-
-                <div class="form-group col-sm-4" id="sectionDiv">
-                    <label for="sectionID"><?=$this->lang->line("onlineexamreport_section")?></label>
-                    <select id="sectionID" name="sectionID" class="form-control select2">
+                <div class="mb-3 col-md-4" id="sectionDiv">
+                    <label for="sectionID" class="form-label"><?=$this->lang->line("onlineexamreport_section")?></label>
+                    <select id="sectionID" name="sectionID" class="form-select select2">
                         <option value=""><?php echo $this->lang->line("onlineexamreport_please_select"); ?></option>
                     </select>
                 </div>
 
-                <div class="form-group col-sm-4" id="studentDiv">
-                    <label for="studentID"><?=$this->lang->line("onlineexamreport_student")?></label>
-                    <select id="studentID" name="studentID" class="form-control select2">
+                <div class="mb-3 col-md-4" id="studentDiv">
+                    <label for="studentID" class="form-label"><?=$this->lang->line("onlineexamreport_student")?></label>
+                    <select id="studentID" name="studentID" class="form-select select2">
                         <option value="0"><?php echo $this->lang->line("onlineexamreport_please_select"); ?></option>
                     </select>
                 </div>
 
-                <div class="form-group col-sm-4" id="statusDiv">
-                    <label for="statusID"><?=$this->lang->line("onlineexamreport_status")?></label> <span class="text-red">*</span>
+                <div class="mb-3 col-md-4" id="statusDiv">
+                    <label for="statusID" class="form-label"><?=$this->lang->line("onlineexamreport_status")?></label> 
+                    <span class="text-danger">*</span>
                     <?php
                         $statusArray = array(
                             "0" => $this->lang->line("onlineexamreport_please_select"),
                             "5" => $this->lang->line("onlineexamreport_passed"),
                             "10" => $this->lang->line("onlineexamreport_failed")
                         );
-                        echo form_dropdown("statusID", $statusArray, set_value("statusID"), "id='statusID' class='form-control select2'");
+                        echo form_dropdown("statusID", $statusArray, set_value("statusID"), "id='statusID' class='form-select select2'");
                      ?>
                 </div>
 
-                <div class="col-sm-4">
-                    <button id="get_onlineexam" class="btn btn-success" style="margin-top:23px;"> <?=$this->lang->line("onlineexamreport_submit")?></button>
+                <div class="col-md-4">
+                    <button id="get_onlineexam" class="btn btn-success mt-3"> <?=$this->lang->line("onlineexamreport_submit")?></button>
                 </div>
-
             </div>
 
         </div><!-- row -->
-    </div><!-- Body -->
-</div><!-- /.box -->
+    </div><!-- /.card-body -->
+</div><!-- /.card -->
 
-<div class="box" id="load_onlineexamreport"></div>
+<div class="card" id="load_onlineexamreport"></div>
 
 
 <script type="text/javascript">
     $('.select2').select2();
+
     function divHide(){
         $('#sectionDiv').hide('slow');  
         $('#studentDiv').hide('slow');   
@@ -99,20 +101,17 @@
     $(document).on('change', "#onlineexamID, #classesID", function() {
         var id = $(this).val();
         if(id != '0') {
-            divShow()
+            divShow();
         }
-    })
+    });
 
- 
     $(document).on('change', "#classesID", function() {
         var classesID = $(this).val();
         if(classesID == '0') {
             $('#sectionID').html('<option value="">'+"<?=$this->lang->line("onlineexamreport_please_select")?>"+'</option>');
             $('#sectionID').val('');
-
             $('#studentID').html('<option value="0">'+"<?=$this->lang->line("onlineexamreport_please_select")?>"+'</option>');
             $('#studentID').val(0);
-    
         } else {
             $.ajax({
                 type: 'POST',
@@ -152,7 +151,7 @@
     });
 
     $(document).on('click', "#get_onlineexam", function() {
-        var error = 0 ;
+        var error = 0;
         var field = {
             'onlineexamID'  : $('#onlineexamID').val(), 
             'classesID'     : $('#classesID').val(), 
