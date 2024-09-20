@@ -10,7 +10,8 @@ class Offercourses extends Admin_Controller
         $this->load->model('studentrelation_m');
         $this->load->model('teacher_m');
         $this->load->model('subject_m');
-
+        $language = $this->session->userdata('lang');
+        $this->lang->load('course', $language);
 
 
         $language = $this->session->userdata('lang');
@@ -119,28 +120,24 @@ class Offercourses extends Admin_Controller
                 'assets/select2/select2.js'
             )
         );
-    
+
         $id = htmlentities((string) escapeString($this->uri->segment(3)));
-        
-        // Fetch course names
-      
-        
-    
+
         if (!$id) {
             $this->data['classes'] = $this->classes_m->get_classes();
             $this->data['courses'] = $this->Offercourses_m->get_course_record();
             $this->data["subview"] = "offercourses/index";
-            $this->load->view('_layout_main', $this->data);
         } else {
             $this->data['set'] = $id;
             $this->data['classes'] = $this->classes_m->get_classes();
             $this->data['courses'] = $this->Offercourses_m->get_course_record($id);
             $this->data["subview"] = "offercourses/search";
-            $this->load->view('_layout_main', $this->data);
         }
+
+        $this->load->view('_layout_main', $this->data);
     }
-    
-    
+
+
 
     public function add()
     {
@@ -274,4 +271,5 @@ class Offercourses extends Admin_Controller
             redirect(base_url("offercourses/index"));
         }
     }
+    
 }

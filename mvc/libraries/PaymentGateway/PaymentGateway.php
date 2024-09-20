@@ -39,6 +39,11 @@ class PaymentGateway
         return $this->gateway->payment($post_data, $invoice_data);
     }
 
+    public function course_payment( $post_data, $invoice_data )
+    {
+        return $this->gateway->course_payment($post_data, $invoice_data);
+    }
+
     public function status()
     {
         return $this->gateway->status();
