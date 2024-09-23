@@ -55,9 +55,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light " role="navigation">
         <div class="container-fluid">
-            <button class="navbar-toggler sidebar-toggle" type="button" data-bs-toggle="offcanvas">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+          
             <a href="#" class="menu__icon navbar-btn sidebar-toggle " data-toggle="offcanvas">
                 <span></span>
                 <span></span>

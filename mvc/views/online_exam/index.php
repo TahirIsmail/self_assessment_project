@@ -1,4 +1,3 @@
-
     <div class="card">
         <div class="card-header">
             <h3 class="card-title"><i class="bi bi-slideshare"></i> <?= $this->lang->line('panel_title') ?></h3>
@@ -10,9 +9,8 @@
                     <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('panel_title') ?></li>
                 </ol>
             </nav>
-        </div><!-- /.card-header -->
-        
-        <!-- Form start -->
+        </div>
+    
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-12">

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Installer</title>
-    <link href="<?php echo base_url('assets/bootstrap/bootstrap.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/inilabs/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/inilabs/install.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/fonts/font-awesome.css'); ?>" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="<?=base_url('uploads/images/site.png')?>"/>
@@ -35,7 +35,7 @@
         </div>
     </div>
 <script type="text/javascript" src="<?php echo base_url('assets/inilabs/jquery.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/bootstrap/bootstrap.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/inilabs/js/bootstrap.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/inilabs/inilabs.js'); ?>"></script>
 
 </body>

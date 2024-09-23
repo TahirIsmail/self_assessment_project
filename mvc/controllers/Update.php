@@ -416,7 +416,7 @@ public $load;
 			echo '<head>';
 				echo '<title>'.$this->lang->line('panel_title').'</title>';
 				echo '<link rel="SHORTCUT ICON" href="'.base_url('uploads/images/'.$this->data['siteinfos']->photo).'" />';
-				echo '<link href="'.base_url('assets/bootstrap/bootstrap.min.css').'" rel="stylesheet">';
+				echo '<link href="'.base_url('assets/inilabs/bootstrap.min.css').'" rel="stylesheet">';
 				echo '<link href="'.base_url($this->data['backendThemePath'].'/style.css').'" rel="stylesheet">';
 				echo '<link href="'.base_url($this->data['backendThemePath'].'/inilabs.css').'" rel="stylesheet">';
 				echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>';

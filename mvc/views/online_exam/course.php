@@ -18,7 +18,7 @@
                             <div class="col-md-4">
                                 <div class="card mb-4" style="border-radius: 8px; overflow: hidden;">
                                     <img src="<?= base_url('uploads/images/' . $en_course->image); ?>" alt="<?= $en_course->name; ?>" class="card-img-top">
-                                    <div class="card-body text-center">
+                                    <div class="card-body text-center d-grid">
                                         <h4 class="card-title fw-bold text-black"><?= $en_course->name; ?></h4>
                                         <p class="card-text"><?= $en_course->paid ? $this->lang->line('paid') : $this->lang->line('free'); ?></p>
                                         <a href="<?= site_url('take_exam/index/' . $en_course->slug); ?>" class="btn btn-primary"><?= $this->lang->line('view_course'); ?></a>
@@ -92,7 +92,7 @@
                                             $payment_method_array[$payment_setting->slug] = $payment_setting->name;
                                         }
                                     }
-                                    echo form_dropdown("payment_method", $payment_method_array, set_value("payment_method"), "id='payment_method' class='form-control'");
+                                    echo form_dropdown("payment_method", $payment_method_array, set_value("payment_method"), "id='payment_method' class='form-select'");
                                     ?>
                                     <span id="payment_method_error"><?= form_error('payment_method') ?></span>
                                 </div>
@@ -156,43 +156,6 @@ $js_gateway     = json_encode($js_gateway);
 $submit_gateway = json_encode($submit_gateway);
 ?>
 
-
-
-
-<style>
-    .course-card {
-        border: 1px solid #ddd;
-        margin-bottom: 20px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        border-radius: 5px;
-        text-align: center;
-    }
-
-    .course-image {
-        max-width: 100%;
-        height: auto;
-        margin-bottom: 10px;
-        border-radius: 5px;
-    }
-
-    .course-name {
-        font-size: 1.25em;
-        margin-bottom: 10px;
-        color: #333;
-    }
-
-    .course-cost,
-    .course-status {
-        font-size: 1em;
-        margin-bottom: 5px;
-        color: #777;
-    }
-
-    .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
-    }
-</style>
 <script type="text/javascript">
     const gateway = <?= $js_gateway ?>;
     const submit_gateway = <?= $submit_gateway ?>;
@@ -213,7 +176,6 @@ $submit_gateway = json_encode($submit_gateway);
             form.submit();
         }
     });
-
 
     $('.getpaymentinfobtn').click(function() {
         var course_slug = $(this).attr('id');
@@ -268,66 +230,3 @@ $submit_gateway = json_encode($submit_gateway);
         }
     });
 </script>
-
-// function newPopup(url, paidStatus, onlineExamID) {
-// alert('newpopup');
-// var myWindowStatus = false;
-// if(paidStatus == 1) {
-// myWindowStatus = true;
-// myWindow = window.open(url,'_blank',"width=1000,height=650,toolbar=0,location=0,scrollbars=yes");
-// runner();
-// } else {
-// var onlineExamID = onlineExamID;
-// if(onlineExamID > 0) {
-// $('#onlineExamID').val(onlineExamID);
-// $.ajax({
-// type: 'POST',
-// url: "<?= base_url('take_exam/get_payment_info') ?>",
-// data: {'onlineExamID' : onlineExamID},
-// dataType: "html",
-// success: function(data) {
-// $('#paymentAmount').val('');
-// var response = JSON.parse(data);
-// if(response.status == true) {
-// $('#paymentAmount').val(response.payableamount);
-// } else {
-// $('#paymentAmount').val('0.00');
-// }
-// }
-// });
-// }
-// $('#addpayment').modal('show');
-// }
-
-// // $.ajax({
-// // type: 'POST',
-// // url: "<?= base_url('take_exam/paymentChecking') ?>",
-// // data: {'onlineExamID' : onlineExamID},
-// // dataType: "html",
-// // success: function(data) {
-// // if(data == 'TRUE' && myWindowStatus == true) {
-// // myWindow.close();
-
-// // if(onlineExamID > 0) {
-// // $('#onlineExamID').val(onlineExamID);
-// // $.ajax({
-// // type: 'POST',
-// // url: "<?= base_url('take_exam/get_payment_info') ?>",
-// // data: {'onlineExamID' : onlineExamID},
-// // dataType: "html",
-// // success: function(data) {
-// // $('#paymentAmount').val('');
-// // var response = JSON.parse(data);
-// // if(response.status == true) {
-// // $('#paymentAmount').val(response.payableamount);
-// // } else {
-// // $('#paymentAmount').val('0.00');
-// // }
-// // }
-// // });
-// // }
-// // $('#addpayment').modal('show');
-// // }
-// // }
-// // });
-// }

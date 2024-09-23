@@ -7,7 +7,7 @@
     <title>Forgot Password</title>
 
     <!-- bootstrap 3.0.2 -->
-    <link href="<?php echo base_url('assets/bootstrap/bootstrap.min.css'); ?>" rel="stylesheet"  type="text/css">
+    <link href="<?php echo base_url('assets/inilabs/bootstrap.min.css'); ?>" rel="stylesheet"  type="text/css">
     <!-- font Awesome -->
     <link href="<?php echo base_url('assets/fonts/font-awesome.css'); ?>" rel="stylesheet"  type="text/css">
     <!-- Style -->
@@ -24,6 +24,6 @@
 
     <?php $this->load->view($subview); ?>
 <script type="text/javascript" src="<?php echo base_url('assets/inilabs/jquery.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/bootstrap/bootstrap.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/inilabs/js/bootstrap.min.js'); ?>"></script>
 </body>
 </html>
