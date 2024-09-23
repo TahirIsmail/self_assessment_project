@@ -378,5 +378,28 @@ class Offercourses_m extends MY_Model
     return $query->result_array();
 }
 
+public function get_transaction_stu_data($student_id = null)
+{
+    $this->db->select('
+        course_transaction.*, 
+        student.name as student_name, 
+        center.city as center_city
+    ');
+    $this->db->from('course_transaction');
+    $this->db->join('student', 'student.studentID = course_transaction.student_id', 'inner');
+    $this->db->join('center', 'center.id = course_transaction.center_id', 'inner');
+
+    // Check if a student ID is provided and filter by it if present
+    if ($student_id !== null) {
+        $this->db->where('student.studentID', $student_id);
+    }
+
+    $this->db->order_by('course_transaction.center_id', 'ASC'); 
+    
+    $query = $this->db->get();
+    
+    return $query->result_array();
+}
+
 
 }

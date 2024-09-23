@@ -5,12 +5,11 @@ class Paid_courses extends Admin_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model("Offercourses_m"); // Assuming transactions are related to Offercourses model
+        $this->load->model("Offercourses_m"); 
     }
 
     public function index()
     {
-        // Include necessary assets for the page
         $this->data['headerassets'] = array(
             'css' => array(
                 'assets/select2/css/select2.css',
@@ -21,11 +20,14 @@ class Paid_courses extends Admin_Controller
             )
         );
 
-        // Fetch the transaction data
-        $this->data['transaction_data'] = $this->Offercourses_m->get_transaction_data();
+        // Check user role and set student ID for student users
+        if ($this->session->userdata('role') === 'student') {
+            $student_id = $this->session->userdata('id'); // Assuming session stores user ID
+            $this->data['transaction_data'] = $this->Offercourses_m->get_transaction_stu_data($student_id);
+        } else {
+            $this->data['transaction_data'] = $this->Offercourses_m->get_transaction_data();
+        }
 
-        
-        // Load the paid_courses/index view and pass data to it
         $this->data["subview"] = "paid_courses/index"; 
         $this->load->view('_layout_main', $this->data); 
     }
