@@ -247,9 +247,9 @@ class Offercourses_m extends MY_Model
 
         $courses['centers'] = !empty($centers) ? $centers : [];
 
-        // If no course was found, return an empty course array or handle it as needed
+
         if (empty($courses)) {
-            return null;  // Or handle it with a default message or behavior
+            return null;
         }
 
         return $courses;
@@ -282,9 +282,6 @@ class Offercourses_m extends MY_Model
         $result = $query->result_array();
         return $result;
     }
-
-
-
     public function update_course_by_id($data, $course_id)
     {
         if (empty($data) || empty($course_id)) {
@@ -306,12 +303,6 @@ class Offercourses_m extends MY_Model
             return false;
         }
     }
-
-
-
-
-
-
     // course transaction functions
     public function get_course_transaction($conditions = [])
     {
@@ -357,49 +348,48 @@ class Offercourses_m extends MY_Model
         return false;
     }
     public function get_transaction_data()
-{
+    {
+        $this->db->select('
+            course_transaction.*, 
+            student.name as student_name, 
+            center.city as center_city, 
+            courses.course_name, 
+            courses.photo
+        ');
+        $this->db->from('course_transaction');
+        $this->db->join('student', 'student.studentID = course_transaction.student_id', 'inner');
+        $this->db->join('center', 'center.id = course_transaction.center_id', 'inner');
+        $this->db->join('courses', 'courses.id = course_transaction.course_id', 'inner'); 
+        $this->db->order_by('course_transaction.center_id', 'ASC');
     
+        $query = $this->db->get();
+    
+        return $query->result_array();
+    }
+    public function get_transaction_stu_data_by_id($student_id = null)
+{
     $this->db->select('
         course_transaction.*, 
         student.name as student_name, 
-        center.city as center_city
+        center.city as center_city, 
+        courses.course_name, 
+        courses.photo
     ');
     $this->db->from('course_transaction');
     $this->db->join('student', 'student.studentID = course_transaction.student_id', 'inner');
     $this->db->join('center', 'center.id = course_transaction.center_id', 'inner');
-    
-    
-    $this->db->order_by('course_transaction.center_id', 'ASC'); 
-    
-    
+    $this->db->join('courses', 'courses.id = course_transaction.course_id', 'inner'); 
+    $this->db->where('course_transaction.student_id', $student_id);
+
+    $this->db->order_by('course_transaction.center_id', 'ASC');
+
     $query = $this->db->get();
-    
-    
-    return $query->result_array();
-}
 
-public function get_transaction_stu_data($student_id = null)
-{
-    $this->db->select('
-        course_transaction.*, 
-        student.name as student_name, 
-        center.city as center_city
-    ');
-    $this->db->from('course_transaction');
-    $this->db->join('student', 'student.studentID = course_transaction.student_id', 'inner');
-    $this->db->join('center', 'center.id = course_transaction.center_id', 'inner');
-
-    // Check if a student ID is provided and filter by it if present
-    if ($student_id !== null) {
-        $this->db->where('student.studentID', $student_id);
+    if ($query->num_rows() == 0) {
+        return [];
     }
 
-    $this->db->order_by('course_transaction.center_id', 'ASC'); 
-    
-    $query = $this->db->get();
-    
     return $query->result_array();
 }
-
 
 }
