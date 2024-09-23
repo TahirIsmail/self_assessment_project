@@ -233,7 +233,7 @@
                                   Team</a>
                               <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest
                                   Blog</a>
-                              <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact
+                              <a href="<?php echo base_url('contactus/index') ?>" class="text-light"><i class="bi bi-arrow-right text-primary me-2"></i>Contact
                                   Us</a>
                           </div>
                       </div>

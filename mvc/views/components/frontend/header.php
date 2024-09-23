@@ -47,46 +47,46 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+<nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
     <a href="<?= base_url('home/index') ?>" class="navbar-brand p-0">
-      <img class="w-100" src="<?= base_url('uploads/landing_img/SL-white-logo.png') ?>" alt="Image" style="    width: 200px !important;">
+        <img class="w-100" src="<?= base_url('uploads/landing_img/SL-white-logo.png') ?>" alt="Image" style="width: 200px !important;">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-      <span class="fa fa-bars"></span>
+        <span class="fa fa-bars"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
-      <div class="navbar-nav ms-auto py-0">
-      <a href="<?= base_url('home/index') ?>"  class="nav-item nav-link active">Home</a>
-        <a href="about.html" class="nav-item nav-link">Services</a>
-        <a href="service.html" class="nav-item nav-link book-now">Book Now</a>
-        <div class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">All Courses</a>
-
-          <div class="dropdown-menu m-0">
-            <a href="<?= base_url('course/index') ?>" class="dropdown-item">DOOR SUPERVISOR</a>
-            <a href="detail.html" class="dropdown-item">CCTV</a>
-            <a href="detail.html" class="dropdown-item">CVIT</a>
-            <a href="detail.html" class="dropdown-item">VEHICAL IMMOBILSER</a>
-            <a href="detail.html" class="dropdown-item">CLOSE PROTECTION</a>
-            <a href="detail.html" class="dropdown-item">SECURITY</a>
-          </div>
-
+        <div class="navbar-nav ms-auto py-0">
+            <a href="<?= base_url('home/index') ?>" class="nav-item nav-link <?= ($this->uri->segment(1) == 'home') ? 'active' : '' ?>">Home</a>
+            <a href="<?= base_url('about') ?>" class="nav-item nav-link <?= ($this->uri->segment(1) == 'about') ? 'active' : '' ?>">Services</a>
+            <a href="<?= base_url('service') ?>" class="nav-item nav-link book-now <?= ($this->uri->segment(1) == 'service') ? 'active' : '' ?>">Book Now</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle <?= ($this->uri->segment(1) == 'course') ? 'active' : '' ?>" data-bs-toggle="dropdown">All Courses</a>
+                <div class="dropdown-menu m-0">
+                    <a href="<?= base_url('course/index') ?>" class="dropdown-item">DOOR SUPERVISOR</a>
+                    <a href="detail.html" class="dropdown-item">CCTV</a>
+                    <a href="detail.html" class="dropdown-item">CVIT</a>
+                    <a href="detail.html" class="dropdown-item">VEHICAL IMMOBILISER</a>
+                    <a href="detail.html" class="dropdown-item">CLOSE PROTECTION</a>
+                    <a href="detail.html" class="dropdown-item">SECURITY</a>
+                </div>
+            </div>
+            <a href="<?= base_url('contactus/index') ?>" class="nav-item nav-link <?= ($this->uri->segment(1) == 'contactus') ? 'active' : '' ?>">Contact Us</a>
+            <a href="contact.html" class="nav-item nav-link <?= ($this->uri->segment(1) == 'blog') ? 'active' : '' ?>">Blog</a>
         </div>
-
-        <a href="<?php echo base_url('contactus/index') ?>" class="nav-item nav-link">Contact Us</a>
-        <a href="contact.html" class="nav-item nav-link">Blog</a>
-      </div>
-      <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
-      <?php if ($is_logged_in) { ?>
-        <!-- Show Dashboard link if the user is logged in -->
-        <a href="<?= base_url('dashboard/index') ?>" class="btn btn-primary py-2 px-4 ms-3">DASHBOARD</a>
-    <?php } else { ?>
-        <!-- Show Login and Sign Up links if the user is not logged in -->
-        <a href="<?= base_url('signin/index') ?>" class="btn btn-primary py-2 px-4 ms-3">LOGIN</a>
-        <a href="<?= base_url('signup/page') ?>" class="nav-item nav-link">SIGN UP</a>
-    <?php } ?>
+        <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal">
+            <i class="fa fa-search"></i>
+        </button>
+        <?php if ($is_logged_in) { ?>
+            <!-- Show Dashboard link if the user is logged in -->
+            <a href="<?= base_url('dashboard/index') ?>" class="btn btn-primary py-2 px-4 ms-3">DASHBOARD</a>
+        <?php } else { ?>
+            <!-- Show Login and Sign Up links if the user is not logged in -->
+            <a href="<?= base_url('signin/index') ?>" class="btn btn-primary py-2 px-4 ms-3">LOGIN</a>
+            <a href="<?= base_url('signup/page') ?>" class="nav-item nav-link">SIGN UP</a>
+        <?php } ?>
     </div>
-  </nav>
+</nav>
+
 
   <div class="container-fluid position-relative p-0">
 
@@ -102,7 +102,7 @@
               <h1 class="text-white mb-md-4 animated zoomIn" style="text-align: left;">Simply Licenced</h1>
               <h1 class="text-white mb-md-4 animated zoomIn" style="text-align: left;">Simply Get a Job</h1>
               <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">More Details</a>
-              <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
+              <a href="<?php echo base_url('contactus/index') ?>" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
             </div>
             <div class="cont1" style="margin-top: 40px;">
               <div class="card-new">

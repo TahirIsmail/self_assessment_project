@@ -2277,7 +2277,7 @@ textarea.form-control-lg {
   z-index: 3;
 }
 .input-group .btn {
-  background: linear-gradient(to right, #ed213a, #93291e) !important;
+  /* background: linear-gradient(to right, #ed213a, #93291e) !important; */
   color:white !important;
   position: relative;
   z-index: 2;
@@ -5742,7 +5742,7 @@ fieldset:disabled .btn {
 }
 .link-primary:hover,
 .link-primary:focus {
-  color: #38c9d6;
+  color: #0b0e1b;
 }
 .link-secondary {
   color: #6c757d;
