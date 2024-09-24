@@ -293,6 +293,7 @@ class Student extends Admin_Controller
 				$singleStudent = $this->student_m->get_single_student(array("studentID" => $loginuserID, 'schoolyearID' => $schoolyearID));
 				if (inicompute($singleStudent)) {
 					$this->data['students'] = $this->student_m->get_order_by_student(array('classesID' => $singleStudent->classesID, 'schoolyearID' => $schoolyearID));
+					
 					if (inicompute($this->data['students'])) {
 						$sections = $this->section_m->get_order_by_section(array("classesID" => $singleStudent->classesID));
 						if (inicompute($sections)) {
@@ -346,6 +347,8 @@ class Student extends Admin_Controller
 
 			$classesID = htmlentities((string) escapeString($this->uri->segment(3)));
 			$this->data['students'] = $this->student_m->get_order_by_student();
+
+			// dd($this->data['students']);
 
 
 			if (inicompute($this->data['students'])) {
@@ -477,7 +480,8 @@ class Student extends Admin_Controller
 				if ($this->input->post('dob')) {
 					$array["dob"] 		= date("Y-m-d", strtotime((string) $this->input->post("dob")));
 				}
-				$array['photo'] = $this->upload_data['file']['file_name'];
+				
+				$array['photo'] = isset($this->upload_data['file']['file_name']) ? $this->upload_data['file']['file_name'] : '';
 
 
 				$this->student_m->insert_student($array);

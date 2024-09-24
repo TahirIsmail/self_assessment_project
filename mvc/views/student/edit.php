@@ -1,38 +1,39 @@
-<div class="card p-3 mb-3">
-    <div class="card-header">
+
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title"><i class="fa icon-student"></i> <?=$this->lang->line('panel_title')?></h3>
       
-            <h3 class="card-title"><i class="fas fa-user"></i> <?= $this->lang->line('panel_title') ?></h3>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?= base_url("dashboard/index") ?>"><i class="fa fa-laptop"></i> <?= $this->lang->line('menu_dashboard') ?></a></li>
-                    <li class="breadcrumb-item"><a href="<?= base_url("student/index/$set") ?>"><?= $this->lang->line('menu_student') ?></a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('menu_edit') ?> <?= $this->lang->line('panel_title') ?></li>
-                </ol>
-            </nav>
-    
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <form method="post" enctype="multipart/form-data">
-
-                <div class="row mb-3">
-                    <div class="col-md-6 <?= form_error('name') ? 'has-error' : '' ?>">
-                        <label for="name_id" class="form-label"><?= $this->lang->line("student_name") ?> <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="name_id" name="name" value="<?= set_value('name', $student->name) ?>">
-                        <div class="text-danger">
+        <ol class="breadcrumb">
+            <li><a href="<?=base_url("dashboard/index")?>"><i class="fa fa-laptop"></i> <?=$this->lang->line('menu_dashboard')?></a></li>           
+            <li class="active"><?=$this->lang->line('menu_edit')?> <?=$this->lang->line('panel_title')?></li>
+        </ol>
+    </div><!-- /.box-header -->
+    <!-- form start -->
+    <div class="box-body">
+        <div class="row">
+            <div class="col-sm-10">
+                <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+                    <div class="form-group <?=form_error('name') ? 'has-error' : ''?>">
+                        <label for="name_id" class="col-sm-2 control-label">
+                            <?=$this->lang->line("student_name")?> <span class="text-red">*</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="name_id" name="name" value="<?=set_value('name', $student->name)?>" >
+                        </div>
+                        <span class="col-sm-4 control-label">
                             <?php echo form_error('name'); ?>
                         </div>
                     </div>
 
-                    <div class="col-md-6 <?= form_error('dob') ? 'has-error' : '' ?>">
-                        <label for="dob" class="form-label"><?= $this->lang->line("student_dob") ?></label>
-                        <?php $dob = '';
-                        if ($student->dob) {
-                            $dob = date("d-m-Y", strtotime($student->dob));
-                        } ?>
-                        <input type="text" class="form-control" id="dob" name="dob" value="<?= set_value('dob', $dob) ?>">
-                        <div class="text-danger">
+                    <div class="form-group <?=form_error('dob') ? 'has-error' : ''?>">
+                        <label for="dob" class="col-sm-2 control-label">
+                            <?=$this->lang->line("student_dob")?>
+                        </label>
+                        <div class="col-sm-6">
+                            <?php $dob = ''; if($student->dob) { $dob = date("d-m-Y", strtotime($student->dob)); }  ?>
+                            <input type="text" class="form-control" id="dob" name="dob" value="<?=set_value('dob', $dob)?>" >
+                        </div>
+                        <span class="col-sm-4 control-label">
                             <?php echo form_error('dob'); ?>
                         </div>
                     </div>
@@ -46,13 +47,17 @@
                         ?>
                         <div class="text-danger">
                             <?php echo form_error('sex'); ?>
-                        </div>
+                        </span>
                     </div>
 
-                    <div class="col-md-6 <?= form_error('email') ? 'has-error' : '' ?>">
-                        <label for="email" class="form-label"><?= $this->lang->line("student_email") ?></label>
-                        <input type="email" class="form-control" id="email" name="email" value="<?= set_value('email', $student->email) ?>">
-                        <div class="text-danger">
+                    <div class="form-group <?=form_error('email') ? 'has-error' : ''?>">
+                        <label for="email" class="col-sm-2 control-label">
+                            <?=$this->lang->line("student_email")?>
+                        </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="email" name="email" value="<?=set_value('email', $student->email)?>" >
+                        </div>
+                        <span class="col-sm-4 control-label">
                             <?php echo form_error('email'); ?>
                         </div>
                     </div>
@@ -98,30 +103,44 @@
                         ?>
                         <div class="text-danger">
                             <?php echo form_error('country'); ?>
-                        </div>
+                        </span>
                     </div>
-                </div>
 
-                <div class="row mb-3">
-                    <div class="col-md-6 <?= form_error('photo') ? 'has-error' : '' ?>">
-                        <label for="photo" class="form-label"><?= $this->lang->line("student_photo") ?></label>
-                        <div class="input-group">
-                            <input type="text" class="form-control image-preview-filename" disabled>
-                            <button type="button" class="btn btn-outline-secondary image-preview-clear" style="display:none;"><i class="fa fa-remove"></i> <?= $this->lang->line('student_clear') ?></button>
-                            <label class="btn btn-success image-preview-input">
-                                <span class="fa fa-upload"></span> <?= $this->lang->line('student_file_browse') ?>
-                                <input type="file" accept="image/png, image/jpeg, image/gif" name="photo">
-                            </label>
+                    <div class="form-group <?=form_error('photo') ? 'has-error' : ''?>">
+                        <label for="photo" class="col-sm-2 control-label">
+                            <?=$this->lang->line("student_photo")?>
+                        </label>
+                        <div class="col-sm-6">
+                            <div class="input-group image-preview">
+                                <input type="text" class="form-control image-preview-filename" disabled="disabled">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                        <span class="fa fa-remove"></span>
+                                        <?=$this->lang->line('student_clear')?>
+                                    </button>
+                                    <div class="btn btn-success image-preview-input">
+                                        <span class="fa fa-repeat"></span>
+                                        <span class="image-preview-input-title">
+                                        <?=$this->lang->line('student_file_browse')?></span>
+                                        <input type="file" accept="image/png, image/jpeg, image/gif" name="photo"/>
+                                    </div>
+                                </span>
+                            </div>
                         </div>
-                        <div class="text-danger">
+
+                        <span class="col-sm-4">
                             <?php echo form_error('photo'); ?>
-                        </div>
+                        </span>
                     </div>
 
-                    <div class="col-md-6 <?= form_error('username') ? 'has-error' : '' ?>">
-                        <label for="username" class="form-label"><?= $this->lang->line("student_username") ?> <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="username" name="username" value="<?= set_value('username', $student->username) ?>">
-                        <div class="text-danger">
+                    <div class="form-group <?=form_error('username') ? 'has-error' : ''?>">
+                        <label for="username" class="col-sm-2 control-label">
+                            <?=$this->lang->line("student_username")?> <span class="text-red">*</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="username" name="username" value="<?=set_value('username', $student->username)?>" >
+                        </div>
+                         <span class="col-sm-4 control-label">
                             <?php echo form_error('username'); ?>
                         </div>
                     </div>

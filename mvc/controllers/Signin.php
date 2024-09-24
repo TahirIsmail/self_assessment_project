@@ -45,10 +45,17 @@ class Signin extends Admin_Controller
             $this->data["siteinfos"]->captcha_status = 1;
         }
     }
-    
+
 
     public function index()
     {
+
+
+        $course_slug = $this->input->get('course_slug');
+        if ($course_slug) {
+            $this->session->set_userdata('course_slug', $course_slug);
+        }
+
 
         if ($this->data['siteinfos']->captcha_status == 0) {
             $this->load->library('recaptcha');
@@ -59,8 +66,9 @@ class Signin extends Admin_Controller
         }
 
         if ($this->signin_m->loggedin() != FALSE) {
-            redirect(base_url('dashboard/index'));
+            $this->_redirectAfterLogin();
         }
+
         $this->data['form_validation'] = 'No';
         if ($_POST !== []) {
             $this->_setCookie();
@@ -73,7 +81,7 @@ class Signin extends Admin_Controller
             } else {
                 $signinManager = $this->_signInManager();
                 if ($signinManager['return']) {
-                    redirect(base_url('dashboard/index'));
+                    $this->_redirectAfterLogin();
                 } else {
                     $this->data['form_validation'] = $signinManager['message'];
                     $this->data["subview"]         = "signin/index";
@@ -82,12 +90,27 @@ class Signin extends Admin_Controller
             }
         } else {
             $this->data["subview"]         = "signin/index";
-            $this->load->view('_layout_signin', $this->data);        }
+            $this->load->view('_layout_signin', $this->data);
+        }
     }
 
-   
 
-    
+
+    private function _redirectAfterLogin()
+    {
+        $course_status = $this->session->userdata('course_slug');
+
+        if ($course_status) {
+            $this->session->unset_userdata('course_slug');
+            redirect(base_url('course/index/' . $course_status));
+        } else {
+            redirect(base_url('dashboard/index'));
+        }
+    }
+
+
+
+
 
     public function cpassword()
     {
