@@ -109,6 +109,7 @@ class home extends Admin_Controller
 
     public function check_payment()
     {
+    
         $studentID = $this->session->userdata('loginuserID');
         $sectionID = $this->input->post('sectionID');
 
