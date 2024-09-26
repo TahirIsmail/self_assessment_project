@@ -44,11 +44,11 @@ class Course extends Admin_Controller
         $this->data['payment_settings'] = $this->payment_gateway_m->get_order_by_payment_gateway(['status' => 1]);
         $this->data['payment_options']  = pluck($this->payment_gateway_option_m->get_payment_gateway_option(), 'payment_value', 'payment_option');
 
-
-
-
+        $this->data['course_names'] = $this->Offercourses_m->get_course_names();
         $this->data['course_data'] = $this->offercourses_m->get_course_by_slug($slug);
+
         $this->data['is_logged_in'] = $loginuserID;
+        
         // dd($this->data['course_data']);
         $this->data['slug'] = $slug;
         $this->data['all_courses'] = $this->offercourses_m->get_all_courses();

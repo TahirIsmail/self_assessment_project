@@ -24,11 +24,8 @@
                     <table id="example1" class="table table-striped table-bordered table-hover dataTable no-footer">
                         <thead>
                             <tr>
-                                <th class="col-sm-0"><?= $this->lang->line('slno') ?></th>
+                               
                                 <th class="col-sm-2"><?= $this->lang->line('online_exam_name') ?></th>
-                                <th class="col-sm-2"><?= $this->lang->line('online_exam_payment_status') ?></th>
-                                <th class="col-sm-2"><?= $this->lang->line('online_exam_cost') ?></th>
-                                <th class="col-sm-2"><?= $this->lang->line('online_exam_date') ?></th>
                                 <?php if (permissionChecker('online_exam_edit')) { ?>
                                     <th class="col-sm-2"><?= $this->lang->line('online_exam_published') ?></th>
                                 <?php }  ?>
@@ -56,9 +53,7 @@
 
                                     if ($showStatus) { ?>
                                         <tr>
-                                            <td data-title="<?= $this->lang->line('slno') ?>">
-                                                <?php echo $i; ?>
-                                            </td>
+                                            
                                             <td data-title="<?= $this->lang->line('online_exam_name') ?>">
                                                 <?php
                                                 if (strlen($online_exam->name) > 25)
@@ -68,19 +63,9 @@
                                                 ?>
                                             </td>
 
-                                            <td data-title="<?= $this->lang->line('online_exam_payment_status') ?>">
-                                                <?= ($online_exam->paid == 1) ? $this->lang->line('online_exam_paid') : $this->lang->line('online_exam_free'); ?>
-                                            </td>
-                                            <td data-title="<?= $this->lang->line('online_exam_cost') ?>">
-                                                <?= ($online_exam->paid == 1) ? number_format($online_exam->cost, '2') : number_format($online_exam->cost, '2'); ?> <?= $siteinfos->currency_code ?>
-                                            </td>
-                                            <td data-title="<?= $this->lang->line('online_exam_date') ?>">
-                                                <?php
-                                                if (isset($online_exam->startDateTime) && isset($online_exam->endDateTime)) {
-                                                    echo date("d-M-Y", strtotime($online_exam->startDateTime)) . ' - ' . date('d-M-Y', strtotime($online_exam->endDateTime));
-                                                }
-                                                ?>
-                                            </td>
+                                       
+                                           
+                                           
                                             <?php if (permissionChecker('online_exam_edit')) { ?>
                                                 <td data-title="<?= $this->lang->line('online_exam_published') ?>">
                                                     <div class="onoffswitch-small" id="<?= $online_exam->onlineExamID ?>">

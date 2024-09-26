@@ -354,4 +354,66 @@ class Offercourses_m extends MY_Model
 
         return false;
     }
+
+    public function get_transaction_data()
+    {
+        
+        $this->db->select('
+            course_transaction.*, 
+            student.name as student_name, 
+            center.city as center_city, 
+            courses.course_name, 
+            courses.photo
+        ');
+        $this->db->from('course_transaction');
+        $this->db->join('student', 'student.studentID = course_transaction.student_id', 'inner');
+        $this->db->join('center', 'center.id = course_transaction.center_id', 'inner');
+        $this->db->join('courses', 'courses.id = course_transaction.course_id', 'inner');
+        $this->db->order_by('course_transaction.center_id', 'ASC');
+    
+        $query = $this->db->get();
+        $results = $query->result_array();
+    
+        $grouped_data = [];
+        
+        foreach ($results as $row) {
+            
+            $center_id = $row['center_id'];
+            $center_city = $row['center_city'];
+            if (!isset($grouped_data[$center_id])) {
+                $grouped_data[$center_id] = [
+                    'center_city' => $center_city,
+                    'records' => []
+                ];
+            }
+            $grouped_data[$center_id]['records'][] = $row;
+        }    
+        return $grouped_data;
+    }
+    
+    public function get_transaction_stu_data_by_id($student_id = null)
+    {
+        $this->db->select('
+            course_transaction.*, 
+            student.name as student_name, 
+            center.city as center_city, 
+            courses.course_name, 
+            courses.photo
+        ');
+        $this->db->from('course_transaction');
+        $this->db->join('student', 'student.studentID = course_transaction.student_id', 'inner');
+        $this->db->join('center', 'center.id = course_transaction.center_id', 'inner');
+        $this->db->join('courses', 'courses.id = course_transaction.course_id', 'inner');
+        $this->db->where('course_transaction.student_id', $student_id);
+
+        $this->db->order_by('course_transaction.center_id', 'ASC');
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() == 0) {
+            return [];
+        }
+
+        return $query->result_array();
+    }
 }
