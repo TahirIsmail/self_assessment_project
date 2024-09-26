@@ -61,10 +61,10 @@
     <div class="container mt-4">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title"><i class="fa fa-star"></i> Paid Course Transactions</h3>
+                <h3 class="box-title"><i class="fa fa-star"></i>Courses</h3>
                 <ol class="breadcrumb">
                     <li><a href="<?= base_url('dashboard/index') ?>"><i class="fa fa-laptop"></i> Dashboard</a></li>
-                    <li class="active" style="color: white;"> /Paid Course Transactions</li>
+                    <li class="active" style="color: white;"> /Course Transactions</li>
                 </ol>
             </div>
             <!-- Transaction Data Section -->

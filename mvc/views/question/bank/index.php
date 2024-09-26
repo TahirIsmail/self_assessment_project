@@ -28,7 +28,6 @@
                         <thead>
                             <tr>
                                 <th class="col-sm-2"><?=$this->lang->line('slno')?></th>
-                                <th class="col-sm-1"><?=$this->lang->line('question_bank_level')?></th>
                                 <th class="col-sm-3"><?=$this->lang->line('question_bank_question')?></th>
                                 <th class="col-sm-1"><?=$this->lang->line('question_bank_group')?></th>
                                 <th class="col-sm-1"><?=$this->lang->line('question_bank_type')?></th>
@@ -43,9 +42,7 @@
                                     <td data-title="<?=$this->lang->line('slno')?>">
                                         <?php echo $i; ?>
                                     </td>
-                                    <td data-title="<?=$this->lang->line('question_bank_level')?>">
-                                        <?=isset($levels[$question_bank->levelID]) ? $levels[$question_bank->levelID]->name : ''; ?>
-                                    </td>
+                                   
                                     <td data-title="<?=$this->lang->line('question_bank_question')?>">
                                          <?php
                                             if(strlen($question_bank->question) > 60)
