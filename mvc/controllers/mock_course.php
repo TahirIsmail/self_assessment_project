@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class mock_course extends Admin_Controller
+class Mock_course extends Admin_Controller
 {
     public $load;
     public $session;
@@ -26,7 +26,7 @@ class mock_course extends Admin_Controller
 
     public function index()
     {      
-        
+
         $this->load->view('mock_course/index');
         
     }

@@ -91,9 +91,10 @@ class Admin_Controller extends MY_Controller {
             "course/index/([a-zA-Z0-9_-]+)",
             "home/course",
             "home/payment",
+            "Mock_course/index",
             "mock_course/index",
             "offercourses/index",
-             "center/index"
+            "center/index"
 
 
         ];

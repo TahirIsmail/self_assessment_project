@@ -492,7 +492,7 @@ $is_logged_in = $this->session->userdata('loggedin');
                                     <img class="img-fluid " src="<?= base_url('uploads/images/' . $test['image']) ?>" alt="Course Image">
                                     <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                                         <a onclick='checkLogin(<?= json_encode($test) ?>, event)' class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
-                                        <a href="<?= base_url('mock_course/index'); ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
+                                        <a href="<?= base_url('Mock_course/index'); ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
                                     </div>
                                 </div>
                                 <div class="course-item bg-theme   p-4 rounded-top-round rounded-bottom-round" style="margin-top: -15px;position:relative; z-index:1;height:120px !important">
