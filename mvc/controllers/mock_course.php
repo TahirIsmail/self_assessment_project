@@ -22,17 +22,11 @@ class mock_course extends Admin_Controller
         parent::__construct();
         $this->session->set_userdata($this->data["siteinfos"]->language);
         $language = $this->session->userdata('lang');
-        $this->load->model('Mock_m');
-    }
-
-    public function page()
-    {
-       dd('page');
-    }
+    }  
 
     public function index()
-    {
-      
+    {      
+        
         $this->load->view('mock_course/index');
         
     }

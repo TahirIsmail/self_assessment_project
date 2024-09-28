@@ -246,6 +246,7 @@
                         We offer comprehensive waste management solutions, focusing on recycling electronic waste and other materials. Proper disposal and recycling of e-waste are essential in data centres to minimise their environmental impact.
                     </p>
                 </li>
+                
                 <li>
                     <p>
                         We support data centres in transitioning to renewable energy sources, such as solar or wind power. This shift not only reduces reliance on fossil fuels but also significantly cuts down on greenhouse gas emissions.
