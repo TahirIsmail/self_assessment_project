@@ -95,8 +95,6 @@ class Admin_Controller extends MY_Controller {
             "mock_course/index",
             "offercourses/index",
             "center/index"
-
-
         ];
 
         // dd(in_array(uri_string(), $exception_uris));
