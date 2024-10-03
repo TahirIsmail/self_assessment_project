@@ -95,72 +95,6 @@
           transition: .5s;
       }
   </style>
-  <!-- <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
-      <div class="container py-5">
-          <div class="row g-5">
-              <div class="col-lg-3 col-md-6">
-                  <h4 class="text-white mb-3">Quick Link</h4>
-                  <a class="btn btn-link" href="">Home</a>
-                  <a class="btn btn-link" href="">All Courses</a>
-                  <a class="btn btn-link" href="">Book Now</a>
-                  <a class="btn btn-link" href="">Services</a>
-                  <a class="btn btn-link" href="">Our Policies</a>
-                  <a class="btn btn-link" href="">Contact Us</a>
-              </div>
-              <div class="col-lg-3 col-md-6">
-
-                  <a class="btn btn-link" href="">Terms & Conditions</a>
-                  <a class="btn btn-link" href="">Admission Policy</a>
-                  <a class="btn btn-link" href="">Refund Policy</a>
-                  <a class="btn btn-link" href="">Quality Assurance</a>
-                  <a class="btn btn-link" href="">Complaint Policy</a>
-                  <a class="btn btn-link" href="">Health & Safety Policy</a>
-                  <a class="btn btn-link" href="">Appeal Policy</a>
-                  <a class="btn btn-link" href="">Malpractice & Maladministration Policy</a>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                  <h4 class="text-white mb-3">Contact</h4>
-                  <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, ABC, UK</p>
-                  <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                  <p class="mb-2"><i class="fa fa-envelope me-3"></i>simplylicensed@example.com</p>
-
-              </div>
-              <div class="col-lg-3 col-md-6">
-                  <a href="index.html" class="navbar-brand p-0">
-                      <img class="w-100" src="<?= base_url('uploads/landing_img/SL-white-logo.png') ?>" alt="Image" style="    width: 200px !important;">
-                  </a>
-                  <p>Sign up for our newsletter now.</p>
-                  <div class="position-relative mx-auto" style="max-width: 400px;">
-                      <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                      <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
-                  </div>
-                  <div class="d-flex pt-2">
-                      <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                      <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                      <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                      <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="container">
-          <div class="copyright">
-              <div class="row">
-                  <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                      &copy; <a class="border-bottom" href="#">SimplyLicenced</a>, All Right Reserved.
-
-                    
-                      Developed By <a class="border-bottom" href="https://oxbridgedigital.com/">OXBRIDGE DIGITAL</a>
-                  </div>
-
-              </div>
-          </div>
-      </div>
-  </div> -->
-
-
-
-  <!-- Footer Start -->
   <div
       class="container-fluid bg-dark text-light mt-5 wow fadeInUp"
       data-wow-delay="0.1s">
@@ -170,9 +104,6 @@
                   <div
                       class="d-flex flex-column align-items-center justify-content-center text-center h-100 p-4" style="background-color: #d71920;">
                       <a href="index.html" class="navbar-brand">
-                          <!-- <h1 class="m-0 text-white">
-                              <i class="fa fa-user-tie me-2"></i>Startup
-                          </h1> -->
                           <img class="w-100" src="<?= base_url('uploads/images/SL-red-logo-footer.png') ?>" alt="Image" style="    width: 200px !important;">
                       </a>
                       <p class="mt-3 mb-4">
@@ -186,7 +117,7 @@
                                   type="text"
                                   class="form-control border-white p-3"
                                   placeholder="Your Email" />
-                              <button class="btn btn-dark">Sign Up</button>
+                              <button class="btn btn-dark m-0">Sign Up</button>
                           </div>
                       </form>
                   </div>
@@ -200,15 +131,15 @@
                           </div>
                           <div class="d-flex mb-2">
                               <i class="bi bi-geo-alt text-primary me-2"></i>
-                              <p class="mb-0">123 Street, New York, USA</p>
+                              <p class="mb-0">Baylis House, Stoke Poges Ln, Slough SL1 3PB, United Kingdom</p>
                           </div>
                           <div class="d-flex mb-2">
                               <i class="bi bi-envelope-open text-primary me-2"></i>
-                              <p class="mb-0">info@example.com</p>
+                              <p class="mb-0">irshadzaidi@gmail.com</p>
                           </div>
                           <div class="d-flex mb-2">
                               <i class="bi bi-telephone text-primary me-2"></i>
-                              <p class="mb-0">+012 345 67890</p>
+                              <p class="mb-0">+7401210310</p>
                           </div>
                           <div class="d-flex mt-4">
                               <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-twitter fw-normal"></i></a>
@@ -225,14 +156,10 @@
                           <div
                               class="link-animated d-flex flex-column justify-content-start">
                               <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                              <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About
-                                  Us</a>
-                              <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our
-                                  Services</a>
-                              <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Meet The
-                                  Team</a>
-                              <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest
-                                  Blog</a>
+                              <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Education & Teaching</a>
+                              <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Security Courses</a>
+                              <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Book now</a>
+                              <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>All Courses</a>
                               <a href="<?php echo base_url('contactus/index') ?>" class="text-light"><i class="bi bi-arrow-right text-primary me-2"></i>Contact
                                   Us</a>
                           </div>

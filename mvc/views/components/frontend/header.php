@@ -11,40 +11,45 @@ $is_logged_in = $this->session->userdata('loggedin');
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
-
-  <!-- Favicon -->
   <link href="<?= base_url('uploads/landing_img/favicon.png'); ?>" rel="icon">
-
-  <!-- Google Web Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Icon Font Stylesheet -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-  <!-- Libraries Stylesheet -->
-
-
   <link href="<?php echo base_url('assets/inilabs/owlcarousel/owl.carousel.min.css'); ?>" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url('assets/inilabs/animate/animate.min.css'); ?>" rel="stylesheet" type="text/css">
-
-  <!-- Customized Bootstrap Stylesheet -->
-  <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
-
   <link href="<?php echo base_url('assets/inilabs/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css">
-
-  <!-- Template Stylesheet -->
-  <!-- <link href="css/style.css" rel="stylesheet"> -->
   <link href="<?php echo base_url('assets/inilabs/landing_style.css'); ?>" rel="stylesheet" type="text/css">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="<?= base_url('assets/pace/pace.css') ?>">
-
 </head>
+<style>
+  /* Hide all submenus by default */
+  .dropdown-menu .dropdown-submenu>.dropdown-menu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin-top: -1px;
+  }
+
+  .dropdown-menu .dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu .dropdown-submenu {
+    position: relative;
+  }
+
+  .dropdown-menu .dropdown-submenu:hover {
+    background-color: #f8f9fa;
+    /* Optional: change background on hover */
+  }
+
+</style>
 
 <body>
 
@@ -58,30 +63,137 @@ $is_logged_in = $this->session->userdata('loggedin');
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <div class="navbar-nav ms-auto py-0">
         <a href="<?= base_url('home/index') ?>" class="nav-item nav-link <?= ($this->uri->segment(1) == 'home') ? 'active' : '' ?>">Home</a>
-        <a href="<?= base_url('about') ?>" class="nav-item nav-link <?= ($this->uri->segment(1) == 'about') ? 'active' : '' ?>">Services</a>
-        <a href="<?= base_url('service') ?>" class="nav-item nav-link book-now <?= ($this->uri->segment(1) == 'service') ? 'active' : '' ?>">Book Now</a>
         <div class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle <?= ($this->uri->segment(1) == 'course') ? 'active' : '' ?>" data-bs-toggle="dropdown">All Courses</a>
-          <div class="dropdown-menu m-0">
-            <?php foreach ($course_names as $course): ?>
-              <a href="<?= base_url('course/index/' . $course['slug']) ?>" class="dropdown-item"><?= htmlspecialchars($course['course_name']) ?></a>
-            <?php endforeach; ?>
-          </div>
+          <a href="#" class="nav-link dropdown-toggle <?= ($this->uri->segment(1) == 'course') ? 'active' : '' ?>" id="dropdownMenuButton"
+            data-mdb-toggle="dropdown" aria-expanded="false">
+            Education & Teaching
+          </a>
+
+          <ul class="dropdown-menu m-0" aria-labelledby="dropdownMenuButton">
+            <li class="dropdown-submenu position-relative">
+              <a class="dropdown-item d-flex justify-content-between" href="#">
+                Education Training
+                <i class="bi bi-chevron-right"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="dropdown-item">Level 3 Award in Education and Training (AET) - £149</a></li>
+                <li><a href="#" class="dropdown-item">Level 4 Certificate in Education and Training (CET) - £349</a></li>
+                <li><a href="#" class="dropdown-item">Level 5 Diploma in Education and Training (DET) - £599</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown-submenu position-relative">
+              <a class="dropdown-item d-flex justify-content-between" href="#">
+                Teaching Training
+                <i class="bi bi-chevron-right"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="dropdown-item">Level 2 Certificate in Supporting Teaching and Learning in Schools - £569</a></li>
+                <li><a href="#" class="dropdown-item">Level 3 Award in Supporting Teaching and Learning in Schools - £199</a></li>
+                <li><a href="#" class="dropdown-item">Level 4 Certificate for Higher Level Teaching Assistant - £369</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown-submenu position-relative">
+              <a class="dropdown-item d-flex justify-content-between" href="#">
+                Access Training
+                <i class="bi bi-chevron-right"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="dropdown-item">Level 3 Certificate in Assessing Vocational Achievement - £369</a></li>
+                <li><a href="#" class="dropdown-item">Level 4 Award in Internal Quality Assurance of Assessment Processes - £349</a></li>
+                <li><a href="#" class="dropdown-item">Level 4 Certificate in Leading Internal Quality Assurance - £399</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown-submenu position-relative">
+              <a class="dropdown-item d-flex justify-content-between" href="#">
+                Functional Skills Training
+                <i class="bi bi-chevron-right"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="dropdown-item">Level 3 Award in Mathematics for Numeracy Teaching - £249</a></li>
+                <li><a href="#" class="dropdown-item">Level 3 Award in English for Literacy and Language Teaching- £249</a></li>
+              </ul>
+            </li>
+          </ul>
         </div>
-        <a href="<?= base_url('contactus/index') ?>" class="nav-item nav-link <?= ($this->uri->segment(1) == 'contactus') ? 'active' : '' ?>">Contact Us</a>
-        <a href="contact.html" class="nav-item nav-link <?= ($this->uri->segment(1) == 'blog') ? 'active' : '' ?>">Blog</a>
+
+
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle <?= ($this->uri->segment(1) == 'course') ? 'active' : '' ?>" id="dropdownMenuButton"
+            data-mdb-toggle="dropdown" aria-expanded="false">
+            Security Courses
+          </a>
+
+          <ul class="dropdown-menu m-0" aria-labelledby="dropdownMenuButton">
+            <li class="dropdown-submenu position-relative">
+              <a class="dropdown-item d-flex justify-content-between" href="#">
+              Security Courses
+                <i class="bi bi-chevron-right"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="dropdown-item">Level 2 Award for Security Officers in the Private Security Industry </a></li>
+                <li><a href="#" class="dropdown-item">Level 2 Online Award for Security Officers in the Private Security Industry (VL)</a></li>
+                <li><a href="#" class="dropdown-item">Level 6 SCQF Award for Security Officers in the Private Security Industry (Scotland) </a></li>
+                <li><a href="#" class="dropdown-item">Level 6 SCQF Online Award for Security Officers in the Private Security Industry (Scotland) (VL)</a></li>
+                <li><a href="#" class="dropdown-item">Level 2 Award for Door Supervisors in the Private Security Industry </a></li>
+                <li><a href="#" class="dropdown-item">Level 2 Online Award for Door Supervisors in the Private Security Industry (VL)</a></li>
+                <li><a href="#" class="dropdown-item">Level 6 SCQF Award for Door Supervisors in the Private Security Industry (Scotland)</a></li>
+                <li><a href="#" class="dropdown-item">Level 6 SCQF Online Award for Door Supervisors in the Private Security Industry (Scotland) (VL)</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown-submenu position-relative">
+              <a class="dropdown-item d-flex justify-content-between" href="#">
+              TOPUP Security Courses
+                <i class="bi bi-chevron-right"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="dropdown-item">Level 2 Award for Security Officers in the Private Security Industry (TopUp)
+                </a></li>
+                <li><a href="#" class="dropdown-item">Level 2 Online Award for Security Officers in the Private Security Industry (TopUp - VL) </a></li>
+                <li><a href="#" class="dropdown-item">Level 6 SCQF Award for Security Officers in the Private Security Industry (Scotland) (TopUp)
+                </a></li>
+                <li><a href="#" class="dropdown-item">Level 6 SCQF Online Award for Security Officers in the Private Security Industry (Scotland) (TopUp - VL)
+                </a></li>
+                <li><a href="#" class="dropdown-item">Level 2 Award for Door Supervisors in the Private Security Industry (TopUp)</a></li>
+                <li><a href="#" class="dropdown-item">Level 2 Online Award for Door Supervisors in the Private Security Industry (TopUp - VL)
+                </a></li>
+                <li><a href="#" class="dropdown-item">Level 6 SCQF Award for Door Supervisors in the Private Security Industry (Scotland)(TopUp)
+                </a></li>
+                <li><a href="#" class="dropdown-item">Level 6 SCQF Online Award for Door Supervisors in the Private Security Industry (Scotland) (TopUp - VL)
+                </a></li>
+              </ul>
+            </li>
+
+            
+          </ul>
+        </div>
       </div>
-      <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal">
-        <i class="fa fa-search"></i>
-      </button>
-      <?php if ($is_logged_in) { ?>
-        <!-- Show Dashboard link if the user is logged in -->
-        <a href="<?= base_url('dashboard/index') ?>" class="btn btn-primary py-2 px-4 ms-3">DASHBOARD</a>
-      <?php } else { ?>
-        <!-- Show Login and Sign Up links if the user is not logged in -->
-        <a href="<?= base_url('signin/index') ?>" class="btn btn-primary py-2 px-4 ms-3">LOGIN</a>
-        <a href="<?= base_url('signup/page') ?>" class="nav-item nav-link">SIGN UP</a>
-      <?php } ?>
+     
+      <a href="<?= base_url('service') ?>" class="nav-item nav-link book-now <?= ($this->uri->segment(1) == 'service') ? 'active' : '' ?>">Book Now</a>
+      <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle <?= ($this->uri->segment(1) == 'course') ? 'active' : '' ?>" data-bs-toggle="dropdown">All Courses</a>
+        <div class="dropdown-menu m-0">
+          <?php foreach ($course_names as $course): ?>
+            <a href="<?= base_url('course/index/' . $course['slug']) ?>" class="dropdown-item"><?= htmlspecialchars($course['course_name']) ?></a>
+          <?php endforeach; ?>
+        </div>
+      </div>
+      <a href="<?= base_url('contactus/index') ?>" class="nav-item nav-link <?= ($this->uri->segment(1) == 'contactus') ? 'active' : '' ?>">Contact Us</a>
+
+    </div>
+    <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal">
+      <i class="fa fa-search"></i>
+    </button>
+    <?php if ($is_logged_in) { ?>
+      <a href="<?= base_url('dashboard/index') ?>" class="btn btn-primary py-2 px-4 ms-3">DASHBOARD</a>
+    <?php } else { ?>
+      <!-- Show Login and Sign Up links if the user is not logged in -->
+      <a href="<?= base_url('signin/index') ?>" class="btn btn-primary py-2 px-4 ms-3">LOGIN</a>
+      <a href="<?= base_url('signup/page') ?>" class="nav-item nav-link">SIGN UP</a>
+    <?php } ?>
     </div>
   </nav>
 

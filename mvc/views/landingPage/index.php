@@ -473,8 +473,8 @@ $is_logged_in = $this->session->userdata('loggedin');
 
     <div class="container">
         <div class="text-center">
-            <h6 class="section-title bg-white text-center text-primary px-3">Tests</h6>
-            <h1 class="mb-5">All Mock Test! </h1>
+            <h6 class="section-title bg-white text-center text-primary px-3 mb-5">Buy Your Tests</h6>
+            <!-- <h1 class="mb-5">All Mock Test! </h1> -->
         </div>
         <div class="owl-carousel testimonial-carousel ">
             <?php if ($mockTests) { ?>
@@ -566,7 +566,7 @@ $is_logged_in = $this->session->userdata('loggedin');
 
 
     <!-- Team Start -->
-    <div class="container-xxl py-5">
+    <!-- <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title bg-white text-center text-primary px-3">Instructors</h6>
@@ -647,7 +647,7 @@ $is_logged_in = $this->session->userdata('loggedin');
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Team End -->
 
 
