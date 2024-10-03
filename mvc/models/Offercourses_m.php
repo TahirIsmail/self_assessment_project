@@ -30,6 +30,78 @@ class Offercourses_m extends MY_Model
         }
     }
 
+    public function insert_category($data)
+    {
+        try {
+            $this->db->insert('categories', $data);
+
+            if ($this->db->affected_rows() > 0) {
+                return $this->db->insert_id();
+            } else {
+                log_message('error', 'Failed to insert data into category table.');
+                throw new Exception('Database insert failed.');
+            }
+        } catch (Exception $e) {
+            log_message('error', 'Error inserting category: ' . $e->getMessage());
+            throw $e;
+        }
+    }
+
+    public function get_categories()
+    {
+        $query = $this->db->get('categories');
+        return $query->result_array();
+    }
+    public function get_category($id)
+    {
+        $this->db->select('*');
+        $this->db->from('categories');
+        $this->db->where('categories.id', $id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function update_category($data, $id)
+    {
+        if (empty($data) || empty($id)) {
+            log_message('error', 'Update failed: Missing data or ID.');
+            return false;
+        }
+        try {
+            $this->db->where('id', $id);
+            $this->db->update('categories', $data);
+
+            if ($this->db->affected_rows() > 0) {
+                return true;
+            } else {
+                log_message('error', 'Update failed: No rows affected for category ID ' . $id);
+                return false;
+            }
+        } catch (Exception $e) {
+            log_message('error', 'Exception occurred while updating category: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function delete_category($id)
+    {
+        if (empty($id) || !is_numeric($id)) {
+            log_message('error', 'Attempted to delete category with an invalid ID: ' . var_export($id, true));
+            return FALSE;
+        }
+        $this->db->where('id', $id);
+        $result = $this->db->delete('categories');
+        if (!$result) {
+            log_message('error', 'Failed to delete category with ID: ' . $id);
+            return FALSE;
+        }
+
+        return TRUE;
+    }
+
+
+
+
 
     public function get_all_courses()
     {
@@ -145,12 +217,17 @@ class Offercourses_m extends MY_Model
 
     public function get_course_record($slug = NULL)
     {
+        $this->db->select('courses.*, categories.category_name');
+        $this->db->from('courses');
+        $this->db->join('categories', 'categories.id = courses.category_id', 'left');
+
         if ($slug) {
-            $this->db->where('course_id', $slug);
+            $this->db->where('courses.course_id', $slug);
         }
-        $query = $this->db->get('courses');
+        $query = $this->db->get();
         return $query->result();
     }
+
     public function get_order_by_course($array = NULL)
     {
         return parent::get_order_by($array);
@@ -357,40 +434,62 @@ class Offercourses_m extends MY_Model
 
     public function get_transaction_data()
     {
-        
+        // Select necessary fields from related tables
         $this->db->select('
             course_transaction.*, 
             student.name as student_name, 
             center.city as center_city, 
             courses.course_name, 
-            courses.photo
+            courses.photo, 
+            categories.category_name, 
+            categories.id as category_id
         ');
         $this->db->from('course_transaction');
+        // Join all necessary tables
         $this->db->join('student', 'student.studentID = course_transaction.student_id', 'inner');
         $this->db->join('center', 'center.id = course_transaction.center_id', 'inner');
         $this->db->join('courses', 'courses.id = course_transaction.course_id', 'inner');
-        $this->db->order_by('course_transaction.center_id', 'ASC');
-    
+        $this->db->join('categories', 'categories.id = courses.category_id', 'inner');
+        // Order by category and then by center
+        $this->db->order_by('categories.id', 'ASC');
+        $this->db->order_by('center.id', 'ASC');
+
+        // Execute query
         $query = $this->db->get();
         $results = $query->result_array();
-    
+
         $grouped_data = [];
-        
+
+        // Group by category first, then by center within each category
         foreach ($results as $row) {
-            
+            $category_id = $row['category_id'];
+            $category_name = $row['category_name'];
             $center_id = $row['center_id'];
             $center_city = $row['center_city'];
-            if (!isset($grouped_data[$center_id])) {
-                $grouped_data[$center_id] = [
+
+            // If category group doesn't exist, create it
+            if (!isset($grouped_data[$category_id])) {
+                $grouped_data[$category_id] = [
+                    'category_name' => $category_name,
+                    'centers' => []
+                ];
+            }
+
+            // If center group doesn't exist within the category, create it
+            if (!isset($grouped_data[$category_id]['centers'][$center_id])) {
+                $grouped_data[$category_id]['centers'][$center_id] = [
                     'center_city' => $center_city,
                     'records' => []
                 ];
             }
-            $grouped_data[$center_id]['records'][] = $row;
-        }    
+
+            // Add the record to the center within the category
+            $grouped_data[$category_id]['centers'][$center_id]['records'][] = $row;
+        }
+
         return $grouped_data;
     }
-    
+
     public function get_transaction_stu_data_by_id($student_id = null)
     {
         $this->db->select('

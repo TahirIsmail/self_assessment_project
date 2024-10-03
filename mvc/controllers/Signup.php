@@ -145,6 +145,8 @@ class Signup extends Admin_Controller
                     'email' => $this->input->post('email'),
                     'password' => $this->student_m->hash($this->input->post("password")),
                     'name' => $this->input->post('first_name'),
+                    'sex' => $this->input->post('gender'),
+                    'dob' => $this->input->post('dob'),
                     'phone' => $this->input->post('phone'),
                     'last_name' => $this->input->post('last_name'),
                     'reffered_by' => $this->input->post("referred_by"),

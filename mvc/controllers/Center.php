@@ -205,6 +205,7 @@ class Center extends Admin_Controller
         
         $this->data['courses'] = $this->Center_m->get_all_courses();
         $this->data['selected_courses'] = $this->Center_m->get_center_courses($id);
+        // dd($this->data['selected_courses']);
      
 
         if ($this->input->post()) {

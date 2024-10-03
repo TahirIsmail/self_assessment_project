@@ -59,8 +59,10 @@
                                     // Check if the course is already linked to the center
                                     $is_selected = false;
                                     $course_price = '';
+
+                                    // Loop through the selected courses and match by course_id, not by id
                                     foreach ($selected_courses as $center_course) {
-                                        if ($center_course->id == $course->id) {
+                                        if ($center_course->course_id == $course->id) {  // Compare course_id with course->id
                                             $is_selected = true;
                                             $course_price = $center_course->price;
                                             break;
@@ -86,6 +88,7 @@
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
+
                         </table>
                         <span id="course-error" class="text-red" style="display:none;">Please select at least one course.</span>
                         <span id="price-error" class="text-red" style="display:none;">Please enter the price for selected courses.</span>
@@ -108,14 +111,14 @@
 </div>
 
 <script>
-    $(document).ready(function () {
-    $('.course-checkbox').change(function () {
-        var courseId = $(this).data('course-id');
-        if ($(this).is(':checked')) {
-            $('#course-price-input-' + courseId).show();
-        } else {
-            $('#course-price-input-' + courseId).hide();
-        }
+    $(document).ready(function() {
+        $('.course-checkbox').change(function() {
+            var courseId = $(this).data('course-id');
+            if ($(this).is(':checked')) {
+                $('#course-price-input-' + courseId).show();
+            } else {
+                $('#course-price-input-' + courseId).hide();
+            }
+        });
     });
-});
 </script>

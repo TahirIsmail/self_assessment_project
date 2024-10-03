@@ -48,6 +48,11 @@ class Offercourses extends Admin_Controller
                 )
             ),
             array(
+                'field' => 'category_name',
+                'label' => $this->lang->line("category_name"),
+                'rules' => 'trim|required|xss_clean',                
+            ),
+            array(
                 'field' => 'course_name',
                 'label' => $this->lang->line("course_name"),
                 'rules' => 'trim|required|xss_clean|max_length[60]'
@@ -154,6 +159,9 @@ class Offercourses extends Admin_Controller
             )
         );
 
+        $categories = $this->Offercourses_m->get_categories();
+        $this->data['categories'] = $categories;
+
         $this->data['classes'] = $this->classes_m->get_classes();
         $this->data['teachers'] = $this->teacher_m->get_teacher();
 
@@ -175,6 +183,7 @@ class Offercourses extends Admin_Controller
 
                     $array = array(
                         "course_id" => $this->input->post('course_id'),
+                        "category_id" => $this->input->post('category_name'),
                         "slug" => $slug,
                         "photo" => $image,
                         "course_name" => $this->input->post("course_name"),

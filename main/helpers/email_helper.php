@@ -58,6 +58,7 @@ if ( ! function_exists('valid_email'))
 	 * @param	string	$email
 	 * @return	bool
 	 */
+	
 	function valid_email($email)
 	{
 		return (bool) filter_var($email, FILTER_VALIDATE_EMAIL);

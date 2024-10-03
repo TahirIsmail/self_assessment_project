@@ -60,7 +60,7 @@
     <a href="<?= base_url('home/index') ?>" class="navbar-brand p-0">
 
 
-        <img src="<?= base_url('/uploads/images/SL-red-logo.png')?>" alt="Logo">
+        <img src="<?= base_url('/uploads/images/SL-red-logo.png') ?>" alt="Logo">
     </a>
 </div>
 
@@ -108,6 +108,27 @@
                 </div>
                 <div class="form-group col-md-6">
                     <input class="form-control" placeholder="Last Name" name="last_name" type="text" value="<?= set_value('last_name') ?>">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <select class="form-control" name="gender" id="gender">
+                        <option selected disabled>Please Select Gender...</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <input class="form-control date"
+                        id="dob"
+                        placeholder="Date of birth"
+                        name="dob"
+                        type="text"
+                        onfocus="(this.type='date')"
+                        onblur="(this.type='text'); if(!this.value) this.placeholder='Date of birth';"
+                        value="<?= set_value('dob') ?>" />
                 </div>
             </div>
 

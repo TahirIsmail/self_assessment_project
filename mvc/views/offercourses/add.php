@@ -14,96 +14,124 @@
         <div class="row">
             <div class="col-sm-10">
                 <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
-                    <!-- Course ID (Slug) -->
+
+
                     <?php
-                    if (form_error('course_id')) {
+                    if (form_error('category_name')) {
                         echo "<div class='form-group has-error'>";
                     } else {
                         echo "<div class='form-group'>";
                     }
                     ?>
-                    <label for="course_id" class="col-sm-2 control-label">
-                        <?= $this->lang->line("course_id") ?> <span class="text-red">*</span>
+                    <label for="category_name" class="col-sm-2 control-label">
+                        <?= $this->lang->line("category_name") ?> <span class="text-red">*</span>
                     </label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="course_id" name="course_id" value="<?= set_value('course_id') ?>">
+
+                        <?php
+                        foreach ($categories as $category) {
+                            $array[$category['id']] = $category['category_name'];
+                        }
+                        echo form_dropdown("category_name", $array, set_value("category_name"), "id='category_name' class='form-control select2'");
+                        ?>
                     </div>
                     <span class="col-sm-4 control-label">
-                        <?php echo form_error('course_id'); ?>
+                        <?php echo form_error('category_name'); ?>
                     </span>
             </div>
 
-            <!-- Course Name -->
+
+
+            <!-- Course ID (Slug) -->
             <?php
-            if (form_error('course_name')) {
+            if (form_error('course_id')) {
                 echo "<div class='form-group has-error'>";
             } else {
                 echo "<div class='form-group'>";
             }
             ?>
-            <label for="course_name" class="col-sm-2 control-label">
-                <?= $this->lang->line("course_name") ?> <span class="text-red">*</span>
+            <label for="course_id" class="col-sm-2 control-label">
+                <?= $this->lang->line("course_id") ?> <span class="text-red">*</span>
             </label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="course_name" name="course_name" value="<?= set_value('course_name') ?>">
+                <input type="text" class="form-control" id="course_id" name="course_id" value="<?= set_value('course_id') ?>">
             </div>
             <span class="col-sm-4 control-label">
-                <?php echo form_error('course_name'); ?>
+                <?php echo form_error('course_id'); ?>
             </span>
         </div>
 
-        <!-- Course Description (with CKEditor 5) -->
+        <!-- Course Name -->
         <?php
-        if (form_error('course_description')) {
+        if (form_error('course_name')) {
             echo "<div class='form-group has-error'>";
         } else {
             echo "<div class='form-group'>";
         }
         ?>
-        <label for="course_description" class="col-sm-2 control-label">
-            <?= $this->lang->line("course_description") ?>
+        <label for="course_name" class="col-sm-2 control-label">
+            <?= $this->lang->line("course_name") ?> <span class="text-red">*</span>
         </label>
         <div class="col-sm-6">
+            <input type="text" class="form-control" id="course_name" name="course_name" value="<?= set_value('course_name') ?>">
+        </div>
+        <span class="col-sm-4 control-label">
+            <?php echo form_error('course_name'); ?>
+        </span>
+    </div>
+
+    <!-- Course Description (with CKEditor 5) -->
+    <?php
+    if (form_error('course_description')) {
+        echo "<div class='form-group has-error'>";
+    } else {
+        echo "<div class='form-group'>";
+    }
+    ?>
+    <label for="course_description" class="col-sm-2 control-label">
+        <?= $this->lang->line("course_description") ?>
+    </label>
+    <div class="col-sm-6">
         <textarea class="form-control" style="resize:none; height: 300px; width: 100%;" id="course_description" name="course_description"><?= set_value('course_description') ?></textarea>
 
-        </div>
-        <span class="col-sm-4 control-label">
-            <?php echo form_error('course_description'); ?>
-        </span>
     </div>
+    <span class="col-sm-4 control-label">
+        <?php echo form_error('course_description'); ?>
+    </span>
+</div>
 
 
-    <div class="form-group <?= form_error('photo') ? 'has-error' : '' ?>">
-        <label for="photo" class="col-sm-2 control-label">
-            <?= $this->lang->line("photo") ?>
-        </label>
-        <div class="col-sm-6">
-            <div class="input-group image-preview">
-                <input type="text" class="form-control image-preview-filename" disabled="disabled">
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                        <span class="fa fa-remove"></span> <?= $this->lang->line('clear') ?>
-                    </button>
-                    <div class="btn btn-success image-preview-input">
-                        <span class="fa fa-repeat"></span>
-                        <span class="image-preview-input-title"><?= $this->lang->line('browse') ?></span>
-                        <input type="file" accept="image/png, image/jpeg, image/gif" name="photo" />
-                    </div>
-                </span>
-            </div>
+<div class="form-group <?= form_error('photo') ? 'has-error' : '' ?>">
+    <label for="photo" class="col-sm-2 control-label">
+        <?= $this->lang->line("photo") ?>
+    </label>
+    <div class="col-sm-6">
+        <div class="input-group image-preview">
+            <input type="text" class="form-control image-preview-filename" disabled="disabled">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                    <span class="fa fa-remove"></span> <?= $this->lang->line('clear') ?>
+                </button>
+                <div class="btn btn-success image-preview-input">
+                    <span class="fa fa-repeat"></span>
+                    <span class="image-preview-input-title"><?= $this->lang->line('browse') ?></span>
+                    <input type="file" accept="image/png, image/jpeg, image/gif" name="photo" />
+                </div>
+            </span>
         </div>
-        <span class="col-sm-4 control-label">
-            <?php echo form_error('photo'); ?>
-        </span>
     </div>
+    <span class="col-sm-4 control-label">
+        <?php echo form_error('photo'); ?>
+    </span>
+</div>
 
-    <!-- Submit Button -->
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-8">
-            <input type="submit" class="btn btn-success" value="<?= $this->lang->line("add_offercourses") ?>">
-        </div>
+<!-- Submit Button -->
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-8">
+        <input type="submit" class="btn btn-success" value="<?= $this->lang->line("add_offercourses") ?>">
     </div>
-    </form>
+</div>
+</form>
 </div>
 </div>
 </div>
@@ -151,5 +179,4 @@
         height: 300px;
         width: 100%;
     }
-
 </style>

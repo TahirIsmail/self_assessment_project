@@ -22,7 +22,7 @@
         .card-header {
             background-color: #6d1e1e;
             padding: 15px;
-            color:white;
+            color: white;
         }
 
         .center-header {
@@ -68,44 +68,63 @@
                 </ol>
             </div>
             <!-- Transaction Data Section -->
-            <div class="accordion" id="centerAccordion">
+            <div class="accordion" id="categoryAccordion">
                 <?php if (isset($transaction_data) && count($transaction_data) > 0): ?>
-                    <?php foreach ($transaction_data as $center_id => $center): ?>
-                        <div class="card center-section">
-                            <div class="card-header" id="heading<?= $center_id; ?>">
-                                <h4 class=" mb-0" data-bs-toggle="collapse" data-bs-target="#collapse<?= $center_id; ?>" aria-expanded="true" aria-controls="collapse<?= $center_id; ?>">
-                                    <i class="fa fa-building"></i>
-                                    <?= isset($center['center_city']) ? $center['center_city'] : 'Unknown Center'; ?>
+                    <!-- Check the structure of $transaction_data -->
+                    <?php foreach ($transaction_data as $category_id => $category): ?>
+                        <div class="card category-section">
+                            <div class="card-header" id="headingCategory<?= $category_id; ?>">
+                                <h4 class="mb-0" data-bs-toggle="collapse" data-bs-target="#collapseCategory<?= $category_id; ?>" aria-expanded="true" aria-controls="collapseCategory<?= $category_id; ?>">
+                                    <i class="fa fa-folder"></i>
+                                    <?= isset($category['category_name']) ? $category['category_name'] : 'Unknown Category'; ?>
                                 </h4>
                             </div>
 
-                            <div id="collapse<?= $center_id; ?>" class="collapse show" aria-labelledby="heading<?= $center_id; ?>" data-bs-parent="#centerAccordion">
+                            <div id="collapseCategory<?= $category_id; ?>" class="collapse show" aria-labelledby="headingCategory<?= $category_id; ?>" data-bs-parent="#categoryAccordion">
                                 <div class="card-body">
-                                    <div id="hide-table">
-                                        <table class="table table-striped table-bordered table-hover transaction-table">
-                                            <thead class="sticky-header">
-                                                <tr>
-                                                    <th>Student Name</th>
-                                                    <th>Course Name</th>
-                                                    <th>Payment Amount</th>
-                                                    <th>Payment Date</th>
-                                                    <th>Course Photo</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php foreach ($center['records'] as $transaction): ?>
-                                                    <tr>
-                                                        <td><?= $transaction['student_name'] ?></td>
-                                                        <td><?= $transaction['course_name'] ?></td>
-                                                        <td><?= $transaction['paymentamount'] ?></td>
-                                                        <td><?= $transaction['paymentdate'] ?></td>
-                                                        <td>
-                                                            <img src="<?= base_url('uploads/images/' . $transaction['photo']) ?>" alt="Course Photo" style="width: 50px; height: 50px;" />
-                                                        </td>
-                                                    </tr>
-                                                <?php endforeach; ?>
-                                            </tbody>
-                                        </table>
+                                    <div class="accordion" id="centerAccordion<?= $category_id; ?>">
+                                        <?php foreach ($category['centers'] as $center_id => $center):  ?>
+                                            <div class="card center-section">
+                                                <div class="" id="headingCenter<?= $category_id . $center_id; ?>">
+                                                    <h6 class="mb-0">
+                                                        <i class="fa fa-building"></i>
+                                                        <?= isset($center['center_city']) ? $center['center_city'] : 'Unknown Center'; ?>
+                                                    </h6>
+                                                </div>
+                                                <div id="" class="" aria-labelledby="" >
+                                                    <div class="card-body">
+                                                        <div id="hide-table">
+                                                            <table class="table table-striped table-bordered table-hover transaction-table">
+                                                                <thead class="sticky-header">
+                                                                    <tr>
+                                                                        <th>Student Name</th>
+                                                                        <th>Course Name</th>
+                                                                        <th>Payment Amount</th>
+                                                                        <th>Payment Date</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <?php if (isset($center['records']) && count($center['records']) > 0): ?>
+                                                                        <?php foreach ($center['records'] as $transaction): ?>
+                                                                            <tr>
+                                                                                <td><?= $transaction['student_name'] ?></td>
+                                                                                <td><?= $transaction['course_name'] ?></td>
+                                                                                <td><?= $transaction['paymentamount'] ?></td>
+                                                                                <td><?= $transaction['paymentdate'] ?></td>
+                                                                            </tr>
+                                                                        <?php endforeach; ?>
+                                                                    <?php else: ?>
+                                                                        <tr>
+                                                                            <td colspan="4">No records found for this center.</td>
+                                                                        </tr>
+                                                                    <?php endif; ?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>
@@ -117,6 +136,8 @@
                     </div>
                 <?php endif; ?>
             </div>
+
+
 
         </div>
     </div>

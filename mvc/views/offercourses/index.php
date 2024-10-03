@@ -22,8 +22,9 @@
                     <table id="example1" class="table table-striped table-bordered table-hover dataTable no-footer">
                         <thead>
                             <tr>
-                                <th class="col-lg-1"><?= $this->lang->line('serial_no') ?></th>
+                                <th class="col-lg-1"><?= $this->lang->line('#') ?></th>
                                 <th class="col-lg-2"><?= $this->lang->line('course_id') ?></th>
+                                <th class="col-lg-2"><?= $this->lang->line('category_name') ?></th>
                                 <th class="col-lg-2"><?= $this->lang->line('course_name') ?></th>
                                 <th class="col-lg-2"><?= $this->lang->line('course_description') ?></th>
                                 <?php if (permissionChecker('course_edit') || permissionChecker('course_delete')) { ?>
@@ -38,6 +39,7 @@
                                     <tr>
                                         <td data-title="<?= $this->lang->line('serial_no') ?>"><?= $i; ?></td>
                                         <td data-title="<?= $this->lang->line('course_id') ?>"><?= $course->course_id; ?></td>
+                                        <td data-title="<?= $this->lang->line('category_name') ?>"><?= $course->category_name; ?></td>
                                         <td data-title="<?= $this->lang->line('course_name') ?>"><?= $course->course_name; ?></td>
                                         <td data-title="<?= $this->lang->line('course_description') ?>">
                                             <p class="short-description">
