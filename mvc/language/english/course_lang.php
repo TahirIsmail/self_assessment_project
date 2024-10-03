@@ -1,5 +1,6 @@
 <?php
 
+$lang['panel_title'] = 'Courses';
 $lang['course_id'] = "Course ID";  
 $lang['course_name'] = "Course Name";  
 $lang['course_description'] = "Course Description";  
