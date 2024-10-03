@@ -126,11 +126,7 @@ class Offercourses extends Admin_Controller
         );
     
         $id = htmlentities((string) escapeString($this->uri->segment(3)));
-        
-        // Fetch course names
-      
-        
-    
+   
         if (!$id) {
             $this->data['classes'] = $this->classes_m->get_classes();
             $this->data['courses'] = $this->Offercourses_m->get_course_record();

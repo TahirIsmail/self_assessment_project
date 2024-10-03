@@ -6,11 +6,12 @@ class Paid_courses extends Admin_Controller
     {
         parent::__construct();
         $this->load->model("Offercourses_m");
+        $language = $this->session->userdata('lang');
+        $this->lang->load('course', $language);
     }
-
+    
     public function index()
     {
-
         $user_role = $this->session->userdata('usertypeID');
 
         if ($user_role == '3') {
