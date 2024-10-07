@@ -64,7 +64,7 @@
                         </div>
 
                         <!-- Gender Field -->
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="form-floating">
                                 <select class="form-select" id="gender" aria-label="Gender">
                                     <option selected disabled>Select Gender</option>
@@ -74,15 +74,15 @@
                                 </select>
                                 <label for="gender">Gender</label>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- Date of Birth Field -->
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="date" class="form-control" id="dob" placeholder="Date of Birth">
                                 <label for="dob">Date of Birth</label>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="col-12">
                             <div class="form-floating">

@@ -102,7 +102,7 @@ $is_logged_in = $this->session->userdata('loggedin');
 
       <ul class="nav nav-mega">
         <a href="<?= base_url('home/index') ?>" class="navbar-brand p-0">
-          <img class="w-100" src="<?= base_url('uploads/landing_img/SL-white-logo.png') ?>" alt="Image" style="width: 200px !important;">
+          <img class="w-100" src="<?= base_url('uploads/landing_img/SL-white-logo.png') ?>" alt="Image" style="width: 150px !important;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
           <span class="fa fa-bars"></span>
