@@ -10,9 +10,7 @@ class Course_category extends Admin_Controller
         $this->load->model('studentrelation_m');
         $this->load->model('teacher_m');
         $this->load->model('subject_m');
-
-
-
+		
         $language = $this->session->userdata('lang');
         $this->lang->load('course', $language);
     }
