@@ -194,14 +194,14 @@ $is_logged_in = $this->session->userdata('loggedin');
                             <div class="media-body">
                               <h5 class="media-heading">Security Courses</h5>
                               <ul class="list-unstyled">
-                                <li><a href="#" class="dropdown-item">Level 2 Award for Security Officers in the Private Security Industry </a></li>
-                                <li><a href="#" class="dropdown-item">Level 2 Online Award for Security Officers in the Private Security Industry (VL)</a></li>
-                                <li><a href="#" class="dropdown-item">Level 6 SCQF Award for Security Officers in the Private Security Industry (Scotland) </a></li>
-                                <li><a href="#" class="dropdown-item">Level 6 SCQF Online Award for Security Officers in the Private Security Industry (Scotland) (VL)</a></li>
-                                <li><a href="#" class="dropdown-item">Level 2 Award for Door Supervisors in the Private Security Industry </a></li>
-                                <li><a href="#" class="dropdown-item">Level 2 Online Award for Door Supervisors in the Private Security Industry (VL)</a></li>
-                                <li><a href="#" class="dropdown-item">Level 6 SCQF Award for Door Supervisors in the Private Security Industry (Scotland)</a></li>
-                                <li><a href="#" class="dropdown-item">Level 6 SCQF Online Award for Door Supervisors in the Private Security Industry (Scotland) (VL)</a></li>
+                                <li><a href="#" class="dropdown-item">Level 2 Award for Security Officers  </a></li>
+                                <li><a href="#" class="dropdown-item">Level 2 Online Award for Security Officers (VL)</a></li>
+                                <li><a href="#" class="dropdown-item">Level 6 SCQF Award for Security Officers (Scotland) </a></li>
+                                <li><a href="#" class="dropdown-item">Level 6 SCQF Online Award for Security Officers (Scotland) (VL)</a></li>
+                                <li><a href="#" class="dropdown-item">Level 2 Award for Door Supervisors</a></li>
+                                <li><a href="#" class="dropdown-item">Level 2 Online Award for Door Supervisors (VL)</a></li>
+                                <li><a href="#" class="dropdown-item">Level 6 SCQF Award for Door Supervisors (Scotland)</a></li>
+                                <li><a href="#" class="dropdown-item">Level 6 SCQF Online Award for Door Supervisors (Scotland) (VL)</a></li>
                               </ul>
                             </div>
                           </li>
@@ -211,19 +211,19 @@ $is_logged_in = $this->session->userdata('loggedin');
                             <div class="media-body">
                               <h5 class="media-heading">TOPUP Security Courses</h5>
                               <ul class="list-unstyled">
-                                <li><a href="#" class="dropdown-item">Level 2 Award for Security Officers in the Private Security Industry (TopUp)
+                                <li><a href="#" class="dropdown-item">Level 2 Award for Security Officers (TopUp)
                                   </a></li>
-                                <li><a href="#" class="dropdown-item">Level 2 Online Award for Security Officers in the Private Security Industry (TopUp - VL) </a></li>
-                                <li><a href="#" class="dropdown-item">Level 6 SCQF Award for Security Officers in the Private Security Industry (Scotland) (TopUp)
+                                <li><a href="#" class="dropdown-item">Level 2 Online Award for Security Officers(TopUp - VL) </a></li>
+                                <li><a href="#" class="dropdown-item">Level 6 SCQF Award for Security Officers (Scotland) (TopUp)
                                   </a></li>
-                                <li><a href="#" class="dropdown-item">Level 6 SCQF Online Award for Security Officers in the Private Security Industry (Scotland) (TopUp - VL)
+                                <li><a href="#" class="dropdown-item">Level 6 SCQF Online Award for Security Officers (Scotland) (TopUp - VL)
                                   </a></li>
-                                <li><a href="#" class="dropdown-item">Level 2 Award for Door Supervisors in the Private Security Industry (TopUp)</a></li>
-                                <li><a href="#" class="dropdown-item">Level 2 Online Award for Door Supervisors in the Private Security Industry (TopUp - VL)
+                                <li><a href="#" class="dropdown-item">Level 2 Award for Door Supervisors (TopUp)</a></li>
+                                <li><a href="#" class="dropdown-item">Level 2 Online Award for Door Supervisors (TopUp - VL)
                                   </a></li>
-                                <li><a href="#" class="dropdown-item">Level 6 SCQF Award for Door Supervisors in the Private Security Industry (Scotland)(TopUp)
+                                <li><a href="#" class="dropdown-item">Level 6 SCQF Award for Door Supervisors (Scotland)(TopUp)
                                   </a></li>
-                                <li><a href="#" class="dropdown-item">Level 6 SCQF Online Award for Door Supervisors in the Private Security Industry (Scotland) (TopUp - VL)
+                                <li><a href="#" class="dropdown-item">Level 6 SCQF Online Award for Door Supervisors (Scotland) (TopUp - VL)
                                   </a></li>
                               </ul>
                             </div>
