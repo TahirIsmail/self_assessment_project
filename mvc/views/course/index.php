@@ -329,10 +329,10 @@
 
     <div class="course-detail">
         <h2><?php echo $course_data['name'] ?></h2>
-        <div class="col-md-12 h-10 mb-5">
-            <img class="h-100 w-100" src="<?= base_url('uploads/images/' . $course_data['image']) ?>" alt="Education Training Course">
+        <div class="col-md-12 mb-5">
+            <img class="image-fluid" src="<?= base_url('uploads/images/' . $course_data['image']) ?>" alt="Education Training Course">
         </div>
-        <div>
+        <div style="text-align: justify !important;">
             <?php echo $course_data['description'] ?>
         </div>
         <!-- <p>Level 3 Award in Education and Training (AET), formerly known as PTLLS, is designed to give people the knowledge and confidence to teach adults in any specialty subject area. It is suitable for those wishing to work as a teacher, trainer, or tutor in further education.</p>
@@ -355,7 +355,7 @@
                 <tr>
                     <th style="width: 5%;">Id</th>
                     <th style="width: 30%;">City</th>
-                    <th style="width: 30%;">Address</th>
+                    <th style="width: 30%;">Venue</th>
                     <th style="width: 15%;">Date</th>
                     <th style="width: 5%;">Price</th>
                     <th style="width: 40%;">Book Now</th>

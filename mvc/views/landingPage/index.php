@@ -122,6 +122,19 @@ $is_logged_in = $this->session->userdata('loggedin');
 
             z-index: 1;
         }
+
+        .course-card {
+            height: 350px !important;
+            margin-bottom: 5px;
+        }
+
+        .card_height {
+            margin-top: -10px;
+            position: relative;
+            z-index: 1;
+            height: 110px;
+        }
+
     </style>
 </head>
 
@@ -177,7 +190,7 @@ $is_logged_in = $this->session->userdata('loggedin');
             <div class="row_mobile">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="our_solution_category_mobile">
-                        <div class="solution_cards_box_mobile"style=" margin-left: 5px;">
+                        <div class="solution_cards_box_mobile" style=" margin-left: 5px;">
                             <div class="solution_card_mobile">
                                 <div class="hover_color_bubble_mobile"></div>
                                 <div class="ph_mobile">4321 1234 7869 3245</div>
@@ -343,39 +356,219 @@ $is_logged_in = $this->session->userdata('loggedin');
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item text-center pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
-                            <h5 class="mb-3">MOOC Exams</h5>
-                            <p>Our Exams are Current: Thorough <span style="font-weight: 700;">preparation</span> ensures your success & gain knowledge</p>
+                <div class="text-center">
+                    <h6 class="section-title bg-white text-center text-primary px-3">Security Courses
+                    </h6>
+
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp course-card " data-wow-delay="0.1s">
+                    <div class="service-item text-center">
+                        <div class="course-item">
+                            <!-- Image Section with fixed height and object-fit -->
+                            <div class="position-relative overflow-hidden rounded-top-round">
+                                <img class="img-fluid" src="<?= base_url('uploads/landing_img/se1.webp') ?>" alt="Course Image"
+                                    style="width: 100%; height: 200px; object-fit: cover;">
+                                <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                    <a class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
+                                    <a href="<?= base_url('Mock_course/index'); ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
+                                </div>
+                            </div>
+
+                            <!-- Content Section with fixed height -->
+                            <div class="course-item bg-theme p-4 rounded-top-round rounded-bottom-round card_height "
+                                >
+                                <div class="text-center pb-0">
+                                    <h3 class="mb-2 text-white" style="font-size: 18px;">£ 250</h3>
+                                    <p class="text-white" style="font-size: 14px;">Level 2 Award for Security Officers</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item text-center pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
-                            <h5 class="mb-3">Book - Door Supervisor Course</h5>
-                            <p>Unlock rewarding career to gain industry knowledge & Certification</p>
+
+                <div class="col-lg-3 col-sm-6 wow fadeInUp course-card" data-wow-delay="0.1s">
+                    <div class="service-item text-center">
+                        <div class="course-item">
+                            <!-- Image Section with fixed height and object-fit -->
+                            <div class="position-relative overflow-hidden rounded-top-round">
+                                <img class="img-fluid" src="<?= base_url('uploads/landing_img/se2.webp') ?>" alt="Course Image"
+                                    style="width: 100%; height: 200px; object-fit: cover;">
+                                <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                    <a class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
+                                    <a href="<?= base_url('Mock_course/index'); ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
+                                </div>
+                            </div>
+
+                            <!-- Content Section with fixed height -->
+                            <div class="course-item bg-theme p-4 rounded-top-round rounded-bottom-round card_height ">
+                                <div class="text-center pb-0">
+                                    <h3 class="mb-2 text-white" style="font-size: 18px;">£ 350</h3>
+                                    <p class=" text-white" style="font-size: 14px;">Level 2 Award for Door Supervisors </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item text-center pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
-                            <h5 class="mb-3">Book - Door Supervisor Top-up Course</h5>
-                            <p>Enhance your skills with top-up course. Stay up skilled & complaint</p>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp course-card" data-wow-delay="0.1s">
+                    <div class="service-item text-center">
+                        <div class="course-item">
+                            <!-- Image Section with fixed height and object-fit -->
+                            <div class="position-relative overflow-hidden rounded-top-round">
+                                <img class="img-fluid" src="<?= base_url('uploads/landing_img/se3.webp') ?>" alt="Course Image"
+                                    style="width: 100%; height: 200px; object-fit: cover;">
+                                <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                    <a class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
+                                    <a href="<?= base_url('Mock_course/index'); ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
+                                </div>
+                            </div>
+
+                            <!-- Content Section with fixed height -->
+                            <div class="course-item bg-theme p-4 rounded-top-round rounded-bottom-round card_height ">
+                                <div class="text-center pb-0">
+                                    <h3 class="mb-2 text-white" style="font-size: 18px;">£ 400</h3>
+                                    <p class="text-white" style="font-size: 14px;">Level 2 Award for Door Supervisors (VL)</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="service-item text-center pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
-                            <h5 class="mb-3">Book - Level 3 AET</h5>
-                            <p>Transform your passion for teaching with AET course. Gain Skills & Certification</p>
+
+                <div class="col-lg-3 col-sm-6 wow fadeInUp course-card" data-wow-delay="0.1s">
+                    <div class="service-item text-center">
+                        <div class="course-item">
+                            <!-- Image Section with fixed height and object-fit -->
+                            <div class="position-relative overflow-hidden rounded-top-round">
+                                <img class="img-fluid" src="<?= base_url('uploads/landing_img/se6.webp') ?>" alt="Course Image"
+                                    style="width: 100%; height: 200px; object-fit: cover;">
+                                <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                    <a class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
+                                    <a href="<?= base_url('Mock_course/index'); ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
+                                </div>
+                            </div>
+
+                            <!-- Content Section with fixed height -->
+                            <div class="course-item bg-theme p-4 rounded-top-round rounded-bottom-round card_height ">
+                                <div class="text-center pb-0">
+                                    <h3 class="mb-2 text-white" style="font-size: 18px;">£ 2999</h3>
+                                    <p class="text-white" style="font-size: 14px;">Level 3 Certificate for Close Protection Operatives</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="text-center">
+                    <h6 class="section-title bg-white text-center text-primary px-3">TOPUP Security Courses
+
+                    </h6>
+
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp course-card " data-wow-delay="0.1s">
+                    <div class="service-item text-center">
+                        <div class="course-item">
+                            <!-- Image Section with fixed height and object-fit -->
+                            <div class="position-relative overflow-hidden rounded-top-round">
+                                <img class="img-fluid" src="<?= base_url('uploads/landing_img/set-1.webp') ?>" alt="Course Image"
+                                    style="width: 100%; height: 200px; object-fit: cover;">
+                                <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                    <a class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
+                                    <a href="<?= base_url('Mock_course/index'); ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
+                                </div>
+                            </div>
+
+                            <!-- Content Section with fixed height -->
+                            <div class="course-item bg-theme p-4 rounded-top-round rounded-bottom-round card_height ">
+                                <div class="text-center pb-0">
+                                    <h3 class="mb-2 text-white" style="font-size: 18px;">£ 200</h3>
+                                    <p class="text-white" style="font-size: 14px;">Level 2 Award for Security Officers (TopUp - VL) </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6 wow fadeInUp course-card" data-wow-delay="0.1s">
+                    <div class="service-item text-center">
+                        <div class="course-item">
+                            <!-- Image Section with fixed height and object-fit -->
+                            <div class="position-relative overflow-hidden rounded-top-round">
+                                <img class="img-fluid" src="<?= base_url('uploads/landing_img/set-2.webp') ?>" alt="Course Image"
+                                    style="width: 100%; height: 200px; object-fit: cover;">
+                                <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                    <a class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
+                                    <a href="<?= base_url('Mock_course/index'); ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
+                                </div>
+                            </div>
+
+                            <!-- Content Section with fixed height -->
+                            <div class="course-item bg-theme p-4 rounded-top-round rounded-bottom-round card_height ">
+                                <div class="text-center pb-0">
+                                    <h3 class="mb-2 text-white" style="font-size: 18px;">£ 250 </h3>
+                                    <p class=" text-white" style="font-size: 14px;">Level 2 Award for Door Supervisors (TopUp)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp course-card" data-wow-delay="0.1s">
+                    <div class="service-item text-center">
+                        <div class="course-item">
+                            <!-- Image Section with fixed height and object-fit -->
+                            <div class="position-relative overflow-hidden rounded-top-round">
+                                <img class="img-fluid" src="<?= base_url('uploads/landing_img/set-3.webp') ?>" alt="Course Image"
+                                    style="width: 100%; height: 200px; object-fit: cover;">
+                                <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                    <a class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
+                                    <a href="<?= base_url('Mock_course/index'); ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
+                                </div>
+                            </div>
+
+                            <!-- Content Section with fixed height -->
+                            <div class="course-item bg-theme p-4 rounded-top-round rounded-bottom-round card_height ">
+                                <div class="text-center pb-0">
+                                    <h3 class="mb-2 text-white" style="font-size: 18px;">£ 450 </h3>
+                                    <p class="text-white" style="font-size: 14px;">Level 6 SCQF Award for Security Officers (Scotland)
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6 wow fadeInUp course-card" data-wow-delay="0.1s">
+                    <div class="service-item text-center">
+                        <div class="course-item">
+                            <!-- Image Section with fixed height and object-fit -->
+                            <div class="position-relative overflow-hidden rounded-top-round">
+                                <img class="img-fluid" src="<?= base_url('uploads/landing_img/set-4.webp') ?>" alt="Course Image"
+                                    style="width: 100%; height: 200px; object-fit: cover;">
+                                <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                    <a class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
+                                    <a href="<?= base_url('Mock_course/index'); ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
+                                </div>
+                            </div>
+
+                            <!-- Content Section with fixed height -->
+                            <div class="course-item bg-theme p-4 rounded-top-round rounded-bottom-round card_height ">
+                                <div class="text-center pb-0">
+                                    <h3 class="mb-2 text-white" style="font-size: 18px;">£ 599</h3>
+                                    <p class="text-white" style="font-size: 14px;">Level 3 Certificate for Close Protection Operatives (TopUp)</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -384,13 +577,119 @@ $is_logged_in = $this->session->userdata('loggedin');
 
     </div>
 
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="text-center">
+                    <h6 class="section-title bg-white text-center text-primary px-3">Education & Teaching
+                    </h6>
 
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp course-card " data-wow-delay="0.1s">
+                    <div class="service-item text-center">
+                        <div class="course-item">
+                            <!-- Image Section with fixed height and object-fit -->
+                            <div class="position-relative overflow-hidden rounded-top-round">
+                                <img class="img-fluid" src="<?= base_url('uploads/landing_img/te1.webp') ?>" alt="Course Image"
+                                    style="width: 100%; height: 200px; object-fit: cover;">
+                                <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                    <a class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
+                                    <a href="<?= base_url('Mock_course/index'); ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
+                                </div>
+                            </div>
 
+                            <!-- Content Section with fixed height -->
+                            <div class="course-item bg-theme p-4 rounded-top-round rounded-bottom-round card_height ">
+                                <div class="text-center pb-0">
+                                    <h3 class="mb-2 text-white" style="font-size: 18px;">£ 149</h3>
+                                    <p class="text-white" style="font-size: 14px;">Level 3 Award in Education and Training (AET) </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6 wow fadeInUp course-card" data-wow-delay="0.1s">
+                    <div class="service-item text-center">
+                        <div class="course-item">
+                            <!-- Image Section with fixed height and object-fit -->
+                            <div class="position-relative overflow-hidden rounded-top-round">
+                                <img class="img-fluid" src="<?= base_url('uploads/landing_img/te2.webp') ?>" alt="Course Image"
+                                    style="width: 100%; height: 200px; object-fit: cover;">
+                                <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                    <a class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
+                                    <a href="<?= base_url('Mock_course/index'); ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
+                                </div>
+                            </div>
+
+                            <!-- Content Section with fixed height -->
+                            <div class="course-item bg-theme p-4 rounded-top-round rounded-bottom-round card_height ">
+                                <div class="text-center pb-0">
+                                    <h3 class="mb-2 text-white" style="font-size: 18px;">£ 369 </h3>
+                                    <p class=" text-white" style="font-size: 14px;">Level 3 Certificate in Assessing Vocational Achievement - (CAVA)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp course-card" data-wow-delay="0.1s">
+                    <div class="service-item text-center">
+                        <div class="course-item">
+                            <!-- Image Section with fixed height and object-fit -->
+                            <div class="position-relative overflow-hidden rounded-top-round">
+                                <img class="img-fluid" src="<?= base_url('uploads/landing_img/te3.webp') ?>" alt="Course Image"
+                                    style="width: 100%; height: 200px; object-fit: cover;">
+                                <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                    <a class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
+                                    <a href="<?= base_url('Mock_course/index'); ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
+                                </div>
+                            </div>
+
+                            <!-- Content Section with fixed height -->
+                            <div class="course-item bg-theme p-4 rounded-top-round rounded-bottom-round card_height ">
+                                <div class="text-center pb-0">
+                                    <h3 class="mb-2 text-white" style="font-size: 18px;">£ 349</h3>
+                                    <p class="text-white" style="font-size: 14px;">Level 4 Award in the Internal Quality Assurance (IQA)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6 wow fadeInUp course-card" data-wow-delay="0.1s">
+                    <div class="service-item text-center">
+                        <div class="course-item">
+                            <!-- Image Section with fixed height and object-fit -->
+                            <div class="position-relative overflow-hidden rounded-top-round">
+                                <img class="img-fluid" src="<?= base_url('uploads/landing_img/te4.webp') ?>" alt="Course Image"
+                                    style="width: 100%; height: 200px; object-fit: cover;">
+                                <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                    <a class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Book Now</a>
+                                    <a href="<?= base_url('Mock_course/index'); ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Read More</a>
+                                </div>
+                            </div>
+
+                            <!-- Content Section with fixed height -->
+                            <div class="course-item bg-theme p-4 rounded-top-round rounded-bottom-round card_height ">
+                                <div class="text-center pb-0">
+                                    <h3 class="mb-2 text-white" style="font-size: 18px;">£ 399</h3>
+                                    <p class="text-white" style="font-size: 14px;">Certificate in Leading the Internal Quality Assurance (IQA)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <div class="container-xxl " style="margin-bottom: 40px;">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                <!-- <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
@@ -425,7 +724,7 @@ $is_logged_in = $this->session->userdata('loggedin');
                             <p>Expand your knowledge with ebooks. Discover your topics, instantly accessible and affordable</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -445,7 +744,7 @@ $is_logged_in = $this->session->userdata('loggedin');
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                     <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-                    <h1 class="mb-4">Welcome to SimplyLicenced</h1>
+                    <h1 class="mb-4">Welcome to The London School Of Educators</h1>
                     <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
                     <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
                     <div class="row gy-2 gx-4 mb-4">
@@ -522,13 +821,22 @@ $is_logged_in = $this->session->userdata('loggedin');
                 <h1 class="mb-5">Courses Categories</h1>
             </div>
             <div class="row g-3">
-                <div class="col-lg-7 col-md-6">
+                <div class="col-lg-8 col-md-6">
                     <div class="row g-3">
-                        <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
+                        <div class="col-lg-6 col-md-6 wow zoomIn" data-wow-delay="0.1s">
                             <a class="position-relative d-block overflow-hidden" href="">
                                 <img class="img-fluid" src="<?= base_url('uploads/landing_img/cat-1.jpg') ?>" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                    <h5 class="m-0">Web Design</h5>
+                                    <h5 class="m-0">Teacher Training</h5>
+                                    <small class="text-primary">49 Courses</small>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-6 wow zoomIn" data-wow-delay="0.1s">
+                            <a class="position-relative d-block overflow-hidden" href="">
+                                <img class="img-fluid" src="<?= base_url('uploads/landing_img/course-1.jpg') ?>" alt="">
+                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
+                                    <h5 class="m-0">Educational Training</h5>
                                     <small class="text-primary">49 Courses</small>
                                 </div>
                             </a>
@@ -537,7 +845,7 @@ $is_logged_in = $this->session->userdata('loggedin');
                             <a class="position-relative d-block overflow-hidden" href="">
                                 <img class="img-fluid" src="<?= base_url('uploads/landing_img/cat-2.jpg') ?>" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                    <h5 class="m-0">Graphic Design</h5>
+                                    <h5 class="m-0">Food Hygiene Course</h5>
                                     <small class="text-primary">49 Courses</small>
                                 </div>
                             </a>
@@ -546,22 +854,55 @@ $is_logged_in = $this->session->userdata('loggedin');
                             <a class="position-relative d-block overflow-hidden" href="">
                                 <img class="img-fluid" src="<?= base_url('uploads/landing_img/cat-3.jpg') ?>" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                    <h5 class="m-0">Video Editing</h5>
+                                    <h5 class="m-0">First Aid</h5>
                                     <small class="text-primary">49 Courses</small>
                                 </div>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
+                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
                     <a class="position-relative d-block h-100 overflow-hidden" href="">
                         <img class="img-fluid position-absolute w-100 h-100" src="<?= base_url('uploads/landing_img/cat-4.jpg') ?>" alt="" style="object-fit: cover;">
                         <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin:  1px;">
-                            <h5 class="m-0">Online Marketing</h5>
+                            <h5 class="m-0">Secuirty Course</h5>
                             <small class="text-primary">49 Courses</small>
                         </div>
                     </a>
                 </div>
+
+                <div class="col-lg-12 col-md-6">
+                    <div class="row g-3">
+                        <div class="col-lg-4 col-md-4 wow zoomIn" data-wow-delay="0.1s">
+                            <a class="position-relative d-block overflow-hidden" href="">
+                                <img class="img-fluid" src="<?= base_url('uploads/landing_img/trans-cat.jpg') ?>" alt="">
+                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
+                                    <h5 class="m-0">Transportation courses</h5>
+                                    <small class="text-primary">49 Courses</small>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-4 col-md-4 wow zoomIn" data-wow-delay="0.1s">
+                            <a class="position-relative d-block overflow-hidden" href="">
+                                <img class="img-fluid" src="<?= base_url('uploads/landing_img/sol-cat.jpg') ?>" alt="">
+                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
+                                    <h5 class="m-0">Social Care Courses</h5>
+                                    <small class="text-primary">49 Courses</small>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-4 col-md-4 wow zoomIn" data-wow-delay="0.1s">
+                            <a class="position-relative d-block overflow-hidden" href="">
+                                <img class="img-fluid" src="<?= base_url('uploads/landing_img/hel-cat.jpg') ?>" alt="">
+                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin:  1px;">
+                                    <h5 class="m-0">Health and Safety Courses</h5>
+                                    <small class="text-primary">49 Courses</small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
