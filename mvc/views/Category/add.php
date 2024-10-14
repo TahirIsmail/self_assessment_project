@@ -1,5 +1,6 @@
 
 <div class="box">
+    
     <div class="box-header">
         <h3 class="box-title"><i class="fa fa-sitemap"></i> <?=$this->lang->line('add_category')?></h3>
 
