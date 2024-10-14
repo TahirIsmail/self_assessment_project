@@ -100,6 +100,7 @@ class Course_category extends Admin_Controller
 					}
 				} else {
 					$this->data["subview"] = "category/edit";
+					
 					$this->load->view('_layout_main', $this->data);
 				}
 			} else {
