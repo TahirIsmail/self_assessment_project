@@ -48,7 +48,7 @@ class Course_category extends Admin_Controller
 			$rules = $this->rules();
 			$this->form_validation->set_rules($rules);
 			if ($this->form_validation->run() == FALSE) { 
-				$this->data["subview"] = "category/add";
+				$this->data["subview"] = "Category/add";
 				$this->load->view('_layout_main', $this->data);			
 			} else {
 				$array = array(
@@ -62,7 +62,7 @@ class Course_category extends Admin_Controller
 				redirect(base_url("course_category/index"));
 			}
 		} else {
-			$this->data["subview"] = "category/add";
+			$this->data["subview"] = "Category/add";
 			$this->load->view('_layout_main', $this->data);
 		}
 	}
@@ -88,7 +88,7 @@ class Course_category extends Admin_Controller
 					$rules = $this->rules();
 					$this->form_validation->set_rules($rules);
 					if ($this->form_validation->run() == FALSE) {
-						$this->data["subview"] = "category/edit";
+						$this->data["subview"] = "Category/edit";
 						$this->load->view('_layout_main', $this->data);			
 					} else {
 						$array = array(
@@ -99,7 +99,7 @@ class Course_category extends Admin_Controller
 						redirect(base_url("course_category/index"));
 					}
 				} else {
-					$this->data["subview"] = "category/edit";
+					$this->data["subview"] = "Category/edit";
 					
 					$this->load->view('_layout_main', $this->data);
 				}
