@@ -357,7 +357,8 @@ $is_logged_in = $this->session->userdata('loggedin');
         <div class="container">
             <div class="row g-4">
                 <div class="text-center">
-                    <h6 class="section-title bg-white text-center text-primary px-3">Security Courses
+                    <h6 class="section-title bg-white text-center text-primary px-3">SIA Security Courses
+
                     </h6>
 
                 </div>
@@ -470,9 +471,7 @@ $is_logged_in = $this->session->userdata('loggedin');
         <div class="container">
             <div class="row g-4">
                 <div class="text-center">
-                    <h6 class="section-title bg-white text-center text-primary px-3">TOPUP Security Courses
-
-                    </h6>
+                    <h6 class="section-title bg-white text-center text-primary px-3">SIA Refresher Security Courses</h6>
 
                 </div>
                 <div class="col-lg-3 col-sm-6 wow fadeInUp course-card " data-wow-delay="0.1s">
@@ -492,7 +491,7 @@ $is_logged_in = $this->session->userdata('loggedin');
                             <div class="course-item bg-theme p-4 rounded-top-round rounded-bottom-round card_height ">
                                 <div class="text-center pb-0">
                                     <h3 class="mb-2 text-white" style="font-size: 18px;">£ 200</h3>
-                                    <p class="text-white" style="font-size: 14px;">Level 2 Award for Security Officers (TopUp - VL) </p>
+                                    <p class="text-white" style="font-size: 14px;">Level 2 Award for Security Officers (Refresher - VL) </p>
                                 </div>
                             </div>
                         </div>
@@ -516,7 +515,7 @@ $is_logged_in = $this->session->userdata('loggedin');
                             <div class="course-item bg-theme p-4 rounded-top-round rounded-bottom-round card_height ">
                                 <div class="text-center pb-0">
                                     <h3 class="mb-2 text-white" style="font-size: 18px;">£ 250 </h3>
-                                    <p class=" text-white" style="font-size: 14px;">Level 2 Award for Door Supervisors (TopUp)
+                                    <p class=" text-white" style="font-size: 14px;">Level 2 Award for Door Supervisors (Refresher)
                                     </p>
                                 </div>
                             </div>
@@ -566,7 +565,7 @@ $is_logged_in = $this->session->userdata('loggedin');
                             <div class="course-item bg-theme p-4 rounded-top-round rounded-bottom-round card_height ">
                                 <div class="text-center pb-0">
                                     <h3 class="mb-2 text-white" style="font-size: 18px;">£ 599</h3>
-                                    <p class="text-white" style="font-size: 14px;">Level 3 Certificate for Close Protection Operatives (TopUp)</p>
+                                    <p class="text-white" style="font-size: 14px;">Level 3 Certificate for Close Protection Operatives (Refresher)</p>
                                 </div>
                             </div>
                         </div>
@@ -627,7 +626,7 @@ $is_logged_in = $this->session->userdata('loggedin');
                             <div class="course-item bg-theme p-4 rounded-top-round rounded-bottom-round card_height ">
                                 <div class="text-center pb-0">
                                     <h3 class="mb-2 text-white" style="font-size: 18px;">£ 369 </h3>
-                                    <p class=" text-white" style="font-size: 14px;">Level 3 Certificate in Assessing Vocational Achievement - (CAVA)
+                                    <p class=" text-white" style="font-size: 14px;">Level 3 Certificate in CAVA
                                     </p>
                                 </div>
                             </div>

@@ -63,7 +63,7 @@ $is_logged_in = $this->session->userdata('loggedin');
 
   .nav-mega .dropdown-menu.mega-menu .media-list .media {
     padding: 10px !important;
-    font-size: 13px !important;
+    font-size: 11px !important;
   }
 
   .nav-mega .dropdown-menu.mega-menu .media-list .media-heading {
@@ -113,7 +113,8 @@ $is_logged_in = $this->session->userdata('loggedin');
 
             <li class="dropdown">
               <a href="#" class="dropdown-toggle nav-item nav-link" data-bs-toggle="dropdown">
-                Education Training <b class="caret"></b>
+              Education & Training 
+              <b class="caret"></b>
               </a>
               <ul class="dropdown-menu mega-menu mega-menu-second">
                 <li>
@@ -135,7 +136,8 @@ $is_logged_in = $this->session->userdata('loggedin');
                         <ul class="media-list col-lg-6 col-md-6 col-sm-12">
                           <li class="media">
                             <div class="media-body">
-                              <h5 class="media-heading"> Training </h5>
+                              <h5 class="media-heading"> Teachers Training 
+                              </h5>
                                   <ul class="list-unstyled">
                                     <li><a href="#" class="dropdown-item">Level 2 Certificate in Supporting Teaching and Learning in Schools - £ 569
                                       </a></li>
@@ -153,10 +155,11 @@ $is_logged_in = $this->session->userdata('loggedin');
                         <ul class="media-list col-lg-6 col-md-6 col-sm-12">
                           <li class="media">
                             <div class="media-body">
-                              <h5 class="media-heading">Access Training</h5>
+                              <h5 class="media-heading">Assessors Training
+                              </h5>
                               <ul class="list-unstyled">
-                                <li><a href="#" class="dropdown-item">Level 3 Certificate in Assessing Vocational Achievement - £369</a></li>
-                                <li><a href="#" class="dropdown-item">Level 4 Award in Internal Quality Assurance of Assessment Processes - £349</a></li>
+                                <li><a href="#" class="dropdown-item">Level 3 Certificate in Assessing Vocational Achievement - £369 (CAVA)</a></li>
+                                <li><a href="#" class="dropdown-item">Level 4 Award in Internal Quality Assurance of Assessment Processes - £349 (IQA)</a></li>
                                 <li><a href="#" class="dropdown-item">Level 4 Certificate in Leading Internal Quality Assurance - £399</a></li>
                               </ul>
                             </div>
@@ -167,6 +170,10 @@ $is_logged_in = $this->session->userdata('loggedin');
                             <div class="media-body">
                               <h5 class="media-heading">Functional Skills Training</h5>
                               <ul class="list-unstyled">
+                              <li><a href="#" class="dropdown-item">Level 1 Award in English & Mathematics
+                              </a></li>
+                              <li><a href="#" class="dropdown-item">Level 2 Award in English & Mathematics
+                              </a></li>
                                 <li><a href="#" class="dropdown-item">Level 3 Award in Mathematics for Numeracy Teaching - £249</a></li>
                                 <li><a href="#" class="dropdown-item">Level 3 Award in English for Literacy and Language Teaching- £249</a></li>
                               </ul>
@@ -192,16 +199,45 @@ $is_logged_in = $this->session->userdata('loggedin');
                         <ul class="media-list col-lg-6 col-md-6 col-sm-12">
                           <li class="media">
                             <div class="media-body">
-                              <h5 class="media-heading">Security Courses</h5>
+                              <h5 class="media-heading"> SIA Security Courses</h5>
                               <ul class="list-unstyled">
-                                <li><a href="#" class="dropdown-item">Level 2 Award for Security Officers  </a></li>
-                                <li><a href="#" class="dropdown-item">Level 2 Online Award for Security Officers (VL)</a></li>
-                                <li><a href="#" class="dropdown-item">Level 6 SCQF Award for Security Officers (Scotland) </a></li>
-                                <li><a href="#" class="dropdown-item">Level 6 SCQF Online Award for Security Officers (Scotland) (VL)</a></li>
-                                <li><a href="#" class="dropdown-item">Level 2 Award for Door Supervisors</a></li>
-                                <li><a href="#" class="dropdown-item">Level 2 Online Award for Door Supervisors (VL)</a></li>
-                                <li><a href="#" class="dropdown-item">Level 6 SCQF Award for Door Supervisors (Scotland)</a></li>
-                                <li><a href="#" class="dropdown-item">Level 6 SCQF Online Award for Door Supervisors (Scotland) (VL)</a></li>
+                                <li><a href="#" class="dropdown-item">Level 2 Award for Security Officers in the Private Security Industry </a></li>
+                                <li><a href="#" class="dropdown-item">Level 2 Online Award for Security Officers in the Private Security Industry (Virtual Learning)</a></li>
+                                <li><a href="#" class="dropdown-item">Level 2 Award for Door Supervisors in the Private Security Industry</a></li>
+                                <li><a href="#" class="dropdown-item">Level 2 Online Award for Door Supervisors in the Private Security Industry (Virtual Learning)</a></li>
+                                <li><a href="#" class="dropdown-item">Level 2 Award for CCTV Operators "Public Space Surveillance" in the Private Security Industry</a></li>
+                                <li><a href="#" class="dropdown-item">Level 2 Award for CCTV Operators "Public Space Surveillance" in the Private Security Industry (Virtual Learning)</a></li>
+                                <li><a href="#" class="dropdown-item">Level 3 Certificate for Close Protection Operatives in the Private Security Industry</a></li>
+                                <li><a href="#" class="dropdown-item">Level 3 Award in Emergency First Aid at Work (RQF) NEW April 2022</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <li><a href="#" class="dropdown-item">Level 3 Award in Emergency First Aid at Work (RQF) NEW April 2022 (Virtual Learning)</a></li>
+                                <li><a href="#" class="dropdown-item">Level 3 Award in First Aid at Work (RQF) NEW April 2022</a></li>
+                                <li><a href="#" class="dropdown-item">Level 6 Award for Security Officers in the Private Security Industry (Scotland) at SCQF</a></li>
+                                <li><a href="#" class="dropdown-item">Level 6 Award for Security Officers in the Private Security Industry (Scotland) at SCQF (Virtual Learning)</a></li>
+                                <li><a href="#" class="dropdown-item">Level 6 Award for Door Supervisors in the Private Security Industry (Scotland) at SCQF</a></li>
+                                <li><a href="#" class="dropdown-item">Level 6 Award for Door Supervisors in the Private Security Industry (Scotland) at SCQF (Virtual Learning)</a></li>
+                                <li><a href="#" class="dropdown-item">Level 6 Award for CCTV Operators "Public Space Surveillance" in the Private Security Industry</a></li>
+                                <li><a href="#" class="dropdown-item">Level 6 Award in Emergency First Aid at Work at SCQF</a></li>
+                                <li><a href="#" class="dropdown-item">Level 6 Award in First Aid at Work at SCQF</a></li>
                               </ul>
                             </div>
                           </li>
@@ -209,22 +245,21 @@ $is_logged_in = $this->session->userdata('loggedin');
                         <ul class="media-list col-lg-6 col-md-6 col-sm-12">
                           <li class="media">
                             <div class="media-body">
-                              <h5 class="media-heading">TOPUP Security Courses</h5>
+                              <h5 class="media-heading">Refresher Security Courses</h5>
                               <ul class="list-unstyled">
-                                <li><a href="#" class="dropdown-item">Level 2 Award for Security Officers (TopUp)
+                                <li><a href="#" class="dropdown-item">Level 2 Award for Security Officers in the Private Security Industry (Refresher)
                                   </a></li>
-                                <li><a href="#" class="dropdown-item">Level 2 Online Award for Security Officers(TopUp - VL) </a></li>
-                                <li><a href="#" class="dropdown-item">Level 6 SCQF Award for Security Officers (Scotland) (TopUp)
+                                <li><a href="#" class="dropdown-item">Level 2 Award for Door Supervisors in the Private Security Industry (Refresher)</a></li>
+                                <li><a href="#" class="dropdown-item">Level 2 Online Award for Door Supervisors in the Private Security Industry (Refresher) (Virtual Learning)
                                   </a></li>
-                                <li><a href="#" class="dropdown-item">Level 6 SCQF Online Award for Security Officers (Scotland) (TopUp - VL)
+                                <li><a href="#" class="dropdown-item">Level 3 Certificate for Close Protection Operative in the Private Security Industry (Refresher)
                                   </a></li>
-                                <li><a href="#" class="dropdown-item">Level 2 Award for Door Supervisors (TopUp)</a></li>
-                                <li><a href="#" class="dropdown-item">Level 2 Online Award for Door Supervisors (TopUp - VL)
+                                <li><a href="#" class="dropdown-item">Level 6 Award for Security Officers in the Private Security Industry (Scotland) at SCQF (Refresher)</a></li>
+                                <li><a href="#" class="dropdown-item">Level 6 Award for Security Officers in the Private Security Industry (Scotland) at SCQF (Refresher) (Virtual Learning)
                                   </a></li>
-                                <li><a href="#" class="dropdown-item">Level 6 SCQF Award for Door Supervisors (Scotland)(TopUp)
+                                <li><a href="#" class="dropdown-item">Level 6 Award for Door Supervisors in the Private Security Industry (Scotland) at SCQF (Refresher)
                                   </a></li>
-                                <li><a href="#" class="dropdown-item">Level 6 SCQF Online Award for Door Supervisors (Scotland) (TopUp - VL)
-                                  </a></li>
+                                <li><a href="#" class="dropdown-item">Level 6 Award for Door Supervisors in the Private Security Industry (Scotland) at SCQF (Refresher) (Virtual Learning)</a></li>
                               </ul>
                             </div>
                           </li>
