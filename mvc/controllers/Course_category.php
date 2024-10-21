@@ -44,6 +44,7 @@ class Course_category extends Admin_Controller
 		);
 
 		
+		
 		if($_POST !== []) {
 			$rules = $this->rules();
 			$this->form_validation->set_rules($rules);
