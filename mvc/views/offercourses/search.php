@@ -49,9 +49,9 @@
                                 <th class="col-lg-2"><?=$this->lang->line('section_capacity')?></th>
                                 <th class="col-lg-2"><?=$this->lang->line('section_teacher_name')?></th>
                                 <th class="col-lg-2"><?=$this->lang->line('section_note')?></th>
-                                <?php if(permissionChecker('section_edit') || permissionChecker('section_delete')) { ?>
+                                <!-- <?php if(permissionChecker('section_edit') || permissionChecker('section_delete')) { ?> -->
                                 <th class="col-lg-1"><?=$this->lang->line('action')?></th>
-                                <?php } ?>
+                                <!-- <?php } ?> -->
                             </tr>
                         </thead>
                     </table>

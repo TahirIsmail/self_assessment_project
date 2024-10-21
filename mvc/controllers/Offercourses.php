@@ -241,6 +241,9 @@ class Offercourses extends Admin_Controller
         }
 
         $course = $this->Offercourses_m->get_course_by_id($course_id);
+        $categories = $this->Offercourses_m->get_categories();
+        $this->data['categories'] = $categories;
+
 
         if (empty($course)) {
             $this->session->set_flashdata('error', 'Course not found or does not exist.');
@@ -266,9 +269,33 @@ class Offercourses extends Admin_Controller
             $this->session->set_flashdata('error', validation_errors());
             redirect(base_url("offercourses/edit/" . $this->input->post('id')));
         } else {
+
+            $delete_image = $this->input->post('delete_image') == 1;
+            $image = $this->input->post('current_image');
+
+           
+
+            if ($delete_image) {                
+                if (!empty($image) && file_exists(FCPATH . 'uploads/images/' . $image)) {
+                    unlink(FCPATH . 'uploads/images/' . $image);
+                }
+                $image = '';
+            }
+            if (!empty($_FILES['photo']['name'])) {
+                
+                $uploaded_image = $this->upload_new_image();
+                if ($uploaded_image) {
+                    $image = $uploaded_image;
+                }
+            }
+
+
             $data = array(
                 "course_name" => $this->input->post("course_name", TRUE),
                 "course_description" => $this->input->post("course_description", TRUE),
+                "photo" => $image,
+                "course_id" => $this->input->post('course_id'),
+                "category_id" => $this->input->post('category_name'),
             );
 
             if ($this->Offercourses_m->update_course_by_id($data, $this->input->post('id'))) {
@@ -279,4 +306,17 @@ class Offercourses extends Admin_Controller
             redirect(base_url("offercourses/index"));
         }
     }
+
+    private function upload_new_image()
+{
+    $config['upload_path'] = FCPATH . 'uploads/images/';
+    $config['allowed_types'] = 'jpeg|jpg|png|gif';
+    $config['max_size'] = 2048;
+    $this->load->library('upload', $config);
+
+    if ($this->upload->do_upload('photo')) {
+        return $this->upload->data('file_name');
+    }
+    return false;
+}
 }

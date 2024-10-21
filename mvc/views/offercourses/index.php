@@ -27,9 +27,7 @@
                                 <th class="col-lg-2"><?= $this->lang->line('category_name') ?></th>
                                 <th class="col-lg-2"><?= $this->lang->line('course_name') ?></th>
                                 <th class="col-lg-2"><?= $this->lang->line('course_description') ?></th>
-                                <?php if (permissionChecker('course_edit') || permissionChecker('course_delete')) { ?>
-                                    <th class="col-lg-1"><?= $this->lang->line('action') ?></th>
-                                <?php } ?>
+                                <th class="col-lg-1"><?= $this->lang->line('action') ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -57,7 +55,6 @@
                                                 <span class="see-less" style="color:blue; cursor:pointer;">See Less</span>
                                             </p>
                                         </td>
-                                        <?php if (permissionChecker('course_edit') || permissionChecker('course_delete')) { ?>
                                             <td data-title="<?= $this->lang->line('action') ?>">
                                                 <a href="<?= base_url('offercourses/edit/' . $course->id) ?>" class="btn btn-warning btn-sm">
                                                     <i class="fa fa-pencil"></i> <?= $this->lang->line('edit') ?>
@@ -66,7 +63,6 @@
                                                     <i class="fa fa-trash"></i> <?= $this->lang->line('delete') ?>
                                                 </a>
                                             </td>
-                                        <?php } ?>
                                     </tr>
                                 <?php $i++;
                                 }

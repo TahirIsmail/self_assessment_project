@@ -235,6 +235,7 @@ class Center extends Admin_Controller
             }
         }
 
+        
         $this->data["subview"] = "center/edit";
         $this->load->view('_layout_main', $this->data);
     }

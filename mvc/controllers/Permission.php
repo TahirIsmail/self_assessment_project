@@ -55,6 +55,7 @@ public $load;
 				if(empty($this->data['permissions'])) {
 					$this->data['permissions'] = NULL;
 				}
+				
 				$this->data["subview"] = "permission/index";
 				$this->load->view('_layout_main', $this->data);
 			} else {
