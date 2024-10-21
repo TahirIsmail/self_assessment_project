@@ -10,13 +10,13 @@
     <div class="box-body">
         <div class="row">
             <div class="col-sm-12">
-              
-                    <h5 class="page-header">
-                        <a href="<?= base_url('offercourses/add') ?>">
-                            <i class="fa fa-plus"></i> <?= $this->lang->line('add_title') ?>
-                        </a>
-                    </h5>
-               
+
+                <h5 class="page-header">
+                    <a href="<?= base_url('offercourses/add') ?>">
+                        <i class="fa fa-plus"></i> <?= $this->lang->line('add_title') ?>
+                    </a>
+                </h5>
+
 
                 <div id="hide-table">
                     <table id="example1" class="table table-striped table-bordered table-hover dataTable no-footer">
@@ -41,28 +41,19 @@
                                         <td data-title="<?= $this->lang->line('course_name') ?>"><?= $course->course_name; ?></td>
                                         <td data-title="<?= $this->lang->line('course_description') ?>">
                                             <p class="short-description">
-                                                <?php
-
-                                                $short_desc = substr($course->course_description, 0, 100);
-                                                echo $short_desc;
-                                                ?>
-                                                <?php if (strlen($course->course_description) > 100): ?>
-                                                    <span class="see-more" style="color:blue; cursor:pointer;">See More</span>
-                                                <?php endif; ?>
-                                            </p>
-                                            <p class="full-description" style="display:none;">
-                                                <?= $course->course_description; ?>
-                                                <span class="see-less" style="color:blue; cursor:pointer;">See Less</span>
+                                                <?= strlen($course->course_description) > 150 ? substr($course->course_description, 0, 150) . '...' : $course->course_description ?>
                                             </p>
                                         </td>
-                                            <td data-title="<?= $this->lang->line('action') ?>">
-                                                <a href="<?= base_url('offercourses/edit/' . $course->id) ?>" class="btn btn-warning btn-sm">
-                                                    <i class="fa fa-pencil"></i> <?= $this->lang->line('edit') ?>
-                                                </a>
-                                                <a href="<?= base_url('offercourses/delete/' . $course->id) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this course?');">
-                                                    <i class="fa fa-trash"></i> <?= $this->lang->line('delete') ?>
-                                                </a>
-                                            </td>
+
+
+                                        <td data-title="<?= $this->lang->line('action') ?>">
+                                            <a href="<?= base_url('offercourses/edit/' . $course->id) ?>" class="btn btn-warning btn-sm">
+                                                <i class="fa fa-pencil"></i> <?= $this->lang->line('edit') ?>
+                                            </a>
+                                            <a href="<?= base_url('offercourses/delete/' . $course->id) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this course?');">
+                                                <i class="fa fa-trash"></i> <?= $this->lang->line('delete') ?>
+                                            </a>
+                                        </td>
                                     </tr>
                                 <?php $i++;
                                 }
@@ -108,30 +99,32 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
+        // Select all the see-more buttons within the table
+        document.querySelectorAll('.see-more').forEach(function(button) {
+            button.addEventListener('click', function() {
+                // Get the parent td element of the clicked button
+                const parentTd = button.closest('td');
 
-        const seeMoreElements = document.querySelectorAll('.see-more');
-        const seeLessElements = document.querySelectorAll('.see-less');
-
-        seeMoreElements.forEach((element) => {
-            element.addEventListener('click', function() {
-
-                const parent = this.closest('td');
-                parent.querySelector('.full-description').style.display = 'block';
-                parent.querySelector('.short-description').style.display = 'none';
+                // Toggle visibility of short and full descriptions
+                parentTd.querySelector('.short-description').style.display = 'none';
+                parentTd.querySelector('.full-description').style.display = 'block';
             });
         });
 
-        seeLessElements.forEach((element) => {
-            element.addEventListener('click', function() {
-                const parent = this.closest('td');
-                parent.querySelector('.full-description').style.display = 'none';
-                parent.querySelector('.short-description').style.display = 'block';
+        // Select all the see-less buttons within the table
+        document.querySelectorAll('.see-less').forEach(function(button) {
+            button.addEventListener('click', function() {
+                // Get the parent td element of the clicked button
+                const parentTd = button.closest('td');
+
+                // Toggle visibility of short and full descriptions
+                parentTd.querySelector('.full-description').style.display = 'none';
+                parentTd.querySelector('.short-description').style.display = 'block';
             });
         });
     });
 </script>
 <style>
-
     .see-more,
     .see-less {
         color: blue;
@@ -139,8 +132,8 @@
         text-decoration: underline;
     }
 
+
     .course-description p {
         margin: 0;
     }
-
 </style>
