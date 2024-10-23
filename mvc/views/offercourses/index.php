@@ -44,8 +44,6 @@
                                                 <?= strlen($course->course_description) > 150 ? substr($course->course_description, 0, 150) . '...' : $course->course_description ?>
                                             </p>
                                         </td>
-
-
                                         <td data-title="<?= $this->lang->line('action') ?>">
                                             <a href="<?= base_url('offercourses/edit/' . $course->id) ?>" class="btn btn-warning btn-sm">
                                                 <i class="fa fa-pencil"></i> <?= $this->lang->line('edit') ?>
