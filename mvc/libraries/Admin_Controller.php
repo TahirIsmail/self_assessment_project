@@ -76,7 +76,7 @@ class Admin_Controller extends MY_Controller {
 
     private function _loginManager()
     {
-        $url            = '';
+        $url = '';
         $exception_uris = [
             "home/index",
             "signin/index",
@@ -97,25 +97,31 @@ class Admin_Controller extends MY_Controller {
             "center/index",
             "contactus/send"
         ];
-
-        // dd(in_array(uri_string(), $exception_uris));
-
-        $current_uri = uri_string();
+    
+        $current_uri = uri_string(); // Current URI string (e.g., "home/index" or "")
+    
+        // Check if the current URI is in exception list or it's the root URL "/"
         $is_exception = false;
         foreach ($exception_uris as $exception_uri) {
-            // If it's a regex pattern (e.g., contains a dynamic slug)
             if (preg_match('#^' . $exception_uri . '$#', $current_uri)) {
                 $is_exception = true;
                 break;
             }
         }
-       
-        if (!$is_exception && !$this->signin_m->loggedin()) {
-            $url = base_url("home/index");
+    
+        // Allow root URL ("/") and home without redirecting
+        if ($current_uri === '' || $current_uri === 'home') {
+            $is_exception = true;
         }
-       
+    
+        // If not an exception and user is not logged in, redirect to signin
+        if (!$is_exception && !$this->signin_m->loggedin()) {
+            $url = base_url("signin/index");
+        }
+    
         return $url;
     }
+    
 
     private function _permissionManager( $module, $action )
     {

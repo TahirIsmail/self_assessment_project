@@ -90,10 +90,11 @@ class home extends Admin_Controller
         ]), 'obj', 'online_examID');
 
 
-
+       
         $this->data['mockTests']        = $this->section_m->get_all_courses_details();
         // $this->data["subview"]         = "signin/index";
         $this->load->view('landingPage/index', $this->data);
+       
     }
 
     public function course()
