@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-sm-12" style="margin:10px 0px">
+    <div class="col-12" style="margin:10px 0px">
         <?php
             $pdf_preview_uri = base_url('idcardreport/pdf/'.$usertypeID.'/'.$classesID.'/'.$sectionID.'/'.$userID.'/'.$type.'/'.$background);
             echo btn_printReport('idcardreport', $this->lang->line('idcardreport_print'), 'printablediv');
@@ -10,7 +10,7 @@
 </div>
 <div class="box">
     <div class="box-header bg-gray">
-        <h3 class="box-title text-navy"><i class="fa fa-clipboard"></i> 
+        <h3 class="box-title "><i class="fa fa-clipboard"></i> 
             <?=$this->lang->line('idcardreport_report_for')?> -
             <?=isset($usertypes[$usertypeID]) ? $usertypes[$usertypeID]: ' ';?>
         </h3>
@@ -18,24 +18,23 @@
     <div id="printablediv">
         <style>
             .idcardreport {
-                font-family: arial;    
-                max-width:794px;
+                font-family: Arial, sans-serif;
+                max-width: 794px;
                 max-height: 1123px;
                 margin-left: auto;
                 margin-right: auto;
                 -webkit-print-color-adjust: exact;
             }
-            /*IDcard Front Part Css Code*/
             .idcardreport-frontend{
                 margin: 3px;
                 float: left;
                 border: 1px solid #000;
-                padding: 10px;
+                padding: 20px;
                 width: 257px;
                 text-align: center;
-                height:290px;
+                height: 290px;
                 <?php if($background == 1) { ?>
-                background:url("<?=base_url('uploads/default/idcard-border.png')?>")!important;
+                background: url("<?=base_url('uploads/default/idcard-border.png')?>") !important;
                 background-size: 100% 100% !important;
                 <?php } ?>
             }
@@ -59,18 +58,16 @@
                 color: #1A2229;
             }
 
-            /*ID Card Back Part Css Code*/
             .idcardreport-backend{
                 margin: 3px;
-                /*float: left;*/
                 float: right;
                 border: 1px solid #1A2229;
                 padding: 10px;
                 width: 257px;
                 text-align: center;
-                height:290px;
+                height: 290px;
                 <?php if($background == 1) { ?>
-                background:url("<?=base_url('uploads/default/idcard-border.png')?>")!important;
+                background: url("<?=base_url('uploads/default/idcard-border.png')?>") !important;
                 background-size: 100% 100% !important;
                 <?php } ?>
             }
@@ -79,8 +76,8 @@
                 background-color: #1A2229;
                 color: #fff;
                 font-size: 13px;
-                padding: 5px 0px;
-                margin:5px;
+                padding: 5px 0;
+                margin: 5px;
                 margin-top: 13px;
             }
 
@@ -88,7 +85,7 @@
                 font-size: 11px;
                 color: #1A2229;
                 font-weight: bold;
-                padding: 5px 0px;
+                padding: 5px 0;
             }
 
             .idcardreport-backend p{
@@ -105,7 +102,7 @@
 
             .idcardreport-bottom {
                 text-align: center;
-                padding-top: 5px
+                padding-top: 5px;
             }
 
             .idcardreport-qrcode{
@@ -134,16 +131,13 @@
 
             @media print {
                 .idcardreport {
-                    max-width:794px;
+                    max-width: 794px;
                     max-height: 1123px;
-                    margin-left: auto;
-                    margin-right: auto;
+                    margin: auto;
                     -webkit-print-color-adjust: exact;
-                    margin:0px auto;    
                 }
 
-                /*ID Card Front Part Css Code*/
-                .idcardreport-frontend{
+                .idcardreport-frontend {
                     margin: 1px;
                     float: left;
                     border: 1px solid #000;
@@ -151,33 +145,22 @@
                     width: 250px;
                 }
 
-                h3{
+                h3 {
                     color: #1A2229 !important;
                 }
 
-                .idcardreport-frontend .profile-view-dis .profile-view-tab {
-                    width: 100%;
-                    float: left;
-                    margin-bottom: 0px;
-                    padding: 0 15px;
-                    font-size: 14px;
-                    margin-top: 5px;
-                }
-
-                /*ID Card Back Part Css Code*/
                 .idcardreport-backend {
                     margin: 1px;
                     float: right;
                     border: 1px solid #1A2229;
-                    padding: 10px;
+                    padding: 12px;
                     width: 250px;
                 }
 
-                .idcardreport-backend h3{
+                .idcardreport-backend h3 {
                     background-color: #1A2229 !important;
                     font-size: 12px;
                     color: #fff !important;
-                    overflow: hidden;
                     display: block;
                 }
             }
@@ -185,16 +168,16 @@
             .idcardreport-frontend .profile-view-dis .profile-view-tab {
                 width: 100%;
                 float: left;
-                margin-bottom: 0px;
+                margin-bottom: 0;
                 padding: 0 15px;
                 font-size: 14px;
                 margin-top: 5px;
             }
         </style>
 
-        <div class="box-body" style="margin-bottom: 50px;">
+        <div class="box-body mb-5">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-12">
                     <?php if (inicompute($idcards)) { ?>
                     <table class="idcardreport">
                         <tr>
@@ -335,7 +318,7 @@
                         </tr>
                     </table>
                     <?php } else { ?>   
-                        <div class="callout callout-danger">
+                        <div class="alert alert-danger">
                             <p><b class="text-info"><?=$this->lang->line('idcardreport_data_not_found')?></b></p>
                         </div>
                     <?php } ?>
@@ -347,71 +330,46 @@
 
 
 <!-- email modal starts here -->
-<form class="form-horizontal" role="form" action="<?=base_url('idcardreport/send_pdf_to_mail');?>" method="post">
-    <div class="modal fade" id="mail">
-      <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"><?=$this->lang->line('idcardreport_close')?></span></button>
-                <h4 class="modal-title"><?=$this->lang->line('idcardreport_mail')?></h4>
-            </div>
-            <div class="modal-body">
+<form class="row g-3" role="form" action="<?=base_url('idcardreport/send_pdf_to_mail');?>" method="post">
+    <div class="modal fade" id="mail" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><?=$this->lang->line('idcardreport_mail')?></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
 
-                <?php
-                    if(form_error('to'))
-                        echo "<div class='form-group has-error' >";
-                    else
-                        echo "<div class='form-group' >";
-                ?>
-                    <label for="to" class="col-sm-2 control-label">
-                        <?=$this->lang->line("idcardreport_to")?> <span class="text-red">*</span>
-                    </label>
-                    <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="to" class="form-label">
+                            <?=$this->lang->line("idcardreport_to")?> <span class="text-danger">*</span>
+                        </label>
                         <input type="email" class="form-control" id="to" name="to" value="<?=set_value('to')?>" >
+                        <div id="to_error" class="form-text text-danger"></div>
                     </div>
-                    <span class="col-sm-4 control-label" id="to_error">
-                    </span>
-                </div>
 
-                <?php
-                    if(form_error('subject'))
-                        echo "<div class='form-group has-error' >";
-                    else
-                        echo "<div class='form-group' >";
-                ?>
-                    <label for="subject" class="col-sm-2 control-label">
-                        <?=$this->lang->line("idcardreport_subject")?> <span class="text-red">*</span>
-                    </label>
-                    <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">
+                            <?=$this->lang->line("idcardreport_subject")?> <span class="text-danger">*</span>
+                        </label>
                         <input type="text" class="form-control" id="subject" name="subject" value="<?=set_value('subject')?>" >
+                        <div id="subject_error" class="form-text text-danger"></div>
                     </div>
-                    <span class="col-sm-4 control-label" id="subject_error">
-                    </span>
+
+                    <div class="mb-3">
+                        <label for="message" class="form-label">
+                            <?=$this->lang->line("idcardreport_message")?>
+                        </label>
+                        <textarea class="form-control" id="message" style="resize: vertical;" name="message"><?=set_value('message')?></textarea>
+                    </div>
 
                 </div>
-
-                <?php
-                    if(form_error('message'))
-                        echo "<div class='form-group has-error' >";
-                    else
-                        echo "<div class='form-group' >";
-                ?>
-                    <label for="message" class="col-sm-2 control-label">
-                        <?=$this->lang->line("idcardreport_message")?>
-                    </label>
-                    <div class="col-sm-6">
-                        <textarea class="form-control" id="message" style="resize: vertical;" name="message" value="<?=set_value('message')?>" ></textarea>
-                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?=$this->lang->line('close')?></button>
+                    <input type="button" id="send_pdf" class="btn btn-success" value="<?=$this->lang->line("idcardreport_send")?>" />
                 </div>
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" style="margin-bottom:0px;" data-dismiss="modal"><?=$this->lang->line('close')?></button>
-                <input type="button" id="send_pdf" class="btn btn-success" value="<?=$this->lang->line("idcardreport_send")?>" />
             </div>
         </div>
-      </div>
     </div>
 </form>
 <!-- email end here -->
@@ -430,12 +388,11 @@
         return status;
     }
 
-
-    $('#send_pdf').click(function() {
+    document.getElementById('send_pdf').addEventListener('click', function() {
         var field = {
-            'to'         : $('#to').val(), 
-            'subject'    : $('#subject').val(), 
-            'message'    : $('#message').val(),
+            'to'         : document.getElementById('to').value, 
+            'subject'    : document.getElementById('subject').value, 
+            'message'    : document.getElementById('message').value,
             'usertypeID' : '<?=$usertypeID?>',
             'classesID'  : '<?=$classesID?>',
             'sectionID'  : '<?=$sectionID?>',
@@ -444,16 +401,17 @@
             'background' : '<?=$background?>',
         };
 
-        var to = $('#to').val();
-        var subject = $('#subject').val();
+        var to = document.getElementById('to').value;
+        var subject = document.getElementById('subject').value;
         var error = 0;
 
-        $("#to_error").html("");
-        $("#subject_error").html("");
+        document.getElementById('to_error').innerHTML = "";
+        document.getElementById('subject_error').innerHTML = "";
 
         if(to == "" || to == null) {
             error++;
-            $("#to_error").html("<?=$this->lang->line('idcardreport_mail_to')?>").css("text-align", "left").css("color", 'red');
+            document.getElementById('to_error').innerHTML = "<?=$this->lang->line('idcardreport_mail_to')?>";
+            document.getElementById('to_error').style.color = 'red';
         } else {
             if(check_email(to) == false) {
                 error++
@@ -462,51 +420,33 @@
 
         if(subject == "" || subject == null) {
             error++;
-            $("#subject_error").html("<?=$this->lang->line('idcardreport_mail_subject')?>").css("text-align", "left").css("color", 'red');
-        } else {
-            $("#subject_error").html("");
+            document.getElementById('subject_error').innerHTML = "<?=$this->lang->line('idcardreport_mail_subject')?>";
+            document.getElementById('subject_error').style.color = 'red';
         }
 
         if(error == 0) {
-            $('#send_pdf').attr('disabled','disabled');
-            $.ajax({
-                type: 'POST',
-                url: "<?=base_url('idcardreport/send_pdf_to_mail')?>",
-                data: field,
-                dataType: "html",
-                success: function(data) {
-                    var response = JSON.parse(data);
-                    if (response.status == false) {
-                        $('#send_pdf').removeAttr('disabled');
-                        if( response.to) {
-                            $("#to_error").html("<?=$this->lang->line('idcardreport_mail_to')?>").css("text-align", "left").css("color", 'red');
-                        } 
-                        if( response.subject) {
-                            $("#subject_error").html("<?=$this->lang->line('idcardreport_mail_subject')?>").css("text-align", "left").css("color", 'red');
-                        }
-                        if(response.message) {
-                            toastr["error"](response.message)
-                            toastr.options = {
-                              "closeButton": true,
-                              "debug": false,
-                              "newestOnTop": false,
-                              "progressBar": false,
-                              "positionClass": "toast-top-right",
-                              "preventDuplicates": false,
-                              "onclick": null,
-                              "showDuration": "500",
-                              "hideDuration": "500",
-                              "timeOut": "5000",
-                              "extendedTimeOut": "1000",
-                              "showEasing": "swing",
-                              "hideEasing": "linear",
-                              "showMethod": "fadeIn",
-                              "hideMethod": "fadeOut"
-                            }
-                        }
-                    } else {
-                        location.reload();
+            document.getElementById('send_pdf').disabled = true;
+            fetch("<?=base_url('idcardreport/send_pdf_to_mail')?>", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(field)
+            }).then(response => response.json())
+            .then(data => {
+                if (!data.status) {
+                    document.getElementById('send_pdf').disabled = false;
+                    if(data.to) {
+                        document.getElementById('to_error').innerHTML = "<?=$this->lang->line('idcardreport_mail_to')?>";
                     }
+                    if(data.subject) {
+                        document.getElementById('subject_error').innerHTML = "<?=$this->lang->line('idcardreport_mail_subject')?>";
+                    }
+                    if(data.message) {
+                        toastr["error"](data.message);
+                    }
+                } else {
+                    location.reload();
                 }
             });
         }

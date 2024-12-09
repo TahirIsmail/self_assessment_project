@@ -1,6 +1,6 @@
         </div><!-- ./wrapper -->
 
-        <script type="text/javascript" src="<?php echo base_url('assets/bootstrap/bootstrap.min.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/inilabs/js/bootstrap.min.js'); ?>"></script>
         <!-- Style js -->
         <script type="text/javascript" src="<?php echo base_url('assets/inilabs/style.js'); ?>"></script>
 

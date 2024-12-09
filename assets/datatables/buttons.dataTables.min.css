@@ -83,18 +83,18 @@ div.dt-button:active:not(.disabled):hover:not(.disabled),
 div.dt-button.active:not(.disabled):hover:not(.disabled),
 a.dt-button:active:not(.disabled):hover:not(.disabled),
 a.dt-button.active:not(.disabled):hover:not(.disabled) {
-  box-shadow: inset 1px 1px 3px #999999;
-  background-color: #cccccc;
+  box-shadow: inset 1px 1px 3px #000000;
+  background-color: #000000;
   /* Fallback */
-  background-image: -webkit-linear-gradient(top, #eaeaea 0%, #cccccc 100%);
+  background-image: -webkit-linear-gradient(top, #1f1d1d 0%, #000000 100%);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
-  background-image: -moz-linear-gradient(top, #eaeaea 0%, #cccccc 100%);
+  background-image: -moz-linear-gradient(top, #1f1d1d 0%, #000000 100%);
   /* FF3.6 */
-  background-image: -ms-linear-gradient(top, #eaeaea 0%, #cccccc 100%);
+  background-image: -ms-linear-gradient(top, #1f1d1d 0%, #000000 100%);
   /* IE10 */
-  background-image: -o-linear-gradient(top, #eaeaea 0%, #cccccc 100%);
+  background-image: -o-linear-gradient(top, #1f1d1d 0%, #000000 100%);
   /* Opera 11.10+ */
-  background-image: linear-gradient(top, #eaeaea 0%, #cccccc 100%);
+  background-image: linear-gradient(top, #1f1d1d 0%, #000000 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#eaeaea', EndColorStr='#cccccc');
 }
 button.dt-button:hover,

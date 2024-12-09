@@ -14,19 +14,12 @@
     }
 
     .courses-list {
-
         flex: 0 0 30%;
     }
 
     .course-detail {
         flex: 0 0 60%;
     }
-
-    /* .courses-list h2,
-    .course-detail h2 {
-        color: #b71c1c;
-        font-size: 1.5em;
-    } */
 
     .courses-list ul {
         list-style-type: none;
@@ -55,11 +48,6 @@
         color: #333;
         line-height: 1.6;
         font-size: 1em;
-    }
-
-    .course-detail ul {
-        list-style-type: disc;
-        padding-left: 20px;
     }
 
     .booking-table {
@@ -105,43 +93,6 @@
 
     .booking-table button:hover {
         background-color: #8e0000;
-    }
-
-    .booking-table input[type="number"] {
-        width: 50px;
-        font-size: 0.6em;
-        padding: 4px;
-        margin-right: 5px;
-    }
-
-    .award-announcement {
-        text-align: center;
-        margin: 20px 0;
-        font-size: 1.1em;
-    }
-
-    .award-announcement p {
-        margin: 5px 0;
-    }
-
-    .award-announcement .highlight-blue {
-        color: #0288d1;
-        font-weight: bold;
-    }
-
-    .award-announcement .highlight-brown {
-        color: #795548;
-        font-weight: bold;
-    }
-
-    .award-announcement .highlight-orange {
-        color: #ff8c00;
-        font-weight: bold;
-    }
-
-    .award-announcement .highlight-red {
-        color: #b71c1c;
-        font-weight: bold;
     }
 
     @media (max-width: 768px) {
@@ -202,38 +153,30 @@
         justify-content: space-between;
         align-items: center;
         background-color: #007bff;
-        /* Default button color */
         color: #fff;
-        /* Default text color */
         padding: 15px;
         margin-bottom: 5px;
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s, color 0.3s;
-        /* Ensure text color transitions smoothly */
     }
 
     .btn:hover {
         background-color: #0056b3;
-        /* Darker blue when hovering */
     }
 
     .btn.active {
         background-color: #000;
-        /* Black background for active state */
         color: #fff;
-        /* White text color for active state */
     }
 
     .icon {
         font-size: 16px;
         transition: transform 0.3s;
-        /* Ensure smooth icon rotation */
     }
 
     .sub-list-show .icon {
         transform: rotate(180deg);
-        /* Rotate icon when sub-list is visible */
     }
 
     .sub-list {
@@ -241,7 +184,6 @@
         padding-left: 20px;
         margin: 0;
         border-left: 2px solid #ddd;
-        /* Border to visually separate sub-lists */
     }
 
     .sub-list li {
@@ -323,10 +265,6 @@
             <?php } ?>
         </ul>
     </div>
-
-
-
-
     <div class="course-detail">
         <h2><?php echo $course_data['name'] ?></h2>
         <div class="col-md-12 mb-5">
@@ -385,10 +323,6 @@
 
             </tbody>
         </table>
-
-
-
-        <!-- New sections added in the table structure -->
         <h3>Course Introduction</h3>
         <table class="mb-3">
             <tbody>
@@ -403,7 +337,6 @@
                             in the adult training and teaching industry in this country.
                         </p>
                     </td>
-
                 </tr>
                 <tr>
                     <td>
@@ -578,7 +511,6 @@ $submit_gateway = json_encode($submit_gateway);
 
 <?php if ($this->session->flashdata('success')): ?>
     <script type="text/javascript">
-        
         showToast('success', "<?= $this->session->flashdata('success'); ?>");
 
         function showToast(type, message) {
@@ -601,7 +533,6 @@ endif; ?>
 
 <?php if ($this->session->flashdata('error')): ?>
     <script type="text/javascript">
-        
         showToast('error', "<?= $this->session->flashdata('error'); ?>");
 
         function showToast(type, message) {

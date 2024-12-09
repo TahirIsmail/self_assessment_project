@@ -62,10 +62,11 @@
 
     if($this->config->item('installed') == true) {
         $route['default_controller'] = "home";
-       
+        
     } else {
         $route["default_controller"] = "install";
     }
 
     $route['404_override'] = '';
     $route['translate_uri_dashes'] = FALSE;
+    $route['paid_course'] = 'offercourses/paid_course';

@@ -14,7 +14,7 @@
     <script type="text/javascript" src="<?=base_url('assets/toastr/toastr.min.js')?>"></script>
 
 
-    <link href="<?=base_url('assets/bootstrap/bootstrap.min.css')?>" rel="stylesheet">
+    <link href="<?=base_url('assets/inilabs/bootstrap.min.css')?>" rel="stylesheet">
 
     <link href="<?=base_url('assets/fonts/font-awesome.css')?>" rel="stylesheet">
 
@@ -268,7 +268,7 @@ $submit_gateway = json_encode($submit_gateway);
     </script>
 <?php } ?>
 
-<script type="text/javascript"  src="<?=base_url('assets/bootstrap/bootstrap.min.js')?>"></script>
+<script type="text/javascript"  src="<?=base_url('assets/inilabs/js/bootstrap.min.js')?>"></script>
 <!-- Style js -->
 <script type="text/javascript" src="<?=base_url('assets/inilabs/style.js')?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/inilabs/inilabs.js')?>"></script>

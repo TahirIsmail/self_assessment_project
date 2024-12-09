@@ -1,6 +1,33 @@
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><i class="fa fa-star"></i> <?= $this->lang->line('course_title') ?></h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5.0 CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta3/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Your custom styles -->
+    <style>
+        .see-more,
+        .see-less {
+            color: blue;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .course-description p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-4">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title"><i class="fa fa-star"></i> <?= $this->lang->line('course_title') ?></h3>
 
         <ol class="breadcrumb">
             <li><a href="<?= base_url("dashboard/index") ?>"><i class="fa fa-laptop"></i> <?= $this->lang->line('menu_dashboard') ?></a></li>

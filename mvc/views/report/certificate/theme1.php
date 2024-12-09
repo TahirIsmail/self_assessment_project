@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Limelight" rel="stylesheet">  
     <link href="https://fonts.googleapis.com/css?family=Michroma" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css?family=Prosto+One" rel="stylesheet"> 
-    <link href="<?=base_url('assets/bootstrap/bootstrap.min.css')?>" rel="stylesheet">
+    <link href="<?=base_url('assets/inilabs/bootstrap.min.css')?>" rel="stylesheet">
 
     <link rel="stylesheet" href="<?php echo base_url('assets/inilabs/combined.css'); ?>" >
 

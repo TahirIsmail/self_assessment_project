@@ -102,64 +102,58 @@
 <script>
     var published = '';
     var id = 0;
-    $('.onoffswitch-small-checkbox').click(function() {
-        if ($(this).prop('checked')) {
-            published = 1;
-            id = $(this).parent().attr("id");
-        } else {
-            published = 2;
-            id = $(this).parent().attr("id");
-        }
 
-        if ((published != '' || published != null) && (id != '')) {
-            $.ajax({
-                type: 'POST',
-                url: "<?= base_url('online_exam/published') ?>",
-                data: "id=" + id + "&published=" + published,
-                dataType: "html",
-                success: function(data) {
-                    if (data == 'Success') {
-                        toastr["success"]("Success")
-                        toastr.options = {
-                            "closeButton": true,
-                            "debug": false,
-                            "newestOnTop": false,
-                            "progressBar": false,
-                            "positionClass": "toast-top-right",
-                            "preventDuplicates": false,
-                            "onclick": null,
-                            "showDuration": "500",
-                            "hideDuration": "500",
-                            "timeOut": "5000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
+    document.querySelectorAll('.form-check-input').forEach(function(element) {
+        element.addEventListener('click', function() {
+            if (this.checked) {
+                published = 1;
+                id = this.parentElement.getAttribute("id");
+            } else {
+                published = 2;
+                id = this.parentElement.getAttribute("id");
+            }
+
+            if ((published != '' || published != null) && (id != '')) {
+                $.ajax({
+                    type: 'POST',
+                    url: "<?= base_url('online_exam/published') ?>",
+                    data: "id=" + id + "&published=" + published,
+                    dataType: "html",
+                    success: function(data) {
+                        if (data == 'Success') {
+                            toastr["success"]("Successfully updated the status");
+                            // Reload the page after a short delay for smooth transition
+                            setTimeout(function() {
+                                location.reload();
+                            }, 1000);  // 1 second delay
+                        } else {
+                            toastr["error"]("Error occurred while updating the status");
                         }
-                    } else {
-                        toastr["error"]("Error")
-                        toastr.options = {
-                            "closeButton": true,
-                            "debug": false,
-                            "newestOnTop": false,
-                            "progressBar": false,
-                            "positionClass": "toast-top-right",
-                            "preventDuplicates": false,
-                            "onclick": null,
-                            "showDuration": "500",
-                            "hideDuration": "500",
-                            "timeOut": "5000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                        }
+                    },
+                    error: function(xhr, status, error) {
+                        toastr["error"]("An error occurred: " + xhr.statusText);
                     }
-                    location.reload();
-                }
-            });
-        }
+                });
+            }
+        });
     });
+
+    // Toastr options for consistent message display
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "500",
+        "hideDuration": "500",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
 </script>

@@ -1,6 +1,6 @@
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><i class="fa fa-slideshare "></i> <?=$this->lang->line('panel_title')?></h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa fa-slideshare "></i> <?=$this->lang->line('panel_title')?></h3>
         <ol class="breadcrumb">
             <li><a href="<?=base_url("dashboard/index")?>"><i class="fa fa-laptop"></i> <?=$this->lang->line('menu_dashboard')?></a></li>
             <li><a href="<?=base_url("online_exam/index")?>"><?=$this->lang->line('panel_title')?></a></li>
@@ -8,7 +8,7 @@
         </ol>
     </div><!-- /.box-header -->
     <!-- form start -->
-    <div class="box-body">
+    <div class="card-body">
         <div class="row">
             <div class="col-sm-10">
                 <form class="form-horizontal" role="form" method="post">

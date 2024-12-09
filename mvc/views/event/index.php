@@ -1,30 +1,31 @@
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 class="card-title"><i class="bi bi-calendar-check"></i> <?=$this->lang->line('panel_title')?></h3>
 
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><i class="fa fa-calendar-check-o"></i> <?=$this->lang->line('panel_title')?></h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="<?=base_url("dashboard/index")?>"><i class="bi bi-laptop"></i> <?=$this->lang->line('menu_dashboard')?></a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?=$this->lang->line('menu_event')?></li>
+            </ol>
+        </nav>
+    </div><!-- /.card-header -->
 
-
-        <ol class="breadcrumb">
-            <li><a href="<?=base_url("dashboard/index")?>"><i class="fa fa-laptop"></i> <?=$this->lang->line('menu_dashboard')?></a></li>
-            <li class="active"><?=$this->lang->line('menu_event')?></li>
-        </ol>
-    </div><!-- /.box-header -->
     <!-- form start -->
-    <div class="box-body">
+    <div class="card-body">
         <div class="row">
             <div class="col-sm-12">
 
                 <?php if(permissionChecker('event_add')) { ?>
-                    <h5 class="page-header">
-                        <a href="<?php echo base_url('event/add') ?>">
-                            <i class="fa fa-plus"></i>
+                    <div class="mb-3">
+                        <a href="<?php echo base_url('event/add') ?>" class="btn btn-primary">
+                            <i class="bi bi-plus-lg"></i>
                             <?=$this->lang->line('add_title')?>
                         </a>
-                    </h5>
+                    </div>
                 <?php } ?>
 
                 <div id="hide-table">
-                    <table id="example1" class="table table-striped table-bordered table-hover dataTable no-footer">
+                    <table id="example1" class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th class="col-sm-1"><?=$this->lang->line('slno')?></th>
@@ -60,8 +61,8 @@
                                     <td data-title="<?=$this->lang->line('event_details')?>">
                                         <?php
                                             if(strlen($event->details) > 60)
-                                                echo strip_tags(substr($event->details, 0, 60)."...");
-                                            else
+                                                echo strip_tags(substr($event->details, 0, 60)."..."); 
+                                            else 
                                                 echo strip_tags(substr($event->details, 0, 60));
                                         ?>
                                     </td>

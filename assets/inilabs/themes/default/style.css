@@ -303,7 +303,7 @@ img {
   color: #85144b !important;
 }
 .text-white {
-  color: #1a1a1a !important;
+  color: #ffffff !important;
 }
 /*Hide elements by display none only*/
 .hide {
@@ -738,6 +738,7 @@ body > .header .logo .icon {
 .sidebar .sidebar-menu .treeview-menu > li > a > .ion {
   width: 25px;
   font-size: 14px;
+  color: black;
 }
 
 
@@ -826,14 +827,14 @@ body > .header .logo .icon {
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
   z-index: 2300;
 }
-.dropdown-menu > li > a > .glyphicon,
+.dropdown-menu > li > a > .glyphicon,.btn.btn-success:hover
 .dropdown-menu > li > a > .fa,
 .dropdown-menu > li > a > .ion {
   margin-right: 10px;
 }
 .dropdown-menu > li > a:hover {
-  background-color: #3c8dbc;
-  color: #f9f9f9;
+  /* background-color: #af1414;
+  color: #f9f9f9; */
 }
 /*Drodown in navbars*/
 .skin-blue .navbar .dropdown-menu > li > a {
@@ -1491,7 +1492,7 @@ body > .header .logo .icon {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   border-bottom: 0px solid #f4f4f4;
-  color: #444;
+  color: #ffffff;
 }
 .box .box-header:before,
 .box .box-header:after {
@@ -1947,15 +1948,17 @@ Component: timeline
   border: 1px solid transparent;
 }
 .btn.btn-default {
-  background-color: #fafafa;
-  color: #666;
-  border-color: #ddd;
-  border-bottom-color: #ddd;
+  color: #fff;
+  background: linear-gradient(to right, #ed213a, #93291e);
+  border-color: #93291e;
+  margin-right: 2px;
 }
 .btn.btn-default:hover,
 .btn.btn-default:active,
 .btn.btn-default.hover {
-  background-color: #f4f4f4!important;
+  color: #fff;
+  background-color: #93291e;
+  border-color: #93291e;
 }
 .btn.btn-default.btn-flat {
   border-bottom-color: #d9dadc;
@@ -1981,8 +1984,8 @@ Component: timeline
 .btn.btn-success:active,
 .btn.btn-success.hover {
   color: #fff;
-  background-color: #09A3A3;
-  border-color: #09A3A3;
+  background-color: #c50707;
+  border-color: #a32009;
 }
 .btn.btn-info {
   color: #fff;
@@ -1998,15 +2001,15 @@ Component: timeline
 }
 .btn.btn-danger {
   color: #fff;
-  background-color: #ff5b57;
-  border-color: #ff5b57;
+  background: linear-gradient(to right, #ed213a, #93291e);
+  border-color: #93291e;
 }
 .btn.btn-danger:hover,
 .btn.btn-danger:active,
 .btn.btn-danger.hover {
   color: #fff;
-  background-color: #F35A57;
-  border-color: #F35A57;
+  background-color: #93291e;
+  border-color: #ed213a;
 }
 .btn.btn-warning {
   color: #fff;
@@ -2244,9 +2247,9 @@ Component: timeline
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 }
 .nav-tabs-custom > .nav-tabs {
-  background-color: #e5e5e5;
+  background-color: #383434;
   margin: 0;
-  border-bottom-color: #e5e5e5;
+  border-bottom-color: #383434;
 }
 .nav-tabs-custom > .nav-tabs > li {
   border-bottom: 2px solid transparent;
@@ -2327,8 +2330,14 @@ Component: timeline
 }
 /* PAGINATION */
 .pagination > li > a {
-  background: #fafafa;
-  color: #666;
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.428571429;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;6;
 }
 
 .pagination > li:first-of-type a {
@@ -2520,7 +2529,7 @@ Component: timeline
   box-shadow: inset 0px -3px 0px rgba(0, 0, 0, 0.2);
   padding: 20px 10px;
   text-align: center;
-  font-size: 26px;
+  font-size: 16px;
   font-weight: 300;
   color: #fff;
 }
@@ -2653,9 +2662,9 @@ Component: timeline
     ---------
 */
 /* skin-blue navbar */
-.skin-blue .navbar {
+/* .skin-blue .navbar {
   background-color: #FFFFFF;
-}
+} */
 .skin-blue .navbar .nav a {
   color: #333333;
 }
@@ -2753,7 +2762,7 @@ Component: timeline
 .skin-blue .treeview-menu > li.active > a,
 .skin-blue .treeview-menu > li > a:hover {
   color: #FFFFFF;
-  background-color: #5a3939;
+  background-color: #ed213a;
 }
 .skin-blue .sidebar-form {
   -webkit-border-radius: 2px;
@@ -3754,4 +3763,29 @@ fieldset[disabled] .btn-vk.active {
 }
 .bootstrap-tagsinput{
   width: 100% !important;
+}
+
+input[type="checkbox"]:checked + label .active
+{
+  background: #ed213a !important
+}
+input[type="checkbox"] + label .active {
+  width: 20px !important;
+  height: 20px !important;
+  line-height: 18px;
+  font-size: 11px;
+  border-radius: 2px;
+  text-align: center;
+}
+
+
+.fa, .fa-brands, .fa-duotone, .fa-light, .fa-regular, .fa-solid, .fa-thin, .fab, .fad, .fal, .far, .fas, .fat {
+
+  color: white;
+}
+.user-info p ,.user-info a{
+  color: white;
+}
+.user-info a{
+  color: white !important;
 }

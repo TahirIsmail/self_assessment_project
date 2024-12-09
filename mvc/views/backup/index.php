@@ -1,32 +1,31 @@
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-download"></i> <?=$this->lang->line('panel_title')?></h3>
 
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><i class="fa fa-download"></i> <?=$this->lang->line('panel_title')?></h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?=base_url("dashboard/index")?>"><i class="fas fa-laptop"></i> <?=$this->lang->line('menu_dashboard')?></a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?=$this->lang->line('menu_backup')?></li>
+            </ol>
+        </nav>
+    </div><!-- /.card-header -->
 
-       
-        <ol class="breadcrumb">
-            <li><a href="<?=base_url("dashboard/index")?>"><i class="fa fa-laptop"></i> <?=$this->lang->line('menu_dashboard')?></a></li>
-            <li class="active"><?=$this->lang->line('menu_backup')?></li>
-        </ol>
-    </div><!-- /.box-header -->
     <!-- form start -->
-    <div class="box-body">
+    <div class="card-body">
         <div class="row">
-            <div class="col-sm-12">
-                <form action="<?=base_url('backup/index');?>" class="form-horizontal" role="form" method="post">  
-                    <label for="photo" class="col-sm-2 control-label col-xs-8 col-md-2">
-                        <?=$this->lang->line("backup_title")?>
-                    </label>
-                    <div class="form-group">
-                        <div class="col-md-1 rep-mar">
-                            <input type="hidden" value="0" name="hidden">
-                            <button type="submit" class="btn btn-primary">
-                              <i class="fa fa-download"></i> <?=$this->lang->line("backup_submit")?>
-                            </button>
-                        </div>
+            <div class="col-12">
+                <form action="<?=base_url('backup/index');?>" class="row g-3" method="post">
+                    <div class="col-md-2">
+                        <label for="backup_title" class="form-label"><?=$this->lang->line("backup_title")?></label>
+                    </div>
+                    <div class="col-md-10 d-flex align-items-end">
+                        <input type="hidden" value="0" name="hidden">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-download"></i> <?=$this->lang->line("backup_submit")?>
+                        </button>
                     </div>
                 </form>
             </div>            
-        </div><!-- row -->
-    </div><!-- Body -->
-</div><!-- /.box -->
+        </div><!-- /.row -->
+    </div><!-- /.card-body -->
+</div><!-- /.card -->

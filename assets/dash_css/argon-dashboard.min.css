@@ -88,7 +88,7 @@
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
-  font-size: var(--bs-body-font-size);
+  /* font-size: var(--bs-body-font-size); */
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
@@ -594,7 +594,7 @@ progress {
   }
 }
 .row {
-  --bs-gutter-x: 1.5rem;
+  --bs-gutter-x: 0.6rem;
   --bs-gutter-y: 0;
   display: flex;
   flex-wrap: wrap;
@@ -3454,7 +3454,9 @@ fieldset:disabled .btn {
 .card-link + .card-link {
   margin-left: var(--bs-card-spacer-x);
 }
+
 .card-header {
+  
   padding: var(--bs-card-cap-padding-y) var(--bs-card-cap-padding-x);
   margin-bottom: 0;
   color: var(--bs-card-cap-color);
@@ -15546,10 +15548,15 @@ fieldset:disabled .btn {
 }
 .card .card-header {
   padding: 1.5rem;
+ 
+}
+.card .card-header p ,.card .card-header h6 {
+  color: white !important;
+ 
 }
 .card .card-body {
   font-family: "Quicksand", sans-serif !important;
-  padding: 1.5rem !important;
+  padding: 1rem ;
 }
 .card.card-plain {
   background-color: transparent;
@@ -17369,8 +17376,8 @@ h3 {
 }
 .h4,
 h4 {
-  font-size: 1.5rem;
-  line-height: 1.375;
+  font-size: 1rem;
+  line-height: 1;
 }
 @media (max-width: 575.98px) {
   .h4,
@@ -17380,7 +17387,7 @@ h4 {
 }
 .h5,
 h5 {
-  font-size: 1.5rem;
+  font-size: 1rem;
   line-height: 1.5;
 }
 @media (max-width: 575.98px) {
@@ -17391,8 +17398,8 @@ h5 {
 }
 .h6,
 h6 {
-  font-size: 1.3rem;
-  line-height: 1.625;
+  font-size: 1rem;
+  line-height: 1;
 }
 .p,
 p {
@@ -17440,11 +17447,11 @@ a {
   line-height: 2;
 }
 .text-xs {
-  line-height: 1.25;
+  line-height: 1;
 }
 .p,
 p {
-  font-size: 1.2rem;
+  font-size: 0.8rem;
 }
 .lead {
   font-size: 1.25rem;
@@ -17453,10 +17460,10 @@ p {
   font-size: 1.125rem !important;
 }
 .text-sm {
-  font-size: 1.3rem !important;
+  font-size: 0.8rem !important;
 }
 .text-xs {
-  font-size: 1.2rem !important;
+  font-size: 0.8rem !important;
 }
 .text-xxs {
   font-size: 0.65rem !important;

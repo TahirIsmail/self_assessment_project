@@ -210,7 +210,7 @@ class Stripe extends PaymentAbstract
 
     public function course_payment_success($course_data) //done
     {
-       
+      
         if($this->response->isSuccessful()) {
             if($this->response->getData()['status'] === "succeeded") {
                 $transaction_id = $this->response->getData()["id"];

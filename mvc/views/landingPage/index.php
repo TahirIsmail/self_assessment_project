@@ -32,14 +32,8 @@ $is_logged_in = $this->session->userdata('loggedin');
 
     <link href="<?php echo base_url('assets/inilabs/owlcarousel/assets/owl.carousel.min.css'); ?>" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url('assets/inilabs/animate/animate.min.css'); ?>" rel="stylesheet" type="text/css">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
-
     <link href="<?php echo base_url('assets/inilabs/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css">
 
-    <!-- Template Stylesheet -->
-    <!-- <link href="css/style.css" rel="stylesheet"> -->
     <link href="<?php echo base_url('assets/inilabs/landing_style.css'); ?>" rel="stylesheet" type="text/css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -427,11 +421,11 @@ $is_logged_in = $this->session->userdata('loggedin');
 
 
     <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
             <span class="sr-only">Loading...</span>
         </div>
-    </div>
+    </div> -->
     <div class="cont1_mobile" style="margin-top: 40px;">
         <!-- Card 1 -->
         <div class="card-new_mobile">
@@ -1058,8 +1052,8 @@ $is_logged_in = $this->session->userdata('loggedin');
 
     <div class="container">
         <div class="text-center">
-            <h6 class="section-title bg-white text-center text-primary px-3">Tests</h6>
-            <h1 class="mb-5">All Mock Test! </h1>
+            <h6 class="section-title bg-white text-center text-primary px-3 mb-5">Buy Your Tests</h6>
+            <!-- <h1 class="mb-5">All Mock Test! </h1> -->
         </div>
         <div class="owl-carousel testimonial-carousel ">
             <?php if ($mockTests) { ?>
@@ -1193,7 +1187,7 @@ $is_logged_in = $this->session->userdata('loggedin');
 
 
     <!-- Team Start -->
-    <div class="container-xxl py-5">
+    <!-- <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title bg-white text-center text-primary px-3">Instructors</h6>
@@ -1274,7 +1268,7 @@ $is_logged_in = $this->session->userdata('loggedin');
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Team End -->
 
 

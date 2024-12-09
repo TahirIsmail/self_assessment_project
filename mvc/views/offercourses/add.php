@@ -1,13 +1,43 @@
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><i class="fa fa-star"></i> <?= $this->lang->line('course_title') ?></h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <ol class="breadcrumb">
-            <li><a href="<?= base_url("dashboard/index") ?>"><i class="fa fa-laptop"></i> <?= $this->lang->line('menu_dashboard') ?></a></li>
-            <li><a href="<?= base_url("offercourses/index") ?>"></i><?= $this->lang->line('menu_offercourses') ?></a></li>
-            <li class="active"><?= $this->lang->line('menu_add') ?> <?= $this->lang->line('menu_offercourses') ?></li>
-        </ol>
-    </div><!-- /.box-header -->
+    <!-- Bootstrap 5.0 CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta3/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome (for icons) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+    <!-- CKEditor 5 -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script>
+
+    <!-- Custom Styles -->
+    <style>
+        .text-red {
+            color: #dc3545; /* Red color for error messages */
+        }
+        #course_description {
+            height: 300px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-4">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title"><i class="fa fa-star"></i> <?= $this->lang->line('course_title') ?></h3>
+
+            <ol class="breadcrumb">
+                <li><a href="<?= base_url("dashboard/index") ?>"><i class="fa fa-laptop"></i> <?= $this->lang->line('menu_dashboard') ?></a></li>
+                <li><a href="<?= base_url("offercourses/index") ?>"><?= $this->lang->line('menu_offercourses') ?></a></li>
+                <li class="active"><?= $this->lang->line('menu_add') ?> <?= $this->lang->line('menu_offercourses') ?></li>
+            </ol>
+        </div><!-- /.box-header -->
 
     <!-- form start -->
     <div class="box-body">
@@ -138,13 +168,14 @@
 </div>
 
 <script>
-    $(function() {
-        // Image preview functionality
-        $('#close-preview').click(function() {
-            $('.image-preview').popover('hide');
+    ClassicEditor
+        .create(document.querySelector('#course_description'))
+        .catch(error => {
+            console.error(error);
         });
 
-        // Image preview
+    $(function() {
+        // Image preview functionality
         $('.image-preview-input input:file').change(function() {
             var img = $('<img/>', {
                 id: 'dynamic',
@@ -164,14 +195,6 @@
             reader.readAsDataURL(file);
         });
     });
-</script>
-<script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script>
-<script>
-    ClassicEditor
-        .create(document.querySelector('#course_description'))
-        .catch(error => {
-            console.error(error);
-        });
 </script>
 
 <style>

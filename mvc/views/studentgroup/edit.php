@@ -1,45 +1,43 @@
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-object-group"></i> <?= $this->lang->line('panel_title') ?></h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="<?= base_url("dashboard/index") ?>"><i class="fas fa-laptop"></i> <?= $this->lang->line('menu_dashboard') ?></a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="<?= base_url("studentgroup/index") ?>"><?= $this->lang->line('menu_studentgroup') ?></a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page"><?= $this->lang->line('menu_edit') ?> <?= $this->lang->line('menu_studentgroup') ?></li>
+            </ol>
+        </nav>
+    </div><!-- /.card-header -->
 
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><i class="fa fa-object-group"></i> <?=$this->lang->line('panel_title')?></h3>
-        <ol class="breadcrumb">
-            <li><a href="<?=base_url("dashboard/index")?>"><i class="fa fa-laptop"></i> <?=$this->lang->line('menu_dashboard')?></a></li>
-            <li><a href="<?=base_url("studentgroup/index")?>"><?=$this->lang->line('menu_studentgroup')?></a></li>
-            <li class="active"><?=$this->lang->line('menu_edit')?> <?=$this->lang->line('menu_studentgroup')?></li>
-        </ol>
-    </div><!-- /.box-header -->
     <!-- form start -->
-    <div class="box-body">
+    <div class="card-body">
         <div class="row">
-            <div class="col-sm-12">
-                <form class="form-horizontal" role="form" method="post">
-                    <?php
-                    if(form_error('group'))
-                        echo "<div class='form-group has-error' >";
-                    else
-                        echo "<div class='form-group' >";
-                    ?>
-                        <label for="group" class="col-sm-2 control-label">
-                            <?=$this->lang->line("studentgroup_group")?> <span class="text-red">*</span>
+            <div class="col-md-12">
+                <form class="row g-3" method="post">
+                    <div class="mb-3 <?php echo form_error('group') ? 'has-error' : ''; ?>">
+                        <label for="group" class="form-label">
+                            <?= $this->lang->line("studentgroup_group") ?> <span class="text-danger">*</span>
                         </label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="group" name="group" value="<?=set_value('group', $studentgroup->group)?>" >
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="group" name="group" value="<?= set_value('group', $studentgroup->group) ?>">
                         </div>
-                        <div class="col-sm-4 control-label">
+                        <div class="col-md-12">
                             <?php echo form_error('group'); ?>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-8">
-                            <input type="submit" class="btn btn-success" value="<?=$this->lang->line("update_studentgroup")?>" >
+                    <div class="mb-3">
+                        <div class="col-md-8">
+                            <button type="submit" class="btn btn-success"><?= $this->lang->line("update_studentgroup") ?></button>
                         </div>
                     </div>
-
                 </form>
-
             </div>
-        </div>
-    </div>
-</div>
-
+        </div><!-- row -->
+    </div><!-- card-body -->
+</div><!-- card -->

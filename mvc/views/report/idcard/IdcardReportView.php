@@ -1,18 +1,20 @@
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><i class="fa iniicon-idcardreport"></i> <?=$this->lang->line('panel_title')?></h3>
-        <ol class="breadcrumb">
-            <li><a href="<?=base_url("dashboard/index")?>"><i class="fa fa-laptop"></i> <?=$this->lang->line('menu_dashboard')?></a></li>
-            <li class="active"> <?=$this->lang->line('menu_idcardreport')?></li>
-        </ol>
-    </div><!-- /.box-header -->
-    <!-- form start -->
-    <div class="box-body">
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="bi bi-id-card"></i> <?=$this->lang->line('panel_title')?></h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="<?=base_url("dashboard/index")?>"><i class="bi bi-laptop"></i> <?=$this->lang->line('menu_dashboard')?></a></li>
+                <li class="breadcrumb-item active" aria-current="page"> <?=$this->lang->line('menu_idcardreport')?></li>
+            </ol>
+        </nav>
+    </div><!-- /.card-header -->
+    
+    <!-- Form Start -->
+    <div class="card-body">
         <div class="row">
-
-            <div class="col-sm-12">
-                <div class="form-group col-sm-4" id="usertypeIDDiv">
-                    <label for="usertypeID"><?=$this->lang->line("idcardreport_idcard_for")?> <span class="text-red">*</span></label>
+            <div class="col-12">
+                <div class="mb-3 col-4" id="usertypeIDDiv">
+                    <label for="usertypeID" class="form-label"><?=$this->lang->line("idcardreport_idcard_for")?> <span class="text-danger">*</span></label>
                     <?php
                         $usertypesArray['0'] = $this->lang->line("idcardreport_please_select");
                         if(inicompute($usertypes)) {
@@ -22,13 +24,12 @@
                                 }
                             }
                         }
-                        echo form_dropdown("usertypeID", $usertypesArray, set_value("usertypeID"), "id='usertypeID' class='form-control select2'");
-                     ?>
+                        echo form_dropdown("usertypeID", $usertypesArray, set_value("usertypeID"), "id='usertypeID' class='form-select select2'");
+                    ?>
                 </div>
 
-
-                <div class="form-group col-sm-4" id="classesDiv">
-                    <label for="classesID"><?=$this->lang->line("idcardreport_class")?> <span class="text-red">*</span></label>
+                <div class="mb-3 col-4" id="classesDiv">
+                    <label for="classesID" class="form-label"><?=$this->lang->line("idcardreport_class")?> <span class="text-danger">*</span></label>
                     <?php
                         $classesArray['0'] = $this->lang->line("idcardreport_please_select");
                         if(inicompute($classes)) {
@@ -36,79 +37,71 @@
                                 $classesArray[$classa->classesID] = $classa->classes;
                             }
                         }
-                        echo form_dropdown("classesID", $classesArray, set_value("classesID"), "id='classesID' class='form-control select2'");
-                     ?>
+                        echo form_dropdown("classesID", $classesArray, set_value("classesID"), "id='classesID' class='form-select select2'");
+                    ?>
                 </div>
 
-                <div class="form-group col-sm-4" id="sectionDiv">
-                    <label for="sectionID" ><?=$this->lang->line("idcardreport_section")?></label>
+                <div class="mb-3 col-4" id="sectionDiv">
+                    <label for="sectionID" class="form-label"><?=$this->lang->line("idcardreport_section")?></label>
                     <?php
-                        $sectionArray = array(
-                            "0" => $this->lang->line("idcardreport_please_select"),
-                        );
-                        echo form_dropdown("sectionID", $sectionArray, set_value("sectionID"), "id='sectionID' class='form-control select2'");
-                     ?>
+                        $sectionArray = array("0" => $this->lang->line("idcardreport_please_select"));
+                        echo form_dropdown("sectionID", $sectionArray, set_value("sectionID"), "id='sectionID' class='form-select select2'");
+                    ?>
                 </div>
 
-                <div class="form-group col-sm-4" id="userDiv">
-                    <label id="userDivlabel" for="userID"><?=$this->lang->line("idcardreport_user")?></label>
+                <div class="mb-3 col-4" id="userDiv">
+                    <label id="userDivlabel" for="userID" class="form-label"><?=$this->lang->line("idcardreport_user")?></label>
                     <?php
                         $userArray['0'] = $this->lang->line("idcardreport_please_select");
-                        echo form_dropdown("userID", $userArray, set_value("userID"), "id='userID' class='form-control select2'");
-                     ?>
+                        echo form_dropdown("userID", $userArray, set_value("userID"), "id='userID' class='form-select select2'");
+                    ?>
                 </div>
 
-                <div class="form-group col-sm-4" id="typeDiv">
-                    <label for="type"><?=$this->lang->line("idcardreport_type")?> <span class="text-red">*</span></label>
+                <div class="mb-3 col-4" id="typeDiv">
+                    <label for="type" class="form-label"><?=$this->lang->line("idcardreport_type")?> <span class="text-danger">*</span></label>
                     <?php
                         $typeArray = array(
                             '0' => $this->lang->line("idcardreport_please_select"),
                             '1' => $this->lang->line("idcardreport_frontpart"),
                             '2' => $this->lang->line("idcardreport_backpart"),
                         );
-                        echo form_dropdown("type", $typeArray, set_value("type"), "id='type' class='form-control select2'");
-                     ?>
+                        echo form_dropdown("type", $typeArray, set_value("type"), "id='type' class='form-select select2'");
+                    ?>
                 </div>
 
-                <div class="form-group col-sm-4" id="backgroundDiv">
-                    <label for="background"><?=$this->lang->line("idcardreport_background")?> <span class="text-red">*</span></label>
+                <div class="mb-3 col-4" id="backgroundDiv">
+                    <label for="background" class="form-label"><?=$this->lang->line("idcardreport_background")?> <span class="text-danger">*</span></label>
                     <?php
                         $backgroundArray = array(
                             '0' => $this->lang->line("idcardreport_please_select"),
                             '1' => $this->lang->line("idcardreport_yes"),
                             '2' => $this->lang->line("idcardreport_no"),
                         );
-                        echo form_dropdown("background", $backgroundArray, set_value("background"), "id='background' class='form-control select2'");
-                     ?>
+                        echo form_dropdown("background", $backgroundArray, set_value("background"), "id='background' class='form-select select2'");
+                    ?>
                 </div>
 
-
-                <div class="col-sm-4">
-                    <button id="get_idcardreport" class="btn btn-success" style="margin-top:23px;"> <?=$this->lang->line("idcardreport_submit")?></button>
+                <div class="mb-3 col-4">
+                    <button id="get_idcardreport" class="btn btn-success" style="margin-top:30px;"> <?=$this->lang->line("idcardreport_submit")?></button>
                 </div>
-
             </div>
-
         </div><!-- row -->
-    </div><!-- Body -->
-</div><!-- /.box -->
+    </div><!-- card-body -->
+</div><!-- /.card -->
 
 <div id="load_idcardreport"></div>
 
-
 <script type="text/javascript">
-    
     function printDiv(divID) {
         var oldPage = document.body.innerHTML;
         var divElements = document.getElementById(divID).innerHTML;
         document.body.innerHTML = "<html><head><title></title></head><body>" + divElements + "</body>";
-
         window.print();
         document.body.innerHTML = oldPage;
         window.location.reload();
     }
 
-    $(function(){
+    $(function() {
         $("#usertypeID").val(0);
         $("#classesID").val(0);
         $("#sectionID").val(0);
@@ -127,9 +120,8 @@
         var classesID = $("#classesID").val();
         var sectionID = $("#sectionID").val();
         var idcardtext = $('#usertypeID option:selected').text();
-        var error = 0;
-
         $('#userDivlabel').text(idcardtext);
+
         if(usertypeID == '0'){
             $('#classesDiv').hide('slow');
             $('#sectionDiv').hide('slow');
@@ -150,18 +142,14 @@
             $('#userDiv').show('slow');
         }
 
-        var passData = {
-            'usertypeID':usertypeID,
-            'classesID':classesID,
-            'sectionID':sectionID,
-        }
+        var passData = { 'usertypeID': usertypeID, 'classesID': classesID, 'sectionID': sectionID };
 
-        if(usertypeID > 0)  {
+        if(usertypeID > 0) {
             $.ajax({
-                type : 'POST',
-                url  : '<?=base_url('idcardreport/getUser')?>',
-                data : passData,
-                success : function(data) {
+                type: 'POST',
+                url: '<?=base_url('idcardreport/getUser')?>',
+                data: passData,
+                success: function(data) {
                     $('#userID').html(data);
                 }
             });
@@ -217,16 +205,7 @@
         }
     });
 
-    $(document).on('change', "#userID", function() {
-        $('#load_idcardreport').html("");
-    });
-
-
-    $(document).on('change', "#type", function() {
-        $('#load_idcardreport').html("");
-    });
-
-    $(document).on('change', "#background", function() {
+    $(document).on('change', "#userID, #type, #background", function() {
         $('#load_idcardreport').html("");
     });
 
@@ -234,18 +213,11 @@
         var usertypeID = $('#usertypeID').val();
         var classesID = $('#classesID').val();
         var sectionID = $('#sectionID').val();
-        var userID    = $('#userID').val();
-        var type      = $('#type').val();
-        var background= $('#background').val();
+        var userID = $('#userID').val();
+        var type = $('#type').val();
+        var background = $('#background').val();
         var error = 0;
-        var field = {
-            'usertypeID': usertypeID,
-            'classesID' : classesID,
-            'sectionID' : sectionID,
-            'userID'    : userID,
-            'type'      : type,
-            'background': background,
-        }
+        var field = { 'usertypeID': usertypeID, 'classesID': classesID, 'sectionID': sectionID, 'userID': userID, 'type': type, 'background': background };
 
         if(usertypeID == 0 ) {
             $('#usertypeIDDiv').addClass('has-error');
@@ -287,11 +259,11 @@
 
     function ajaxCall(passData) {
         $.ajax({
-            type:'POST',
-            url:'<?=base_url('idcardreport/getIdcardReport')?>',
-            data:passData,
-            dataType:'html',
-            success:function(data) {
+            type: 'POST',
+            url: '<?=base_url('idcardreport/getIdcardReport')?>',
+            data: passData,
+            dataType: 'html',
+            success: function(data) {
                 var response = JSON.parse(data);
                 renderLoder(response, passData);
             }
@@ -320,7 +292,4 @@
             }
         }
     }
-
 </script>
-
-

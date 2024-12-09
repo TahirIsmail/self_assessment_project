@@ -38,7 +38,7 @@ class Course extends Admin_Controller
         redirect(base_url("course/index"));
     }
 
-    public function index($slug = null)
+    public function index($slug = null) 
     {
         $loginuserID = $this->session->userdata('loginuserID');
         $this->data['payment_settings'] = $this->payment_gateway_m->get_order_by_payment_gateway(['status' => 1]);
