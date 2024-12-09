@@ -33,7 +33,8 @@ class Contactus extends Admin_Controller
 
     public function index()
     {
-        $this->load->view('contactus/index');
+        $this->data['course_names'] = $this->Offercourses_m->get_course_names();
+        $this->load->view('contactus/index', $this->data);
         $this->session->sess_destroy();
     }
 
